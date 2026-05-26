@@ -1,4 +1,4 @@
-# Akce a kalendář — Design spec
+# Akce, kalendář a aktuality — Design spec
 **Datum:** 2026-05-26  
 **Projekt:** trampolinycz (trampoliny.cz)
 
@@ -6,7 +6,10 @@
 
 ## Přehled
 
-Přidání sekce nadcházejících akcí a kalendáře závodů do webu. Obsah spravují admini přes Sanity CMS. Web zobrazuje preview akcí na hlavní stránce a plný přehled na samostatné stránce `/akce` s přepínačem seznam/kalendář.
+Přidání dvou typů obsahu spravovaných přes Sanity CMS:
+
+1. **Akce** — události s konkrétním datem (závody, tábory, soustředění). Zobrazují se v kalendáři a seznamu na `/akce`.
+2. **Aktuality** — časově platná oznámení bez data konání (otevření přihlášek na kroužky, začátek sezony apod.). Zobrazují se jako nástěnka na hlavní stránce.
 
 ---
 
@@ -28,6 +31,17 @@ Document type: `event`
 
 Zobrazují se pouze akce kde `date >= today`, seřazené vzestupně podle data.
 
+### Document type: `announcement` (aktualita)
+
+| Pole | Typ | Povinné | Poznámka |
+|------|-----|---------|----------|
+| `title` | string | ano | Krátký nadpis (např. "Otevřeny přihlášky na letní tábor") |
+| `body` | portable text | ne | Volitelný delší text |
+| `link` | `{ label, url }` | ne | CTA tlačítko (např. "Přihlásit se") |
+| `expiresAt` | datetime | ne | Datum kdy se oznámení automaticky skryje |
+
+Zobrazují se pouze aktuality kde `expiresAt` není vyplněno nebo `expiresAt >= today`.
+
 ---
 
 ## Architektura
@@ -37,15 +51,15 @@ Zobrazují se pouze akce kde `date >= today`, seřazené vzestupně podle data.
 ```
 app/akce/page.tsx            Server Component — stránka /akce
 app/api/revalidate/route.ts  Webhook endpoint pro Sanity ISR revalidaci
-lib/sanity.ts                Sanity client + GROQ dotazy
+lib/sanity.ts                Sanity client + GROQ dotazy (events + announcements)
 sanity/                      Sanity Studio (schema, konfigurace)
 ```
 
 ### Datový tok
 
-1. `lib/sanity.ts` — jeden GROQ dotaz vracející budoucí akce seřazené podle data
+1. `lib/sanity.ts` — dva GROQ dotazy: budoucí akce seřazené podle data + platné aktuality
 2. `app/akce/page.tsx` — async Server Component, fetchuje všechny akce ze Sanity, Next.js výsledek cachuje
-3. `app/page.tsx` — fetchuje jen 3 nejbližší akce pro homepage preview sekci
+3. `app/page.tsx` — fetchuje 3 nejbližší akce + všechny platné aktuality pro homepage
 4. `app/api/revalidate/route.ts` — přijme POST webhook ze Sanity, ověří `SANITY_REVALIDATE_SECRET` z env, zavolá `revalidatePath('/')` a `revalidatePath('/akce')`
 
 ### Sanity Studio
@@ -55,6 +69,14 @@ Nasazeno na `trampoliny.cz/studio` — admini editují akce přes prohlížeč b
 ---
 
 ## UI komponenty
+
+### Homepage sekce "Aktuality"
+
+- Umístění: těsně pod navigací, nad hero sekcí (nebo jako barevný pruh nad hero)
+- Zobrazuje se pouze pokud existuje alespoň jedna platná aktualita
+- Každá aktualita = řádek s nadpisem a volitelným CTA tlačítkem
+- Pokud je více aktualit, scrollují nebo se zobrazí jako stack karet
+- Vizuální styl: výrazný pruh v navy/orange barvě, nezapadá do pozadí
 
 ### Homepage sekce "Nadcházející akce"
 
