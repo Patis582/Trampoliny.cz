@@ -40,7 +40,7 @@ export default async function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <Link
-                href="#oddil"
+                href="/trampoliny-liberec"
                 className="inline-flex justify-center items-center bg-brand-orange text-white font-label-bold text-label-bold px-10 py-4 uppercase tracking-wider hover:bg-white hover:text-brand-orange transition-all duration-300 shadow-xl"
               >
                 Sportovní oddíl
