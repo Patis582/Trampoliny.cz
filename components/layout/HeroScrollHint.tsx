@@ -2,93 +2,131 @@
 
 import { useEffect, useRef } from "react";
 
+const FIGURE_RADIUS = 10;
+const MAT_Y = 200;
+const MAT_HEIGHT = 150; // extra thick — prevents tunneling at any velocity
+const REST_Y = MAT_Y - FIGURE_RADIUS;
+const COLOR = "#0f1f45";
+
 export function HeroScrollHint() {
   const figureRef = useRef<SVGGElement>(null);
   const matRef = useRef<SVGPathElement>(null);
 
   useEffect(() => {
-    let displayY = 0;
-    let prevDisplayY = 0;
     let rafId: number;
+    let stopped = false;
 
-    const MAX_DOWN = 18;
+    import("matter-js").then((Matter) => {
+      if (stopped) return;
+      const { Engine, Runner, Bodies, Body, Composite } = Matter;
 
-    function tick() {
-      const scrollY = window.scrollY;
-      const target = Math.min(scrollY * 0.12, MAX_DOWN);
+      const engine = Engine.create({ gravity: { y: 1.4 } });
 
-      displayY += (target - displayY) * 0.15;
+      // Mat center is shifted down so top surface sits exactly at MAT_Y
+      const mat = Bodies.rectangle(50, MAT_Y + MAT_HEIGHT / 2, 80, MAT_HEIGHT, {
+        isStatic: true,
+        restitution: 0.75,
+        friction: 0,
+        label: "mat",
+      });
 
-      const velocity = displayY - prevDisplayY;
-      prevDisplayY = displayY;
+      const figure = Bodies.circle(50, REST_Y, FIGURE_RADIUS, {
+        restitution: 0.75,
+        friction: 0,
+        frictionAir: 0.015,
+        label: "figure",
+      });
 
-      const rotate = velocity * 3;
-      const compression = Math.max(0, displayY / MAX_DOWN);
-      const matD = compression > 0
-        ? `M10,0 Q40,${8 + compression * 6} 70,0`
-        : `M10,0 Q40,8 70,0`;
+      Composite.add(engine.world, [mat, figure]);
 
-      if (figureRef.current) {
-        figureRef.current.setAttribute(
-          "transform",
-          `translate(0, ${displayY}) rotate(${rotate}, 40, 20)`
-        );
-      }
-      if (matRef.current) {
-        matRef.current.setAttribute("d", matD);
+      const runner = Runner.create();
+      Runner.run(runner, engine);
+
+      let prevScrollY = window.scrollY;
+      const MAX_UP_VEL = -12;
+
+      function tick() {
+        if (stopped) return;
+
+        const currentScrollY = window.scrollY;
+        const delta = currentScrollY - prevScrollY;
+        prevScrollY = currentScrollY;
+
+        // Only apply upward impulse on scroll down — let gravity handle scroll up
+        if (delta > 0.5) {
+          const force = Math.min(delta * 0.0012, 0.012);
+          Body.applyForce(figure, figure.position, { x: 0, y: -force });
+        }
+
+        // Cap upward velocity so figure stays visible
+        if (figure.velocity.y < MAX_UP_VEL) {
+          Body.setVelocity(figure, { x: 0, y: MAX_UP_VEL });
+        }
+
+        // relY: 0 = on mat, negative = above mat
+        const relY = figure.position.y - REST_Y;
+
+        if (figureRef.current) {
+          figureRef.current.setAttribute("transform", `translate(0, ${relY})`);
+        }
+
+        if (matRef.current) {
+          // Compress mat proportionally to impact — springs back as figure rises
+          const compression = Math.max(0, 1 - Math.abs(relY) / 10);
+          const sag = 6 + compression * 16;
+          matRef.current.setAttribute("d", `M10,0 Q50,${sag} 90,0`);
+        }
+
+        rafId = requestAnimationFrame(tick);
       }
 
       rafId = requestAnimationFrame(tick);
-    }
+    });
 
-    rafId = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(rafId);
+    return () => {
+      stopped = true;
+      cancelAnimationFrame(rafId);
+    };
   }, []);
 
   return (
-    <div className="absolute bottom-8 right-8 z-20 opacity-70 hidden md:block">
+    <div
+      className="fixed bottom-4 right-6 z-50 hidden md:block"
+      style={{ filter: "drop-shadow(0 1px 6px rgba(255,255,255,0.8))" }}
+    >
       <svg
-        width="80"
-        height="90"
-        viewBox="0 0 80 90"
+        width="100"
+        height="175"
+        viewBox="0 0 100 175"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        style={{ overflow: "visible" }}
       >
-        {/* Panáček — pohyblivý */}
+        {/* Panáček — resting: feet at y=125, translate(0,0) */}
         <g ref={figureRef}>
-          {/* hlava */}
-          <circle cx="40" cy="14" r="6" stroke="#0f1f45" strokeWidth="2" />
-          {/* tělo */}
-          <line x1="40" y1="20" x2="40" y2="36" stroke="#0f1f45" strokeWidth="2" strokeLinecap="round" />
-          {/* ruce */}
-          <line x1="40" y1="25" x2="30" y2="32" stroke="#0f1f45" strokeWidth="2" strokeLinecap="round" />
-          <line x1="40" y1="25" x2="50" y2="32" stroke="#0f1f45" strokeWidth="2" strokeLinecap="round" />
-          {/* nohy */}
-          <line x1="40" y1="36" x2="32" y2="46" stroke="#0f1f45" strokeWidth="2" strokeLinecap="round" />
-          <line x1="40" y1="36" x2="48" y2="46" stroke="#0f1f45" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="50" cy="88" r="9" stroke={COLOR} strokeWidth="2.5" />
+          <line x1="50" y1="97"  x2="50" y2="114" stroke={COLOR} strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="50" y1="104" x2="36" y2="113" stroke={COLOR} strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="50" y1="104" x2="64" y2="113" stroke={COLOR} strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="50" y1="114" x2="41" y2="125" stroke={COLOR} strokeWidth="2.5" strokeLinecap="round" />
+          <line x1="50" y1="114" x2="59" y2="125" stroke={COLOR} strokeWidth="2.5" strokeLinecap="round" />
         </g>
 
-        {/* Trampolína — statická */}
-        {/* levá nožička */}
-        <line x1="14" y1="60" x2="6" y2="82" stroke="#0f1f45" strokeWidth="2.5" strokeLinecap="round" />
-        {/* pravá nožička */}
-        <line x1="66" y1="60" x2="74" y2="82" stroke="#0f1f45" strokeWidth="2.5" strokeLinecap="round" />
-        {/* základna vlevo */}
-        <line x1="2" y1="82" x2="18" y2="82" stroke="#0f1f45" strokeWidth="2.5" strokeLinecap="round" />
-        {/* základna vpravo */}
-        <line x1="62" y1="82" x2="78" y2="82" stroke="#0f1f45" strokeWidth="2.5" strokeLinecap="round" />
-        {/* rám trampolíny */}
-        <line x1="10" y1="60" x2="70" y2="60" stroke="#0f1f45" strokeWidth="2.5" strokeLinecap="round" />
-        {/* mat — prohnutý, animovaný */}
+        {/* Trampolína */}
+        <line x1="10" y1="125" x2="90" y2="125" stroke={COLOR} strokeWidth="3" strokeLinecap="round" />
         <path
           ref={matRef}
-          d="M10,0 Q40,8 70,0"
-          stroke="#0f1f45"
-          strokeWidth="2"
+          d="M10,0 Q50,6 90,0"
+          stroke={COLOR}
+          strokeWidth="2.5"
           strokeLinecap="round"
           fill="none"
-          transform="translate(0, 60)"
+          transform="translate(0, 125)"
         />
+        <line x1="16" y1="125" x2="5"  y2="163" stroke={COLOR} strokeWidth="3" strokeLinecap="round" />
+        <line x1="84" y1="125" x2="95" y2="163" stroke={COLOR} strokeWidth="3" strokeLinecap="round" />
+        <line x1="1"  y1="163" x2="19" y2="163" stroke={COLOR} strokeWidth="3" strokeLinecap="round" />
+        <line x1="81" y1="163" x2="99" y2="163" stroke={COLOR} strokeWidth="3" strokeLinecap="round" />
       </svg>
     </div>
   );
