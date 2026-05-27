@@ -4,12 +4,14 @@ import "./globals.css";
 
 const montserrat = Montserrat({
   subsets: ["latin", "latin-ext"],
+  weight: ["400", "500", "600", "700", "800", "900"],
   display: "swap",
   variable: "--font-montserrat",
 });
 
 const workSans = Work_Sans({
   subsets: ["latin", "latin-ext"],
+  weight: ["300", "400", "500", "600", "700"],
   display: "swap",
   variable: "--font-work-sans",
 });

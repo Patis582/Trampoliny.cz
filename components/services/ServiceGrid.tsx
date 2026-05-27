@@ -44,7 +44,7 @@ function ServiceCard({ num, service }: { num: string; service: Service }) {
 
   return (
     <Link
-      href="/sluzby/zavodni-druzstvo"
+      href={`/aktivity/${service.slug}`}
       className="group flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
     >
       <div className="aspect-video overflow-hidden relative bg-surface-container">

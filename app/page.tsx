@@ -2,6 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { AnnouncementBar } from "@/components/announcements/AnnouncementBar";
 import { ServiceGrid } from "@/components/services/ServiceGrid";
+import { Nav } from "@/components/layout/Nav";
+import { Footer } from "@/components/layout/Footer";
 import { getServices, getAnnouncements } from "@/sanity/lib/queries";
 
 export default async function Home() {
@@ -15,68 +17,7 @@ export default async function Home() {
       {/* Announcement bar + Nav — fixed together as one block */}
       <div className="fixed top-0 left-0 w-full z-50">
         <AnnouncementBar announcements={announcements} />
-      <nav className="bg-white/95 backdrop-blur-sm border-b border-surface-container-high transition-all duration-300">
-        <div className="max-w-container-max mx-auto px-gutter py-6 flex justify-between items-center">
-          <div className="flex items-center gap-4">
-            <Link
-              href="#"
-              className="font-headline-sm text-headline-sm font-bold text-border-dark hover:text-brand-orange transition-colors duration-200 tracking-tight"
-            >
-              Trampolíny
-            </Link>
-          </div>
-          <div className="hidden md:flex items-center gap-12">
-            <Link
-              href="#oddil"
-              className="font-label-bold text-label-bold text-outline hover:text-border-dark transition-colors duration-200 uppercase"
-            >
-              Oddíl
-            </Link>
-            <Link
-              href="#sluzby"
-              className="font-label-bold text-label-bold text-outline hover:text-border-dark transition-colors duration-200 uppercase"
-            >
-              Služby
-            </Link>
-            <Link
-              href="#rozvrh"
-              className="font-label-bold text-label-bold text-outline hover:text-border-dark transition-colors duration-200 uppercase"
-            >
-              Rozvrh
-            </Link>
-            <Link
-              href="#cenik"
-              className="font-label-bold text-label-bold text-outline hover:text-border-dark transition-colors duration-200 uppercase"
-            >
-              Ceník
-            </Link>
-          </div>
-          <div className="flex items-center">
-            <Link
-              href="#kontakt"
-              className="hidden md:inline-flex bg-transparent text-border-dark font-label-bold text-label-bold px-8 py-3 uppercase tracking-wider minimal-border-dark hover:bg-border-dark hover:text-white transition-all duration-300"
-            >
-              Kontakt
-            </Link>
-            <button className="md:hidden p-2 text-border-dark">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-7 w-7"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                strokeWidth={2}
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-            </button>
-          </div>
-        </div>
-      </nav>
+        <Nav />
       </div>
 
       {/* Hero Section */}
@@ -98,8 +39,8 @@ export default async function Home() {
         <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pt-40 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-8 lg:col-span-7">
             <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white uppercase mb-12 tracking-tight drop-shadow-lg">
-              Vyskoč si <br />
-              <span className="text-brand-orange drop-shadow-none">výš.</span>
+              Posouvej hranice<br />
+              <span className="text-brand-orange drop-shadow-none">na maximum.</span>
             </h1>
             <p className="font-body-lg text-body-lg text-white/90 mb-16 max-w-xl font-light drop-shadow-md">
               Závodní oddíl, parkour, příměstské tábory i volné skákání pro
@@ -284,78 +225,7 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="w-full bg-border-dark text-white">
-        <div className="max-w-container-max mx-auto px-gutter pt-20 pb-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
-            <div className="md:col-span-4">
-              <Link href="#" className="font-headline-sm text-headline-sm font-bold text-white tracking-tight">
-                Trampolíny <span className="text-brand-orange">Liberec</span>
-                <br />
-                <span className="text-brand-green">& Patrman</span>
-              </Link>
-              <p className="mt-6 font-body-md text-white/60 font-light max-w-xs leading-relaxed">
-                Závodní oddíl i veřejné skákání v Liberci. Dvě haly — Orionka v Harcově a Nádraží v centru města.
-              </p>
-            </div>
-            <div className="md:col-span-2">
-              <h4 className="font-label-bold text-[11px] text-white/40 uppercase tracking-widest mb-6">
-                Menu
-              </h4>
-              <div className="flex flex-col gap-4">
-                {(
-                  [
-                    ["Oddíl", "#oddil"],
-                    ["Služby", "#sluzby"],
-                    ["Rozvrh", "#rozvrh"],
-                    ["Ceník", "#cenik"],
-                  ] as [string, string][]
-                ).map(([label, href]) => (
-                  <Link
-                    key={label}
-                    href={href}
-                    className="text-white/70 hover:text-white transition-colors uppercase text-xs font-bold tracking-widest"
-                  >
-                    {label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <div className="md:col-span-3">
-              <h4 className="font-label-bold text-[11px] text-white/40 uppercase tracking-widest mb-6">
-                Právní informace
-              </h4>
-              <div className="flex flex-col gap-4">
-                {["Ochrana soukromí", "Všeobecné podmínky", "Mapa stránek"].map((item) => (
-                  <Link
-                    key={item}
-                    href="#"
-                    className="text-white/70 hover:text-white transition-colors uppercase text-xs font-bold tracking-widest"
-                  >
-                    {item}
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <div className="md:col-span-3">
-              <h4 className="font-label-bold text-[11px] text-white/40 uppercase tracking-widest mb-6">
-                Kontakt
-              </h4>
-              <p className="text-white/40 text-[11px] font-bold tracking-widest uppercase mb-1">Telefon</p>
-              <p className="text-white font-medium mb-6">+420 604 245 971</p>
-              <p className="text-white/40 text-[11px] font-bold tracking-widest uppercase mb-1">Email</p>
-              <p className="text-white font-medium">mirapatrman@gmail.com</p>
-            </div>
-          </div>
-          <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-white/40 text-xs font-light">
-            <div>© {new Date().getFullYear()} Trampolíny Liberec & Patrman. Všechna práva vyhrazena.</div>
-            <div className="mt-4 md:mt-0 flex gap-8">
-              <Link href="#" className="hover:text-brand-orange transition-colors">Facebook</Link>
-              <Link href="#" className="hover:text-brand-green transition-colors">Instagram</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

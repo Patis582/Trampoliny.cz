@@ -1,34 +1,22 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Nav } from "@/components/layout/Nav";
+import { Footer } from "@/components/layout/Footer";
 
 export default function ZavodniDruzstvoPage() {
   return (
     <div className="font-body-md antialiased bg-white min-h-screen">
 
       {/* Nav */}
-      <nav className="fixed top-0 left-0 w-full z-50 bg-white/95 backdrop-blur-sm border-b border-surface-container-high">
-        <div className="max-w-container-max mx-auto px-gutter py-6 flex justify-between items-center">
-          <Link href="/" className="font-headline-sm text-headline-sm font-bold text-border-dark hover:text-brand-orange transition-colors duration-200 tracking-tight">
-            Trampolíny
-          </Link>
-          <div className="hidden md:flex items-center gap-12">
-            {[["Oddíl", "/#oddil"], ["Služby", "/#sluzby"], ["Rozvrh", "/#rozvrh"], ["Ceník", "/#cenik"]].map(([label, href]) => (
-              <Link key={label} href={href} className="font-label-bold text-label-bold text-outline hover:text-border-dark transition-colors duration-200 uppercase">
-                {label}
-              </Link>
-            ))}
-          </div>
-          <Link href="/#kontakt" className="hidden md:inline-flex bg-transparent text-border-dark font-label-bold text-label-bold px-8 py-3 uppercase tracking-wider minimal-border-dark hover:bg-border-dark hover:text-white transition-all duration-300">
-            Kontakt
-          </Link>
-        </div>
-      </nav>
+      <div className="fixed top-0 left-0 w-full z-50">
+        <Nav />
+      </div>
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
       <section className="relative h-[75vh] min-h-[560px] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="https://lh3.googleusercontent.com/aida/ADBb0ujcwjQsk52BoTmx9QXrnib6ROR791-hRivGHKqhTAIXB5IBnigT0zUgxz-uoKgyxDkwAPbyiDXDXd4DTvIkYsruPnUFtvPn7o-2XPGvrSaflJtcrg27-jupAA0CKNkoYqgJm4M2Jtw7F8q76MEgFeqnj0zxE-2uxE9t6dR8gJk58l-WO6tOU9iVrHrQXdaF8OALqXqUbbW9yyyAxb2L2-zVptlyqcM2L_uDBcHbNLiDCHsCC63Bhi8N-swx"
+            src="/zavodni-druzstvo-hero.jpg"
             alt="Závodní družstvo"
             fill
             className="object-cover object-center scale-105"
@@ -121,41 +109,17 @@ export default function ZavodniDruzstvoPage() {
 
               <div className="space-y-4">
                 {[
-                  {
-                    icon: (
+                  "Tréninky začnou po dohodě s trenérem. V týmech jste již zařazeni ze systému EOS.",
+                  "Ze systému EOS obdržíte žádost o kontrolu údajů. Po odsouhlasení přijde pokyn k platbě emailem nebo přes aplikaci.",
+                  "Závodní přípravka pokračuje — přihlašte se po dohodě s trenérkou Monikou Patrmanovou nebo Mírou Patrmanem.",
+                  "Tréninky NEJSOU o státních svátcích. O školních prázdninách vždy po dohodě s trenérem dle závodní sezóny.",
+                ].map((text, i) => (
+                  <div key={i} className="flex gap-5 p-6 bg-surface-container-lowest">
+                    <span className="shrink-0 text-brand-orange mt-0.5">
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
-                    ),
-                    text: "Tréninky začnou po dohodě s trenérem. V týmech jste již zařazeni ze systému EOS.",
-                  },
-                  {
-                    icon: (
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                      </svg>
-                    ),
-                    text: "Ze systému EOS obdržíte žádost o kontrolu údajů. Po odsouhlasení přijde pokyn k platbě emailem nebo přes aplikaci.",
-                  },
-                  {
-                    icon: (
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-                      </svg>
-                    ),
-                    text: "Závodní přípravka pokračuje — přihlašte se po dohodě s trenérkou Monikou Patrmanovou nebo Mírou Patrmanem.",
-                  },
-                  {
-                    icon: (
-                      <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                    ),
-                    text: "Tréninky NEJSOU o státních svátcích. O školních prázdninách vždy po dohodě s trenérem dle závodní sezóny.",
-                  },
-                ].map(({ icon, text }, i) => (
-                  <div key={i} className="flex gap-5 p-6 bg-surface-container-lowest">
-                    <span className="shrink-0 text-brand-orange mt-0.5">{icon}</span>
+                    </span>
                     <p className="font-body-md text-body-md text-on-surface-variant font-light leading-relaxed">{text}</p>
                   </div>
                 ))}
@@ -206,7 +170,7 @@ export default function ZavodniDruzstvoPage() {
               <div className="bg-border-dark text-white p-10 space-y-7">
                 <div>
                   <span className="font-label-bold text-[10px] uppercase tracking-widest text-white/40 block mb-4">
-                    Zájem o trénink?
+                    Máš zájem?
                   </span>
                   <h3 className="font-headline-sm text-headline-sm text-white uppercase tracking-tight">
                     Ozvi se nám
@@ -233,12 +197,16 @@ export default function ZavodniDruzstvoPage() {
                 </div>
                 <div className="p-6 space-y-1">
                   <p className="font-label-bold text-[10px] uppercase tracking-widest text-outline">Trenér</p>
-                  <p className="font-body-md text-body-md text-border-dark font-medium">Míra Patrman</p>
-                  <p className="font-body-md text-body-md text-border-dark font-medium">Monika Patrmanová</p>
+                  <Link href="#" className="font-body-md text-body-md text-brand-orange font-medium hover:text-border-dark transition-colors">
+                    Naši trenéři →
+                  </Link>
                 </div>
                 <div className="p-6 space-y-1">
                   <p className="font-label-bold text-[10px] uppercase tracking-widest text-outline">Registrace</p>
-                  <p className="font-body-md text-body-md text-on-surface-variant font-light">Systém EOS</p>
+                  <p className="font-body-md text-body-md text-on-surface-variant font-light mb-1">Systém EOS</p>
+                  <Link href="#" className="font-body-md text-body-md text-brand-orange font-medium hover:text-border-dark transition-colors">
+                    Jak na to →
+                  </Link>
                 </div>
               </div>
 
@@ -268,44 +236,7 @@ export default function ZavodniDruzstvoPage() {
         </div>
       </section>
 
-      {/* ── FOOTER ───────────────────────────────────────────────── */}
-      <footer className="w-full bg-border-dark text-white">
-        <div className="max-w-container-max mx-auto px-gutter pt-20 pb-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
-            <div className="md:col-span-4">
-              <Link href="/" className="font-headline-sm text-headline-sm font-bold text-white tracking-tight">
-                Trampolíny <span className="text-brand-orange">Liberec</span><br />
-                <span className="text-brand-green">& Patrman</span>
-              </Link>
-              <p className="mt-6 font-body-md text-white/60 font-light max-w-xs leading-relaxed">
-                Závodní oddíl i veřejné skákání v Liberci. Dvě haly — Orionka v Harcově a Nádraží v centru města.
-              </p>
-            </div>
-            <div className="md:col-span-2">
-              <h4 className="font-label-bold text-[11px] text-white/40 uppercase tracking-widest mb-6">Menu</h4>
-              <div className="flex flex-col gap-4">
-                {[["Oddíl", "/#oddil"], ["Služby", "/#sluzby"], ["Rozvrh", "/#rozvrh"], ["Ceník", "/#cenik"]].map(([l, h]) => (
-                  <Link key={l} href={h} className="text-white/70 hover:text-white transition-colors uppercase text-xs font-bold tracking-widest">{l}</Link>
-                ))}
-              </div>
-            </div>
-            <div className="md:col-span-3">
-              <h4 className="font-label-bold text-[11px] text-white/40 uppercase tracking-widest mb-6">Kontakt</h4>
-              <p className="text-white/40 text-[11px] font-bold tracking-widest uppercase mb-1">Telefon</p>
-              <p className="text-white font-medium mb-6">+420 604 245 971</p>
-              <p className="text-white/40 text-[11px] font-bold tracking-widest uppercase mb-1">Email</p>
-              <p className="text-white font-medium">mirapatrman@gmail.com</p>
-            </div>
-          </div>
-          <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-white/40 text-xs font-light gap-4">
-            <div>© {new Date().getFullYear()} Trampolíny Liberec & Patrman. Všechna práva vyhrazena.</div>
-            <div className="flex gap-8">
-              <Link href="#" className="hover:text-brand-orange transition-colors">Facebook</Link>
-              <Link href="#" className="hover:text-brand-green transition-colors">Instagram</Link>
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
 
     </div>
   );
