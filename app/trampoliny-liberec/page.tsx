@@ -71,7 +71,7 @@ export default async function TrampolinyLiberecPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="relative aspect-[4/3] overflow-hidden">
               <Image
-                src="/orionka-1.jpg"
+                src="/hero-liberec-1.jpg"
                 alt="Závodník na trampolíně"
                 fill
                 className="object-cover"
@@ -132,7 +132,7 @@ export default async function TrampolinyLiberecPage() {
             </div>
             <div className="relative aspect-[4/3] overflow-hidden order-1 lg:order-2">
               <Image
-                src="/orionka-2.jpg"
+                src="/hero-liberec-4.jpg"
                 alt="Závodní tým Trampolíny Liberec"
                 fill
                 className="object-cover"
