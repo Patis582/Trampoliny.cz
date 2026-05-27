@@ -1,0 +1,1 @@
+- [Homepage design style](project_design_style.md) — colors, typography, layout patterns, component conventions for trampoliny.cz

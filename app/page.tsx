@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { AnnouncementBar } from "@/components/announcements/AnnouncementBar";
-import { getServices, getAnnouncements, type Service } from "@/sanity/lib/queries";
+import { ServiceGrid } from "@/components/services/ServiceGrid";
+import { getServices, getAnnouncements } from "@/sanity/lib/queries";
 
 export default async function Home() {
   const [services, announcements] = await Promise.all([
@@ -84,7 +85,7 @@ export default async function Home() {
       >
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCoplPr8NPor55b3xNOqNskGO7PaNgNtYp9JavwhLsvH5TPDr2AEhL-_2E8z4AgAN2iicAj5H5YrOk0RrUQRuzchhCQyP4G5LOSkAil61MIJ_tH55FctGrVkAoIm7J7pTKNUmpnh4OUZTae5gf8FWuJOMkNVg3p91cqyvnY9coD2dV5_uEDGIyQ2dKjRb0hzgEoDsLxf0onDwscyN9lgrYjKxdtTMdFEn7VASXUXskwDnXp6Nu6vB0IJzx9D48EWmwXiiKZUYYsl4cp"
+            src="/hero.jpg"
             alt="Hall photo background"
             fill
             sizes="100vw"
@@ -210,19 +211,7 @@ export default async function Home() {
               Co u nás <span className="font-medium">najdeš</span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24">
-            {services.map((s, i) => (
-              <ServiceCard
-                key={s._id}
-                num={String(i + 1).padStart(2, "0")}
-                title={s.title}
-                desc={s.description}
-                accent={s.accent}
-                brand={s.brand}
-                img={s.image?.url}
-              />
-            ))}
-          </div>
+          <ServiceGrid services={services} />
         </div>
       </section>
 
@@ -371,87 +360,3 @@ export default async function Home() {
   );
 }
 
-type AccentColor = "orange" | "green" | "navy";
-
-function ServiceCard({
-  num,
-  title,
-  desc,
-  accent,
-  img,
-  brand,
-}: {
-  num: string;
-  title: string;
-  desc: string;
-  accent: AccentColor;
-  img?: string;
-  brand?: "liberec" | "patrman";
-}) {
-  const accentClasses: Record<
-    AccentColor,
-    { num: string; title: string; bar: string }
-  > = {
-    orange: {
-      num: "text-brand-orange/20 group-hover:text-brand-orange",
-      title: "group-hover:text-brand-orange",
-      bar: "bg-brand-orange",
-    },
-    green: {
-      num: "text-brand-green/20 group-hover:text-brand-green",
-      title: "group-hover:text-brand-green",
-      bar: "bg-brand-green",
-    },
-    navy: {
-      num: "text-border-dark/20 group-hover:text-border-dark",
-      title: "",
-      bar: "bg-border-dark",
-    },
-  };
-
-  const cls = accentClasses[accent];
-
-  return (
-    <div className="group flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow">
-      <div className="aspect-video overflow-hidden relative bg-surface-container">
-        {img && (
-          <Image
-            src={img}
-            alt={title}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
-          />
-        )}
-      </div>
-      <div className="p-8">
-        <div className="flex items-start justify-between mb-4">
-          <span className={`block font-headline-lg text-4xl transition-colors ${cls.num}`}>
-            {num}
-          </span>
-          {brand === "liberec" && (
-            <span className="font-label-bold text-[10px] uppercase tracking-widest bg-brand-orange text-white px-2 py-1 shrink-0">
-              Trampolíny Liberec
-            </span>
-          )}
-          {brand === "patrman" && (
-            <span className="font-label-bold text-[10px] uppercase tracking-widest bg-brand-green text-border-dark px-2 py-1 shrink-0">
-              Trampolíny Patrman
-            </span>
-          )}
-        </div>
-        <h3
-          className={`font-headline-sm text-headline-sm text-border-dark uppercase mb-4 transition-colors ${cls.title}`}
-        >
-          {title}
-        </h3>
-        <p className="font-body-md text-on-surface-variant font-light mb-8">
-          {desc}
-        </p>
-        <div
-          className={`w-12 h-1 group-hover:w-full transition-all duration-500 ${cls.bar}`}
-        />
-      </div>
-    </div>
-  );
-}
