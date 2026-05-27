@@ -46,8 +46,7 @@ export function HeroSlideshow() {
           </div>
         </div>
       ))}
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-navy-deep/85 via-brand-navy-deep/40 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand-navy-deep/30" />
+      <div className="absolute inset-0 bg-gradient-to-br from-black/90 via-black/50 to-black/10" />
     </div>
   );
 }

@@ -30,11 +30,15 @@ export default async function Home() {
         </div>
         <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pt-40 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-8 lg:col-span-7">
-            <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-headline-lg text-white uppercase mb-12 tracking-tight drop-shadow-lg">
-              Posouvej hranice<br />
-              <span className="text-brand-orange drop-shadow-none">na maximum.</span>
+            <span className="inline-flex items-center gap-3 mb-8">
+              <span className="w-6 h-[2px] bg-brand-orange" />
+              <span className="text-[10px] font-label-bold uppercase tracking-[0.3em] text-white/50">Liberec</span>
+            </span>
+            <h1 className="font-headline-lg-mobile md:font-headline-lg text-headline-lg-mobile md:text-[64px] font-bold uppercase tracking-tight leading-[1.05] mb-8">
+              <span className="text-white">Posouvej<br />limity<br /></span>
+              <span className="text-brand-orange">na maximum</span>
             </h1>
-            <p className="font-body-lg text-body-lg text-white/90 mb-16 max-w-xl font-light drop-shadow-md">
+            <p className="font-body-lg text-body-lg text-white/70 mb-12 max-w-md font-light leading-relaxed">
               Závodní oddíl, parkour, příměstské tábory i volné skákání pro
               veřejnost. Dvě haly v Liberci — Orionka a Nádraží.
             </p>
