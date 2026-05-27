@@ -8,6 +8,7 @@ export function AnnouncementBar({ announcements }: { announcements: Announcement
   const [open, setOpen] = useState(false);
   const [dismissed, setDismissed] = useState(false);
   const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
@@ -20,13 +21,25 @@ export function AnnouncementBar({ announcements }: { announcements: Announcement
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
+  useEffect(() => {
+    if (announcements.length <= 1 || paused || open) return;
+    const id = setInterval(() => {
+      setIndex((i) => (i + 1) % announcements.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [announcements.length, paused, open]);
+
   if (dismissed || announcements.length === 0) return null;
 
   const item = announcements[index];
 
   return (
     <>
-      <div className="w-full bg-border-dark text-white hover:bg-primary-container transition-colors duration-200">
+      <div
+        className="w-full bg-border-dark text-white hover:bg-primary-container transition-colors duration-200"
+        onMouseEnter={() => setPaused(true)}
+        onMouseLeave={() => setPaused(false)}
+      >
         <div className="max-w-container-max mx-auto px-gutter flex items-center gap-4 py-2.5">
           <button
             onClick={() => setOpen(true)}
