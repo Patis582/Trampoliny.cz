@@ -1,10 +1,13 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import type { Announcement } from "@/sanity/lib/queries";
+import { PortableText } from "@portabletext/react";
 
-export function AnnouncementBar() {
+export function AnnouncementBar({ announcements }: { announcements: Announcement[] }) {
   const [open, setOpen] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const [index, setIndex] = useState(0);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
@@ -17,11 +20,12 @@ export function AnnouncementBar() {
     return () => { document.body.style.overflow = ""; };
   }, [open]);
 
-  if (dismissed) return null;
+  if (dismissed || announcements.length === 0) return null;
+
+  const item = announcements[index];
 
   return (
     <>
-      {/* Top bar — div wrapper, two sibling buttons inside */}
       <div className="w-full bg-border-dark text-white hover:bg-primary-container transition-colors duration-200">
         <div className="max-w-container-max mx-auto px-gutter flex items-center gap-4 py-2.5">
           <button
@@ -32,12 +36,34 @@ export function AnnouncementBar() {
               Novinka
             </span>
             <span className="font-body-md text-sm text-white/90 flex-1 truncate">
-              Otevřeny přihlášky na letní příměstský tábor 2026
+              {item.title}
             </span>
             <span className="shrink-0 font-label-bold text-[11px] uppercase tracking-widest text-brand-orange hidden sm:block">
               Více info →
             </span>
           </button>
+          {announcements.length > 1 && (
+            <div className="shrink-0 flex gap-1">
+              <button
+                onClick={() => setIndex((i) => (i - 1 + announcements.length) % announcements.length)}
+                className="text-white/50 hover:text-white transition-colors p-1"
+                aria-label="Předchozí"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={() => setIndex((i) => (i + 1) % announcements.length)}
+                className="text-white/50 hover:text-white transition-colors p-1"
+                aria-label="Další"
+              >
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          )}
           <button
             onClick={() => setDismissed(true)}
             className="shrink-0 text-white/50 hover:text-white transition-colors p-1 -mr-1"
@@ -50,7 +76,6 @@ export function AnnouncementBar() {
         </div>
       </div>
 
-      {/* Modal overlay */}
       {open && (
         <div
           className="fixed inset-0 z-[100] flex items-center justify-center p-6"
@@ -76,25 +101,23 @@ export function AnnouncementBar() {
                 Novinka
               </span>
               <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight mb-4">
-                Letní příměstský tábor 2026
+                {item.title}
               </h2>
-              <p className="font-body-md text-body-md text-on-surface-variant font-light leading-relaxed mb-4">
-                Příměstský tábor proběhne v Trampolínovém centru Orionka ve dvou turnusech:
-              </p>
-              <ul className="font-body-md text-body-md text-on-surface-variant font-light space-y-1 mb-6 ml-4 list-disc">
-                <li>1. turnus: 7. – 11. července 2026</li>
-                <li>2. turnus: 14. – 18. července 2026</li>
-              </ul>
-              <p className="font-body-md text-body-md text-on-surface-variant font-light leading-relaxed mb-8">
-                Program zahrnuje skákání na trampolínách, lezeckou stěnu a celodenní výlety.
-                Kapacita je omezená — přihlaste se co nejdříve!
-              </p>
-              <a
-                href="#"
-                className="inline-flex justify-center items-center bg-brand-orange text-white font-label-bold uppercase tracking-widest px-8 py-3.5 text-sm hover:bg-border-dark transition-colors"
-              >
-                Přihlásit se na tábor
-              </a>
+              {item.body && (
+                <div className="font-body-md text-body-md text-on-surface-variant font-light leading-relaxed mb-8 prose prose-sm max-w-none">
+                  <PortableText value={item.body} />
+                </div>
+              )}
+              {item.link?.url && (
+                <a
+                  href={item.link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex justify-center items-center bg-brand-orange text-white font-label-bold uppercase tracking-widest px-8 py-3.5 text-sm hover:bg-border-dark transition-colors"
+                >
+                  {item.link.label || "Více informací"}
+                </a>
+              )}
             </div>
           </div>
         </div>
