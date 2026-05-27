@@ -43,7 +43,7 @@ export function HeroScrollHint() {
       Runner.run(runner, engine);
 
       let prevScrollY = window.scrollY;
-      const MAX_UP_VEL = -12;
+      const MAX_UP_VEL = -5;
 
       function tick() {
         if (stopped) return;
@@ -54,7 +54,7 @@ export function HeroScrollHint() {
 
         // Only apply upward impulse on scroll down — let gravity handle scroll up
         if (delta > 0.5) {
-          const force = Math.min(delta * 0.0012, 0.012);
+          const force = Math.min(delta * 0.0005, 0.005);
           Body.applyForce(figure, figure.position, { x: 0, y: -force });
         }
 
