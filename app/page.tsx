@@ -5,6 +5,7 @@ import { ServiceGrid } from "@/components/services/ServiceGrid";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSlideshow } from "@/components/layout/HeroSlideshow";
+import { HeroScrollHint } from "@/components/layout/HeroScrollHint";
 import { getServices, getAnnouncements } from "@/sanity/lib/queries";
 
 export default async function Home() {
@@ -28,6 +29,7 @@ export default async function Home() {
         <div className="absolute inset-0 z-0">
           <HeroSlideshow />
         </div>
+        <HeroScrollHint />
         <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pt-40 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-8 lg:col-span-7">
             <div className="flex items-center gap-3 mb-10">
@@ -40,7 +42,7 @@ export default async function Home() {
               <span className="text-brand-orange block text-[48px] md:text-[64px] mt-2">na maximum</span>
             </h1>
             <p className="text-base text-white/75 mb-12 max-w-sm font-light leading-relaxed">
-              Závodní sport, parkour a zábava pro všechny. Dvě haly v Liberci.
+              Závody, tábory, oslavy i parkour. Dvě haly v Liberci pro každého.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
               <Link
