@@ -92,7 +92,6 @@ export function HeroScrollHint() {
   return (
     <div
       className="fixed bottom-4 right-6 z-50 hidden md:block"
-      style={{ filter: "drop-shadow(0 1px 6px rgba(255,255,255,0.8))" }}
     >
       <svg
         width="100"
@@ -104,29 +103,29 @@ export function HeroScrollHint() {
       >
         {/* Panáček — resting: feet at y=125, translate(0,0) */}
         <g ref={figureRef}>
-          <circle cx="50" cy="88" r="9" stroke={COLOR} strokeWidth="2.5" />
-          <line x1="50" y1="97"  x2="50" y2="114" stroke={COLOR} strokeWidth="2.5" strokeLinecap="round" />
-          <line x1="50" y1="104" x2="36" y2="113" stroke={COLOR} strokeWidth="2.5" strokeLinecap="round" />
-          <line x1="50" y1="104" x2="64" y2="113" stroke={COLOR} strokeWidth="2.5" strokeLinecap="round" />
-          <line x1="50" y1="114" x2="41" y2="125" stroke={COLOR} strokeWidth="2.5" strokeLinecap="round" />
-          <line x1="50" y1="114" x2="59" y2="125" stroke={COLOR} strokeWidth="2.5" strokeLinecap="round" />
+          <circle cx="50" cy="88" r="9" stroke={COLOR} strokeWidth="3.5" />
+          <line x1="50" y1="97"  x2="50" y2="114" stroke={COLOR} strokeWidth="3.5" strokeLinecap="round" />
+          <line x1="50" y1="104" x2="36" y2="113" stroke={COLOR} strokeWidth="3.5" strokeLinecap="round" />
+          <line x1="50" y1="104" x2="64" y2="113" stroke={COLOR} strokeWidth="3.5" strokeLinecap="round" />
+          <line x1="50" y1="114" x2="41" y2="125" stroke={COLOR} strokeWidth="3.5" strokeLinecap="round" />
+          <line x1="50" y1="114" x2="59" y2="125" stroke={COLOR} strokeWidth="3.5" strokeLinecap="round" />
         </g>
 
         {/* Trampolína */}
-        <line x1="10" y1="125" x2="90" y2="125" stroke={COLOR} strokeWidth="3" strokeLinecap="round" />
+        <line x1="10" y1="125" x2="90" y2="125" stroke={COLOR} strokeWidth="4" strokeLinecap="round" />
         <path
           ref={matRef}
           d="M10,0 Q50,6 90,0"
           stroke={COLOR}
-          strokeWidth="2.5"
+          strokeWidth="3.5"
           strokeLinecap="round"
           fill="none"
           transform="translate(0, 125)"
         />
-        <line x1="16" y1="125" x2="5"  y2="163" stroke={COLOR} strokeWidth="3" strokeLinecap="round" />
-        <line x1="84" y1="125" x2="95" y2="163" stroke={COLOR} strokeWidth="3" strokeLinecap="round" />
-        <line x1="1"  y1="163" x2="19" y2="163" stroke={COLOR} strokeWidth="3" strokeLinecap="round" />
-        <line x1="81" y1="163" x2="99" y2="163" stroke={COLOR} strokeWidth="3" strokeLinecap="round" />
+        <line x1="16" y1="125" x2="5"  y2="163" stroke={COLOR} strokeWidth="4" strokeLinecap="round" />
+        <line x1="84" y1="125" x2="95" y2="163" stroke={COLOR} strokeWidth="4" strokeLinecap="round" />
+        <line x1="1"  y1="163" x2="19" y2="163" stroke={COLOR} strokeWidth="4" strokeLinecap="round" />
+        <line x1="81" y1="163" x2="99" y2="163" stroke={COLOR} strokeWidth="4" strokeLinecap="round" />
       </svg>
     </div>
   );
