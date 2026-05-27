@@ -87,7 +87,7 @@ export default async function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-start max-w-5xl mx-auto">
             {/* Liberec Brand */}
-            <div className="flex flex-col items-center text-center group">
+            <Link href="/trampoliny-liberec" className="flex flex-col items-center text-center group">
               <div className="w-64 h-64 mb-12 relative transition-transform duration-500 hover:scale-105">
                 <Image
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7U758qwaUugU71tmbwfaKIAARZeBMBuq-2T1VMJYAjF4rvCdk7LyMZ1TKXyTHpTgg4LI86FIlipw3N146HDFziqxj5MoNcZauTlKV2yKG3A0JVft0rmllt5OGovqhhKkqTLa7uvKj-YbZKJ41KkImDD4SovkaaH1kTPcUBctY3hSuCn5TK9HnHunGXbv7JwSrVNm38tJJKgD4LVjDBdk_a6nW99OEfkiJr5tg8d8L65EBwE5IPJzu-lTcNhsrm9kgQYlUl8aY-YSc"
@@ -105,7 +105,7 @@ export default async function Home() {
                 závodníků. Vychováváme talenty a posouváme limity na
                 profesionálních závodních trampolínách.
               </p>
-            </div>
+            </Link>
             {/* Patrman Brand */}
             <div className="flex flex-col items-center text-center group md:mt-16">
               <div className="w-64 h-64 mb-12 relative transition-transform duration-500 hover:scale-105">
