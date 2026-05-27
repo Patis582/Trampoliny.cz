@@ -54,13 +54,13 @@ export default async function TrampolinyLiberecPage() {
 
       {/* ── INTRO ────────────────────────────────────────────────── */}
       <section className="py-section-padding-mobile md:py-section-padding-desktop bg-white">
-        <div className="max-w-4xl mx-auto px-gutter text-center">
+        <div className="max-w-3xl mx-auto px-gutter text-center">
           <span className="inline-block font-label-bold text-[11px] uppercase tracking-widest text-brand-orange mb-6">Kdo jsme</span>
           <h2 className="font-headline-md text-headline-md text-border-dark uppercase tracking-tight mb-10">
-            Sportovní oddíl<br /><span className="font-medium">s tradicí</span>
+            Sportovní oddíl
           </h2>
-          <p className="border-l-4 border-brand-orange pl-8 text-left font-body-lg text-body-lg text-border-dark font-medium leading-relaxed">
-            Trampolíny Liberec je závodní sportovní oddíl s dlouholetou tradicí. Vychováváme závodníky všech úrovní — od začátečníků v přípravkách až po reprezentanty na mezinárodních soutěžích.
+          <p className="font-body-lg text-body-lg text-on-surface-variant font-light leading-relaxed">
+            Trampolíny Liberec je závodní sportovní oddíl s dlouholetou tradicí. Vychováváme závodníky všech úrovní — od začátečníků v přípravkách až po reprezentanty na mezinárodních soutěžích. Trénujeme v Trampolínovém centru Orionka v Liberci – Harcově, kde máme k dispozici profesionální závodní vybavení.
           </p>
         </div>
       </section>
@@ -69,9 +69,9 @@ export default async function TrampolinyLiberecPage() {
       <section className="bg-surface-container-lowest">
         <div className="max-w-container-max mx-auto px-gutter py-section-padding-mobile md:py-section-padding-desktop">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div className="relative aspect-[4/3] overflow-hidden">
+            <div className="relative aspect-[3/2] overflow-hidden">
               <Image
-                src="/hero-liberec-1.jpg"
+                src="/hero-liberec-4.jpg"
                 alt="Závodník na trampolíně"
                 fill
                 className="object-cover"
@@ -119,9 +119,7 @@ export default async function TrampolinyLiberecPage() {
               <div className="grid grid-cols-2 gap-4 pt-4">
                 {[
                   { num: "300+", label: "Medailí celkem" },
-                  { num: "20+", label: "Závodů ročně" },
                   { num: "10+", label: "Reprezentantů ČR" },
-                  { num: "5", label: "Trenérů" },
                 ].map(({ num, label }) => (
                   <div key={label} className="p-5 bg-surface-container-lowest">
                     <p className="font-headline-sm text-headline-sm text-brand-orange uppercase tracking-tight">{num}</p>
@@ -130,9 +128,9 @@ export default async function TrampolinyLiberecPage() {
                 ))}
               </div>
             </div>
-            <div className="relative aspect-[4/3] overflow-hidden order-1 lg:order-2">
+            <div className="relative aspect-[3/2] overflow-hidden order-1 lg:order-2">
               <Image
-                src="/hero-liberec-4.jpg"
+                src="/hero-liberec-1.jpg"
                 alt="Závodní tým Trampolíny Liberec"
                 fill
                 className="object-cover"

@@ -22,7 +22,7 @@ export function Nav() {
           ))}
         </div>
         <div className="flex items-center">
-          <a href="#kontakt" className="hidden md:inline-flex bg-transparent text-border-dark font-label-bold text-label-bold px-8 py-3 uppercase tracking-wider minimal-border-dark hover:bg-border-dark hover:text-white transition-all duration-300">
+          <a href="/#kontakt" className="hidden md:inline-flex bg-transparent text-border-dark font-label-bold text-label-bold px-8 py-3 uppercase tracking-wider minimal-border-dark hover:bg-border-dark hover:text-white transition-all duration-300">
             Kontakt
           </a>
           <button className="md:hidden p-2 text-border-dark">
