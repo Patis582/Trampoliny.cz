@@ -4,6 +4,7 @@ import { AnnouncementBar } from "@/components/announcements/AnnouncementBar";
 import { ServiceGrid } from "@/components/services/ServiceGrid";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
+import { HeroSlideshow } from "@/components/layout/HeroSlideshow";
 import { getServices, getAnnouncements } from "@/sanity/lib/queries";
 
 export default async function Home() {
@@ -25,16 +26,7 @@ export default async function Home() {
         className="relative h-[90vh] flex items-center overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/hero.jpg"
-            alt="Hall photo background"
-            fill
-            sizes="100vw"
-            className="object-cover object-center"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-navy-deep/85 via-brand-navy-deep/40 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-brand-navy-deep/30" />
+          <HeroSlideshow />
         </div>
         <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pt-40 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-8 lg:col-span-7">
@@ -170,10 +162,11 @@ export default async function Home() {
               Kde nás najdete
             </h2>
           </div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
             {/* TC Orionka */}
             <div className="flex flex-col gap-6">
-              <div className="border-l-4 border-border-dark pl-6">
+              <div className="border-l-4 border-brand-orange pl-6">
+                <span className="font-label-bold text-[11px] uppercase tracking-widest text-brand-orange mb-2 block">Trampolíny Liberec</span>
                 <h3 className="font-headline-sm text-headline-sm text-border-dark uppercase mb-1">
                   Trampolínové centrum Orionka
                 </h3>
@@ -198,7 +191,8 @@ export default async function Home() {
             </div>
             {/* Hala Nádraží */}
             <div className="flex flex-col gap-6">
-              <div className="border-l-4 border-border-dark pl-6">
+              <div className="border-l-4 border-brand-green pl-6">
+                <span className="font-label-bold text-[11px] uppercase tracking-widest text-on-tertiary-container mb-2 block">Trampolíny Patrman</span>
                 <h3 className="font-headline-sm text-headline-sm text-border-dark uppercase mb-1">
                   Trampolínová hala Nádraží
                 </h3>
@@ -220,6 +214,27 @@ export default async function Home() {
                   title="Hala Nádraží mapa"
                 />
               </div>
+            </div>
+          </div>
+
+          {/* Kontaktní údaje */}
+          <div className="pt-16 border-t border-surface-container-high space-y-8">
+            <h3 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">Kontakt</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {[
+                { label: "Závodní oddíl", name: "Miroslav Patrman", bio: "Hlavní trenér závodního oddílu", phone: "+420 604 245 971", email: "mirapatrman@gmail.com" },
+                { label: "Přípravky & kroužky", name: "Klára Patrmanová", bio: "Vedoucí přípravek a kroužků", phone: "+420 731 123 456", email: "pripravky@trampoliny-liberec.cz" },
+                { label: "Oslavy & pronájem", name: "Kamila Brücklérová", bio: "Organizace oslav a pronájem haly", phone: "+420 720 987 654", email: "kamilabrucklerova@gmail.com" },
+                { label: "Tábory & workshopy", name: "Michaela Křiklavová", bio: "Příměstské tábory a workshopy", phone: "+420 608 456 789", email: "tabory@trampoliny-patrman.cz" },
+              ].map(({ label, name, bio, phone, email }) => (
+                <div key={label} className="flex flex-col gap-1 p-5 bg-surface-container-lowest">
+                  <span className="font-label-bold text-[10px] uppercase tracking-widest text-outline mb-2">{label}</span>
+                  <p className="font-headline-sm text-border-dark font-bold text-sm uppercase tracking-tight">{name}</p>
+                  <p className="font-body-md text-on-surface-variant font-light text-sm mb-2">{bio}</p>
+                  <a href={`tel:${phone.replace(/\s/g, "")}`} className="font-body-md text-body-md text-border-dark font-medium hover:text-brand-orange transition-colors">{phone}</a>
+                  <a href={`mailto:${email}`} className="font-body-md text-body-md text-on-surface-variant font-light hover:text-brand-orange transition-colors">{email}</a>
+                </div>
+              ))}
             </div>
           </div>
         </div>

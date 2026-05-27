@@ -22,9 +22,9 @@ export function Nav() {
           ))}
         </div>
         <div className="flex items-center">
-          <Link href="/#kontakt" className="hidden md:inline-flex bg-transparent text-border-dark font-label-bold text-label-bold px-8 py-3 uppercase tracking-wider minimal-border-dark hover:bg-border-dark hover:text-white transition-all duration-300">
+          <a href="#kontakt" className="hidden md:inline-flex bg-transparent text-border-dark font-label-bold text-label-bold px-8 py-3 uppercase tracking-wider minimal-border-dark hover:bg-border-dark hover:text-white transition-all duration-300">
             Kontakt
-          </Link>
+          </a>
           <button className="md:hidden p-2 text-border-dark">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
