@@ -208,44 +208,130 @@ export default function Home() {
             <ServiceCard
               num="01"
               title="Závodní družstvo"
-              desc="Výkonnostní trénink na závodních trampolínách pro děti i dospělé. Připravujeme sportovce na soutěže v rámci ČR i mezinárodní scény."
+              desc="Výkonnostní trénink pro sportovce, kteří se účastní oblastních, národních i mezinárodních závodů — Český pohár, Mistrovství republiky a Evropy. Nejlepší členové jsou součástí reprezentace."
               accent="orange"
+              brand="liberec"
               img="https://lh3.googleusercontent.com/aida/ADBb0ujcwjQsk52BoTmx9QXrnib6ROR791-hRivGHKqhTAIXB5IBnigT0zUgxz-uoKgyxDkwAPbyiDXDXd4DTvIkYsruPnUFtvPn7o-2XPGvrSaflJtcrg27-jupAA0CKNkoYqgJm4M2Jtw7F8q76MEgFeqnj0zxE-2uxE9t6dR8gJk58l-WO6tOU9iVrHrQXdaF8OALqXqUbbW9yyyAxb2L2-zVptlyqcM2L_uDBcHbNLiDCHsCC63Bhi8N-swx"
             />
             <ServiceCard
               num="02"
-              title="Parkour"
-              desc="Kurzy parkouru pro všechny věkové skupiny. Učíme pohyb, odvahu a koordinaci v bezpečném prostředí naší haly."
-              accent="green"
-              img="https://lh3.googleusercontent.com/aida/ADBb0uhl3ke9xqdKSHaPC1FaMfe9fF41bt8-6Edwx2Ps4ej3thAa48YiXGySBqq7j1mfCGMIVaqi4I_oaDlyL3h-kHsclHN7zYimjrfLCPR6Xnkdd4qe-8V4Os0_wAjlP6PMe6z3RaxCsstWM3GlFWXLWCScHAKHeWSHxRoIjnfozv38VLBfMlNXhUF5fJls9w8DnPI20vrFKP2VFwtCQdmqlY5pY490h-eYY3QiPIUPCAItcKWs2mzZzH3mP7eJ"
-            />
-            <ServiceCard
-              num="03"
-              title="Příměstské tábory"
-              desc="Příjemná forma využití prázdnin pro děti. Program zahrnuje skákání, lezeckou stěnu, výlety i další aktivity pod dohledem instruktorů."
-              accent="navy"
-              img="https://lh3.googleusercontent.com/aida/ADBb0uipEGVEuknqzwjUdV2BLiA1q5lIGmj7VxVLNVkL_0N-56ZRc1uUV_muby7nXw2zUC_gi38h60oUDUuin4VdBl_oB69vb63h8YKQ-IpX2oZiQASrJU_uVU61FvSHNKioF8fQiGiIwSjH4A2nIQAS6HKfG3GdzMxSK61XXbiPS7PxltFK9VGn3EMLi9WDoShrfsekwfUl0EWs_6ftRsuVo-D7OINRRtrhu5Z8sJmnkKh5aFWkzod9kM2I9z37"
-            />
-            <ServiceCard
-              num="04"
-              title="Oslavy"
-              desc="Narozeninová párty s instruktorem, který děti provede soutěžemi a naučí základy skoků formou hry. Rodiče si mezitím odpočinou."
-              accent="orange"
-              img="https://lh3.googleusercontent.com/aida/ADBb0uhOA2pVMiDXacRgO3lB66vJNL1_zWXH8UmIyxijNQ9kBx2bYeuXNwR0ZNa3ZNLlMDy3HTQ4VV37jMoehf50buBd2Plg_0plV6ucvlH8i64DG8a1E_ItYzE3IH9nYKKuo1mkUC3btW_7ff0CjEQ31GVsjGAE7211BGvFvzvyiLMUapn8nNULtGCOv-0_zQrORj0uB72gN0oRYhg9dwFYCa0KNwiwJWCNVX9BqphHVLdm99KIUuS-eS_USp8"
-            />
-            <ServiceCard
-              num="05"
               title="Přípravky"
-              desc="Sportovní průprava pro předškolní a školní děti. Rozvíjíme základní pohybové dovednosti zábavnou formou na trampolínách."
-              accent="green"
+              desc="Pohybová průprava pro děti od 4 do 7 let. Základy gymnastiky a trampolíny v délce 90 minut, zaměřené na vytvoření pozitivního vztahu k pohybu. Centrum Orionka."
+              accent="orange"
+              brand="liberec"
               img="https://lh3.googleusercontent.com/aida/ADBb0ujwGb52QnCavw5jybi5oULpjBrHkCH4YUiCJYbMMSVQADOKviLITb8Nwi7vRbqIXf9Y6fdIQ21TlgNgA4da0LoNLUip-IMnk88KslE55pe_-szEyfgeXBnVziYil69lL5ugZgSMh8mU3fhi6QjCHZFLoFwBgRtA-CzQsG4jAiz7sSbdEqbJ9MvCn3zlBqsnbzKNkhqQT-YByLRKOJbGlivzaAhSkwS0sze5btVdWie1EYo9Og6HBfgN07hJ"
             />
             <ServiceCard
+              num="03"
+              title="Sportovní kroužek"
+              desc="Trénink základů gymnastiky a trampolíny pro děti od 6 do 18 let. Podle zájmu se mohou účastnit místních a oblastních závodů."
+              accent="orange"
+              brand="liberec"
+              img="https://lh3.googleusercontent.com/aida/ADBb0ujcwjQsk52BoTmx9QXrnib6ROR791-hRivGHKqhTAIXB5IBnigT0zUgxz-uoKgyxDkwAPbyiDXDXd4DTvIkYsruPnUFtvPn7o-2XPGvrSaflJtcrg27-jupAA0CKNkoYqgJm4M2Jtw7F8q76MEgFeqnj0zxE-2uxE9t6dR8gJk58l-WO6tOU9iVrHrQXdaF8OALqXqUbbW9yyyAxb2L2-zVptlyqcM2L_uDBcHbNLiDCHsCC63Bhi8N-swx"
+            />
+            <ServiceCard
+              num="04"
+              title="Parkour"
+              desc="Specializované kempy parkouru otevřené členům i veřejnosti. Učíme pohyb, odvahu a koordinaci v bezpečném prostředí haly."
+              accent="orange"
+              brand="liberec"
+              img="https://lh3.googleusercontent.com/aida/ADBb0uhl3ke9xqdKSHaPC1FaMfe9fF41bt8-6Edwx2Ps4ej3thAa48YiXGySBqq7j1mfCGMIVaqi4I_oaDlyL3h-kHsclHN7zYimjrfLCPR6Xnkdd4qe-8V4Os0_wAjlP6PMe6z3RaxCsstWM3GlFWXLWCScHAKHeWSHxRoIjnfozv38VLBfMlNXhUF5fJls9w8DnPI20vrFKP2VFwtCQdmqlY5pY490h-eYY3QiPIUPCAItcKWs2mzZzH3mP7eJ"
+            />
+            <ServiceCard
+              num="05"
+              title="Soustředění"
+              desc="Dva pobytové kempy pro závodní družstva — kondiční soustředění v Habarticích a trampolínové soustředění v centru Orionka."
+              accent="orange"
+              brand="liberec"
+              img="https://lh3.googleusercontent.com/aida/ADBb0uipEGVEuknqzwjUdV2BLiA1q5lIGmj7VxVLNVkL_0N-56ZRc1uUV_muby7nXw2zUC_gi38h60oUDUuin4VdBl_oB69vb63h8YKQ-IpX2oZiQASrJU_uVU61FvSHNKioF8fQiGiIwSjH4A2nIQAS6HKfG3GdzMxSK61XXbiPS7PxltFK9VGn3EMLi9WDoShrfsekwfUl0EWs_6ftRsuVo-D7OINRRtrhu5Z8sJmnkKh5aFWkzod9kM2I9z37"
+            />
+            <ServiceCard
               num="06"
-              title="Open Gym"
-              desc="Pravidelné hodiny pro veřejnost: pondělí 16–18 hod. (Orionka) a sobota 10–13 hod. (Nádraží). Rezervace po telefonické dohodě."
-              accent="navy"
+              title="Otevřené hodiny"
+              desc="Volné hodiny pro veřejnost pravidelně v obou halách — Pondělí 16–18 hod. (Orionka) a Sobota 10–13 hod. (Nádraží). Mimo letních prázdnin."
+              accent="green"
+              brand="patrman"
               img="https://lh3.googleusercontent.com/aida/ADBb0uhM-STipJVxJzA_ZDmLtUBqP8QqNOo55xPs_I73E3iSFe7uakoKI-7VuVGzeXys02CDpfedEB0OTnX5MChctQOTARpb5Z4JwWV3AGzDG61q_N-JBFjEzKDd2sJoyak7Mo3YbIdYvAZuIL3F0cydoX0vKBZnSqhd6rFLc8THwzMiu2ilkiqnJ1ek_QWourMOyRdrtWXiDEbqixkT2HjAvU5U3t0OBkt74UOZS1fPgjcfwHyFpFckhBEhA3Q"
+            />
+            <ServiceCard
+              num="07"
+              title="Cvičení rodičů a dětí"
+              desc="Lekce pro rodiče s malými dětmi kombinující základy gymnastiky a trampolíny. Úterý 9:30–10:30 (Orionka) a Středa 9:30–10:30 (Nádraží)."
+              accent="green"
+              brand="patrman"
+              img="https://lh3.googleusercontent.com/aida/ADBb0ujwGb52QnCavw5jybi5oULpjBrHkCH4YUiCJYbMMSVQADOKviLITb8Nwi7vRbqIXf9Y6fdIQ21TlgNgA4da0LoNLUip-IMnk88KslE55pe_-szEyfgeXBnVziYil69lL5ugZgSMh8mU3fhi6QjCHZFLoFwBgRtA-CzQsG4jAiz7sSbdEqbJ9MvCn3zlBqsnbzKNkhqQT-YByLRKOJbGlivzaAhSkwS0sze5btVdWie1EYo9Og6HBfgN07hJ"
+            />
+            <ServiceCard
+              num="08"
+              title="Oslavy narozenin"
+              desc="Narozeninová párty s instruktorem, který děti provede soutěžemi a naučí základy skoků formou hry. Rodiče si mezitím odpočinou na recepci."
+              accent="green"
+              brand="patrman"
+              img="https://lh3.googleusercontent.com/aida/ADBb0uhOA2pVMiDXacRgO3lB66vJNL1_zWXH8UmIyxijNQ9kBx2bYeuXNwR0ZNa3ZNLlMDy3HTQ4VV37jMoehf50buBd2Plg_0plV6ucvlH8i64DG8a1E_ItYzE3IH9nYKKuo1mkUC3btW_7ff0CjEQ31GVsjGAE7211BGvFvzvyiLMUapn8nNULtGCOv-0_zQrORj0uB72gN0oRYhg9dwFYCa0KNwiwJWCNVX9BqphHVLdm99KIUuS-eS_USp8"
+            />
+            <ServiceCard
+              num="09"
+              title="Badminton"
+              desc="Pronájem kurtu s možností zapůjčení raket a košíčků. Ideální doplněk trampolínového tréninku nebo oddechová aktivita."
+              accent="green"
+              brand="patrman"
+              img="https://lh3.googleusercontent.com/aida/ADBb0ujcwjQsk52BoTmx9QXrnib6ROR791-hRivGHKqhTAIXB5IBnigT0zUgxz-uoKgyxDkwAPbyiDXDXd4DTvIkYsruPnUFtvPn7o-2XPGvrSaflJtcrg27-jupAA0CKNkoYqgJm4M2Jtw7F8q76MEgFeqnj0zxE-2uxE9t6dR8gJk58l-WO6tOU9iVrHrQXdaF8OALqXqUbbW9yyyAxb2L2-zVptlyqcM2L_uDBcHbNLiDCHsCC63Bhi8N-swx"
+            />
+            <ServiceCard
+              num="10"
+              title="Eventy"
+              desc="Trampolínová vystoupení na míru — firemní akce, soukromé párty i veřejné události. Profesionální show kdekoliv."
+              accent="green"
+              brand="patrman"
+              img="https://lh3.googleusercontent.com/aida/ADBb0uhl3ke9xqdKSHaPC1FaMfe9fF41bt8-6Edwx2Ps4ej3thAa48YiXGySBqq7j1mfCGMIVaqi4I_oaDlyL3h-kHsclHN7zYimjrfLCPR6Xnkdd4qe-8V4Os0_wAjlP6PMe6z3RaxCsstWM3GlFWXLWCScHAKHeWSHxRoIjnfozv38VLBfMlNXhUF5fJls9w8DnPI20vrFKP2VFwtCQdmqlY5pY490h-eYY3QiPIUPCAItcKWs2mzZzH3mP7eJ"
+            />
+            <ServiceCard
+              num="11"
+              title="Tábory, kempy a workshopy"
+              desc="Vícedenní programy o prázdninách s trampolínami, lezeckou stěnou, výlety a pestrými aktivitami pod vedením zkušených instruktorů."
+              accent="green"
+              brand="patrman"
+              img="https://lh3.googleusercontent.com/aida/ADBb0uipEGVEuknqzwjUdV2BLiA1q5lIGmj7VxVLNVkL_0N-56ZRc1uUV_muby7nXw2zUC_gi38h60oUDUuin4VdBl_oB69vb63h8YKQ-IpX2oZiQASrJU_uVU61FvSHNKioF8fQiGiIwSjH4A2nIQAS6HKfG3GdzMxSK61XXbiPS7PxltFK9VGn3EMLi9WDoShrfsekwfUl0EWs_6ftRsuVo-D7OINRRtrhu5Z8sJmnkKh5aFWkzod9kM2I9z37"
+            />
+            <ServiceCard
+              num="12"
+              title="MŠ, ZŠ a SŠ"
+              desc="Pohybové lekce pro školy a školky přizpůsobené věku žáků — základy gymnastiky, koordinace a trampolínové prvky pod odborným dohledem."
+              accent="green"
+              brand="patrman"
+              img="https://lh3.googleusercontent.com/aida/ADBb0ujwGb52QnCavw5jybi5oULpjBrHkCH4YUiCJYbMMSVQADOKviLITb8Nwi7vRbqIXf9Y6fdIQ21TlgNgA4da0LoNLUip-IMnk88KslE55pe_-szEyfgeXBnVziYil69lL5ugZgSMh8mU3fhi6QjCHZFLoFwBgRtA-CzQsG4jAiz7sSbdEqbJ9MvCn3zlBqsnbzKNkhqQT-YByLRKOJbGlivzaAhSkwS0sze5btVdWie1EYo9Og6HBfgN07hJ"
+            />
+            <ServiceCard
+              num="13"
+              title="Sportovní kluby a skupiny"
+              desc="Tréninky pro sportovní organizace zaměřené na koordinaci a prostorovou orientaci. Profesionální vedení pro kluby a kolektivy."
+              accent="green"
+              brand="patrman"
+              img="https://lh3.googleusercontent.com/aida/ADBb0uhl3ke9xqdKSHaPC1FaMfe9fF41bt8-6Edwx2Ps4ej3thAa48YiXGySBqq7j1mfCGMIVaqi4I_oaDlyL3h-kHsclHN7zYimjrfLCPR6Xnkdd4qe-8V4Os0_wAjlP6PMe6z3RaxCsstWM3GlFWXLWCScHAKHeWSHxRoIjnfozv38VLBfMlNXhUF5fJls9w8DnPI20vrFKP2VFwtCQdmqlY5pY490h-eYY3QiPIUPCAItcKWs2mzZzH3mP7eJ"
+            />
+            <ServiceCard
+              num="14"
+              title="Cvičení pro dospělé"
+              desc="Pravidelné lekce ve středu 18:00–19:30 zaměřené na rozvoj dovedností a kondice pro dospělé začátečníky i pokročilé."
+              accent="green"
+              brand="patrman"
+              img="https://lh3.googleusercontent.com/aida/ADBb0ujcwjQsk52BoTmx9QXrnib6ROR791-hRivGHKqhTAIXB5IBnigT0zUgxz-uoKgyxDkwAPbyiDXDXd4DTvIkYsruPnUFtvPn7o-2XPGvrSaflJtcrg27-jupAA0CKNkoYqgJm4M2Jtw7F8q76MEgFeqnj0zxE-2uxE9t6dR8gJk58l-WO6tOU9iVrHrQXdaF8OALqXqUbbW9yyyAxb2L2-zVptlyqcM2L_uDBcHbNLiDCHsCC63Bhi8N-swx"
+            />
+            <ServiceCard
+              num="15"
+              title="Pronájem sportovišť"
+              desc="Dvě haly s trampolínami, gymnastickým nářadím a lezeckou stěnou k dispozici pro pronájem skupinám, klubům i firemním akcím."
+              accent="green"
+              brand="patrman"
+              img="https://lh3.googleusercontent.com/aida/ADBb0uhM-STipJVxJzA_ZDmLtUBqP8QqNOo55xPs_I73E3iSFe7uakoKI-7VuVGzeXys02CDpfedEB0OTnX5MChctQOTARpb5Z4JwWV3AGzDG61q_N-JBFjEzKDd2sJoyak7Mo3YbIdYvAZuIL3F0cydoX0vKBZnSqhd6rFLc8THwzMiu2ilkiqnJ1ek_QWourMOyRdrtWXiDEbqixkT2HjAvU5U3t0OBkt74UOZS1fPgjcfwHyFpFckhBEhA3Q"
+            />
+            <ServiceCard
+              num="16"
+              title="Vzdělávání – workshopy"
+              desc="Odborné kurzy pro trenéry a pedagogy zaměřené na bezpečné metody výuky a pozitivní přístup k vedení sportovních skupin."
+              accent="green"
+              brand="patrman"
+              img="https://lh3.googleusercontent.com/aida/ADBb0uhOA2pVMiDXacRgO3lB66vJNL1_zWXH8UmIyxijNQ9kBx2bYeuXNwR0ZNa3ZNLlMDy3HTQ4VV37jMoehf50buBd2Plg_0plV6ucvlH8i64DG8a1E_ItYzE3IH9nYKKuo1mkUC3btW_7ff0CjEQ31GVsjGAE7211BGvFvzvyiLMUapn8nNULtGCOv-0_zQrORj0uB72gN0oRYhg9dwFYCa0KNwiwJWCNVX9BqphHVLdm99KIUuS-eS_USp8"
             />
           </div>
         </div>
@@ -420,12 +506,14 @@ function ServiceCard({
   desc,
   accent,
   img,
+  brand,
 }: {
   num: string;
   title: string;
   desc: string;
   accent: AccentColor;
   img: string;
+  brand?: "liberec" | "patrman";
 }) {
   const accentClasses: Record<
     AccentColor,
@@ -462,11 +550,21 @@ function ServiceCard({
         />
       </div>
       <div className="p-8">
-        <span
-          className={`block font-headline-lg text-4xl mb-4 transition-colors ${cls.num}`}
-        >
-          {num}
-        </span>
+        <div className="flex items-start justify-between mb-4">
+          <span className={`block font-headline-lg text-4xl transition-colors ${cls.num}`}>
+            {num}
+          </span>
+          {brand === "liberec" && (
+            <span className="font-label-bold text-[10px] uppercase tracking-widest bg-brand-orange text-white px-2 py-1 shrink-0">
+              Trampolíny Liberec
+            </span>
+          )}
+          {brand === "patrman" && (
+            <span className="font-label-bold text-[10px] uppercase tracking-widest bg-brand-green text-border-dark px-2 py-1 shrink-0">
+              Trampolíny Patrman
+            </span>
+          )}
+        </div>
         <h3
           className={`font-headline-sm text-headline-sm text-border-dark uppercase mb-4 transition-colors ${cls.title}`}
         >
