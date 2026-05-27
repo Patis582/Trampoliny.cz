@@ -35,31 +35,34 @@ Tmavý (`bg-border-dark`) pruh, 3 sloupce rozdělené svislou čarou:
 | Medailí | 300+ |
 | Trénujeme od roku | 2009 |
 
-### 4. O oddílu (hlavní obsah)
-Layout: 2 sloupce `lg:grid-cols-12` — obsah (8) + sidebar (4), stejný pattern jako detail aktivity.
-
-**Levý sloupec — story:**
+### 4. Intro
+- Centered, full-width
 - Label (oranžový): "Kdo jsme"
 - H2: "Sportovní oddíl s tradicí"
-- Lead odstavec s oranžovým levým borderem: úvod o oddílu
-- 2–3 odstavce: historie, úspěchy závodníků (Mistrovství ČR, Evropy), co nabízíme
-- 4 ikony / highlights ve 2×2 gridu:
-  - Závodní tréninky
-  - Závody (oblastní, národní, mezinárodní)
-  - Přípravky pro děti od 5 let
-  - Parkour
+- Velký perex přes celou šířku — úvod o oddílu, oranžový levý border
 
-**Pravý sloupec — sidebar (sticky):**
-- Info box: Lokalita (TC Orionka, Liberec – Harcov), Telefon, Email
-- Embedded Google mapa Orionky
-- Tlačítko "Jak se přihlásit přes EOS" → `/jak-na-eos`
-- Tlačítko "Naši trenéři" → `/treneri`
+### 5. Story sekce — střídající se bloky
 
-### 5. Grid aktivit
+Každý blok `py-section-padding`, oddělený jemnou čarou, střídavé pozadí (bílá / `bg-surface-container-lowest`).
+
+**Blok 1 — Historie** (`bg-white`)
+- Foto závodníka vlevo (6/12) — `object-cover`, vysoký poměr stran
+- Text vpravo (6/12): label "Od roku 2009", H3 "Naše historie", 2–3 odstavce o vzniku oddílu
+
+**Blok 2 — Úspěchy** (`bg-surface-container-lowest`)
+- Text vlevo (6/12): label "Výsledky", H3 "Naše úspěchy", text o medailích a závodech (MČR, ME)
+- Foto týmu vpravo (6/12)
+
+### 6. Grid aktivit (ServiceGrid)
 - Label (oranžový): "Co nabízíme"
 - H2: "Aktivity Trampolíny Liberec"
-- `<ServiceGrid services={services} />` — pouze `brand === "liberec"` ze Sanity
-- Pozadí: `bg-surface-container-lowest`
+- `<ServiceGrid services={services} />` — pouze `brand === "liberec"` ze Sanity (`getServicesByBrand`)
+- Pozadí: `bg-white`
+
+### 7. CTA banner
+- `bg-border-dark`, full-width
+- Text: "Chceš trénovat s námi?"
+- Dvě tlačítka: "Jak se přihlásit přes EOS" (oranžové) + "Naši trenéři" (outline bílé)
 
 ### 6. Footer
 Sdílený `<Footer />`
