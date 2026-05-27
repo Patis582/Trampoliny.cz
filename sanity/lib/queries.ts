@@ -94,6 +94,14 @@ export async function getAllServiceSlugs(): Promise<string[]> {
   return results.map((r) => r.slug)
 }
 
+export async function getServicesByBrand(brand: 'liberec' | 'patrman'): Promise<Service[]> {
+  return client.fetch(
+    `*[_type == "service" && brand == $brand] | order(order asc) { ${serviceFields} }`,
+    { brand },
+    { next: { tags: ['service'] } }
+  )
+}
+
 export async function getAnnouncements(): Promise<Announcement[]> {
   const today = new Date().toISOString()
   return client.fetch(
