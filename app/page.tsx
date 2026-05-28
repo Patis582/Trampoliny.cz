@@ -25,15 +25,15 @@ export default async function Home() {
         <Nav />
       </div>
 
-      {/* Hero Section */}
+      {/* Hero Section — pointer-events-none on section prevents iOS from routing nav taps here */}
       <section
-        className="relative h-[90vh] flex items-center overflow-hidden"
+        className="relative h-[90vh] flex items-center overflow-hidden pointer-events-none"
       >
-        <div className="absolute inset-0 z-0 pointer-events-none">
+        <div className="absolute inset-0 z-0">
           <HeroSlideshow />
         </div>
         <HeroScrollHint />
-        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pt-40 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pt-40 grid grid-cols-1 md:grid-cols-12 gap-8 items-center pointer-events-auto">
           <div className="md:col-span-8 lg:col-span-7">
             <div className="flex items-center gap-3 mb-10">
               <div className="w-6 h-px bg-brand-orange" />

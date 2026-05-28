@@ -33,6 +33,7 @@ export function Nav() {
           </a>
           <button
             className="md:hidden p-3 text-border-dark touch-manipulation"
+            onTouchEnd={(e) => { e.preventDefault(); setOpen((v) => !v); }}
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Zavřít menu" : "Otevřít menu"}
           >
