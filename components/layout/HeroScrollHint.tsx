@@ -6,26 +6,33 @@ const FIGURE_RADIUS = 10;
 const MAT_Y = 200;
 const MAT_HEIGHT = 150;
 const REST_Y = MAT_Y - FIGURE_RADIUS;
-const COLOR = "#0f1f45";
 
-// Limb tip endpoints (x2,y2) for each pose
 const REST = { lArmX: 36, lArmY: 113, rArmX: 64, rArmY: 113, lLegX: 41, lLegY: 125, rLegX: 59, rLegY: 125 };
 const UP   = { lArmX: 40, lArmY: 96,  rArmX: 60, rArmY: 96,  lLegX: 43, lLegY: 127, rLegX: 57, rLegY: 127 };
 const WIDE = { lArmX: 27, lArmY: 104, rArmX: 73, rArmY: 104, lLegX: 42, lLegY: 127, rLegX: 58, rLegY: 127 };
 
 function lerp(a: number, b: number, t: number) { return a + t * (b - a); }
 
-export function HeroScrollHint() {
+interface Props {
+  color?: string;
+  width?: number;
+  height?: number;
+  standalone?: boolean;
+}
+
+export function HeroScrollHint({ color = "#0f1f45", width = 80, height = 140, standalone = false }: Props) {
   const figureRef   = useRef<SVGGElement>(null);
   const matRef      = useRef<SVGPathElement>(null);
   const leftArmRef  = useRef<SVGLineElement>(null);
   const rightArmRef = useRef<SVGLineElement>(null);
   const leftLegRef  = useRef<SVGLineElement>(null);
   const rightLegRef = useRef<SVGLineElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     let rafId: number;
     let stopped = false;
+    let bounceInterval: ReturnType<typeof setInterval> | null = null;
 
     import("matter-js").then((Matter) => {
       if (stopped) return;
@@ -46,18 +53,28 @@ export function HeroScrollHint() {
       Runner.run(runner, engine);
 
       let prevScrollY = window.scrollY;
-      const MAX_UP_VEL = -5;
+      const MAX_UP_VEL = standalone ? -8 : -5;
+
+      if (standalone) {
+        const applyBounce = () => {
+          Body.applyForce(figure, figure.position, { x: 0, y: -0.006 });
+        };
+        applyBounce();
+        bounceInterval = setInterval(applyBounce, 2600);
+      }
 
       function tick() {
         if (stopped) return;
 
-        const currentScrollY = window.scrollY;
-        const delta = currentScrollY - prevScrollY;
-        prevScrollY = currentScrollY;
+        if (!standalone) {
+          const currentScrollY = window.scrollY;
+          const delta = currentScrollY - prevScrollY;
+          prevScrollY = currentScrollY;
 
-        if (delta > 0.5) {
-          const force = Math.min(delta * 0.0005, 0.005);
-          Body.applyForce(figure, figure.position, { x: 0, y: -force });
+          if (delta > 0.5) {
+            const force = Math.min(delta * 0.0005, 0.005);
+            Body.applyForce(figure, figure.position, { x: 0, y: -force });
+          }
         }
 
         if (figure.velocity.y < MAX_UP_VEL) {
@@ -67,14 +84,10 @@ export function HeroScrollHint() {
         const relY = figure.position.y - REST_Y;
         const velY = figure.velocity.y;
 
-        // 0 = on mat, 1 = fully in air (at 40px above mat)
         const airFactor = Math.max(0, Math.min(1, -relY / 40));
-        // -1 = rising fast, +1 = falling fast
         const vNorm = Math.max(-1, Math.min(1, velY / 3));
-        // inAirT: 0 = falling/peak, 1 = rising fast
         const inAirT = Math.max(0, -vNorm);
 
-        // In-air pose: blend between WIDE (falling/peak) and UP (rising)
         const airLArmX = lerp(WIDE.lArmX, UP.lArmX, inAirT);
         const airLArmY = lerp(WIDE.lArmY, UP.lArmY, inAirT);
         const airRArmX = lerp(WIDE.rArmX, UP.rArmX, inAirT);
@@ -84,7 +97,6 @@ export function HeroScrollHint() {
         const airRLegX = lerp(WIDE.rLegX, UP.rLegX, inAirT);
         const airRLegY = lerp(WIDE.rLegY, UP.rLegY, inAirT);
 
-        // Final blend: rest ↔ air pose
         const lArmX = lerp(REST.lArmX, airLArmX, airFactor);
         const lArmY = lerp(REST.lArmY, airLArmY, airFactor);
         const rArmX = lerp(REST.rArmX, airRArmX, airFactor);
@@ -94,7 +106,6 @@ export function HeroScrollHint() {
         const rLegX = lerp(REST.rLegX, airRLegX, airFactor);
         const rLegY = lerp(REST.rLegY, airRLegY, airFactor);
 
-        // Subtle body lean while in air
         const lean = vNorm * airFactor * 5;
 
         if (figureRef.current) {
@@ -127,12 +138,12 @@ export function HeroScrollHint() {
     return () => {
       stopped = true;
       cancelAnimationFrame(rafId);
+      if (bounceInterval) clearInterval(bounceInterval);
     };
-  }, []);
-
-  const containerRef = useRef<HTMLDivElement>(null);
+  }, [standalone]);
 
   useEffect(() => {
+    if (standalone) return;
     const heroHeight = window.innerHeight * 0.9;
     function onScroll() {
       if (!containerRef.current) return;
@@ -142,7 +153,45 @@ export function HeroScrollHint() {
     window.addEventListener("scroll", onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  }, [standalone]);
+
+  const svg = (
+    <svg
+      width={width}
+      height={height}
+      viewBox="0 0 100 175"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style={{ overflow: "visible" }}
+    >
+      <g ref={figureRef}>
+        <circle cx="50" cy="88" r="9" stroke={color} strokeWidth="3.5" />
+        <line x1="50" y1="97"  x2="50"  y2="114" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
+        <line ref={leftArmRef}  x1="50" y1="104" x2="36" y2="113" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
+        <line ref={rightArmRef} x1="50" y1="104" x2="64" y2="113" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
+        <line ref={leftLegRef}  x1="50" y1="114" x2="41" y2="125" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
+        <line ref={rightLegRef} x1="50" y1="114" x2="59" y2="125" stroke={color} strokeWidth="3.5" strokeLinecap="round" />
+      </g>
+      <line x1="10" y1="125" x2="90" y2="125" stroke={color} strokeWidth="4" strokeLinecap="round" />
+      <path
+        ref={matRef}
+        d="M10,0 Q50,6 90,0"
+        stroke={color}
+        strokeWidth="3.5"
+        strokeLinecap="round"
+        fill="none"
+        transform="translate(0, 125)"
+      />
+      <line x1="16" y1="125" x2="5"  y2="163" stroke={color} strokeWidth="4" strokeLinecap="round" />
+      <line x1="84" y1="125" x2="95" y2="163" stroke={color} strokeWidth="4" strokeLinecap="round" />
+      <line x1="1"  y1="163" x2="19" y2="163" stroke={color} strokeWidth="4" strokeLinecap="round" />
+      <line x1="81" y1="163" x2="99" y2="163" stroke={color} strokeWidth="4" strokeLinecap="round" />
+    </svg>
+  );
+
+  if (standalone) {
+    return <div ref={containerRef}>{svg}</div>;
+  }
 
   return (
     <div
@@ -150,40 +199,7 @@ export function HeroScrollHint() {
       className="fixed bottom-4 right-6 z-50 hidden md:block transition-opacity duration-300"
       style={{ opacity: 0.45 }}
     >
-      <svg
-        width="80"
-        height="140"
-        viewBox="0 0 100 175"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ overflow: "visible" }}
-      >
-        {/* Panáček */}
-        <g ref={figureRef}>
-          <circle cx="50" cy="88" r="9" stroke={COLOR} strokeWidth="3.5" />
-          <line x1="50" y1="97"  x2="50"  y2="114" stroke={COLOR} strokeWidth="3.5" strokeLinecap="round" />
-          <line ref={leftArmRef}  x1="50" y1="104" x2="36" y2="113" stroke={COLOR} strokeWidth="3.5" strokeLinecap="round" />
-          <line ref={rightArmRef} x1="50" y1="104" x2="64" y2="113" stroke={COLOR} strokeWidth="3.5" strokeLinecap="round" />
-          <line ref={leftLegRef}  x1="50" y1="114" x2="41" y2="125" stroke={COLOR} strokeWidth="3.5" strokeLinecap="round" />
-          <line ref={rightLegRef} x1="50" y1="114" x2="59" y2="125" stroke={COLOR} strokeWidth="3.5" strokeLinecap="round" />
-        </g>
-
-        {/* Trampolína */}
-        <line x1="10" y1="125" x2="90" y2="125" stroke={COLOR} strokeWidth="4" strokeLinecap="round" />
-        <path
-          ref={matRef}
-          d="M10,0 Q50,6 90,0"
-          stroke={COLOR}
-          strokeWidth="3.5"
-          strokeLinecap="round"
-          fill="none"
-          transform="translate(0, 125)"
-        />
-        <line x1="16" y1="125" x2="5"  y2="163" stroke={COLOR} strokeWidth="4" strokeLinecap="round" />
-        <line x1="84" y1="125" x2="95" y2="163" stroke={COLOR} strokeWidth="4" strokeLinecap="round" />
-        <line x1="1"  y1="163" x2="19" y2="163" stroke={COLOR} strokeWidth="4" strokeLinecap="round" />
-        <line x1="81" y1="163" x2="99" y2="163" stroke={COLOR} strokeWidth="4" strokeLinecap="round" />
-      </svg>
+      {svg}
     </div>
   );
 }

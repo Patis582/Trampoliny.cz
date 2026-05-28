@@ -13,7 +13,7 @@ export default async function CenikPage() {
         <Nav />
       </div>
       <main>
-        <div className="pt-40 pb-16 max-w-container-max mx-auto px-gutter">
+        <div className="pt-40 pb-8 max-w-container-max mx-auto px-gutter">
           <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-6">
             Vstupné & tréninky
           </span>
