@@ -16,7 +16,7 @@ Client Component `HeroScrollHint` vložený do hero sekce v `app/page.tsx`. Anim
 
 **Soubor:** `components/layout/HeroScrollHint.tsx`
 
-**Pozice:** `absolute bottom-8 left-1/2 -translate-x-1/2 z-20` uvnitř hero `<section>`
+**Pozice:** `absolute bottom-8 right-8 z-20` uvnitř hero `<section>` — u pravého kraje obrazovky
 
 **Barva:** `#0f1f45` (brand navy) s opacity `0.85`
 

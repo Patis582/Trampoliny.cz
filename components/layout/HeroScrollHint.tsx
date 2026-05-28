@@ -130,11 +130,29 @@ export function HeroScrollHint() {
     };
   }, []);
 
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const heroHeight = window.innerHeight * 0.9;
+    function onScroll() {
+      if (!containerRef.current) return;
+      const progress = Math.min(1, window.scrollY / (heroHeight * 0.5));
+      containerRef.current.style.opacity = String((1 - progress) * 0.45 + 0.08);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <div className="fixed bottom-4 right-6 z-50 hidden md:block">
+    <div
+      ref={containerRef}
+      className="fixed bottom-4 right-6 z-50 hidden md:block transition-opacity duration-300"
+      style={{ opacity: 0.45 }}
+    >
       <svg
-        width="100"
-        height="175"
+        width="80"
+        height="140"
         viewBox="0 0 100 175"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
