@@ -1,0 +1,26 @@
+⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/filippatrman/package-lock.json as the root directory.
+ To silence this warning, set `turbopack.root` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/turbopack#root-directory for more information.
+ Detected additional lockfiles: 
+   * /Users/filippatrman/Documents/WEBY/Zakazky/trampolinycz/package-lock.json
+
+▲ Next.js 16.2.6 (Turbopack)
+- Environments: .env.local
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 34.3s
+  Running TypeScript ...
+Failed to type check.
+
+./app/api/revalidate/route.ts:11:3
+Type error: Expected 2 arguments, but got 1.
+
+  [90m 9 |[0m   }
+  [90m10 |[0m
+[31m[1m>[0m [90m11 |[0m   revalidateTag([32m'event'[0m)
+  [90m   |[0m   [31m[1m^[0m
+  [90m12 |[0m   revalidateTag([32m'announcement'[0m)
+  [90m13 |[0m   revalidateTag([32m'service'[0m)
+  [90m14 |[0m   revalidatePath([32m'/'[0m)
+Next.js build worker exited with code: 1 and signal: null

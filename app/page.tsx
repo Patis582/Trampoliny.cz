@@ -20,7 +20,7 @@ export default async function Home() {
   return (
     <div className="font-body-md text-body-md antialiased selection:bg-primary-fixed selection:text-primary bg-background">
       {/* Announcement bar + Nav — fixed together as one block */}
-      <div className="fixed top-0 left-0 w-full z-50">
+      <div className="fixed top-0 left-0 w-full z-50 [transform:translateZ(0)]">
         <AnnouncementBar announcements={announcements} />
         <Nav />
       </div>
@@ -29,7 +29,7 @@ export default async function Home() {
       <section
         className="relative h-[90vh] flex items-center overflow-hidden"
       >
-        <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 z-0 pointer-events-none">
           <HeroSlideshow />
         </div>
         <HeroScrollHint />
