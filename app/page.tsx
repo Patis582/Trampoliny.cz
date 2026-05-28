@@ -25,26 +25,26 @@ export default async function Home() {
         <Nav />
       </div>
 
-      {/* Hero Section — pointer-events-none on section prevents iOS from routing nav taps here */}
+      {/* Hero Section */}
       <section
-        className="relative h-[90vh] flex items-center overflow-hidden pointer-events-none"
+        className="relative h-[90vh] flex items-start md:items-center overflow-hidden"
       >
         <div className="absolute inset-0 z-0">
           <HeroSlideshow />
         </div>
         <HeroScrollHint />
-        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pt-40 grid grid-cols-1 md:grid-cols-12 gap-8 items-center pointer-events-auto">
+        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pt-24 md:pt-40 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-8 lg:col-span-7">
-            <div className="flex items-center gap-3 mb-10">
+            <div className="flex items-center gap-3 mb-4 md:mb-10">
               <div className="w-6 h-px bg-brand-orange" />
               <span className="text-[10px] font-label-bold uppercase tracking-[0.4em] text-white/45">TC Orionka · Liberec</span>
             </div>
             <h1 className="font-headline-lg-mobile md:font-headline-lg font-bold uppercase tracking-tight leading-none mb-10">
-              <span className="text-white block text-[48px] md:text-[64px]">Posouvej</span>
-              <span className="text-white block text-[48px] md:text-[64px]">limity</span>
-              <span className="text-brand-orange block text-[48px] md:text-[64px] mt-2">na maximum</span>
+              <span className="text-white block text-[36px] md:text-[64px]">Posouvej</span>
+              <span className="text-white block text-[36px] md:text-[64px]">limity</span>
+              <span className="text-brand-orange block text-[36px] md:text-[64px] mt-2">na maximum</span>
             </h1>
-            <p className="text-base text-white/75 mb-12 max-w-sm font-light leading-relaxed">
+            <p className="text-base text-white/75 mb-6 md:mb-12 max-w-sm font-light leading-relaxed">
               Závody, tábory, oslavy i parkour. Dvě haly v Liberci pro každého.
             </p>
             <div className="flex flex-col sm:flex-row gap-6">
