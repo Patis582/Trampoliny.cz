@@ -73,7 +73,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
         <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pb-20 pt-32">
           <Link
             href="/akce"
-            className="inline-flex items-center gap-2 text-white/50 hover:text-white/90 transition-colors font-label-bold text-[11px] uppercase tracking-widest group mb-8 block"
+            className="inline-flex items-center gap-2 text-white/50 hover:text-white/90 transition-colors font-label-bold text-[11px] uppercase tracking-widest group mb-8"
           >
             <svg className="w-3.5 h-3.5 inline group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -161,7 +161,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
             <div className="flex flex-wrap gap-3">
               {event.links.map((link) => (
                 <a
-                  key={link.url}
+                  key={`${link.url}-${link.label}`}
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
