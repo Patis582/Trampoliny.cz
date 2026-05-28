@@ -7,6 +7,7 @@ const navLinks: [string, string][] = [
   ["Oddíl", "/trampoliny-liberec"],
   ["Služby", "/trampoliny-patrman"],
   ["Akce", "/akce"],
+  ["Trenéři", "/treneri"],
   ["Ceník", "/#cenik"],
 ];
 
