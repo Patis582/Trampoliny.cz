@@ -229,3 +229,67 @@ export async function getTrainers(): Promise<Trainer[] | null> {
     return null
   }
 }
+
+export type PricingRow = {
+  _key: string
+  label: string
+  note?: string
+  highlight?: boolean
+  values: string[]
+}
+
+export type PricingGroup = {
+  _key: string
+  title: string
+  subtitle?: string
+  columnHeaders: string[]
+  rows?: PricingRow[]
+  infoBlock?: string
+}
+
+export type PricingSection = {
+  _id: string
+  title: string
+  slug: string
+  validFrom?: string
+  pdfUrl?: string
+  pdfLabel?: string
+  note?: string
+  groups: PricingGroup[]
+  order: number
+}
+
+export async function getPricingSections(): Promise<PricingSection[] | null> {
+  try {
+    return await client.fetch(
+      `*[_type == "pricingSection"] | order(order asc) {
+        _id,
+        title,
+        "slug": slug.current,
+        validFrom,
+        "pdfUrl": pdf.asset->url,
+        pdfLabel,
+        note,
+        groups[] {
+          _key,
+          title,
+          subtitle,
+          columnHeaders,
+          rows[] {
+            _key,
+            label,
+            note,
+            highlight,
+            values
+          },
+          infoBlock
+        },
+        order
+      }`,
+      {},
+      { next: { tags: ['pricing'] } }
+    )
+  } catch {
+    return null
+  }
+}
