@@ -47,7 +47,7 @@ function ServiceCard({ num, service }: { num: string; service: Service }) {
       href={`/aktivity/${service.slug}`}
       className="group flex flex-col bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow"
     >
-      <div className="aspect-video overflow-hidden relative bg-surface-container">
+      <div className="hidden md:block aspect-video overflow-hidden relative bg-surface-container">
         {image?.url && (
           <Image
             src={image.url}
