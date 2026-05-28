@@ -48,8 +48,8 @@ export function PatrmanHeroSlideshow() {
           </div>
         </div>
       ))}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/30 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-navy-deep/75 via-brand-navy-deep/30 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/40 via-transparent to-transparent" />
     </div>
   );
 }
