@@ -195,3 +195,37 @@ export async function getEventBySlug(slug: string): Promise<Event | null> {
     return null
   }
 }
+
+export type Trainer = {
+  _id: string
+  name: string
+  slug: string
+  photo?: { url: string; alt?: string; hotspot?: { x: number; y: number } }
+  bio: string
+  specializations: string[]
+  email?: string
+  phone?: string
+  order: number
+}
+
+export async function getTrainers(): Promise<Trainer[] | null> {
+  try {
+    return await client.fetch(
+      `*[_type == "trainer"] | order(order asc) {
+        _id,
+        name,
+        "slug": slug.current,
+        "photo": photo { "url": asset->url, "alt": alt, "hotspot": hotspot },
+        bio,
+        specializations,
+        email,
+        phone,
+        order
+      }`,
+      {},
+      { next: { tags: ['trainer'] } }
+    )
+  } catch {
+    return null
+  }
+}
