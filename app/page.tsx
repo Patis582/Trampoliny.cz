@@ -113,7 +113,7 @@ export default async function Home() {
               </p>
             </Link>
             {/* Patrman Brand */}
-            <div className="flex flex-col items-center text-center group md:mt-16">
+            <Link href="/trampoliny-patrman" className="flex flex-col items-center text-center group md:mt-16">
               <div className="w-64 h-64 mb-12 relative transition-transform duration-500 hover:scale-105">
                 <Image
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgFmLni6SFyuxQhS39xDn1sakbDjfTLFWBfYb8WjBouof7u7EkfuiNyZBM3KZDb9lm1Oel5xwk7UH2HBhF3VPxVe7GzfNEGOStQCeB1eORNb7up3BzEgEvZRUZkCnyw6Y1yRlfMNXV0eqxh8LAp2y2f-wa2WxkPtTWVslRdE2IZj_eBYbRgR0_oQHD2F3821xifowQcQGjIxEPGPzStgAR1JsBHETuqCeFarxq6YatgyspvuTCtQUorPV3m7xyM0dpLZMK2rSOFDy3"
@@ -131,7 +131,7 @@ export default async function Home() {
                 pohyb pro všechny věkové kategorie pod dohledem zkušených
                 trenérů.
               </p>
-            </div>
+            </Link>
           </div>
         </div>
       </section>

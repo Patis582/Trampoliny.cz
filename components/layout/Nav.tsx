@@ -2,7 +2,7 @@ import Link from "next/link";
 
 const navLinks: [string, string][] = [
   ["Oddíl", "/trampoliny-liberec"],
-  ["Služby", "/#sluzby"],
+  ["Služby", "/trampoliny-patrman"],
   ["Rozvrh", "/#rozvrh"],
   ["Ceník", "/#cenik"],
 ];
