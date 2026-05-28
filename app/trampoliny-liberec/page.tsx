@@ -22,14 +22,14 @@ export default async function TrampolinyLiberecPage() {
         <LiberecHeroSlideshow />
         <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pb-16 pt-32">
           <div className="mb-6">
-            <span className="inline-flex items-center font-label-bold text-[11px] uppercase tracking-widest bg-brand-orange text-white px-3 py-1.5">
+            <span className="inline-flex items-center font-label-bold text-[9px] md:text-[11px] uppercase tracking-widest bg-brand-orange text-white px-2 py-0.5 md:px-3 md:py-1.5">
               Trampolíny Liberec
             </span>
           </div>
           <h1 className="font-headline-lg-mobile md:font-headline-md text-headline-lg-mobile md:text-headline-md text-white uppercase tracking-tight leading-none mb-6">
             Závodní oddíl<br />& Kroužky
           </h1>
-          <p className="font-body-lg text-body-lg text-white/75 font-light max-w-xl leading-relaxed">
+          <p className="font-body-lg-mobile text-body-lg-mobile md:font-body-lg md:text-body-lg text-white/75 font-light max-w-xl leading-relaxed">
             Výkonnostní trénink, závody a přípravky pro děti i dospělé v TC Orionka v Liberci.
           </p>
         </div>
@@ -44,9 +44,9 @@ export default async function TrampolinyLiberecPage() {
               { label: "Medailí", value: "300+" },
               { label: "Trénujeme od roku", value: "2009" },
             ].map(({ label, value }) => (
-              <div key={label} className="px-8 py-7 first:pl-0">
+              <div key={label} className="px-4 py-5 md:px-8 md:py-7 first:pl-0">
                 <p className="font-label-bold text-[10px] uppercase tracking-widest text-white/40 mb-1.5">{label}</p>
-                <p className="font-headline-sm text-headline-sm text-white uppercase tracking-tight">{value}</p>
+                <p className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-white uppercase tracking-tight">{value}</p>
               </div>
             ))}
           </div>
@@ -57,10 +57,10 @@ export default async function TrampolinyLiberecPage() {
       <section className="py-section-padding-mobile md:py-section-padding-desktop bg-white">
         <div className="max-w-3xl mx-auto px-gutter text-center">
           <span className="inline-block font-label-bold text-[11px] uppercase tracking-widest text-brand-orange mb-6">Kdo jsme</span>
-          <h2 className="font-headline-md text-headline-md text-border-dark uppercase tracking-tight mb-10">
+          <h2 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight mb-10">
             Sportovní oddíl
           </h2>
-          <p className="font-body-lg text-body-lg text-on-surface-variant font-light leading-relaxed">
+          <p className="font-body-lg-mobile text-body-lg-mobile md:font-body-lg md:text-body-lg text-on-surface-variant font-light leading-relaxed">
             Trampolíny Liberec je závodní sportovní oddíl s dlouholetou tradicí. Vychováváme závodníky všech úrovní — od začátečníků v přípravkách až po reprezentanty na mezinárodních soutěžích. Trénujeme v Trampolínovém centru Orionka v Liberci – Harcově, kde máme k dispozici profesionální závodní vybavení.
           </p>
         </div>
@@ -81,7 +81,7 @@ export default async function TrampolinyLiberecPage() {
             </div>
             <div className="space-y-6">
               <span className="inline-block font-label-bold text-[11px] uppercase tracking-widest text-brand-orange">Od roku 2009</span>
-              <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">
+              <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight">
                 Naše historie
               </h2>
               <div className="space-y-4 font-body-md text-body-md text-on-surface-variant font-light leading-relaxed">
@@ -106,7 +106,7 @@ export default async function TrampolinyLiberecPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div className="space-y-6 order-2 lg:order-1">
               <span className="inline-block font-label-bold text-[11px] uppercase tracking-widest text-brand-orange">Výsledky</span>
-              <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">
+              <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight">
                 Naše úspěchy
               </h2>
               <div className="space-y-4 font-body-md text-body-md text-on-surface-variant font-light leading-relaxed">
@@ -123,7 +123,7 @@ export default async function TrampolinyLiberecPage() {
                   { num: "10+", label: "Reprezentantů ČR" },
                 ].map(({ num, label }) => (
                   <div key={label} className="p-5 bg-surface-container-lowest">
-                    <p className="font-headline-sm text-headline-sm text-brand-orange uppercase tracking-tight">{num}</p>
+                    <p className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-brand-orange uppercase tracking-tight">{num}</p>
                     <p className="font-label-bold text-[10px] uppercase tracking-widest text-outline mt-1">{label}</p>
                   </div>
                 ))}
@@ -147,7 +147,7 @@ export default async function TrampolinyLiberecPage() {
         <div className="max-w-container-max mx-auto px-gutter">
           <div className="mb-24">
             <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-6">Co nabízíme</span>
-            <h2 className="font-headline-md text-headline-md text-border-dark uppercase tracking-tight">
+            <h2 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight">
               Aktivity<br /><span className="font-medium">Trampolíny Liberec</span>
             </h2>
           </div>
@@ -166,7 +166,7 @@ export default async function TrampolinyLiberecPage() {
         <div className="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div>
             <span className="inline-block font-label-bold text-[11px] uppercase tracking-widest text-brand-orange mb-4">Přidej se k nám</span>
-            <h2 className="font-headline-sm text-headline-sm text-white uppercase tracking-tight">
+            <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-white uppercase tracking-tight">
               Chceš trénovat s námi?
             </h2>
           </div>
