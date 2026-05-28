@@ -37,6 +37,23 @@ export type Announcement = {
   expiresAt?: string
 }
 
+export type EventType = 'závod' | 'tábor' | 'open-gym' | 'jiné'
+
+export type Event = {
+  _id: string
+  title: string
+  date: string
+  endDate?: string
+  type: EventType
+  description?: import('@portabletext/types').PortableTextBlock[]
+  image?: { asset: { _ref: string; _type: 'reference' }; hotspot?: { x: number; y: number } }
+  links?: { label: string; url: string }[]
+  registration?: {
+    url?: string
+    isOpen: boolean
+  }
+}
+
 const serviceFields = `
   _id,
   title,
@@ -108,5 +125,22 @@ export async function getAnnouncements(): Promise<Announcement[]> {
     `*[_type == "announcement" && (!defined(expiresAt) || expiresAt >= $today)] | order(_createdAt desc) { ${announcementFields} }`,
     { today },
     { next: { tags: ['announcement'] } }
+  )
+}
+
+const eventFields = `
+  _id, title, date, endDate, type, description,
+  image { asset, hotspot },
+  links[] { label, url },
+  registration { url, isOpen }
+`
+
+export async function getUpcomingEvents(limit?: number): Promise<Event[]> {
+  const today = new Date().toISOString()
+  const slice = limit ? `[0...${limit}]` : ''
+  return client.fetch(
+    `*[_type == "event" && date >= $today] | order(date asc) ${slice} { ${eventFields} }`,
+    { today },
+    { next: { tags: ['event'] } }
   )
 }
