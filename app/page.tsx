@@ -6,12 +6,14 @@ import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { HeroSlideshow } from "@/components/layout/HeroSlideshow";
 import { HeroScrollHint } from "@/components/layout/HeroScrollHint";
-import { getServices, getAnnouncements } from "@/sanity/lib/queries";
+import { getServices, getAnnouncements, getUpcomingEvents } from "@/sanity/lib/queries";
+import { EventCard } from "@/components/events/EventCard";
 
 export default async function Home() {
-  const [services, announcements] = await Promise.all([
+  const [services, announcements, upcomingEvents] = await Promise.all([
     getServices(),
     getAnnouncements(),
+    getUpcomingEvents(3),
   ]);
 
   return (
@@ -153,6 +155,35 @@ export default async function Home() {
           <ServiceGrid services={services} />
         </div>
       </section>
+
+      {/* Upcoming Events Section */}
+      {upcomingEvents.length > 0 && (
+        <section className="py-section-padding-mobile md:py-section-padding-desktop bg-white" id="akce">
+          <div className="max-w-container-max mx-auto px-gutter">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
+              <div>
+                <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-6">
+                  Program
+                </span>
+                <h2 className="font-headline-md text-headline-md text-border-dark uppercase tracking-tight">
+                  Nadcházející akce
+                </h2>
+              </div>
+              <Link
+                href="/akce"
+                className="font-label-bold text-[11px] uppercase tracking-widest text-outline hover:text-brand-orange transition-colors shrink-0"
+              >
+                Zobrazit vše →
+              </Link>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {upcomingEvents.map((event) => (
+                <EventCard key={event._id} event={event} compact />
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Location & Contact Section */}
       <section
