@@ -41,6 +41,7 @@ export type EventType = 'závod' | 'tábor' | 'kemp' | 'workshop' | 'jiné'
 
 export type Event = {
   _id: string
+  slug: string
   title: string
   date: string
   endDate?: string
@@ -130,7 +131,7 @@ export async function getAnnouncements(): Promise<Announcement[]> {
 }
 
 const eventFields = `
-  _id, title, date, endDate, type, customType, description,
+  _id, "slug": slug.current, title, date, endDate, type, customType, description,
   image { asset, hotspot },
   links[] { label, url },
   registration { url, isOpen }
@@ -142,6 +143,23 @@ export async function getUpcomingEvents(limit?: number): Promise<Event[]> {
   return client.fetch(
     `*[_type == "event" && date >= $today] | order(date asc) ${slice} { ${eventFields} }`,
     { today },
+    { next: { tags: ['event'] } }
+  )
+}
+
+export async function getAllEventSlugs(): Promise<string[]> {
+  const results: { slug: string }[] = await client.fetch(
+    `*[_type == "event" && defined(slug.current)] { "slug": slug.current }`,
+    {},
+    { next: { tags: ['event'] } }
+  )
+  return results.map((r) => r.slug)
+}
+
+export async function getEventBySlug(slug: string): Promise<Event | null> {
+  return client.fetch(
+    `*[_type == "event" && slug.current == $slug][0] { ${eventFields} }`,
+    { slug },
     { next: { tags: ['event'] } }
   )
 }

@@ -12,6 +12,16 @@ export const eventType = defineType({
       validation: (r) => r.required(),
     }),
     defineField({
+      name: 'slug',
+      title: 'Slug (URL)',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+      validation: (r) => r.required(),
+    }),
+    defineField({
       name: 'date',
       title: 'Datum začátku',
       type: 'datetime',
