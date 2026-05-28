@@ -69,7 +69,7 @@ html {
   /* Spacing */
   --spacing-gutter: 24px;
   --spacing-section-padding-desktop: 120px;
-  --spacing-section-padding-mobile: 64px;
+  --spacing-section-padding-mobile: 48px;
   --spacing-container-max: 1440px;
   --spacing-unit: 8px;
 
@@ -87,8 +87,10 @@ html {
   --font-headline-md: var(--font-montserrat), "Montserrat", sans-serif;
   --font-headline-md-mobile: var(--font-montserrat), "Montserrat", sans-serif;
   --font-headline-sm: var(--font-montserrat), "Montserrat", sans-serif;
+  --font-headline-sm-mobile: var(--font-montserrat), "Montserrat", sans-serif;
   --font-label-bold: var(--font-montserrat), "Montserrat", sans-serif;
   --font-body-lg: var(--font-work-sans), "Work Sans", sans-serif;
+  --font-body-lg-mobile: var(--font-work-sans), "Work Sans", sans-serif;
   --font-body-md: var(--font-work-sans), "Work Sans", sans-serif;
 
   /* Font sizes */
@@ -121,6 +123,14 @@ html {
   --text-headline-sm: 24px;
   --text-headline-sm--line-height: 28px;
   --text-headline-sm--font-weight: 700;
+
+  --text-headline-sm-mobile: 18px;
+  --text-headline-sm-mobile--line-height: 22px;
+  --text-headline-sm-mobile--font-weight: 700;
+
+  --text-body-lg-mobile: 16px;
+  --text-body-lg-mobile--line-height: 1.6;
+  --text-body-lg-mobile--font-weight: 300;
 
   --text-label-bold: 13px;
   --text-label-bold--letter-spacing: 0.15em;
