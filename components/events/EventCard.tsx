@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import type { Event, EventType } from '@/sanity/lib/queries'
 import { urlFor } from '@/sanity/lib/image'
 
@@ -34,7 +35,7 @@ interface Props {
 
 export function EventCard({ event, compact = false }: Props) {
   return (
-    <div className="group flex flex-col bg-white border border-surface-container-high hover:shadow-md transition-shadow">
+    <Link href={`/akce/${event.slug}`} className="group flex flex-col bg-white border border-surface-container-high hover:shadow-md transition-shadow">
       {event.image && !compact && (
         <div className="aspect-video overflow-hidden relative">
           <Image
@@ -89,6 +90,6 @@ export function EventCard({ event, compact = false }: Props) {
           </a>
         )}
       </div>
-    </div>
+    </Link>
   )
 }
