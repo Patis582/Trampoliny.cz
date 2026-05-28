@@ -12,7 +12,7 @@ export default async function TreneriPage() {
       <div className="fixed top-0 left-0 w-full z-50">
         <Nav />
       </div>
-      <main className="pt-40 pb-section-padding-mobile md:pb-section-padding-desktop">
+      <main className="pt-24 md:pt-40 pb-section-padding-mobile md:pb-section-padding-desktop">
         <div className="max-w-container-max mx-auto px-gutter">
           <div className="mb-16">
             <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-6">

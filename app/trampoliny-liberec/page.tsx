@@ -20,7 +20,7 @@ export default async function TrampolinyLiberecPage() {
       {/* ── HERO ─────────────────────────────────────────────────── */}
       <section className="relative h-[75vh] min-h-[560px] flex items-end overflow-hidden">
         <LiberecHeroSlideshow />
-        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pb-16 pt-32">
+        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pb-16 pt-16 md:pt-32">
           <div className="mb-6">
             <span className="inline-flex items-center font-label-bold text-[9px] md:text-[11px] uppercase tracking-widest bg-brand-orange text-white px-2 py-0.5 md:px-3 md:py-1.5">
               Trampolíny Liberec
@@ -44,7 +44,7 @@ export default async function TrampolinyLiberecPage() {
               { label: "Medailí", value: "300+" },
               { label: "Trénujeme od roku", value: "2009" },
             ].map(({ label, value }) => (
-              <div key={label} className="px-4 py-5 md:px-8 md:py-7 first:pl-0">
+              <div key={label} className="px-4 py-3 md:px-8 md:py-7 first:pl-0">
                 <p className="font-label-bold text-[10px] uppercase tracking-widest text-white/40 mb-1.5">{label}</p>
                 <p className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-white uppercase tracking-tight">{value}</p>
               </div>

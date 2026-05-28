@@ -48,15 +48,15 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
           <div className="absolute inset-0 bg-gradient-to-r from-brand-navy-deep/70 to-transparent" />
         </div>
 
-        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pb-16 pt-32">
+        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pb-16 pt-16 md:pt-32">
           <div className="flex items-center gap-4 mb-6">
-            <Link href="/#sluzby" className="inline-flex items-center gap-2 text-white/50 hover:text-white/90 transition-colors font-label-bold text-[11px] uppercase tracking-widest group">
+            <Link href="/#sluzby" className="inline-flex items-center gap-2 text-white/50 hover:text-white/90 transition-colors font-label-bold text-[9px] md:text-[11px] uppercase tracking-widest group">
               <svg className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
               </svg>
               Všechny aktivity
             </Link>
-            <span className={`inline-flex items-center font-label-bold text-[11px] uppercase tracking-widest px-3 py-1.5 ${badgeClass}`}>
+            <span className={`inline-flex items-center font-label-bold text-[9px] md:text-[11px] uppercase tracking-widest px-2 py-0.5 md:px-3 md:py-1.5 ${badgeClass}`}>
               {brandLabel}
             </span>
           </div>
@@ -77,15 +77,15 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
           <div className="max-w-container-max mx-auto px-gutter">
             <div className="grid grid-cols-2 divide-x divide-white/10">
               {service.ageGroup && (
-                <div className="px-8 py-7 first:pl-0">
+                <div className="px-4 py-3 md:px-8 md:py-7 first:pl-0">
                   <p className="font-label-bold text-[10px] uppercase tracking-widest text-white/40 mb-1.5">Věková skupina</p>
-                  <p className="font-headline-sm text-headline-sm text-white uppercase tracking-tight">{service.ageGroup}</p>
+                  <p className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-white uppercase tracking-tight">{service.ageGroup}</p>
                 </div>
               )}
               {service.locationFull && (
-                <div className="px-8 py-7 first:pl-0">
+                <div className="px-4 py-3 md:px-8 md:py-7 first:pl-0">
                   <p className="font-label-bold text-[10px] uppercase tracking-widest text-white/40 mb-1.5">Lokalita</p>
-                  <p className="font-headline-sm text-headline-sm text-white uppercase tracking-tight">{service.locationFull.split(",")[0]}</p>
+                  <p className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-white uppercase tracking-tight">{service.locationFull.split(",")[0]}</p>
                 </div>
               )}
             </div>
@@ -104,7 +104,7 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
             {(service.bodyTitle || (service.body && service.body.length > 0)) && (
               <div className="space-y-8">
                 {service.bodyTitle && (
-                  <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">
+                  <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight">
                     {service.bodyTitle}
                   </h2>
                 )}
@@ -118,7 +118,7 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
                             <p className="font-body-md text-body-md text-on-surface-variant font-light leading-relaxed">{children}</p>
                           ),
                           h2: ({ children }) => (
-                            <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">{children}</h2>
+                            <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight">{children}</h2>
                           ),
                           h3: ({ children }) => (
                             <h3 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight text-base">{children}</h3>
@@ -143,7 +143,7 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
               <>
                 <div className="h-px bg-surface-container-high" />
                 <div className="space-y-8">
-                  <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">
+                  <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight">
                     Jak to funguje
                   </h2>
                   <div className="space-y-4">
@@ -167,7 +167,7 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
               <>
                 <div className="h-px bg-surface-container-high" />
                 <div className="space-y-8">
-                  <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">
+                  <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight">
                     Ceník a dokumenty
                   </h2>
                   {service.pricingNote && (
@@ -245,7 +245,7 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
             <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-4">
               Trampolíny Liberec & Patrman
             </span>
-            <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">
+            <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight">
               Prohlédni si všechny aktivity
             </h2>
           </div>
@@ -269,10 +269,10 @@ function RegistrationSidebar({ service }: { service: ServiceDetail }) {
 
   if (reg?.type === "form" && reg.formUrl) {
     return (
-      <div className="bg-border-dark text-white p-10 space-y-7">
+      <div className="bg-border-dark text-white p-6 md:p-10 space-y-7">
         <div>
           <span className="font-label-bold text-[10px] uppercase tracking-widest text-white/40 block mb-4">Máš zájem?</span>
-          <h3 className="font-headline-sm text-headline-sm text-white uppercase tracking-tight">Přihlas se</h3>
+          <h3 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-white uppercase tracking-tight">Přihlas se</h3>
         </div>
         <p className="font-body-md text-body-md text-white/60 font-light leading-relaxed">{description}</p>
         <a href={reg.formUrl} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center bg-brand-orange text-white font-label-bold uppercase tracking-widest px-6 py-4 text-[11px] hover:bg-white hover:text-border-dark transition-colors w-full">
@@ -284,10 +284,10 @@ function RegistrationSidebar({ service }: { service: ServiceDetail }) {
 
   if (reg?.type === "email" && reg.email) {
     return (
-      <div className="bg-border-dark text-white p-10 space-y-7">
+      <div className="bg-border-dark text-white p-6 md:p-10 space-y-7">
         <div>
           <span className="font-label-bold text-[10px] uppercase tracking-widest text-white/40 block mb-4">Máš zájem?</span>
-          <h3 className="font-headline-sm text-headline-sm text-white uppercase tracking-tight">Ozvi se nám</h3>
+          <h3 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-white uppercase tracking-tight">Ozvi se nám</h3>
         </div>
         <p className="font-body-md text-body-md text-white/60 font-light leading-relaxed">{description}</p>
         <a href={`mailto:${reg.email}`} className="flex items-center justify-center bg-brand-orange text-white font-label-bold uppercase tracking-widest px-6 py-4 text-[11px] hover:bg-white hover:text-border-dark transition-colors w-full">
@@ -299,10 +299,10 @@ function RegistrationSidebar({ service }: { service: ServiceDetail }) {
 
   // default: eos or no registration set
   return (
-    <div className="bg-border-dark text-white p-10 space-y-7">
+    <div className="bg-border-dark text-white p-6 md:p-10 space-y-7">
       <div>
         <span className="font-label-bold text-[10px] uppercase tracking-widest text-white/40 block mb-4">Máš zájem?</span>
-        <h3 className="font-headline-sm text-headline-sm text-white uppercase tracking-tight">Ozvi se nám</h3>
+        <h3 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-white uppercase tracking-tight">Ozvi se nám</h3>
       </div>
       <p className="font-body-md text-body-md text-white/60 font-light leading-relaxed">{description}</p>
       <div className="space-y-3">

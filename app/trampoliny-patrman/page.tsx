@@ -26,7 +26,7 @@ export default async function TrampolinyPatrmanPage() {
       {/* ── HERO ─────────────────────────────────────────────────── */}
       <section className="relative h-[75vh] min-h-[560px] flex items-end overflow-hidden">
         <PatrmanHeroSlideshow />
-        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pb-16 pt-32">
+        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pb-16 pt-16 md:pt-32">
           <div className="mb-6">
             <span className="inline-flex items-center font-label-bold text-[9px] md:text-[11px] uppercase tracking-widest bg-on-tertiary-container text-white px-2 py-0.5 md:px-3 md:py-1.5">
               Trampolíny Patrman

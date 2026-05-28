@@ -16,7 +16,7 @@ export function Nav() {
 
   return (
     <nav className="bg-white border-b border-surface-container-high transition-all duration-300">
-      <div className="max-w-container-max mx-auto px-gutter py-3.5 md:py-6 flex justify-between items-center">
+      <div className="max-w-container-max mx-auto px-gutter py-2 md:py-6 flex justify-between items-center">
         <Link href="/" onClick={() => setOpen(false)} className="font-headline-sm text-headline-sm font-bold text-border-dark hover:text-brand-orange transition-colors duration-200 tracking-tight">
           Trampolíny
         </Link>
