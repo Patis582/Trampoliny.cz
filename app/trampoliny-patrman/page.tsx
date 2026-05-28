@@ -28,14 +28,14 @@ export default async function TrampolinyPatrmanPage() {
         <PatrmanHeroSlideshow />
         <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pb-16 pt-32">
           <div className="mb-6">
-            <span className="inline-flex items-center font-label-bold text-[11px] uppercase tracking-widest bg-on-tertiary-container text-white px-3 py-1.5">
+            <span className="inline-flex items-center font-label-bold text-[9px] md:text-[11px] uppercase tracking-widest bg-on-tertiary-container text-white px-2 py-0.5 md:px-3 md:py-1.5">
               Trampolíny Patrman
             </span>
           </div>
           <h1 className="font-headline-lg-mobile md:font-headline-md text-headline-lg-mobile md:text-headline-md text-white uppercase tracking-tight leading-none mb-6">
             Služby
           </h1>
-          <p className="font-body-lg text-body-lg text-white/75 font-light max-w-xl leading-relaxed">
+          <p className="font-body-lg-mobile text-body-lg-mobile md:font-body-lg md:text-body-lg text-white/75 font-light max-w-xl leading-relaxed">
             Kroužky, tábory, oslavy i volné skákání. Pro každého od 1 roku.
           </p>
           <div className="mt-8">
@@ -64,7 +64,7 @@ export default async function TrampolinyPatrmanPage() {
             </div>
             <div className="space-y-6">
               <span className="inline-block font-label-bold text-[11px] uppercase tracking-widest text-on-tertiary-container">Kdo jsme</span>
-              <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">
+              <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight">
                 Trampolíny Patrman
               </h2>
               <div className="space-y-4 font-body-md text-body-md text-on-surface-variant font-light leading-relaxed">
@@ -88,7 +88,7 @@ export default async function TrampolinyPatrmanPage() {
         <div className="max-w-container-max mx-auto px-gutter">
           <div className="mb-16">
             <span className="inline-block font-label-bold text-[11px] uppercase tracking-widest text-on-tertiary-container mb-6">Atmosféra</span>
-            <h2 className="font-headline-md text-headline-md text-border-dark uppercase tracking-tight">
+            <h2 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight">
               Jak to u nás <span className="font-medium">vypadá</span>
             </h2>
           </div>
@@ -105,7 +105,7 @@ export default async function TrampolinyPatrmanPage() {
         <div className="max-w-container-max mx-auto px-gutter">
           <div className="mb-24">
             <span className="inline-block text-on-tertiary-container font-label-bold text-label-bold uppercase tracking-widest mb-6">Aktivity</span>
-            <h2 className="font-headline-md text-headline-md text-border-dark uppercase tracking-tight">
+            <h2 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight">
               Co u nás <span className="font-medium">najdeš</span>
             </h2>
           </div>
@@ -124,14 +124,14 @@ export default async function TrampolinyPatrmanPage() {
         <div className="max-w-container-max mx-auto px-gutter">
           <div className="mb-12">
             <span className="inline-block font-label-bold text-[11px] uppercase tracking-widest text-on-tertiary-container mb-4">Kontakt</span>
-            <h2 className="font-headline-sm text-headline-sm text-white uppercase tracking-tight">
+            <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-white uppercase tracking-tight">
               Napiš nebo zavolej
             </h2>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
             {contacts.map(({ name, phone, email }) => (
               <div key={name} className="p-6 border border-white/10">
-                <p className="font-headline-sm text-white font-bold uppercase tracking-tight mb-4">{name}</p>
+                <p className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-white font-bold uppercase tracking-tight mb-4">{name}</p>
                 <a
                   href={`tel:${phone.replace(/\s/g, "")}`}
                   className="block font-body-md text-white/70 hover:text-white transition-colors mb-1"
