@@ -218,7 +218,7 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
                 )}
                 <div className="p-6 space-y-1">
                   <p className="font-label-bold text-[10px] uppercase tracking-widest text-outline">Trenér</p>
-                  <Link href="#" className="font-body-md text-body-md text-brand-orange font-medium hover:text-border-dark transition-colors">
+                  <Link href="/treneri" className="font-body-md text-body-md text-brand-orange font-medium hover:text-border-dark transition-colors">
                     Naši trenéři →
                   </Link>
                 </div>
