@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
 import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
-import { getEventBySlug, getAllEventSlugs, type Event, type EventType } from '@/sanity/lib/queries'
+import { getEventBySlug, getAllEventSlugs, type EventType } from '@/sanity/lib/queries'
 import { urlFor } from '@/sanity/lib/image'
 
 export async function generateStaticParams() {
@@ -44,7 +44,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
 
   const typeLabel = event.type === 'jiné' && event.customType ? event.customType : TYPE_LABELS[event.type]
   const badgeClass = TYPE_COLORS[event.type]
-  const heroImageUrl = event.image ? urlFor(event.image).width(1600).height(900).url() : null
+  const heroImageUrl = event.image ? urlFor(event.image).width(1920).height(1080).url() : null
 
   return (
     <div className="font-body-md antialiased bg-white min-h-screen">
@@ -52,8 +52,8 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
         <Nav />
       </div>
 
-      {/* HERO */}
-      <section className="relative h-[60vh] min-h-[440px] flex items-end overflow-hidden">
+      {/* HERO — fullscreen */}
+      <section className="relative h-screen flex items-end overflow-hidden">
         <div className="absolute inset-0">
           {heroImageUrl ? (
             <Image
@@ -65,134 +65,114 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
               priority
             />
           ) : (
-            <div className="w-full h-full bg-border-dark" />
+            <div className="w-full h-full bg-brand-navy-deep" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-border-dark via-border-dark/50 to-border-dark/10" />
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep via-brand-navy-deep/60 to-transparent" />
         </div>
 
-        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pb-16 pt-32">
-          <div className="flex items-center gap-4 mb-6">
-            <Link
-              href="/akce"
-              className="inline-flex items-center gap-2 text-white/50 hover:text-white/90 transition-colors font-label-bold text-[11px] uppercase tracking-widest group"
-            >
-              <svg className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-              </svg>
-              Všechny akce
-            </Link>
+        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pb-20 pt-32">
+          <Link
+            href="/akce"
+            className="inline-flex items-center gap-2 text-white/50 hover:text-white/90 transition-colors font-label-bold text-[11px] uppercase tracking-widest group mb-8 block"
+          >
+            <svg className="w-3.5 h-3.5 inline group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+            {' '}Všechny akce
+          </Link>
+
+          <div className="flex items-center gap-3 mb-6">
             <span className={`inline-flex items-center font-label-bold text-[11px] uppercase tracking-widest px-3 py-1.5 ${badgeClass}`}>
               {typeLabel}
             </span>
           </div>
 
-          <h1 className="font-headline-lg-mobile md:font-headline-md text-headline-lg-mobile md:text-headline-md text-white uppercase tracking-tight leading-none mb-4">
-            {event.title}
-          </h1>
-          <p className="font-label-bold text-[11px] uppercase tracking-widest text-white/60">
+          <p className="font-headline-sm text-headline-sm text-white/70 uppercase tracking-widest mb-4">
             {formatDate(event.date, event.endDate)}
           </p>
+
+          <h1 className="font-headline-lg-mobile md:font-headline-md text-headline-lg-mobile md:text-headline-md text-white uppercase tracking-tight leading-none">
+            {event.title}
+          </h1>
         </div>
       </section>
 
-      {/* MAIN CONTENT */}
-      <div className="max-w-container-max mx-auto px-gutter py-section-padding-mobile md:py-section-padding-desktop">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-20">
+      {/* MAIN CONTENT — centrovaný úzký sloupec */}
+      <div className="max-w-2xl mx-auto px-gutter py-section-padding-mobile md:py-section-padding-desktop">
 
-          {/* Left — description */}
-          <main className="lg:col-span-8">
-            {event.description && event.description.length > 0 ? (
-              <div className="space-y-5">
-                <PortableText
-                  value={event.description}
-                  components={{
-                    block: {
-                      normal: ({ children }) => (
-                        <p className="font-body-md text-body-md text-on-surface-variant font-light leading-relaxed">{children}</p>
-                      ),
-                      h2: ({ children }) => (
-                        <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">{children}</h2>
-                      ),
-                      h3: ({ children }) => (
-                        <h3 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight text-base">{children}</h3>
-                      ),
-                      blockquote: ({ children }) => (
-                        <p className="font-body-lg text-body-lg text-border-dark font-medium leading-relaxed border-l-4 border-brand-orange pl-6">{children}</p>
-                      ),
-                    },
-                    marks: {
-                      strong: ({ children }: { children: React.ReactNode }) => <strong className="font-semibold text-border-dark">{children}</strong>,
-                      em: ({ children }: { children: React.ReactNode }) => <em>{children}</em>,
-                    },
-                  }}
-                />
-              </div>
-            ) : (
-              <p className="font-body-md text-on-surface-variant font-light">Podrobnosti budou brzy doplněny.</p>
-            )}
+        {event.description && event.description.length > 0 && (
+          <div className="space-y-5 mb-12">
+            <PortableText
+              value={event.description}
+              components={{
+                block: {
+                  normal: ({ children }) => (
+                    <p className="font-body-md text-body-md text-on-surface-variant font-light leading-relaxed">{children}</p>
+                  ),
+                  h2: ({ children }) => (
+                    <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">{children}</h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight text-base">{children}</h3>
+                  ),
+                  blockquote: ({ children }) => (
+                    <p className="font-body-lg text-body-lg text-border-dark font-medium leading-relaxed border-l-4 border-brand-orange pl-6">{children}</p>
+                  ),
+                },
+                list: {
+                  bullet: ({ children }) => (
+                    <ul className="list-disc pl-6 space-y-1 font-body-md text-body-md text-on-surface-variant font-light leading-relaxed">{children}</ul>
+                  ),
+                  number: ({ children }) => (
+                    <ol className="list-decimal pl-6 space-y-1 font-body-md text-body-md text-on-surface-variant font-light leading-relaxed">{children}</ol>
+                  ),
+                },
+                listItem: {
+                  bullet: ({ children }) => <li>{children}</li>,
+                  number: ({ children }) => <li>{children}</li>,
+                },
+                marks: {
+                  strong: ({ children }: { children: React.ReactNode }) => <strong className="font-semibold text-border-dark">{children}</strong>,
+                  em: ({ children }: { children: React.ReactNode }) => <em>{children}</em>,
+                },
+              }}
+            />
+          </div>
+        )}
 
-            {event.links && event.links.length > 0 && (
-              <div className="mt-12 pt-8 border-t border-surface-container-high">
-                <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight mb-6">
-                  Odkazy
-                </h2>
-                <div className="flex flex-wrap gap-3">
-                  {event.links.map((link) => (
-                    <a
-                      key={link.url}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 font-label-bold text-[11px] uppercase tracking-widest px-6 py-3 border border-border-dark text-border-dark hover:bg-border-dark hover:text-white transition-colors"
-                    >
-                      {link.label} →
-                    </a>
-                  ))}
-                </div>
-              </div>
-            )}
-          </main>
+        {event.registration?.isOpen && event.registration.url && (
+          <div className="mb-12">
+            <a
+              href={event.registration.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center bg-brand-orange text-white font-label-bold uppercase tracking-widest px-10 py-4 text-[11px] hover:bg-border-dark transition-colors"
+            >
+              Přihlásit se →
+            </a>
+          </div>
+        )}
 
-          {/* Right — sidebar */}
-          <aside className="lg:col-span-4">
-            <div className="lg:sticky lg:top-32 space-y-5">
-              <div className="bg-border-dark text-white p-10 space-y-7">
-                <div>
-                  <span className="font-label-bold text-[10px] uppercase tracking-widest text-white/40 block mb-4">Máš zájem?</span>
-                  <h3 className="font-headline-sm text-headline-sm text-white uppercase tracking-tight">
-                    {event.registration?.isOpen ? 'Přihlas se' : 'Sleduj nás'}
-                  </h3>
-                </div>
-                {event.registration?.isOpen && event.registration.url ? (
-                  <a
-                    href={event.registration.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center bg-brand-orange text-white font-label-bold uppercase tracking-widest px-6 py-4 text-[11px] hover:bg-white hover:text-border-dark transition-colors w-full"
-                  >
-                    Přihlásit se →
-                  </a>
-                ) : (
-                  <p className="font-body-md text-body-md text-white/60 font-light leading-relaxed">
-                    Přihlášky zatím nejsou otevřeny. Sleduj nás pro aktuální informace.
-                  </p>
-                )}
-              </div>
-
-              <div className="border border-surface-container-high divide-y divide-surface-container-high">
-                <div className="p-6 space-y-1">
-                  <p className="font-label-bold text-[10px] uppercase tracking-widest text-outline">Datum</p>
-                  <p className="font-body-md text-body-md text-border-dark font-medium">{formatDate(event.date, event.endDate)}</p>
-                </div>
-                <div className="p-6 space-y-1">
-                  <p className="font-label-bold text-[10px] uppercase tracking-widest text-outline">Typ akce</p>
-                  <p className="font-body-md text-body-md text-border-dark font-medium">{typeLabel}</p>
-                </div>
-              </div>
+        {event.links && event.links.length > 0 && (
+          <div className="pt-8 border-t border-surface-container-high">
+            <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight mb-6">
+              Odkazy
+            </h2>
+            <div className="flex flex-wrap gap-3">
+              {event.links.map((link) => (
+                <a
+                  key={link.url}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 font-label-bold text-[11px] uppercase tracking-widest px-6 py-3 border border-border-dark text-border-dark hover:bg-border-dark hover:text-white transition-colors"
+                >
+                  {link.label} →
+                </a>
+              ))}
             </div>
-          </aside>
-
-        </div>
+          </div>
+        )}
       </div>
 
       {/* BOTTOM CTA */}
