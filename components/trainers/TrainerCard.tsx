@@ -18,7 +18,7 @@ export function TrainerCard({ trainer }: { trainer: Trainer }) {
     : 'center top'
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col group cursor-default transition-transform duration-300 ease-out hover:-translate-y-2">
       {/* Photo */}
       <div className="relative w-full aspect-[3/4] overflow-hidden bg-surface-container mb-5">
         {photo?.url ? (
@@ -26,7 +26,7 @@ export function TrainerCard({ trainer }: { trainer: Trainer }) {
             src={photo.url}
             alt={photo.alt ?? name}
             fill
-            className="object-cover"
+            className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
             style={{ objectPosition }}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
           />
