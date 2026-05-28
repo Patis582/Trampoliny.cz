@@ -8,9 +8,9 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: 'Invalid secret' }, { status: 401 })
   }
 
-  revalidateTag('event')
-  revalidateTag('announcement')
-  revalidateTag('service')
+  revalidateTag('event', 'page')
+  revalidateTag('announcement', 'page')
+  revalidateTag('service', 'page')
   revalidatePath('/')
   revalidatePath('/akce')
 
