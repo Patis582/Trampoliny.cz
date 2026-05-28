@@ -6,22 +6,22 @@ import { PatrmanHeroSlideshow } from "@/components/layout/PatrmanHeroSlideshow";
 import { getServicesByBrand } from "@/sanity/lib/queries";
 
 const galleryRow1 = [
-  { src: "/hero-patrman-6.jpg",  alt: "Kroužky pro děti",      offset: "translate-y-0",  h: "h-56" },
-  { src: "/hero-patrman-14.jpg", alt: "Trenér s dítětem",      offset: "translate-y-8",  h: "h-72" },
-  { src: "/hero-patrman-22.jpg", alt: "Skupina batolat",       offset: "-translate-y-4", h: "h-56" },
-  { src: "/hero-patrman-28.jpg", alt: "Backflip",              offset: "translate-y-6",  h: "h-72" },
+  { src: "/hero-patrman-6.jpg",  alt: "Kroužky pro děti",        offset: "" },
+  { src: "/hero-patrman-14.jpg", alt: "Trenér s dítětem",        offset: "md:translate-y-6" },
+  { src: "/hero-patrman-22.jpg", alt: "Skupina batolat",         offset: "" },
+  { src: "/hero-patrman-28.jpg", alt: "Backflip",                offset: "md:translate-y-6" },
 ];
 
 const galleryRow2 = [
-  { src: "/hero-patrman-30.jpg", alt: "Akrobacie s trenérem",  offset: "translate-y-4",  h: "h-72" },
-  { src: "/hero-patrman-4.jpg",  alt: "Děti s míči",           offset: "-translate-y-6", h: "h-56" },
-  { src: "/hero-patrman-9.jpg",  alt: "Děti na trampolíně",   offset: "translate-y-2",  h: "h-72" },
-  { src: "/hero-patrman-19.jpg", alt: "Starší děti na koberci",offset: "-translate-y-4", h: "h-56" },
+  { src: "/hero-patrman-30.jpg", alt: "Akrobacie s trenérem",   offset: "md:translate-y-6" },
+  { src: "/hero-patrman-4.jpg",  alt: "Děti s míči",             offset: "" },
+  { src: "/hero-patrman-9.jpg",  alt: "Děti na trampolíně",     offset: "md:translate-y-6" },
+  { src: "/hero-patrman-19.jpg", alt: "Starší děti na koberci", offset: "" },
 ];
 
 const contacts = [
   { name: "Kamila Brücklérová", phone: "+420 720 987 654", email: "kamilabrucklerova@gmail.com" },
-  { name: "Klára Patrmanová",   phone: "+420 731 123 456", email: "pripravky@trampoliny-liberec.cz" },
+  { name: "Klára Patrmanová", phone: "+420 731 123 456", email: "pripravky@trampoliny-liberec.cz" },
 ];
 
 export default async function TrampolinyPatrmanPage() {
@@ -105,19 +105,19 @@ export default async function TrampolinyPatrmanPage() {
           </div>
 
           {/* Řada 1 */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3 pb-8 overflow-hidden">
-            {galleryRow1.map(({ src, alt, offset, h }) => (
-              <div key={src} className={`relative ${h} overflow-hidden ${offset}`}>
-                <Image src={src} alt={alt} fill className="object-cover" sizes="25vw" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
+            {galleryRow1.map(({ src, alt, offset }) => (
+              <div key={src} className={`relative aspect-[4/3] overflow-hidden ${offset}`}>
+                <Image src={src} alt={alt} fill className="object-cover" sizes="(max-width:768px) 50vw, 25vw" />
               </div>
             ))}
           </div>
 
           {/* Řada 2 */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pb-8 overflow-hidden">
-            {galleryRow2.map(({ src, alt, offset, h }) => (
-              <div key={src} className={`relative ${h} overflow-hidden ${offset}`}>
-                <Image src={src} alt={alt} fill className="object-cover" sizes="25vw" />
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pb-16">
+            {galleryRow2.map(({ src, alt, offset }) => (
+              <div key={src} className={`relative aspect-[4/3] overflow-hidden ${offset}`}>
+                <Image src={src} alt={alt} fill className="object-cover" sizes="(max-width:768px) 50vw, 25vw" />
               </div>
             ))}
           </div>
