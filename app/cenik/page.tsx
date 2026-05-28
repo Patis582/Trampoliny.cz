@@ -17,7 +17,7 @@ export default async function CenikPage() {
           <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-6">
             Vstupné & tréninky
           </span>
-          <h1 className="font-headline-md text-headline-md text-border-dark uppercase tracking-tight">
+          <h1 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight">
             Ceník
           </h1>
         </div>

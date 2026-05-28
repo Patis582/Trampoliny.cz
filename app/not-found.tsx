@@ -10,7 +10,7 @@ export default function NotFound() {
           <span className="inline-block text-brand-orange font-label-bold text-[11px] uppercase tracking-widest mb-6">
             404
           </span>
-          <h1 className="font-headline-md text-headline-md text-border-dark uppercase tracking-tight mb-6">
+          <h1 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight mb-6">
             Stránka nenalezena
           </h1>
           <p className="font-body-md text-body-md text-on-surface-variant font-light leading-relaxed mb-10">

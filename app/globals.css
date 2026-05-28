@@ -85,6 +85,7 @@ html {
   --font-headline-lg: var(--font-montserrat), "Montserrat", sans-serif;
   --font-headline-lg-mobile: var(--font-montserrat), "Montserrat", sans-serif;
   --font-headline-md: var(--font-montserrat), "Montserrat", sans-serif;
+  --font-headline-md-mobile: var(--font-montserrat), "Montserrat", sans-serif;
   --font-headline-sm: var(--font-montserrat), "Montserrat", sans-serif;
   --font-label-bold: var(--font-montserrat), "Montserrat", sans-serif;
   --font-body-lg: var(--font-work-sans), "Work Sans", sans-serif;
@@ -112,6 +113,10 @@ html {
   --text-headline-md: 48px;
   --text-headline-md--line-height: 52px;
   --text-headline-md--font-weight: 800;
+
+  --text-headline-md-mobile: 32px;
+  --text-headline-md-mobile--line-height: 36px;
+  --text-headline-md-mobile--font-weight: 800;
 
   --text-headline-sm: 24px;
   --text-headline-sm--line-height: 28px;

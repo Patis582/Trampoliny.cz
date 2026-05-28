@@ -89,7 +89,7 @@ export default async function Home() {
             <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-6">
               Kdo jsme
             </span>
-            <h2 className="font-headline-md text-headline-md text-border-dark uppercase tracking-tight">
+            <h2 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight">
               Dvě značky, <br />
               <span className="font-medium">jedna vášeň</span>
             </h2>
@@ -149,7 +149,7 @@ export default async function Home() {
             <span className="inline-block text-brand-green font-label-bold text-label-bold uppercase tracking-widest mb-6">
               Aktivity
             </span>
-            <h2 className="font-headline-md text-headline-md text-border-dark uppercase tracking-tight">
+            <h2 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight">
               Co u nás <span className="font-medium">najdeš</span>
             </h2>
           </div>
@@ -170,7 +170,7 @@ export default async function Home() {
                 <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-6">
                   Program
                 </span>
-                <h2 className="font-headline-md text-headline-md text-border-dark uppercase tracking-tight">
+                <h2 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight">
                   Nadcházející akce
                 </h2>
               </div>
@@ -204,7 +204,7 @@ export default async function Home() {
             <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-6">
               Lokality
             </span>
-            <h2 className="font-headline-md text-headline-md text-border-dark uppercase tracking-tight">
+            <h2 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight">
               Kde nás najdete
             </h2>
           </div>

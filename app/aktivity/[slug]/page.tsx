@@ -65,7 +65,7 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
             {service.title}
           </h1>
 
-          <p className="font-body-lg text-body-lg text-white/75 font-light max-w-lg leading-relaxed">
+          <p className="font-body-md text-body-md md:font-body-lg md:text-body-lg text-white/75 font-light max-w-lg leading-relaxed">
             {service.description}
           </p>
         </div>
@@ -124,7 +124,7 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
                             <h3 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight text-base">{children}</h3>
                           ),
                           blockquote: ({ children }) => (
-                            <p className="font-body-lg text-body-lg text-border-dark font-medium leading-relaxed border-l-4 border-brand-orange pl-6">{children}</p>
+                            <p className="font-body-md text-body-md md:font-body-lg md:text-body-lg text-border-dark font-medium leading-relaxed border-l-4 border-brand-orange pl-6">{children}</p>
                           ),
                         },
                         marks: {

@@ -20,7 +20,7 @@ export function PricingTable({ group }: { group: PricingGroup }) {
         </div>
       ) : rows && rows.length > 0 ? (
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[320px] text-left border-collapse">
+          <table className="w-full min-w-[300px] text-left border-collapse">
             <thead>
               <tr className="border-b-2 border-border-dark">
                 <th className="font-label-bold text-[10px] uppercase tracking-widest text-outline pb-3 pr-8 min-w-[180px]">

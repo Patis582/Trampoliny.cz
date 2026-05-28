@@ -7,7 +7,7 @@ export function PricingSection({ section, alt }: { section: PricingSectionType; 
       <div className="max-w-container-max mx-auto px-gutter py-section-padding-mobile md:py-section-padding-desktop">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mb-12">
           <div>
-            <h2 className="font-headline-md text-headline-md text-border-dark uppercase tracking-tight mb-3">
+            <h2 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight mb-3">
               {section.title}
             </h2>
             {section.validFrom && (
