@@ -15,7 +15,7 @@ const galleryRow1 = [
 const galleryRow2 = [
   { src: "/hero-patrman-30.jpg", alt: "Akrobacie s trenérem",  offset: "translate-y-4",  h: "h-72" },
   { src: "/hero-patrman-4.jpg",  alt: "Děti s míči",           offset: "-translate-y-6", h: "h-56" },
-  { src: "/hero-patrman-25.jpg", alt: "Děti skáčou v řadě",   offset: "translate-y-2",  h: "h-72" },
+  { src: "/hero-patrman-9.jpg",  alt: "Děti na trampolíně",   offset: "translate-y-2",  h: "h-72" },
   { src: "/hero-patrman-19.jpg", alt: "Starší děti na koberci",offset: "-translate-y-4", h: "h-56" },
 ];
 
@@ -105,7 +105,7 @@ export default async function TrampolinyPatrmanPage() {
           </div>
 
           {/* Řada 1 */}
-          <div className="grid grid-cols-4 gap-3 mb-3 pb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3 pb-8 overflow-hidden">
             {galleryRow1.map(({ src, alt, offset, h }) => (
               <div key={src} className={`relative ${h} overflow-hidden ${offset}`}>
                 <Image src={src} alt={alt} fill className="object-cover" sizes="25vw" />
@@ -114,7 +114,7 @@ export default async function TrampolinyPatrmanPage() {
           </div>
 
           {/* Řada 2 */}
-          <div className="grid grid-cols-4 gap-3 pb-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pb-8 overflow-hidden">
             {galleryRow2.map(({ src, alt, offset, h }) => (
               <div key={src} className={`relative ${h} overflow-hidden ${offset}`}>
                 <Image src={src} alt={alt} fill className="object-cover" sizes="25vw" />
@@ -156,7 +156,7 @@ export default async function TrampolinyPatrmanPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl">
             {contacts.map(({ name, phone, email }) => (
               <div key={name} className="p-6 border border-white/10">
-                <p className="font-headline-sm text-white font-bold text-sm uppercase tracking-tight mb-4">{name}</p>
+                <p className="font-headline-sm text-white font-bold uppercase tracking-tight mb-4">{name}</p>
                 <a
                   href={`tel:${phone.replace(/\s/g, "")}`}
                   className="block font-body-md text-white/70 hover:text-white transition-colors mb-1"
