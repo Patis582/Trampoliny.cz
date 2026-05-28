@@ -88,48 +88,6 @@ const announcementFields = `
   expiresAt
 `
 
-export async function getServices(): Promise<Service[]> {
-  return client.fetch(
-    `*[_type == "service"] | order(order asc) { ${serviceFields} }`,
-    {},
-    { next: { tags: ['service'] } }
-  )
-}
-
-export async function getServiceBySlug(slug: string): Promise<ServiceDetail | null> {
-  return client.fetch(
-    `*[_type == "service" && slug.current == $slug][0] { ${serviceDetailFields} }`,
-    { slug },
-    { next: { tags: ['service'] } }
-  )
-}
-
-export async function getAllServiceSlugs(): Promise<string[]> {
-  const results: { slug: string }[] = await client.fetch(
-    `*[_type == "service" && defined(slug.current)] { "slug": slug.current }`,
-    {},
-    { next: { tags: ['service'] } }
-  )
-  return results.map((r) => r.slug)
-}
-
-export async function getServicesByBrand(brand: 'liberec' | 'patrman'): Promise<Service[]> {
-  return client.fetch(
-    `*[_type == "service" && brand == $brand] | order(order asc) { ${serviceFields} }`,
-    { brand },
-    { next: { tags: ['service'] } }
-  )
-}
-
-export async function getAnnouncements(): Promise<Announcement[]> {
-  const today = new Date().toISOString()
-  return client.fetch(
-    `*[_type == "announcement" && (!defined(expiresAt) || expiresAt >= $today)] | order(_createdAt desc) { ${announcementFields} }`,
-    { today },
-    { next: { tags: ['announcement'] } }
-  )
-}
-
 const eventFields = `
   _id, "slug": slug.current, title, date, endDate, type, customType, description,
   image { asset, hotspot },
@@ -137,29 +95,103 @@ const eventFields = `
   registration { url, isOpen }
 `
 
+export async function getServices(): Promise<Service[]> {
+  try {
+    return await client.fetch(
+      `*[_type == "service"] | order(order asc) { ${serviceFields} }`,
+      {},
+      { next: { tags: ['service'] } }
+    )
+  } catch {
+    return []
+  }
+}
+
+export async function getServiceBySlug(slug: string): Promise<ServiceDetail | null> {
+  try {
+    return await client.fetch(
+      `*[_type == "service" && slug.current == $slug][0] { ${serviceDetailFields} }`,
+      { slug },
+      { next: { tags: ['service'] } }
+    )
+  } catch {
+    return null
+  }
+}
+
+export async function getAllServiceSlugs(): Promise<string[]> {
+  try {
+    const results: { slug: string }[] = await client.fetch(
+      `*[_type == "service" && defined(slug.current)] { "slug": slug.current }`,
+      {},
+      { next: { tags: ['service'] } }
+    )
+    return results.map((r) => r.slug)
+  } catch {
+    return []
+  }
+}
+
+export async function getServicesByBrand(brand: 'liberec' | 'patrman'): Promise<Service[]> {
+  try {
+    return await client.fetch(
+      `*[_type == "service" && brand == $brand] | order(order asc) { ${serviceFields} }`,
+      { brand },
+      { next: { tags: ['service'] } }
+    )
+  } catch {
+    return []
+  }
+}
+
+export async function getAnnouncements(): Promise<Announcement[]> {
+  try {
+    const today = new Date().toISOString()
+    return await client.fetch(
+      `*[_type == "announcement" && (!defined(expiresAt) || expiresAt >= $today)] | order(_createdAt desc) { ${announcementFields} }`,
+      { today },
+      { next: { tags: ['announcement'] } }
+    )
+  } catch {
+    return []
+  }
+}
+
 export async function getUpcomingEvents(limit?: number): Promise<Event[]> {
-  const today = new Date().toISOString()
-  const slice = limit ? `[0...${limit}]` : ''
-  return client.fetch(
-    `*[_type == "event" && date >= $today] | order(date asc) ${slice} { ${eventFields} }`,
-    { today },
-    { next: { tags: ['event'] } }
-  )
+  try {
+    const today = new Date().toISOString()
+    const slice = limit ? `[0...${limit}]` : ''
+    return await client.fetch(
+      `*[_type == "event" && date >= $today] | order(date asc) ${slice} { ${eventFields} }`,
+      { today },
+      { next: { tags: ['event'] } }
+    )
+  } catch {
+    return []
+  }
 }
 
 export async function getAllEventSlugs(): Promise<string[]> {
-  const results: { slug: string }[] = await client.fetch(
-    `*[_type == "event" && defined(slug.current)] { "slug": slug.current }`,
-    {},
-    { next: { tags: ['event'] } }
-  )
-  return results.map((r) => r.slug)
+  try {
+    const results: { slug: string }[] = await client.fetch(
+      `*[_type == "event" && defined(slug.current)] { "slug": slug.current }`,
+      {},
+      { next: { tags: ['event'] } }
+    )
+    return results.map((r) => r.slug)
+  } catch {
+    return []
+  }
 }
 
 export async function getEventBySlug(slug: string): Promise<Event | null> {
-  return client.fetch(
-    `*[_type == "event" && slug.current == $slug][0] { ${eventFields} }`,
-    { slug },
-    { next: { tags: ['event'] } }
-  )
+  try {
+    return await client.fetch(
+      `*[_type == "event" && slug.current == $slug][0] { ${eventFields} }`,
+      { slug },
+      { next: { tags: ['event'] } }
+    )
+  } catch {
+    return null
+  }
 }
