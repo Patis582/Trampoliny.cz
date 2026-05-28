@@ -2,6 +2,7 @@ import { getUpcomingEvents } from '@/sanity/lib/queries'
 import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 import { AkceClient } from './AkceClient'
+import { SectionError } from '@/components/ui/SectionError'
 
 export default async function AkcePage() {
   const events = await getUpcomingEvents()
@@ -21,7 +22,11 @@ export default async function AkcePage() {
               Akce a kalendář
             </h1>
           </div>
-          <AkceClient events={events} />
+          {events === null ? (
+            <SectionError message="Akce se momentálně nepodařilo načíst. Zkuste obnovit stránku." />
+          ) : (
+            <AkceClient events={events} />
+          )}
         </div>
       </main>
       <Footer />

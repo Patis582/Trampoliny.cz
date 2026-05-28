@@ -5,6 +5,7 @@ import { ServiceGrid } from "@/components/services/ServiceGrid";
 import { PatrmanHeroSlideshow } from "@/components/layout/PatrmanHeroSlideshow";
 import { PatrmanGallery } from "@/components/layout/PatrmanGallery";
 import { getServicesByBrand } from "@/sanity/lib/queries";
+import { SectionError } from "@/components/ui/SectionError";
 
 
 const contacts = [
@@ -108,7 +109,9 @@ export default async function TrampolinyPatrmanPage() {
               Co u nás <span className="font-medium">najdeš</span>
             </h2>
           </div>
-          {services.length > 0 ? (
+          {services === null ? (
+            <SectionError message="Aktivity se momentálně nepodařilo načíst. Zkuste obnovit stránku." />
+          ) : services.length > 0 ? (
             <ServiceGrid services={services} />
           ) : (
             <p className="font-body-md text-on-surface-variant font-light">Aktivity brzy přibydou.</p>

@@ -5,6 +5,7 @@ import { Footer } from "@/components/layout/Footer";
 import { ServiceGrid } from "@/components/services/ServiceGrid";
 import { LiberecHeroSlideshow } from "@/components/layout/LiberecHeroSlideshow";
 import { getServicesByBrand } from "@/sanity/lib/queries";
+import { SectionError } from "@/components/ui/SectionError";
 
 export default async function TrampolinyLiberecPage() {
   const services = await getServicesByBrand("liberec");
@@ -150,7 +151,9 @@ export default async function TrampolinyLiberecPage() {
               Aktivity<br /><span className="font-medium">Trampolíny Liberec</span>
             </h2>
           </div>
-          {services.length > 0 ? (
+          {services === null ? (
+            <SectionError message="Aktivity se momentálně nepodařilo načíst. Zkuste obnovit stránku." />
+          ) : services.length > 0 ? (
             <ServiceGrid services={services} />
           ) : (
             <p className="font-body-md text-on-surface-variant font-light">Aktivity brzy přibydou.</p>

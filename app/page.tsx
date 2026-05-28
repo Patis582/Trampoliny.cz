@@ -8,6 +8,7 @@ import { HeroSlideshow } from "@/components/layout/HeroSlideshow";
 import { HeroScrollHint } from "@/components/layout/HeroScrollHint";
 import { getServices, getAnnouncements, getUpcomingEvents } from "@/sanity/lib/queries";
 import { EventCard } from "@/components/events/EventCard";
+import { SectionError } from "@/components/ui/SectionError";
 
 export default async function Home() {
   const [services, announcements, upcomingEvents] = await Promise.all([
@@ -152,12 +153,16 @@ export default async function Home() {
               Co u nás <span className="font-medium">najdeš</span>
             </h2>
           </div>
-          <ServiceGrid services={services} />
+          {services === null ? (
+            <SectionError message="Aktivity se momentálně nepodařilo načíst. Zkuste obnovit stránku." />
+          ) : (
+            <ServiceGrid services={services} />
+          )}
         </div>
       </section>
 
       {/* Upcoming Events Section */}
-      {upcomingEvents.length > 0 && (
+      {(upcomingEvents === null || upcomingEvents.length > 0) && (
         <section className="py-section-padding-mobile md:py-section-padding-desktop bg-white" id="akce">
           <div className="max-w-container-max mx-auto px-gutter">
             <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
@@ -176,11 +181,15 @@ export default async function Home() {
                 Zobrazit vše →
               </Link>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {upcomingEvents.map((event) => (
-                <EventCard key={event._id} event={event} compact />
-              ))}
-            </div>
+            {upcomingEvents === null ? (
+              <SectionError message="Akce se momentálně nepodařilo načíst. Zkuste obnovit stránku." />
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {upcomingEvents.map((event) => (
+                  <EventCard key={event._id} event={event} compact />
+                ))}
+              </div>
+            )}
           </div>
         </section>
       )}

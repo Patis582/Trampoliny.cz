@@ -95,7 +95,7 @@ const eventFields = `
   registration { url, isOpen }
 `
 
-export async function getServices(): Promise<Service[]> {
+export async function getServices(): Promise<Service[] | null> {
   try {
     return await client.fetch(
       `*[_type == "service"] | order(order asc) { ${serviceFields} }`,
@@ -103,7 +103,7 @@ export async function getServices(): Promise<Service[]> {
       { next: { tags: ['service'] } }
     )
   } catch {
-    return []
+    return null
   }
 }
 
@@ -132,7 +132,7 @@ export async function getAllServiceSlugs(): Promise<string[]> {
   }
 }
 
-export async function getServicesByBrand(brand: 'liberec' | 'patrman'): Promise<Service[]> {
+export async function getServicesByBrand(brand: 'liberec' | 'patrman'): Promise<Service[] | null> {
   try {
     return await client.fetch(
       `*[_type == "service" && brand == $brand] | order(order asc) { ${serviceFields} }`,
@@ -140,7 +140,7 @@ export async function getServicesByBrand(brand: 'liberec' | 'patrman'): Promise<
       { next: { tags: ['service'] } }
     )
   } catch {
-    return []
+    return null
   }
 }
 
@@ -157,7 +157,7 @@ export async function getAnnouncements(): Promise<Announcement[]> {
   }
 }
 
-export async function getUpcomingEvents(limit?: number): Promise<Event[]> {
+export async function getUpcomingEvents(limit?: number): Promise<Event[] | null> {
   try {
     const today = new Date().toISOString()
     const slice = limit ? `[0...${limit}]` : ''
@@ -167,7 +167,7 @@ export async function getUpcomingEvents(limit?: number): Promise<Event[]> {
       { next: { tags: ['event'] } }
     )
   } catch {
-    return []
+    return null
   }
 }
 
