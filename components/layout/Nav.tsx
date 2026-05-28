@@ -15,7 +15,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <nav className="bg-white/95 backdrop-blur-sm border-b border-surface-container-high transition-all duration-300">
+    <nav className="bg-white border-b border-surface-container-high transition-all duration-300">
       <div className="max-w-container-max mx-auto px-gutter py-6 flex justify-between items-center">
         <Link href="/" onClick={() => setOpen(false)} className="font-headline-sm text-headline-sm font-bold text-border-dark hover:text-brand-orange transition-colors duration-200 tracking-tight">
           Trampolíny
@@ -32,7 +32,7 @@ export function Nav() {
             Kontakt
           </a>
           <button
-            className="md:hidden p-2 text-border-dark"
+            className="md:hidden p-3 text-border-dark touch-manipulation"
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Zavřít menu" : "Otevřít menu"}
           >

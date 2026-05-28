@@ -79,7 +79,7 @@ export function AnnouncementBar({ announcements }: { announcements: Announcement
           )}
           <button
             onClick={() => setDismissed(true)}
-            className="shrink-0 text-white/50 hover:text-white transition-colors p-1 -mr-1"
+            className="shrink-0 text-white/50 hover:text-white transition-colors p-3 -mr-2 touch-manipulation"
             aria-label="Zavřít oznámení"
           >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>

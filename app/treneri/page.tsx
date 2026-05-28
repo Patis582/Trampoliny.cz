@@ -9,7 +9,7 @@ export default async function TreneriPage() {
 
   return (
     <div className="font-body-md antialiased bg-white min-h-screen">
-      <div className="fixed top-0 left-0 w-full z-50 [transform:translateZ(0)]">
+      <div className="fixed top-0 left-0 w-full z-50">
         <Nav />
       </div>
       <main className="pt-40 pb-section-padding-mobile md:pb-section-padding-desktop">
