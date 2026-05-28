@@ -32,7 +32,7 @@ export default async function TrampolinyPatrmanPage() {
             </span>
           </div>
           <h1 className="font-headline-lg-mobile md:font-headline-md text-headline-lg-mobile md:text-headline-md text-white uppercase tracking-tight leading-none mb-6">
-            Zábava<br />bez hranic
+            Služby
           </h1>
           <p className="font-body-lg text-body-lg text-white/75 font-light max-w-xl leading-relaxed">
             Kroužky, tábory, oslavy i volné skákání. Pro každého od 1 roku.

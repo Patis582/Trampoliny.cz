@@ -26,7 +26,7 @@ export default async function TrampolinyLiberecPage() {
             </span>
           </div>
           <h1 className="font-headline-lg-mobile md:font-headline-md text-headline-lg-mobile md:text-headline-md text-white uppercase tracking-tight leading-none mb-6">
-            Závodní oddíl<br />& sport
+            Závodní oddíl<br />& Kroužky
           </h1>
           <p className="font-body-lg text-body-lg text-white/75 font-light max-w-xl leading-relaxed">
             Výkonnostní trénink, závody a přípravky pro děti i dospělé v TC Orionka v Liberci.

@@ -4,9 +4,9 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const slides = [
-  { src: "/hero-patrman-33.jpg", alt: "Trampolíny Patrman" },
-  { src: "/hero-patrman-25.jpg", alt: "Trampolíny Patrman" },
-  { src: "/hero-patrman-14.jpg", alt: "Trampolíny Patrman" },
+  { src: "/hero-patrman-31.jpg", alt: "Trampolíny Patrman" },
+  { src: "/hero-patrman-7.jpg", alt: "Trampolíny Patrman" },
+  { src: "/hero-patrman-18.jpg", alt: "Trampolíny Patrman" },
   { src: "/hero-patrman-10.jpg", alt: "Trampolíny Patrman" },
 ];
 
@@ -32,9 +32,8 @@ export function PatrmanHeroSlideshow() {
       {slides.map((slide, i) => (
         <div
           key={slide.src}
-          className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${
-            i === current ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 transition-opacity duration-[1500ms] ease-in-out ${i === current ? "opacity-100" : "opacity-0"
+            }`}
         >
           <div key={keys[i]} className={`absolute inset-0 ${kenburnsClass[i]}`}>
             <Image
