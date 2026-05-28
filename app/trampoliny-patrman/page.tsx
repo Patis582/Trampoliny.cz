@@ -5,18 +5,15 @@ import { ServiceGrid } from "@/components/services/ServiceGrid";
 import { PatrmanHeroSlideshow } from "@/components/layout/PatrmanHeroSlideshow";
 import { getServicesByBrand } from "@/sanity/lib/queries";
 
-const galleryRow1 = [
-  { src: "/hero-patrman-6.jpg",  alt: "Kroužky pro děti",        offset: "" },
-  { src: "/hero-patrman-14.jpg", alt: "Trenér s dítětem",        offset: "md:translate-y-6" },
-  { src: "/hero-patrman-22.jpg", alt: "Skupina batolat",         offset: "" },
-  { src: "/hero-patrman-28.jpg", alt: "Backflip",                offset: "md:translate-y-6" },
-];
-
-const galleryRow2 = [
-  { src: "/hero-patrman-30.jpg", alt: "Akrobacie s trenérem",   offset: "md:translate-y-6" },
-  { src: "/hero-patrman-4.jpg",  alt: "Děti s míči",             offset: "" },
-  { src: "/hero-patrman-9.jpg",  alt: "Děti na trampolíně",     offset: "md:translate-y-6" },
-  { src: "/hero-patrman-19.jpg", alt: "Starší děti na koberci", offset: "" },
+const galleryPhotos = [
+  { src: "/hero-patrman-6.jpg",  alt: "Kroužky pro děti",        offset: "md:-translate-y-5" },
+  { src: "/hero-patrman-14.jpg", alt: "Trenér s dítětem",        offset: "md:translate-y-5" },
+  { src: "/hero-patrman-22.jpg", alt: "Skupina batolat",         offset: "md:-translate-y-5" },
+  { src: "/hero-patrman-28.jpg", alt: "Backflip",                offset: "md:translate-y-5" },
+  { src: "/hero-patrman-30.jpg", alt: "Akrobacie s trenérem",   offset: "md:-translate-y-5" },
+  { src: "/hero-patrman-4.jpg",  alt: "Děti s míči",             offset: "md:translate-y-5" },
+  { src: "/hero-patrman-9.jpg",  alt: "Děti na trampolíně",     offset: "md:-translate-y-5" },
+  { src: "/hero-patrman-19.jpg", alt: "Starší děti na koberci", offset: "md:translate-y-5" },
 ];
 
 const contacts = [
@@ -104,18 +101,8 @@ export default async function TrampolinyPatrmanPage() {
             </h2>
           </div>
 
-          {/* Řada 1 */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3">
-            {galleryRow1.map(({ src, alt, offset }) => (
-              <div key={src} className={`relative aspect-[4/3] overflow-hidden ${offset}`}>
-                <Image src={src} alt={alt} fill className="object-cover" sizes="(max-width:768px) 50vw, 25vw" />
-              </div>
-            ))}
-          </div>
-
-          {/* Řada 2 */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 pb-16">
-            {galleryRow2.map(({ src, alt, offset }) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 py-6">
+            {galleryPhotos.map(({ src, alt, offset }) => (
               <div key={src} className={`relative aspect-[4/3] overflow-hidden ${offset}`}>
                 <Image src={src} alt={alt} fill className="object-cover" sizes="(max-width:768px) 50vw, 25vw" />
               </div>
