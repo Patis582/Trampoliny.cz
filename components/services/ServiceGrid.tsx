@@ -72,7 +72,7 @@ function ServiceCard({ num, service }: { num: string; service: Service }) {
             </span>
           )}
         </div>
-        <h3 className={`font-headline-sm text-headline-sm text-border-dark uppercase mb-4 transition-colors ${cls.title}`}>
+        <h3 className={`font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase mb-4 transition-colors ${cls.title}`}>
           {title}
         </h3>
         <p className="font-body-md text-on-surface-variant font-light mb-8 flex-1">{desc}</p>

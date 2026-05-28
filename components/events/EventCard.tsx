@@ -61,7 +61,7 @@ export function EventCard({ event, compact = false }: Props) {
         <p className="font-label-bold text-[10px] uppercase tracking-widest text-outline mb-2">
           {formatDate(event.date, event.endDate)}
         </p>
-        <h3 className="font-headline-sm text-headline-sm text-border-dark uppercase mb-3 leading-tight">
+        <h3 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase mb-3 leading-tight">
           <Link href={`/akce/${event.slug}`} className="after:absolute after:inset-0">
             {event.title}
           </Link>

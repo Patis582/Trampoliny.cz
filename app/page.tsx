@@ -39,7 +39,7 @@ export default async function Home() {
               <div className="w-6 h-px bg-brand-orange" />
               <span className="text-[10px] font-label-bold uppercase tracking-[0.4em] text-white/45">TC Orionka · Liberec</span>
             </div>
-            <h1 className="font-headline-lg-mobile md:font-headline-lg font-bold uppercase tracking-tight leading-none mb-10">
+            <h1 className="font-headline-lg-mobile md:font-headline-lg font-bold uppercase tracking-tight leading-none mb-6 md:mb-10">
               <span className="text-white block text-[36px] md:text-[64px]">Posouvej</span>
               <span className="text-white block text-[36px] md:text-[64px]">limity</span>
               <span className="text-brand-orange block text-[36px] md:text-[64px] mt-2">na maximum</span>
@@ -106,7 +106,7 @@ export default async function Home() {
                   className="object-contain transition-all duration-500"
                 />
               </div>
-              <h3 className="font-headline-sm text-headline-sm text-brand-orange uppercase mb-6 tracking-wide">
+              <h3 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-brand-orange uppercase mb-6 tracking-wide">
                 Trampolíny Liberec
               </h3>
               <p className="font-body-md text-body-md text-on-surface-variant max-w-md font-light leading-relaxed">
@@ -126,7 +126,7 @@ export default async function Home() {
                   className="object-contain transition-all duration-500"
                 />
               </div>
-              <h3 className="font-headline-sm text-headline-sm text-on-tertiary-container uppercase mb-6 tracking-wide">
+              <h3 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-on-tertiary-container uppercase mb-6 tracking-wide">
                 Trampolíny Patrman
               </h3>
               <p className="font-body-md text-body-md text-on-surface-variant max-w-md font-light leading-relaxed">
