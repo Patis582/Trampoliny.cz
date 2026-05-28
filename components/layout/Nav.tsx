@@ -8,7 +8,7 @@ const navLinks: [string, string][] = [
   ["Služby", "/trampoliny-patrman"],
   ["Akce", "/akce"],
   ["Trenéři", "/treneri"],
-  ["Ceník", "/#cenik"],
+  ["Ceník", "/cenik"],
 ];
 
 export function Nav() {
