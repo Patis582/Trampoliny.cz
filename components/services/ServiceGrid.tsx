@@ -58,9 +58,9 @@ function ServiceCard({ num, service }: { num: string; service: Service }) {
           />
         )}
       </div>
-      <div className="p-8 flex flex-col flex-1">
+      <div className="p-5 md:p-8 flex flex-col flex-1">
         <div className="flex items-start justify-between mb-4">
-          <span className={`block font-headline-lg text-4xl transition-colors ${cls.num}`}>{num}</span>
+          <span className={`block font-headline-lg text-3xl md:text-4xl transition-colors ${cls.num}`}>{num}</span>
           {brand === "liberec" && (
             <span className="font-label-bold text-[10px] uppercase tracking-widest bg-brand-orange text-white px-2 py-1 shrink-0">
               Trampolíny Liberec
