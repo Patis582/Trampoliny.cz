@@ -6,7 +6,7 @@ import { useState } from "react";
 const navLinks: [string, string][] = [
   ["Oddíl", "/trampoliny-liberec"],
   ["Služby", "/trampoliny-patrman"],
-  ["Rozvrh", "/#rozvrh"],
+  ["Akce", "/akce"],
   ["Ceník", "/#cenik"],
 ];
 

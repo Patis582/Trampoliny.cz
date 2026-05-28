@@ -5,14 +5,16 @@ import { urlFor } from '@/sanity/lib/image'
 const TYPE_LABELS: Record<EventType, string> = {
   'závod': 'Závod',
   'tábor': 'Tábor',
-  'open-gym': 'Open Gym',
+  'kemp': 'Kemp',
+  'workshop': 'Workshop',
   'jiné': 'Jiné',
 }
 
 const TYPE_COLORS: Record<EventType, string> = {
   'závod': 'bg-brand-orange text-white',
   'tábor': 'bg-brand-green text-border-dark',
-  'open-gym': 'bg-border-dark text-white',
+  'kemp': 'bg-brand-navy-deep text-white',
+  'workshop': 'bg-border-dark text-white',
   'jiné': 'bg-surface-container text-outline',
 }
 
@@ -47,7 +49,7 @@ export function EventCard({ event, compact = false }: Props) {
       <div className="p-6 flex flex-col flex-1">
         <div className="flex items-start justify-between gap-3 mb-4">
           <span className={`font-label-bold text-[10px] uppercase tracking-widest px-2 py-1 shrink-0 ${TYPE_COLORS[event.type]}`}>
-            {TYPE_LABELS[event.type]}
+            {event.type === 'jiné' && event.customType ? event.customType : TYPE_LABELS[event.type]}
           </span>
           {event.registration?.isOpen && (
             <span className="font-label-bold text-[10px] uppercase tracking-widest px-2 py-1 bg-brand-green/20 text-on-tertiary-container border border-brand-green/40 shrink-0">

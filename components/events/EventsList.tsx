@@ -10,7 +10,8 @@ const FILTERS: { value: Filter; label: string }[] = [
   { value: 'vše', label: 'Vše' },
   { value: 'závod', label: 'Závody' },
   { value: 'tábor', label: 'Tábory' },
-  { value: 'open-gym', label: 'Open Gym' },
+  { value: 'kemp', label: 'Kempy' },
+  { value: 'workshop', label: 'Workshopy' },
   { value: 'jiné', label: 'Jiné' },
 ]
 

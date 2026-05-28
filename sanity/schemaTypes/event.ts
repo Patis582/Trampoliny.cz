@@ -30,12 +30,20 @@ export const eventType = defineType({
         list: [
           { title: 'Závod', value: 'závod' },
           { title: 'Tábor', value: 'tábor' },
-          { title: 'Open Gym', value: 'open-gym' },
+          { title: 'Kemp', value: 'kemp' },
+          { title: 'Workshop', value: 'workshop' },
           { title: 'Jiné', value: 'jiné' },
         ],
         layout: 'radio',
       },
       validation: (r) => r.required(),
+    }),
+    defineField({
+      name: 'customType',
+      title: 'Název vlastního typu',
+      type: 'string',
+      description: 'Napiš vlastní typ akce (zobrazí se místo štítku)',
+      hidden: ({ document }) => document?.type !== 'jiné',
     }),
     defineField({
       name: 'description',

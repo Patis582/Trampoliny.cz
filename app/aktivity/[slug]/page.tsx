@@ -102,49 +102,36 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
 
             {/* Body (portable text) + optional image */}
             {(service.bodyTitle || (service.body && service.body.length > 0)) && (
-              <div className={`gap-12 ${service.image?.url ? "grid grid-cols-1 md:grid-cols-2 items-start" : ""}`}>
-                <div className="space-y-8">
-                  {service.bodyTitle && (
-                    <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">
-                      {service.bodyTitle}
-                    </h2>
-                  )}
-                  {service.body && service.body.length > 0 && (
-                    <div className="space-y-5">
-                      <PortableText
-                        value={service.body}
-                        components={{
-                          block: {
-                            normal: ({ children }) => (
-                              <p className="font-body-md text-body-md text-on-surface-variant font-light leading-relaxed">{children}</p>
-                            ),
-                            h2: ({ children }) => (
-                              <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">{children}</h2>
-                            ),
-                            h3: ({ children }) => (
-                              <h3 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight text-base">{children}</h3>
-                            ),
-                            blockquote: ({ children }) => (
-                              <p className="font-body-lg text-body-lg text-border-dark font-medium leading-relaxed border-l-4 border-brand-orange pl-6">{children}</p>
-                            ),
-                          },
-                          marks: {
-                            strong: ({ children }: { children: React.ReactNode }) => <strong className="font-semibold text-border-dark">{children}</strong>,
-                            em: ({ children }: { children: React.ReactNode }) => <em>{children}</em>,
-                          },
-                        }}
-                      />
-                    </div>
-                  )}
-                </div>
-                {service.image?.url && (
-                  <div className="relative aspect-[3/4] overflow-hidden">
-                    <Image
-                      src={service.image.url}
-                      alt={service.title}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 100vw, 40vw"
+              <div className="space-y-8">
+                {service.bodyTitle && (
+                  <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">
+                    {service.bodyTitle}
+                  </h2>
+                )}
+                {service.body && service.body.length > 0 && (
+                  <div className="space-y-5">
+                    <PortableText
+                      value={service.body}
+                      components={{
+                        block: {
+                          normal: ({ children }) => (
+                            <p className="font-body-md text-body-md text-on-surface-variant font-light leading-relaxed">{children}</p>
+                          ),
+                          h2: ({ children }) => (
+                            <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">{children}</h2>
+                          ),
+                          h3: ({ children }) => (
+                            <h3 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight text-base">{children}</h3>
+                          ),
+                          blockquote: ({ children }) => (
+                            <p className="font-body-lg text-body-lg text-border-dark font-medium leading-relaxed border-l-4 border-brand-orange pl-6">{children}</p>
+                          ),
+                        },
+                        marks: {
+                          strong: ({ children }: { children: React.ReactNode }) => <strong className="font-semibold text-border-dark">{children}</strong>,
+                          em: ({ children }: { children: React.ReactNode }) => <em>{children}</em>,
+                        },
+                      }}
                     />
                   </div>
                 )}

@@ -37,7 +37,7 @@ export type Announcement = {
   expiresAt?: string
 }
 
-export type EventType = 'závod' | 'tábor' | 'open-gym' | 'jiné'
+export type EventType = 'závod' | 'tábor' | 'kemp' | 'workshop' | 'jiné'
 
 export type Event = {
   _id: string
@@ -45,6 +45,7 @@ export type Event = {
   date: string
   endDate?: string
   type: EventType
+  customType?: string
   description?: import('@portabletext/types').PortableTextBlock[]
   image?: { asset: { _ref: string; _type: 'reference' }; hotspot?: { x: number; y: number } }
   links?: { label: string; url: string }[]
@@ -129,7 +130,7 @@ export async function getAnnouncements(): Promise<Announcement[]> {
 }
 
 const eventFields = `
-  _id, title, date, endDate, type, description,
+  _id, title, date, endDate, type, customType, description,
   image { asset, hotspot },
   links[] { label, url },
   registration { url, isOpen }
