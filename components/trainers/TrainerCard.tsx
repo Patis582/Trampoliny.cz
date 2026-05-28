@@ -36,7 +36,7 @@ export function TrainerCard({ trainer }: { trainer: Trainer }) {
       </div>
 
       {/* Name */}
-      <p className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight mb-3">
+      <p className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight mb-3">
         {name}
       </p>
 

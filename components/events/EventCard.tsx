@@ -35,7 +35,7 @@ interface Props {
 
 export function EventCard({ event, compact = false }: Props) {
   return (
-    <Link href={`/akce/${event.slug}`} className="group flex flex-col bg-white border border-surface-container-high hover:shadow-md transition-shadow">
+    <div className="group relative flex flex-col bg-white border border-surface-container-high hover:shadow-md transition-shadow">
       {event.image && !compact && (
         <div className="aspect-video overflow-hidden relative">
           <Image
@@ -47,7 +47,7 @@ export function EventCard({ event, compact = false }: Props) {
           />
         </div>
       )}
-      <div className="p-6 flex flex-col flex-1">
+      <div className="p-4 md:p-6 flex flex-col flex-1">
         <div className="flex items-start justify-between gap-3 mb-4">
           <span className={`font-label-bold text-[10px] uppercase tracking-widest px-2 py-1 shrink-0 ${TYPE_COLORS[event.type]}`}>
             {event.type === 'jiné' && event.customType ? event.customType : TYPE_LABELS[event.type]}
@@ -62,10 +62,12 @@ export function EventCard({ event, compact = false }: Props) {
           {formatDate(event.date, event.endDate)}
         </p>
         <h3 className="font-headline-sm text-headline-sm text-border-dark uppercase mb-3 leading-tight">
-          {event.title}
+          <Link href={`/akce/${event.slug}`} className="after:absolute after:inset-0">
+            {event.title}
+          </Link>
         </h3>
         {!compact && event.links && event.links.length > 0 && (
-          <div className="mt-auto pt-4 flex flex-wrap gap-3">
+          <div className="relative z-10 mt-auto pt-4 flex flex-wrap gap-3">
             {event.links.map((link) => (
               <a
                 key={link.url}
@@ -84,12 +86,12 @@ export function EventCard({ event, compact = false }: Props) {
             href={event.registration.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-4 inline-flex justify-center items-center bg-brand-orange text-white font-label-bold text-[11px] uppercase tracking-widest px-6 py-3 hover:bg-border-dark transition-colors"
+            className="relative z-10 mt-4 inline-flex justify-center items-center bg-brand-orange text-white font-label-bold text-[11px] uppercase tracking-widest px-6 py-3 hover:bg-border-dark transition-colors"
           >
             Přihlásit se
           </a>
         )}
       </div>
-    </Link>
+    </div>
   )
 }
