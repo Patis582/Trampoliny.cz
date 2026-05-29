@@ -4,14 +4,14 @@ import { PricingTable } from './PricingTable'
 export function PricingSection({ section, alt }: { section: PricingSectionType; alt?: boolean }) {
   return (
     <section className={alt ? 'bg-surface-container-lowest' : 'bg-white'}>
-      <div className="max-w-container-max mx-auto px-gutter py-section-padding-mobile md:py-section-padding-desktop">
-        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-6 mb-12">
+      <div className="max-w-container-max mx-auto px-gutter py-10 md:py-16">
+        <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6 md:mb-8">
           <div>
-            <h2 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight mb-3">
+            <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight mb-2">
               {section.title}
             </h2>
             {section.validFrom && (
-              <span className="inline-block font-label-bold text-[10px] uppercase tracking-widest text-white bg-border-dark px-3 py-1">
+              <span className="inline-block font-label-bold text-[10px] uppercase tracking-widest text-white bg-border-dark px-2.5 py-0.5">
                 {section.validFrom}
               </span>
             )}
@@ -21,7 +21,7 @@ export function PricingSection({ section, alt }: { section: PricingSectionType; 
               href={section.pdfUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 shrink-0 border border-border-dark text-border-dark font-label-bold text-[11px] uppercase tracking-widest px-5 py-3 hover:bg-border-dark hover:text-white transition-colors"
+              className="inline-flex items-center gap-2 shrink-0 border border-border-dark text-border-dark font-label-bold text-[10px] uppercase tracking-widest px-4 py-2 hover:bg-border-dark hover:text-white transition-colors"
             >
               <svg
                 className="w-4 h-4"
@@ -41,14 +41,14 @@ export function PricingSection({ section, alt }: { section: PricingSectionType; 
           )}
         </div>
 
-        <div className="space-y-10">
+        <div className="space-y-6">
           {section.groups.map((group) => (
             <PricingTable key={group._key} group={group} />
           ))}
         </div>
 
         {section.note && (
-          <p className="mt-10 font-body-md text-body-md text-outline font-light italic border-t border-surface-container-high pt-6">
+          <p className="mt-6 font-body-md text-body-md text-outline font-light italic border-t border-surface-container-high pt-4">
             {section.note}
           </p>
         )}

@@ -4,9 +4,9 @@ export function PricingTable({ group }: { group: PricingGroup }) {
   const { title, subtitle, columnHeaders, rows, infoBlock } = group
 
   return (
-    <div className="mb-10 last:mb-0">
-      <div className="mb-4">
-        <h3 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">
+    <div className="mb-6 last:mb-0">
+      <div className="mb-3">
+        <h3 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight">
           {title}
         </h3>
         {subtitle && (
@@ -42,7 +42,7 @@ export function PricingTable({ group }: { group: PricingGroup }) {
                   key={row._key}
                   className={`border-b border-surface-container-high last:border-0 ${row.highlight ? 'bg-brand-orange/5' : ''}`}
                 >
-                  <td className="py-3 pr-8">
+                  <td className="py-2 pr-8">
                     <span className="font-body-md text-body-md text-border-dark font-medium">
                       {row.label}
                     </span>
@@ -55,7 +55,7 @@ export function PricingTable({ group }: { group: PricingGroup }) {
                   {row.values.map((v, i) => (
                     <td
                       key={i}
-                      className="py-3 px-4 text-right font-body-md text-body-md text-border-dark font-medium whitespace-nowrap"
+                      className="py-2 px-4 text-right font-body-md text-body-md text-border-dark font-medium whitespace-nowrap"
                     >
                       {v}
                     </td>
