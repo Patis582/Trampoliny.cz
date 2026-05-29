@@ -1,9 +1,9 @@
 import { PricingSection as PricingSectionType } from '@/sanity/lib/queries'
 import { PricingTable } from './PricingTable'
 
-export function PricingSection({ section, alt }: { section: PricingSectionType; alt?: boolean }) {
+export function PricingSection({ section, alt, first }: { section: PricingSectionType; alt?: boolean; first?: boolean }) {
   return (
-    <section className={alt ? 'bg-surface-container-lowest' : 'bg-white'}>
+    <section id={section.slug} className={`scroll-mt-20 ${first ? '' : 'border-t-2 border-surface-container-high'} ${alt ? 'bg-surface-container-lowest' : 'bg-white'}`}>
       <div className="max-w-container-max mx-auto px-gutter py-10 md:py-16">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6 md:mb-8">
           <div>

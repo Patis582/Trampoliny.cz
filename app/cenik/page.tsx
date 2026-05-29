@@ -18,9 +18,27 @@ export default async function CenikPage() {
             <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-3">
               Vstupné & tréninky
             </span>
-            <h1 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight">
+            <h1 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight mb-8 md:mb-10">
               Ceník
             </h1>
+            {Array.isArray(sections) && sections.length > 0 && (
+              <nav className="flex flex-wrap gap-x-8 gap-y-3">
+                {sections.map((section, i) => (
+                  <a
+                    key={section._id}
+                    href={`#${section.slug}`}
+                    className="flex items-baseline gap-2 group"
+                  >
+                    <span className="font-label-bold text-[10px] text-outline tabular-nums">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span className="font-label-bold text-[11px] uppercase tracking-widest text-border-dark group-hover:text-brand-orange transition-colors">
+                      {section.title}
+                    </span>
+                  </a>
+                ))}
+              </nav>
+            )}
           </div>
         </div>
         {sections === null ? (
@@ -33,7 +51,7 @@ export default async function CenikPage() {
           </div>
         ) : (
           sections.map((section, i) => (
-            <PricingSection key={section._id} section={section} alt={i % 2 === 1} />
+            <PricingSection key={section._id} section={section} alt={i % 2 === 1} first={i === 0} />
           ))
         )}
       </main>
