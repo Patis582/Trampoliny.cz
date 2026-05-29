@@ -330,9 +330,11 @@ export async function getGalleryAlbums(): Promise<GalleryAlbumCard[] | null> {
         title,
         "slug": slug.current,
         date,
-        coverImage,
+        "coverImage": coverImage { asset, "alt": alt },
         "photoCount": count(photos)
-      }`
+      }`,
+      {},
+      { next: { tags: ['gallery'] } }
     )
   } catch {
     return null
@@ -356,7 +358,8 @@ export async function getGalleryAlbumBySlug(slug: string): Promise<GalleryAlbumD
         },
         "event": event->{ "slug": slug.current }
       }`,
-      { slug }
+      { slug },
+      { next: { tags: ['gallery'] } }
     )
   } catch {
     return null
@@ -366,7 +369,9 @@ export async function getGalleryAlbumBySlug(slug: string): Promise<GalleryAlbumD
 export async function getAllGalleryAlbumSlugs(): Promise<string[]> {
   try {
     const results: { slug: string }[] = await client.fetch(
-      `*[_type == "galleryAlbum"]{ "slug": slug.current }`
+      `*[_type == "galleryAlbum" && defined(slug.current)]{ "slug": slug.current }`,
+      {},
+      { next: { tags: ['gallery'] } }
     )
     return results.map((r) => r.slug)
   } catch {
