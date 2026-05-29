@@ -293,3 +293,83 @@ export async function getPricingSections(): Promise<PricingSection[] | null> {
     return null
   }
 }
+
+// ── GALLERY ──────────────────────────────────────────────────────────────────
+
+export type GalleryAlbumCard = {
+  _id: string
+  title: string
+  slug: string
+  date: string
+  coverImage: { asset: { _ref: string }; alt?: string }
+  photoCount: number
+}
+
+export type GalleryPhoto = {
+  _key: string
+  url: string
+  width: number
+  height: number
+  alt?: string
+}
+
+export type GalleryAlbumDetail = {
+  _id: string
+  title: string
+  slug: string
+  date: string
+  photos: GalleryPhoto[]
+  event?: { slug: string }
+}
+
+export async function getGalleryAlbums(): Promise<GalleryAlbumCard[] | null> {
+  try {
+    return await client.fetch(
+      `*[_type == "galleryAlbum"] | order(date desc) {
+        _id,
+        title,
+        "slug": slug.current,
+        date,
+        coverImage,
+        "photoCount": count(photos)
+      }`
+    )
+  } catch {
+    return null
+  }
+}
+
+export async function getGalleryAlbumBySlug(slug: string): Promise<GalleryAlbumDetail | null> {
+  try {
+    return await client.fetch(
+      `*[_type == "galleryAlbum" && slug.current == $slug][0] {
+        _id,
+        title,
+        "slug": slug.current,
+        date,
+        "photos": photos[] {
+          "_key": _key,
+          "url": asset->url,
+          "width": asset->metadata.dimensions.width,
+          "height": asset->metadata.dimensions.height,
+          alt
+        },
+        "event": event->{ "slug": slug.current }
+      }`,
+      { slug }
+    )
+  } catch {
+    return null
+  }
+}
+
+export async function getAllGalleryAlbumSlugs(): Promise<string[]> {
+  try {
+    const results: { slug: string }[] = await client.fetch(
+      `*[_type == "galleryAlbum"]{ "slug": slug.current }`
+    )
+    return results.map((r) => r.slug)
+  } catch {
+    return []
+  }
+}
