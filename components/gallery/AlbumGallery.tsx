@@ -24,12 +24,12 @@ export function AlbumGallery({ photos }: Props) {
 
   return (
     <>
-      <div className="columns-1 sm:columns-2 lg:columns-3 gap-3">
+      <div className="columns-1 sm:columns-2 lg:columns-3 xl:columns-5 gap-2">
         {photos.map((photo, i) => (
           <button
             key={photo._key}
             onClick={() => setIndex(i)}
-            className="break-inside-avoid mb-3 block w-full cursor-zoom-in overflow-hidden group"
+            className="break-inside-avoid mb-2 block w-full cursor-zoom-in overflow-hidden group"
           >
             <Image
               src={photo.url}

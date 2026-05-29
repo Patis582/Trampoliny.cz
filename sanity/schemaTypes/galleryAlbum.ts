@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity'
+import { MultiImageUpload } from '../components/MultiImageUpload'
 
 export const galleryAlbumType = defineType({
   name: 'galleryAlbum',
@@ -36,7 +37,9 @@ export const galleryAlbumType = defineType({
       title: 'Fotky',
       type: 'array',
       of: [{ type: 'image', options: { hotspot: false } }],
-      description: 'Vyber více fotek najednou pro hromadné nahrání.',
+      options: { layout: 'grid' },
+      components: { input: MultiImageUpload },
+      description: 'Klikni na tlačítko výše pro výběr více fotek najednou.',
       validation: (r) => r.required().min(1),
     }),
     defineField({

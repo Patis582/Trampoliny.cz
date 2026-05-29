@@ -38,13 +38,13 @@ export default async function GaleriePage() {
           ) : albums.length === 0 ? (
             <p className="font-body-md text-on-surface-variant font-light">Alba brzy přibydou.</p>
           ) : (
-            <div className="space-y-16">
+            <div className="space-y-12">
               {years.map((year) => (
                 <div key={year}>
-                  <h2 className="font-label-bold text-[11px] uppercase tracking-widest text-outline mb-8 pb-3 border-b border-surface-container-high">
+                  <h2 className="font-label-bold text-[10px] uppercase tracking-widest text-outline mb-5">
                     {year}
                   </h2>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                     {byYear[year].map((album) => (
                       <AlbumCard key={album._id} album={album} />
                     ))}
