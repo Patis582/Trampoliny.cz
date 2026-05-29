@@ -1,0 +1,87 @@
+<h2>Navigace na mobilu — jak moc zmenšit?</h2>
+<p class="subtitle">Aktuálně má nav 24px padding nahoře i dole → celkem ~72px výška. Tady jsou 3 varianty.</p>
+
+<div class="cards">
+
+  <div class="card" data-choice="current" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f8f8f8; padding:0;">
+      <!-- Current nav mockup -->
+      <div style="background:white; border-bottom:1px solid #e5e5e5; padding:24px 20px; display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-family:sans-serif; font-weight:800; font-size:18px; letter-spacing:-0.5px; color:#1a1a1a;">Trampolíny</span>
+        <div style="background:#1a1a1a; border-radius:2px; padding:10px 12px; cursor:pointer;">
+          <div style="width:22px; height:2px; background:white; margin:4px 0;"></div>
+          <div style="width:22px; height:2px; background:white; margin:4px 0;"></div>
+          <div style="width:22px; height:2px; background:white; margin:4px 0;"></div>
+        </div>
+      </div>
+      <div style="background:#1a1a2e; height:120px; position:relative; overflow:hidden;">
+        <div style="position:absolute; inset:0; background:linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3)); display:flex; align-items:center; padding: 0 20px;">
+          <div>
+            <div style="font-size:10px; color:rgba(255,255,255,0.45); font-family:sans-serif; text-transform:uppercase; letter-spacing:3px; margin-bottom:8px;">TC Orionka · Liberec</div>
+            <div style="font-size:36px; font-weight:800; color:white; font-family:sans-serif; line-height:1; text-transform:uppercase;">Posouvej</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:6px 20px; background:#f0f0f0; font-size:10px; font-family:sans-serif; color:#666;">Výška navu: ~72px · hero text: 48px</div>
+    </div>
+    <div class="card-body">
+      <h3>A — Současný stav</h3>
+      <p>py-6 padding, logo 24px. Hodně prostoru, ale nav zabírá velkou část obrazovky.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="compact" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f8f8f8; padding:0;">
+      <!-- Compact nav mockup -->
+      <div style="background:white; border-bottom:1px solid #e5e5e5; padding:14px 20px; display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-family:sans-serif; font-weight:800; font-size:16px; letter-spacing:-0.5px; color:#1a1a1a;">Trampolíny</span>
+        <div style="background:#1a1a1a; border-radius:2px; padding:8px 10px; cursor:pointer;">
+          <div style="width:20px; height:2px; background:white; margin:3px 0;"></div>
+          <div style="width:20px; height:2px; background:white; margin:3px 0;"></div>
+          <div style="width:20px; height:2px; background:white; margin:3px 0;"></div>
+        </div>
+      </div>
+      <div style="background:#1a1a2e; height:120px; position:relative; overflow:hidden;">
+        <div style="position:absolute; inset:0; background:linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3)); display:flex; align-items:center; padding: 0 20px;">
+          <div>
+            <div style="font-size:9px; color:rgba(255,255,255,0.45); font-family:sans-serif; text-transform:uppercase; letter-spacing:3px; margin-bottom:8px;">TC Orionka · Liberec</div>
+            <div style="font-size:36px; font-weight:800; color:white; font-family:sans-serif; line-height:1; text-transform:uppercase;">Posouvej</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:6px 20px; background:#e8f4e8; font-size:10px; font-family:sans-serif; color:#444;">Výška navu: ~52px · logo 16px · hamburger menší</div>
+    </div>
+    <div class="card-body">
+      <h3>B — Kompaktní</h3>
+      <p>py-3.5 padding, logo 16px. Standardní mobilní výška, víc prostoru pro obsah.</p>
+    </div>
+  </div>
+
+  <div class="card" data-choice="minimal" onclick="toggleSelect(this)">
+    <div class="card-image" style="background:#f8f8f8; padding:0;">
+      <!-- Minimal nav mockup -->
+      <div style="background:white; border-bottom:1px solid #e5e5e5; padding:10px 16px; display:flex; justify-content:space-between; align-items:center;">
+        <span style="font-family:sans-serif; font-weight:800; font-size:14px; letter-spacing:-0.5px; color:#1a1a1a;">Trampolíny</span>
+        <div style="cursor:pointer; padding:4px;">
+          <div style="width:20px; height:1.5px; background:#1a1a1a; margin:4px 0;"></div>
+          <div style="width:20px; height:1.5px; background:#1a1a1a; margin:4px 0;"></div>
+          <div style="width:20px; height:1.5px; background:#1a1a1a; margin:4px 0;"></div>
+        </div>
+      </div>
+      <div style="background:#1a1a2e; height:120px; position:relative; overflow:hidden;">
+        <div style="position:absolute; inset:0; background:linear-gradient(to right, rgba(0,0,0,0.8), rgba(0,0,0,0.3)); display:flex; align-items:center; padding: 0 16px;">
+          <div>
+            <div style="font-size:9px; color:rgba(255,255,255,0.45); font-family:sans-serif; text-transform:uppercase; letter-spacing:3px; margin-bottom:8px;">TC Orionka · Liberec</div>
+            <div style="font-size:36px; font-weight:800; color:white; font-family:sans-serif; line-height:1; text-transform:uppercase;">Posouvej</div>
+          </div>
+        </div>
+      </div>
+      <div style="padding:6px 16px; background:#fff3e0; font-size:10px; font-family:sans-serif; color:#444;">Výška navu: ~44px · logo 14px · hamburger bez bg</div>
+    </div>
+    <div class="card-body">
+      <h3>C — Minimalistický</h3>
+      <p>py-2.5 padding, logo 14px, hamburger bez pozadí. Velmi tenký, maximální prostor pro obsah.</p>
+    </div>
+  </div>
+
+</div>

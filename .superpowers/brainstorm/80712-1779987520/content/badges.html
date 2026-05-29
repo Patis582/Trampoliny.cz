@@ -1,0 +1,56 @@
+<h2>Badge na hero — schovat nebo zmenšit?</h2>
+<p class="subtitle">Takhle by vypadala hero sekce na mobilu (390px)</p>
+
+<div class="split">
+
+  <div class="mockup">
+    <div class="mockup-header">A — Schovat na mobilu</div>
+    <div class="mockup-body" style="padding:0; overflow:hidden;">
+      <div style="background:#1a1a2e; position:relative; padding: 80px 16px 36px;">
+        <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.85),rgba(0,0,0,0.4));"></div>
+        <div style="position:relative;z-index:1;">
+          <!-- NO badge -->
+          <div style="font-size:38px; font-weight:800; color:white; font-family:sans-serif; line-height:1.05; text-transform:uppercase; margin-bottom:4px;">Závodní oddíl</div>
+          <div style="font-size:38px; font-weight:800; color:white; font-family:sans-serif; line-height:1.05; text-transform:uppercase; margin-bottom:16px;">& Kroužky</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.7); font-family:sans-serif; max-width:260px; line-height:1.5;">Výkonnostní trénink, závody a přípravky pro děti i dospělé.</div>
+        </div>
+      </div>
+      <div style="padding:6px 16px; background:#f0f0f0; font-size:10px; font-family:sans-serif; color:#666;">Badge skrytý → čistší, text mluví sám za sebe</div>
+    </div>
+  </div>
+
+  <div class="mockup">
+    <div class="mockup-header">B — Zmenšit</div>
+    <div class="mockup-body" style="padding:0; overflow:hidden;">
+      <div style="background:#1a1a2e; position:relative; padding: 80px 16px 36px;">
+        <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.85),rgba(0,0,0,0.4));"></div>
+        <div style="position:relative;z-index:1;">
+          <!-- Small badge -->
+          <div style="margin-bottom:10px;">
+            <span style="background:#f97316; color:white; font-family:sans-serif; font-weight:700; font-size:9px; text-transform:uppercase; letter-spacing:2px; padding:3px 8px;">Trampolíny Liberec</span>
+          </div>
+          <div style="font-size:38px; font-weight:800; color:white; font-family:sans-serif; line-height:1.05; text-transform:uppercase; margin-bottom:4px;">Závodní oddíl</div>
+          <div style="font-size:38px; font-weight:800; color:white; font-family:sans-serif; line-height:1.05; text-transform:uppercase; margin-bottom:16px;">& Kroužky</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.7); font-family:sans-serif; max-width:260px; line-height:1.5;">Výkonnostní trénink, závody a přípravky pro děti i dospělé.</div>
+        </div>
+      </div>
+      <div style="padding:6px 16px; background:#f0f0f0; font-size:10px; font-family:sans-serif; color:#666;">Badge menší (px-2 py-0.5, text 9px) → viditelný ale nevtíravý</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="cards" style="margin-top:20px;">
+  <div class="card" data-choice="hide" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>A — Schovat</h3>
+      <p>Čistší hero. Na mobilu stránka mluví za sebe názvem. Badge zůstane na desktopu.</p>
+    </div>
+  </div>
+  <div class="card" data-choice="smaller" onclick="toggleSelect(this)">
+    <div class="card-body">
+      <h3>B — Zmenšit</h3>
+      <p>Badge zůstane i na mobilu ale bude diskrétnější. Méně změn v kódu.</p>
+    </div>
+  </div>
+</div>
