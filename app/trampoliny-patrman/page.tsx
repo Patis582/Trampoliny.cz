@@ -24,35 +24,44 @@ export default async function TrampolinyPatrmanPage() {
       </div>
 
       {/* ── HERO ─────────────────────────────────────────────────── */}
-      <section className="relative h-[75vh] min-h-[560px] flex items-end overflow-hidden">
+      <section className="relative h-[85vh] flex items-center overflow-hidden pt-20 md:pt-0">
         <PatrmanHeroSlideshow />
-        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pb-16 pt-16 md:pt-32">
-          <div className="mb-6">
-            <span className="inline-flex items-center font-label-bold text-[9px] md:text-[11px] uppercase tracking-widest bg-on-tertiary-container text-white px-2 py-0.5 md:px-3 md:py-1.5">
-              Trampolíny Patrman
-            </span>
-          </div>
-          <h1 className="font-headline-lg-mobile md:font-headline-md text-headline-lg-mobile md:text-headline-md text-white uppercase tracking-tight leading-none mb-6">
-            Služby
-          </h1>
-          <p className="font-body-lg-mobile text-body-lg-mobile md:font-body-lg md:text-body-lg text-white/75 font-light max-w-xl leading-relaxed">
-            Kroužky, tábory, oslavy i volné skákání. Pro každého od 1 roku.
-          </p>
-          <div className="mt-8">
-            <a
-              href="#sluzby"
-              className="inline-flex items-center gap-2.5 bg-on-tertiary-container text-white font-label-bold uppercase tracking-widest px-7 py-4 text-[11px] hover:bg-white hover:text-border-dark transition-colors"
-            >
-              Naše služby
-            </a>
+        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter md:pt-20 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+          <div className="md:col-span-8 lg:col-span-7">
+            <div className="flex items-center gap-3 mb-4 md:mb-10">
+              <div className="w-6 h-px bg-brand-green" />
+              <span className="text-[10px] font-label-bold uppercase tracking-[0.4em] text-white/45">Trampolíny Patrman</span>
+            </div>
+            <h1 className="font-headline-lg-mobile md:font-headline-lg font-bold uppercase tracking-tight leading-none mb-6 md:mb-10">
+              <span className="text-white block text-[36px] md:text-[44px]">Tábory,</span>
+              <span className="text-white block text-[36px] md:text-[44px]">Oslavy</span>
+              <span className="text-brand-green block text-[36px] md:text-[44px] mt-2">& Skákání</span>
+            </h1>
+            <p className="text-base text-white/75 mb-6 md:mb-12 max-w-sm font-light leading-relaxed">
+              Kroužky, tábory, oslavy i volné skákání. Pro každého od 1 roku.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-6">
+              <a
+                href="#sluzby"
+                className="inline-flex justify-center items-center bg-brand-green text-border-dark font-label-bold text-label-bold px-7 py-3 uppercase tracking-wider hover:bg-white hover:text-border-dark transition-all duration-300 shadow-xl"
+              >
+                Naše služby
+              </a>
+              <a
+                href="#kontakt"
+                className="inline-flex justify-center items-center bg-white/10 text-white font-label-bold text-label-bold px-7 py-3 uppercase tracking-wider border border-white/30 backdrop-blur-md hover:bg-white hover:text-border-dark transition-all duration-300"
+              >
+                Kontakt
+              </a>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── KDO JSME (foto vlevo, text vpravo) ───────────────────── */}
       <section className="bg-white">
-        <div className="max-w-container-max mx-auto px-gutter py-section-padding-mobile md:py-section-padding-desktop">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="max-w-container-max mx-auto px-gutter pt-16 pb-section-padding-mobile md:py-section-padding-desktop">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             <div className="relative aspect-[3/2] overflow-hidden">
               <Image
                 src="/hero-patrman-1.jpg"
@@ -63,10 +72,12 @@ export default async function TrampolinyPatrmanPage() {
               />
             </div>
             <div className="space-y-6">
-              <span className="inline-block font-label-bold text-[11px] uppercase tracking-widest text-on-tertiary-container">Kdo jsme</span>
-              <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight">
-                Trampolíny Patrman
-              </h2>
+              <div className="space-y-3">
+                <span className="inline-block font-label-bold text-label-bold uppercase tracking-widest text-on-tertiary-container">Kdo jsme</span>
+                <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight">
+                  Trampolíny Patrman
+                </h2>
+              </div>
               <div className="space-y-4 font-body-md text-body-md text-on-surface-variant font-light leading-relaxed">
                 <p>
                   Trampolíny Patrman provozuje Miroslav Patrman v Liberci od roku 2009.
@@ -86,8 +97,8 @@ export default async function TrampolinyPatrmanPage() {
       {/* ── GALERIE ──────────────────────────────────────────────── */}
       <section className="bg-surface-container-lowest py-section-padding-mobile md:py-section-padding-desktop overflow-hidden">
         <div className="max-w-container-max mx-auto px-gutter">
-          <div className="mb-16">
-            <span className="inline-block font-label-bold text-[11px] uppercase tracking-widest text-on-tertiary-container mb-6">Atmosféra</span>
+          <div className="mb-8 md:mb-16">
+            <span className="inline-block font-label-bold text-label-bold uppercase tracking-widest text-on-tertiary-container mb-3">Atmosféra</span>
             <h2 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight">
               Jak to u nás <span className="font-medium">vypadá</span>
             </h2>
@@ -103,8 +114,8 @@ export default async function TrampolinyPatrmanPage() {
         id="sluzby"
       >
         <div className="max-w-container-max mx-auto px-gutter">
-          <div className="mb-24">
-            <span className="inline-block text-on-tertiary-container font-label-bold text-label-bold uppercase tracking-widest mb-6">Aktivity</span>
+          <div className="mb-10 md:mb-24">
+            <span className="inline-block text-on-tertiary-container font-label-bold text-label-bold uppercase tracking-widest mb-3">Aktivity</span>
             <h2 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight">
               Co u nás <span className="font-medium">najdeš</span>
             </h2>
@@ -120,7 +131,7 @@ export default async function TrampolinyPatrmanPage() {
       </section>
 
       {/* ── CTA / KONTAKT ────────────────────────────────────────── */}
-      <section className="bg-border-dark py-20">
+      <section className="bg-border-dark py-20" id="kontakt">
         <div className="max-w-container-max mx-auto px-gutter">
           <div className="mb-12">
             <span className="inline-block font-label-bold text-[11px] uppercase tracking-widest text-on-tertiary-container mb-4">Kontakt</span>

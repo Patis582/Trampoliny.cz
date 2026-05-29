@@ -11,12 +11,20 @@ const TYPE_LABELS: Record<EventType, string> = {
   'jiné': 'Jiné',
 }
 
-const TYPE_COLORS: Record<EventType, string> = {
-  'závod': 'bg-brand-orange text-white',
-  'tábor': 'bg-brand-green text-border-dark',
-  'kemp': 'bg-brand-navy-deep text-white',
-  'workshop': 'bg-border-dark text-white',
-  'jiné': 'bg-surface-container text-outline',
+const TYPE_BORDER: Record<EventType, string> = {
+  'závod': 'border-brand-orange',
+  'tábor': 'border-brand-green',
+  'kemp': 'border-brand-navy-deep',
+  'workshop': 'border-border-dark',
+  'jiné': 'border-surface-container-high',
+}
+
+const TYPE_TEXT: Record<EventType, string> = {
+  'závod': 'text-brand-orange',
+  'tábor': 'text-on-tertiary-container',
+  'kemp': 'text-brand-navy-deep',
+  'workshop': 'text-border-dark',
+  'jiné': 'text-outline',
 }
 
 function formatDate(dateStr: string, endDateStr?: string): string {
@@ -34,10 +42,14 @@ interface Props {
 }
 
 export function EventCard({ event, compact = false }: Props) {
+  const borderClass = TYPE_BORDER[event.type]
+  const textClass = TYPE_TEXT[event.type]
+  const typeLabel = event.type === 'jiné' && event.customType ? event.customType : TYPE_LABELS[event.type]
+
   return (
-    <div className="group relative flex flex-col bg-white border border-surface-container-high hover:shadow-md transition-shadow">
+    <div className={`group relative flex flex-col border-t-2 ${borderClass} pt-4 pb-5 border-b border-surface-container-high`}>
       {event.image && !compact && (
-        <div className="aspect-video overflow-hidden relative">
+        <div className="aspect-video overflow-hidden relative mb-4">
           <Image
             src={urlFor(event.image).width(800).height(450).url()}
             alt={event.title}
@@ -47,51 +59,54 @@ export function EventCard({ event, compact = false }: Props) {
           />
         </div>
       )}
-      <div className="p-4 md:p-6 flex flex-col flex-1">
-        <div className="flex items-start justify-between gap-3 mb-4">
-          <span className={`font-label-bold text-[10px] uppercase tracking-widest px-2 py-1 shrink-0 ${TYPE_COLORS[event.type]}`}>
-            {event.type === 'jiné' && event.customType ? event.customType : TYPE_LABELS[event.type]}
-          </span>
-          {event.registration?.isOpen && (
-            <span className="font-label-bold text-[10px] uppercase tracking-widest px-2 py-1 bg-brand-green/20 text-on-tertiary-container border border-brand-green/40 shrink-0">
-              Přihlášky otevřeny
-            </span>
-          )}
-        </div>
-        <p className="font-label-bold text-[10px] uppercase tracking-widest text-outline mb-2">
+
+      <div className="flex items-center justify-between gap-3 mb-2">
+        <p className="font-label-bold text-[10px] uppercase tracking-widest text-outline">
           {formatDate(event.date, event.endDate)}
         </p>
-        <h3 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase mb-3 leading-tight">
-          <Link href={`/akce/${event.slug}`} className="after:absolute after:inset-0">
-            {event.title}
-          </Link>
-        </h3>
-        {!compact && event.links && event.links.length > 0 && (
-          <div className="relative z-10 mt-auto pt-4 flex flex-wrap gap-3">
-            {event.links.map((link) => (
-              <a
-                key={link.url}
-                href={link.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-label-bold text-[10px] uppercase tracking-widest text-border-dark hover:text-brand-orange transition-colors"
-              >
-                {link.label} →
-              </a>
-            ))}
-          </div>
-        )}
-        {event.registration?.url && (
-          <a
-            href={event.registration.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="relative z-10 mt-4 inline-flex justify-center items-center bg-brand-orange text-white font-label-bold text-[11px] uppercase tracking-widest px-6 py-3 hover:bg-border-dark transition-colors"
-          >
-            Přihlásit se
-          </a>
+        {event.registration?.isOpen && (
+          <span className="font-label-bold text-[9px] uppercase tracking-widest text-brand-orange shrink-0">
+            ● Přihlášky
+          </span>
         )}
       </div>
+
+      <h3 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase mb-3 leading-tight">
+        <Link href={`/akce/${event.slug}`} className="after:absolute after:inset-0 hover:text-brand-orange transition-colors duration-200">
+          {event.title}
+        </Link>
+      </h3>
+
+      <span className={`font-label-bold text-[9px] uppercase tracking-widest ${textClass}`}>
+        {typeLabel}
+      </span>
+
+      {!compact && event.links && event.links.length > 0 && (
+        <div className="relative z-10 mt-4 flex flex-wrap gap-3">
+          {event.links.map((link) => (
+            <a
+              key={link.url}
+              href={link.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-label-bold text-[10px] uppercase tracking-widest text-border-dark hover:text-brand-orange transition-colors"
+            >
+              {link.label} →
+            </a>
+          ))}
+        </div>
+      )}
+
+      {event.registration?.url && (
+        <a
+          href={event.registration.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="relative z-10 mt-4 inline-flex justify-center items-center bg-brand-orange text-white font-label-bold text-[11px] uppercase tracking-widest px-6 py-3 hover:bg-border-dark transition-colors"
+        >
+          Přihlásit se
+        </a>
+      )}
     </div>
   )
 }

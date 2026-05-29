@@ -45,8 +45,8 @@ export function LiberecHeroSlideshow() {
           </div>
         </div>
       ))}
-      <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep/90 via-brand-navy-deep/30 to-transparent" />
-      <div className="absolute inset-0 bg-gradient-to-r from-brand-navy-deep/50 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-transparent" />
     </div>
   );
 }

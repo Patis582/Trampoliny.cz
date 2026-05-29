@@ -37,7 +37,7 @@ export default async function Home() {
           <div className="md:col-span-8 lg:col-span-7">
             <div className="flex items-center gap-3 mb-4 md:mb-10">
               <div className="w-6 h-px bg-brand-orange" />
-              <span className="text-[10px] font-label-bold uppercase tracking-[0.4em] text-white/45">TC Orionka · Liberec</span>
+              <span className="text-[10px] font-label-bold uppercase tracking-[0.4em] text-white/45">TC Orionka · Náadraží · Liberec</span>
             </div>
             <h1 className="font-headline-lg-mobile md:font-headline-lg font-bold uppercase tracking-tight leading-none mb-6 md:mb-10">
               <span className="text-white block text-[36px] md:text-[44px]">Posouvej</span>
