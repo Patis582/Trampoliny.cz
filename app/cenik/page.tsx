@@ -13,13 +13,15 @@ export default async function CenikPage() {
         <Nav />
       </div>
       <main>
-        <div className="pt-40 pb-8 max-w-container-max mx-auto px-gutter">
-          <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-6">
-            Vstupné & tréninky
-          </span>
-          <h1 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight">
-            Ceník
-          </h1>
+        <div className="pt-24 md:pt-40 max-w-container-max mx-auto px-gutter">
+          <div className="pb-8 mb-8 md:pb-10 md:mb-10 border-b border-surface-container-high">
+            <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-3">
+              Vstupné & tréninky
+            </span>
+            <h1 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight">
+              Ceník
+            </h1>
+          </div>
         </div>
         {sections === null ? (
           <div className="max-w-container-max mx-auto px-gutter pb-section-padding-mobile md:pb-section-padding-desktop">

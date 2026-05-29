@@ -47,7 +47,7 @@ export function EventCard({ event, compact = false }: Props) {
   const typeLabel = event.type === 'jiné' && event.customType ? event.customType : TYPE_LABELS[event.type]
 
   return (
-    <div className={`group relative flex flex-col border-t-2 ${borderClass} pt-4 pb-5 border-b border-surface-container-high`}>
+    <div className={`group relative flex flex-col border-t-2 ${borderClass} pt-4 pb-5`}>
       {event.image && !compact && (
         <div className="aspect-video overflow-hidden relative mb-4">
           <Image

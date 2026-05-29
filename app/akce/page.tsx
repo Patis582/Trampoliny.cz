@@ -14,12 +14,12 @@ export default async function AkcePage() {
       </div>
       <main className="pt-24 md:pt-40 pb-section-padding-mobile md:pb-section-padding-desktop">
         <div className="max-w-container-max mx-auto px-gutter">
-          <div className="mb-16">
-            <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-6">
+          <div className="pb-8 mb-8 md:pb-10 md:mb-10 border-b border-surface-container-high">
+            <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-3">
               Program
             </span>
             <h1 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight">
-              Akce a kalendář
+              Akce
             </h1>
           </div>
           {events === null ? (

@@ -55,21 +55,31 @@ export function EventsCalendar({ events }: Props) {
 
   return (
     <div>
-      <div className="flex items-center justify-between mb-8">
+      <div className="flex items-center justify-between mb-6 md:mb-8">
         <button
           onClick={prevMonth}
-          className="font-label-bold text-[11px] uppercase tracking-widest px-4 py-2 border border-surface-container-high hover:border-border-dark hover:text-border-dark text-outline transition-colors"
+          className="font-label-bold text-[10px] md:text-[11px] uppercase tracking-widest px-3 py-2 md:px-4 border border-surface-container-high hover:border-border-dark hover:text-border-dark text-outline transition-colors"
         >
-          ← Předchozí
+          <span className="hidden md:inline">← Předchozí</span>
+          <span className="md:hidden">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </span>
         </button>
-        <h2 className="font-headline-sm text-headline-sm text-border-dark uppercase">
+        <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight">
           {MONTHS[month]} {year}
         </h2>
         <button
           onClick={nextMonth}
-          className="font-label-bold text-[11px] uppercase tracking-widest px-4 py-2 border border-surface-container-high hover:border-border-dark hover:text-border-dark text-outline transition-colors"
+          className="font-label-bold text-[10px] md:text-[11px] uppercase tracking-widest px-3 py-2 md:px-4 border border-surface-container-high hover:border-border-dark hover:text-border-dark text-outline transition-colors"
         >
-          Další →
+          <span className="hidden md:inline">Další →</span>
+          <span className="md:hidden">
+            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </span>
         </button>
       </div>
 
@@ -100,7 +110,7 @@ export function EventsCalendar({ events }: Props) {
             <div
               key={i}
               onClick={() => isCurrentMonth && hasEvents && setSelectedDay(isSelected ? null : dayNum)}
-              className={`border-r border-b border-surface-container-high min-h-[80px] p-2 flex flex-col transition-colors ${
+              className={`border-r border-b border-surface-container-high min-h-[44px] md:min-h-[80px] p-1 md:p-2 flex flex-col transition-colors ${
                 !isCurrentMonth ? 'bg-surface-container-lowest' : ''
               } ${hasEvents ? 'cursor-pointer hover:bg-surface-container-low' : ''} ${
                 isSelected ? 'bg-brand-orange/5' : ''
