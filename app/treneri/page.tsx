@@ -14,7 +14,7 @@ export default async function TreneriPage() {
       </div>
       <main className="pt-24 md:pt-40 pb-section-padding-mobile md:pb-section-padding-desktop">
         <div className="max-w-container-max mx-auto px-gutter">
-          <div className="mb-16">
+          <div className="pb-8 mb-8 md:pb-10 md:mb-10 border-b border-surface-container-high">
             <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-3">
               Realizační tým
             </span>
@@ -27,7 +27,7 @@ export default async function TreneriPage() {
           ) : trainers.length === 0 ? (
             <p className="font-body-md text-on-surface-variant font-light">Trenéři brzy přibydou.</p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-x-5 gap-y-8">
               {trainers.map((trainer) => (
                 <TrainerCard key={trainer._id} trainer={trainer} />
               ))}

@@ -202,7 +202,6 @@ export type Trainer = {
   slug: string
   photo?: { url: string; alt?: string; hotspot?: { x: number; y: number } }
   bio: string
-  specializations: string[]
   email?: string
   phone?: string
   order: number
@@ -217,7 +216,6 @@ export async function getTrainers(): Promise<Trainer[] | null> {
         "slug": slug.current,
         "photo": photo { "url": asset->url, "alt": alt, "hotspot": hotspot },
         bio,
-        specializations,
         email,
         phone,
         order

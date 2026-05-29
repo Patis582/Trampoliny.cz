@@ -175,6 +175,12 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
                       {service.pricingNote}
                     </p>
                   )}
+                  <Link
+                    href="/cenik"
+                    className="inline-flex items-center gap-2 font-label-bold text-[11px] uppercase tracking-widest text-outline hover:text-brand-orange transition-colors"
+                  >
+                    Celý ceník →
+                  </Link>
                   {service.files && service.files.length > 0 && (
                     <div className="flex flex-wrap gap-3">
                       {service.files.map((file, i) => (
@@ -216,12 +222,14 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
                     <p className="font-body-md text-body-md text-border-dark font-medium">{service.locationFull}</p>
                   </div>
                 )}
-                <div className="p-6 space-y-1">
-                  <p className="font-label-bold text-[10px] uppercase tracking-widest text-outline">Trenér</p>
-                  <Link href="/treneri" className="font-body-md text-body-md text-brand-orange font-medium hover:text-border-dark transition-colors">
-                    Naši trenéři →
-                  </Link>
-                </div>
+                {service.registration?.type === "eos" && (
+                  <div className="p-6 space-y-1">
+                    <p className="font-label-bold text-[10px] uppercase tracking-widest text-outline">Trenér</p>
+                    <Link href="/treneri" className="font-body-md text-body-md text-brand-orange font-medium hover:text-border-dark transition-colors">
+                      Naši trenéři →
+                    </Link>
+                  </div>
+                )}
                 {service.registration?.type === "eos" && (
                   <div className="p-6 space-y-1">
                     <p className="font-label-bold text-[10px] uppercase tracking-widest text-outline">Registrace</p>
@@ -308,7 +316,7 @@ function RegistrationSidebar({ service }: { service: ServiceDetail }) {
       <div className="space-y-3">
         {reg?.email && (
           <a href={`mailto:${reg.email}`} className="flex items-center justify-center bg-brand-orange text-white font-label-bold uppercase tracking-widest px-6 py-4 text-[11px] hover:bg-white hover:text-border-dark transition-colors w-full">
-            Napsat trenérovi
+            Napsat email
           </a>
         )}
         {reg?.phone && (
