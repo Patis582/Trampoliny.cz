@@ -18,9 +18,7 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
 
   const isLiberec = service.brand === "liberec";
   const brandLabel = isLiberec ? "Trampolíny Liberec" : "Trampolíny Patrman";
-  const badgeClass = isLiberec
-    ? "bg-brand-orange text-white"
-    : "bg-brand-green text-border-dark";
+  const accentColor = isLiberec ? "bg-brand-orange" : "bg-brand-green";
 
   return (
     <div className="font-body-md antialiased bg-white min-h-screen">
@@ -37,37 +35,39 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
               src={service.heroImage.url}
               alt={service.title}
               fill
-              className="object-cover object-center scale-105"
+              className="object-cover object-center"
               sizes="100vw"
               priority
             />
           ) : (
-            <div className="w-full h-full bg-brand-navy-deep" />
+            <div className="w-full h-full bg-border-dark" />
           )}
-          <div className="absolute inset-0 bg-gradient-to-t from-brand-navy-deep via-brand-navy-deep/50 to-brand-navy-deep/10" />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-navy-deep/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-black/10" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/10 to-transparent" />
         </div>
 
-        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pb-16 pt-16 md:pt-32">
-          <div className="flex items-center gap-4 mb-6">
-            <Link href="/#sluzby" className="inline-flex items-center gap-2 text-white/50 hover:text-white/90 transition-colors font-label-bold text-[9px] md:text-[11px] uppercase tracking-widest group">
+        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter pb-12 md:pb-16 pt-32">
+          <div className="max-w-3xl">
+            <Link
+              href="/#sluzby"
+              className="inline-flex items-center gap-2 text-white/60 hover:text-white transition-colors font-label-bold text-[9px] uppercase tracking-widest mb-8 group"
+            >
               <svg className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
                 <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
               </svg>
               Všechny aktivity
             </Link>
-            <span className={`inline-flex items-center font-label-bold text-[9px] md:text-[11px] uppercase tracking-widest px-2 py-0.5 md:px-3 md:py-1.5 ${badgeClass}`}>
-              {brandLabel}
-            </span>
+            <div className="flex items-center gap-3 mb-4 md:mb-6">
+              <div className={`w-6 h-px ${accentColor}`} />
+              <span className="text-[10px] font-label-bold uppercase tracking-[0.4em] text-white/60">{brandLabel}</span>
+            </div>
+            <h1 className="font-bold text-[36px] md:text-[44px] text-white uppercase tracking-tight leading-none mb-5 md:mb-6">
+              {service.title}
+            </h1>
+            <p className="text-base text-white/75 max-w-lg font-light leading-relaxed">
+              {service.description}
+            </p>
           </div>
-
-          <h1 className="font-headline-lg-mobile md:font-headline-md text-headline-lg-mobile md:text-headline-md text-white uppercase tracking-tight leading-none mb-6">
-            {service.title}
-          </h1>
-
-          <p className="font-body-md text-body-md md:font-body-lg md:text-body-lg text-white/75 font-light max-w-lg leading-relaxed">
-            {service.description}
-          </p>
         </div>
       </section>
 
@@ -146,9 +146,9 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
                   <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight">
                     Jak to funguje
                   </h2>
-                  <div className="space-y-4">
+                  <div className="space-y-2 md:space-y-4">
                     {service.howItWorks.map((text, i) => (
-                      <div key={i} className="flex gap-5 p-6 bg-surface-container-lowest">
+                      <div key={i} className="flex gap-4 p-4 md:p-6 bg-surface-container-lowest">
                         <span className="shrink-0 text-brand-orange mt-0.5">
                           <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.8}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
