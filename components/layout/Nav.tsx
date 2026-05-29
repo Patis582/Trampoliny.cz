@@ -16,11 +16,11 @@ export function Nav() {
 
   return (
     <nav className="bg-white border-b border-surface-container-high transition-all duration-300">
-      <div className="max-w-container-max mx-auto px-gutter py-2 md:py-6 flex justify-between items-center">
+      <div className="max-w-container-max mx-auto px-gutter py-2 md:py-4 flex justify-between items-center">
         <Link href="/" onClick={() => setOpen(false)} className="font-headline-sm text-headline-sm font-bold text-border-dark hover:text-brand-orange transition-colors duration-200 tracking-tight">
           Trampolíny
         </Link>
-        <div className="hidden md:flex items-center gap-12">
+        <div className="hidden md:flex items-center gap-8">
           {navLinks.map(([label, href]) => (
             <Link key={label} href={href} className="font-label-bold text-label-bold text-outline hover:text-border-dark transition-colors duration-200 uppercase">
               {label}
@@ -28,7 +28,7 @@ export function Nav() {
           ))}
         </div>
         <div className="flex items-center">
-          <a href="/#kontakt" className="hidden md:inline-flex bg-transparent text-border-dark font-label-bold text-label-bold px-8 py-3 uppercase tracking-wider minimal-border-dark hover:bg-border-dark hover:text-white transition-all duration-300">
+          <a href="/#kontakt" className="hidden md:inline-flex bg-transparent text-border-dark font-label-bold text-label-bold px-6 py-2 uppercase tracking-wider minimal-border-dark hover:bg-border-dark hover:text-white transition-all duration-300">
             Kontakt
           </a>
           <button

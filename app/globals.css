@@ -67,10 +67,10 @@ html {
   --color-border-dark: #002b5b;
 
   /* Spacing */
-  --spacing-gutter: 24px;
-  --spacing-section-padding-desktop: 120px;
+  --spacing-gutter: 40px;
+  --spacing-section-padding-desktop: 96px;
   --spacing-section-padding-mobile: 48px;
-  --spacing-container-max: 1440px;
+  --spacing-container-max: 1280px;
   --spacing-unit: 8px;
 
   /* Border radius */
@@ -94,7 +94,7 @@ html {
   --font-body-md: var(--font-work-sans), "Work Sans", sans-serif;
 
   /* Font sizes */
-  --text-headline-xl: 160px;
+  --text-headline-xl: 128px;
   --text-headline-xl--line-height: 0.8;
   --text-headline-xl--letter-spacing: -0.05em;
   --text-headline-xl--font-weight: 900;
@@ -103,7 +103,7 @@ html {
   --text-headline-xl-mobile--line-height: 0.9;
   --text-headline-xl-mobile--font-weight: 900;
 
-  --text-headline-lg: 90px;
+  --text-headline-lg: 72px;
   --text-headline-lg--line-height: 1;
   --text-headline-lg--letter-spacing: -0.02em;
   --text-headline-lg--font-weight: 800;
@@ -112,16 +112,16 @@ html {
   --text-headline-lg-mobile--line-height: 1;
   --text-headline-lg-mobile--font-weight: 800;
 
-  --text-headline-md: 48px;
-  --text-headline-md--line-height: 52px;
+  --text-headline-md: 38px;
+  --text-headline-md--line-height: 44px;
   --text-headline-md--font-weight: 800;
 
   --text-headline-md-mobile: 32px;
   --text-headline-md-mobile--line-height: 36px;
   --text-headline-md-mobile--font-weight: 800;
 
-  --text-headline-sm: 24px;
-  --text-headline-sm--line-height: 28px;
+  --text-headline-sm: 20px;
+  --text-headline-sm--line-height: 24px;
   --text-headline-sm--font-weight: 700;
 
   --text-headline-sm-mobile: 18px;
@@ -132,15 +132,15 @@ html {
   --text-body-lg-mobile--line-height: 1.6;
   --text-body-lg-mobile--font-weight: 300;
 
-  --text-label-bold: 13px;
+  --text-label-bold: 11px;
   --text-label-bold--letter-spacing: 0.15em;
   --text-label-bold--font-weight: 900;
 
-  --text-body-lg: 24px;
+  --text-body-lg: 20px;
   --text-body-lg--line-height: 1.6;
   --text-body-lg--font-weight: 500;
 
-  --text-body-md: 16px;
+  --text-body-md: 15px;
   --text-body-md--line-height: 1.5;
   --text-body-md--font-weight: 400;
 }

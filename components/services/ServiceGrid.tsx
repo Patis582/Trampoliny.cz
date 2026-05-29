@@ -4,7 +4,7 @@ import type { Service } from "@/sanity/lib/queries";
 
 export function ServiceGrid({ services }: { services: Service[] }) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {services.map((s, i) => (
         <ServiceCard
           key={s._id}
@@ -58,16 +58,16 @@ function ServiceCard({ num, service }: { num: string; service: Service }) {
           />
         )}
       </div>
-      <div className="p-5 md:p-8 flex flex-col flex-1">
-        <div className="flex items-start justify-between mb-4">
-          <span className={`block font-headline-lg text-3xl md:text-4xl transition-colors ${cls.num}`}>{num}</span>
+      <div className="p-4 md:p-5 flex flex-col flex-1">
+        <div className="flex items-start justify-between mb-3">
+          <span className={`block font-headline-lg text-2xl md:text-3xl transition-colors ${cls.num}`}>{num}</span>
           {brand === "liberec" && (
-            <span className="font-label-bold text-[10px] uppercase tracking-widest bg-brand-orange text-white px-2 py-1 shrink-0">
+            <span className="hidden md:inline font-label-bold text-[10px] uppercase tracking-widest bg-brand-orange text-white px-2 py-1 shrink-0">
               Trampolíny Liberec
             </span>
           )}
           {brand === "patrman" && (
-            <span className="font-label-bold text-[10px] uppercase tracking-widest bg-brand-green text-border-dark px-2 py-1 shrink-0">
+            <span className="hidden md:inline font-label-bold text-[10px] uppercase tracking-widest bg-brand-green text-border-dark px-2 py-1 shrink-0">
               Trampolíny Patrman
             </span>
           )}
@@ -75,10 +75,20 @@ function ServiceCard({ num, service }: { num: string; service: Service }) {
         <h3 className={`font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase mb-4 transition-colors ${cls.title}`}>
           {title}
         </h3>
-        <p className="font-body-md text-on-surface-variant font-light mb-8 flex-1">{desc}</p>
+        <p className="font-body-md text-on-surface-variant font-light mb-4 flex-1">{desc}</p>
         <div className="flex items-center justify-between">
           <div className={`w-12 h-1 group-hover:w-24 transition-all duration-500 ${cls.bar}`} />
-          <span className={`text-[11px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${accentColor}`}>
+          {brand === "liberec" && (
+            <span className="md:hidden font-label-bold text-[9px] uppercase tracking-widest bg-brand-orange text-white px-2 py-0.5 shrink-0">
+              Trampolíny Liberec
+            </span>
+          )}
+          {brand === "patrman" && (
+            <span className="md:hidden font-label-bold text-[9px] uppercase tracking-widest bg-brand-green text-border-dark px-2 py-0.5 shrink-0">
+              Trampolíny Patrman
+            </span>
+          )}
+          <span className={`hidden md:inline text-[11px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${accentColor}`}>
             Více info →
           </span>
         </div>

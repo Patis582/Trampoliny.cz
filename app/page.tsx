@@ -33,16 +33,16 @@ export default async function Home() {
           <HeroSlideshow />
         </div>
         <HeroScrollHint />
-        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter md:pt-40 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
+        <div className="relative z-10 w-full max-w-container-max mx-auto px-gutter md:pt-28 grid grid-cols-1 md:grid-cols-12 gap-8 items-center">
           <div className="md:col-span-8 lg:col-span-7">
             <div className="flex items-center gap-3 mb-4 md:mb-10">
               <div className="w-6 h-px bg-brand-orange" />
               <span className="text-[10px] font-label-bold uppercase tracking-[0.4em] text-white/45">TC Orionka · Liberec</span>
             </div>
             <h1 className="font-headline-lg-mobile md:font-headline-lg font-bold uppercase tracking-tight leading-none mb-6 md:mb-10">
-              <span className="text-white block text-[36px] md:text-[64px]">Posouvej</span>
-              <span className="text-white block text-[36px] md:text-[64px]">limity</span>
-              <span className="text-brand-orange block text-[36px] md:text-[64px] mt-2">na maximum</span>
+              <span className="text-white block text-[36px] md:text-[44px]">Posouvej</span>
+              <span className="text-white block text-[36px] md:text-[44px]">limity</span>
+              <span className="text-brand-orange block text-[36px] md:text-[44px] mt-2">na maximum</span>
             </h1>
             <p className="text-base text-white/75 mb-6 md:mb-12 max-w-sm font-light leading-relaxed">
               Závody, tábory, oslavy i parkour. Dvě haly v Liberci pro každého.
@@ -50,13 +50,13 @@ export default async function Home() {
             <div className="flex flex-col sm:flex-row gap-6">
               <Link
                 href="/trampoliny-liberec"
-                className="inline-flex justify-center items-center bg-brand-orange text-white font-label-bold text-label-bold px-10 py-4 uppercase tracking-wider hover:bg-white hover:text-brand-orange transition-all duration-300 shadow-xl"
+                className="inline-flex justify-center items-center bg-brand-orange text-white font-label-bold text-label-bold px-7 py-3 uppercase tracking-wider hover:bg-white hover:text-brand-orange transition-all duration-300 shadow-xl"
               >
                 Sportovní oddíl
               </Link>
               <Link
                 href="#sluzby"
-                className="inline-flex justify-center items-center bg-white/10 text-white font-label-bold text-label-bold px-10 py-4 uppercase tracking-wider border border-white/30 backdrop-blur-md hover:bg-white hover:text-brand-navy-deep transition-all duration-300 group"
+                className="inline-flex justify-center items-center bg-white/10 text-white font-label-bold text-label-bold px-7 py-3 uppercase tracking-wider border border-white/30 backdrop-blur-md hover:bg-white hover:text-brand-navy-deep transition-all duration-300 group"
               >
                 Naše služby
                 <svg
@@ -85,7 +85,7 @@ export default async function Home() {
         id="oddil"
       >
         <div className="max-w-container-max mx-auto px-gutter relative z-10">
-          <div className="text-center mb-24">
+          <div className="text-center mb-16">
             <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-6">
               Kdo jsme
             </span>
@@ -94,10 +94,10 @@ export default async function Home() {
               <span className="font-medium">jedna vášeň</span>
             </h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-24 items-start max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-start max-w-4xl mx-auto">
             {/* Liberec Brand */}
             <Link href="/trampoliny-liberec" className="flex flex-col items-center text-center group">
-              <div className="w-64 h-64 mb-12 relative transition-transform duration-500 hover:scale-105">
+              <div className="w-48 h-48 mb-8 relative transition-transform duration-500 hover:scale-105">
                 <Image
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7U758qwaUugU71tmbwfaKIAARZeBMBuq-2T1VMJYAjF4rvCdk7LyMZ1TKXyTHpTgg4LI86FIlipw3N146HDFziqxj5MoNcZauTlKV2yKG3A0JVft0rmllt5OGovqhhKkqTLa7uvKj-YbZKJ41KkImDD4SovkaaH1kTPcUBctY3hSuCn5TK9HnHunGXbv7JwSrVNm38tJJKgD4LVjDBdk_a6nW99OEfkiJr5tg8d8L65EBwE5IPJzu-lTcNhsrm9kgQYlUl8aY-YSc"
                   alt="Trampolíny Liberec Logo"
@@ -116,8 +116,8 @@ export default async function Home() {
               </p>
             </Link>
             {/* Patrman Brand */}
-            <Link href="/trampoliny-patrman" className="flex flex-col items-center text-center group md:mt-16">
-              <div className="w-64 h-64 mb-12 relative transition-transform duration-500 hover:scale-105">
+            <Link href="/trampoliny-patrman" className="flex flex-col items-center text-center group md:mt-12">
+              <div className="w-48 h-48 mb-8 relative transition-transform duration-500 hover:scale-105">
                 <Image
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgFmLni6SFyuxQhS39xDn1sakbDjfTLFWBfYb8WjBouof7u7EkfuiNyZBM3KZDb9lm1Oel5xwk7UH2HBhF3VPxVe7GzfNEGOStQCeB1eORNb7up3BzEgEvZRUZkCnyw6Y1yRlfMNXV0eqxh8LAp2y2f-wa2WxkPtTWVslRdE2IZj_eBYbRgR0_oQHD2F3821xifowQcQGjIxEPGPzStgAR1JsBHETuqCeFarxq6YatgyspvuTCtQUorPV3m7xyM0dpLZMK2rSOFDy3"
                   alt="Trampolíny Patrman Logo"
@@ -145,7 +145,7 @@ export default async function Home() {
         id="sluzby"
       >
         <div className="max-w-container-max mx-auto px-gutter">
-          <div className="mb-24">
+          <div className="mb-16">
             <span className="inline-block text-brand-green font-label-bold text-label-bold uppercase tracking-widest mb-6">
               Aktivity
             </span>
@@ -176,7 +176,7 @@ export default async function Home() {
               </div>
               <Link
                 href="/akce"
-                className="font-label-bold text-[11px] uppercase tracking-widest text-outline hover:text-brand-orange transition-colors shrink-0"
+                className="hidden sm:inline font-label-bold text-[11px] uppercase tracking-widest text-outline hover:text-brand-orange transition-colors shrink-0"
               >
                 Zobrazit vše →
               </Link>
@@ -190,6 +190,12 @@ export default async function Home() {
                 ))}
               </div>
             )}
+            <Link
+              href="/akce"
+              className="sm:hidden mt-6 inline-block font-label-bold text-[11px] uppercase tracking-widest text-outline hover:text-brand-orange transition-colors"
+            >
+              Zobrazit vše →
+            </Link>
           </div>
         </section>
       )}
@@ -211,16 +217,12 @@ export default async function Home() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-20">
             {/* TC Orionka */}
             <div className="flex flex-col gap-6">
-              <div className="border-l-4 border-brand-orange pl-6">
-                <span className="font-label-bold text-[11px] uppercase tracking-widest text-brand-orange mb-2 block">Trampolíny Liberec</span>
+              <div>
                 <h3 className="font-headline-sm text-headline-sm text-border-dark uppercase mb-1">
                   Trampolínové centrum Orionka
                 </h3>
                 <p className="font-body-md text-on-surface-variant font-light">
                   Jizerská ul., Liberec – Harcov
-                </p>
-                <p className="font-body-md text-outline text-sm mt-1">
-                  Závodní oddíl, přípravky, parkour a otevřené hodiny (Po 16–18)
                 </p>
               </div>
               <div className="overflow-hidden border border-surface-container-high">
@@ -237,16 +239,12 @@ export default async function Home() {
             </div>
             {/* Hala Nádraží */}
             <div className="flex flex-col gap-6">
-              <div className="border-l-4 border-brand-green pl-6">
-                <span className="font-label-bold text-[11px] uppercase tracking-widest text-on-tertiary-container mb-2 block">Trampolíny Patrman</span>
+              <div>
                 <h3 className="font-headline-sm text-headline-sm text-border-dark uppercase mb-1">
                   Trampolínová hala Nádraží
                 </h3>
                 <p className="font-body-md text-on-surface-variant font-light">
                   Nádraží ČD č.p. 435, Liberec (mezi nástupištěm 1 a 3)
-                </p>
-                <p className="font-body-md text-outline text-sm mt-1">
-                  Oslavy, tábory, Open Gym a volné skákání (So 10–13)
                 </p>
               </div>
               <div className="overflow-hidden border border-surface-container-high">
