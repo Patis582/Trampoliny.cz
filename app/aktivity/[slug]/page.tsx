@@ -43,16 +43,18 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
         className="relative overflow-hidden flex flex-col justify-end"
         style={{ height: "80vh", minHeight: 560 }}
       >
-        <div className="absolute inset-0">
+        <div className="absolute inset-0 overflow-hidden">
           {service.heroImage?.url ? (
-            <Image
-              src={service.heroImage.url}
-              alt={service.title}
-              fill
-              className="object-cover object-center"
-              sizes="100vw"
-              priority
-            />
+            <div className="absolute inset-0 animate-kenburns">
+              <Image
+                src={service.heroImage.url}
+                alt={service.title}
+                fill
+                className="object-cover object-center"
+                sizes="100vw"
+                priority
+              />
+            </div>
           ) : (
             <div className="w-full h-full bg-brand-navy-deep" />
           )}
@@ -99,17 +101,17 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
           <div className="max-w-container-max mx-auto px-gutter">
             <div className={`grid divide-x divide-white/10 ${service.ageGroup && service.locationFull ? "grid-cols-2" : "grid-cols-1"}`}>
               {service.ageGroup && (
-                <div className="px-4 py-8 md:px-10 md:py-10 first:pl-0">
-                  <p className="font-label-bold text-[10px] uppercase tracking-widest text-white/35 mb-2">Věková skupina</p>
-                  <p className="font-black text-white uppercase tracking-tight" style={{ fontSize: "clamp(20px, 3vw, 36px)", lineHeight: 1 }}>
+                <div className="px-4 py-4 md:px-10 md:py-8 first:pl-0">
+                  <p className="font-label-bold text-[10px] uppercase tracking-widest text-white/35 mb-1">Věková skupina</p>
+                  <p className="font-black text-white uppercase tracking-tight" style={{ fontSize: "clamp(16px, 3vw, 36px)", lineHeight: 1 }}>
                     {service.ageGroup}
                   </p>
                 </div>
               )}
               {service.locationFull && (
-                <div className="px-4 py-8 md:px-10 md:py-10 first:pl-0">
-                  <p className="font-label-bold text-[10px] uppercase tracking-widest text-white/35 mb-2">Lokalita</p>
-                  <p className="font-black text-white uppercase tracking-tight" style={{ fontSize: "clamp(20px, 3vw, 36px)", lineHeight: 1 }}>
+                <div className="px-4 py-4 md:px-10 md:py-8 first:pl-0">
+                  <p className="font-label-bold text-[10px] uppercase tracking-widest text-white/35 mb-1">Lokalita</p>
+                  <p className="font-black text-white uppercase tracking-tight" style={{ fontSize: "clamp(16px, 3vw, 36px)", lineHeight: 1 }}>
                     {service.locationFull.split(",")[0]}
                   </p>
                 </div>
@@ -335,7 +337,7 @@ function RegistrationSidebar({
   const description = reg?.ctaDescription ?? "Rádi poradíme a domluvíme termín.";
   const btnClass = `flex items-center justify-center ${accentBtnBg} ${accentBtnText} font-label-bold uppercase tracking-widest px-6 py-4 text-[11px] hover:bg-white hover:text-border-dark transition-colors w-full`;
 
-  const heading = reg?.type === "form" ? "Přihlas se" : "Ozvi se nám";
+  const heading = reg?.type === "form" || reg?.type === "eos" ? "Přihlas se" : "Ozvi se nám";
 
   return (
     <div className={`bg-brand-navy-deep text-white p-6 md:p-10 space-y-7 border-t-2 ${accentBorder}`}>
@@ -352,6 +354,18 @@ function RegistrationSidebar({
       </div>
       <p className="text-white/60 font-light leading-relaxed">{description}</p>
       <div className="space-y-3">
+        {reg?.type === "eos" && (
+          <>
+            <a href="https://eos.trampoliny.cz/" target="_blank" rel="noopener noreferrer" className={btnClass}>
+              Přihlásit se →
+            </a>
+            {reg.email && (
+              <a href={`mailto:${reg.email}`} className="text-center text-white/50 hover:text-white transition-colors font-label-bold text-[10px] uppercase tracking-widest">
+                {reg.email}
+              </a>
+            )}
+          </>
+        )}
         {reg?.type === "form" && reg.formUrl && (
           <a href={reg.formUrl} target="_blank" rel="noopener noreferrer" className={btnClass}>
             Přihlásit se →
@@ -362,12 +376,12 @@ function RegistrationSidebar({
             Napsat email
           </a>
         )}
-        {reg?.type !== "form" && reg?.type !== "email" && reg?.email && (
+        {reg?.type !== "form" && reg?.type !== "email" && reg?.type !== "eos" && reg?.email && (
           <a href={`mailto:${reg.email}`} className={btnClass}>
             Napsat email
           </a>
         )}
-        {reg?.phone && (
+        {reg?.type !== "eos" && reg?.phone && (
           <a
             href={`tel:${reg.phone}`}
             className="flex items-center justify-center border border-white/15 text-white/80 font-label-bold uppercase tracking-widest px-6 py-4 text-[11px] hover:border-white/50 hover:text-white transition-colors w-full"
