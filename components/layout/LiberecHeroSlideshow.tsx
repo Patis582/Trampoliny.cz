@@ -11,14 +11,21 @@ const slides = [
 
 const kenburnsClass = ["kenburns-1", "kenburns-2", "kenburns-3"];
 
+const randomNext = (current: number, total: number) => {
+  if (total <= 1) return 0;
+  let next: number;
+  do { next = Math.floor(Math.random() * total); } while (next === current);
+  return next;
+};
+
 export function LiberecHeroSlideshow() {
-  const [current, setCurrent] = useState(0);
+  const [current, setCurrent] = useState(() => Math.floor(Math.random() * slides.length));
   const [keys, setKeys] = useState([0, 0, 0]);
 
   useEffect(() => {
     const id = setInterval(() => {
       setCurrent((prev) => {
-        const next = (prev + 1) % slides.length;
+        const next = randomNext(prev, slides.length);
         setKeys((k) => k.map((v, i) => (i === next ? v + 1 : v)));
         return next;
       });
