@@ -7,7 +7,7 @@ import { Footer } from "@/components/layout/Footer";
 import { HomeCinematicHero } from "@/components/layout/HomeCinematicHero";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { getServices, getAnnouncements, getUpcomingEvents } from "@/sanity/lib/queries";
-import { EventCard } from "@/components/events/EventCard";
+import type { Event } from "@/sanity/lib/queries";
 import { SectionError } from "@/components/ui/SectionError";
 
 export default async function Home() {
@@ -146,46 +146,48 @@ export default async function Home() {
 
       {/* ── Events ── */}
       {(upcomingEvents === null || upcomingEvents.length > 0) && (
-        <section className="py-section-padding-mobile md:py-section-padding-desktop bg-white" id="akce">
+        <section className="bg-brand-navy-deep py-section-padding-mobile md:py-section-padding-desktop" id="akce">
           <div className="max-w-container-max mx-auto px-gutter">
-            <ScrollReveal className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-16">
-              <div>
-                <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-6">
-                  Program
-                </span>
-                <h2
-                  className="font-black uppercase tracking-tight leading-none"
-                  style={{ fontSize: "clamp(28px, 4vw, 52px)" }}
+            <ScrollReveal>
+              <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+                <div>
+                  <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-6">
+                    Program
+                  </span>
+                  <h2
+                    className="font-black uppercase tracking-tight leading-none text-white"
+                    style={{ fontSize: "clamp(28px, 4vw, 52px)" }}
+                  >
+                    Nadcházející akce
+                  </h2>
+                </div>
+                <Link
+                  href="/akce"
+                  className="hidden sm:inline font-label-bold text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors shrink-0"
                 >
-                  Nadcházející akce
-                </h2>
+                  Zobrazit vše →
+                </Link>
               </div>
-              <Link
-                href="/akce"
-                className="hidden sm:inline font-label-bold text-[11px] uppercase tracking-widest text-outline hover:text-brand-orange transition-colors shrink-0"
-              >
-                Zobrazit vše →
-              </Link>
+
+              {upcomingEvents === null ? (
+                <SectionError message="Akce se momentálně nepodařilo načíst. Zkuste obnovit stránku." />
+              ) : (
+                <div className="divide-y divide-white/10">
+                  {upcomingEvents.map((event) => (
+                    <EventRow key={event._id} event={event} />
+                  ))}
+                </div>
+              )}
+
+              <div className="mt-10 sm:hidden">
+                <Link
+                  href="/akce"
+                  className="inline-flex items-center gap-2 font-label-bold text-[11px] uppercase tracking-widest text-white/40 hover:text-white transition-colors"
+                >
+                  Zobrazit vše →
+                </Link>
+              </div>
             </ScrollReveal>
-
-            {upcomingEvents === null ? (
-              <SectionError message="Akce se momentálně nepodařilo načíst. Zkuste obnovit stránku." />
-            ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                {upcomingEvents.map((event, i) => (
-                  <ScrollReveal key={event._id} delay={i * 100}>
-                    <EventCard event={event} compact />
-                  </ScrollReveal>
-                ))}
-              </div>
-            )}
-
-            <Link
-              href="/akce"
-              className="sm:hidden mt-6 inline-block font-label-bold text-[11px] uppercase tracking-widest text-outline hover:text-brand-orange transition-colors"
-            >
-              Zobrazit vše →
-            </Link>
           </div>
         </section>
       )}
@@ -271,7 +273,7 @@ export default async function Home() {
                 ].map(({ label, name, bio, phone, email, brand }) => (
                   <div
                     key={label}
-                    className={`flex flex-col gap-1 p-5 bg-surface-container-lowest border-l-2 ${brand === "liberec" ? "border-brand-orange" : "border-brand-green"}`}
+                    className="flex flex-col gap-1 p-5 bg-surface-container-lowest"
                   >
                     <span className="font-label-bold text-[10px] uppercase tracking-widest text-outline mb-2">{label}</span>
                     <p className="font-headline-sm text-border-dark font-bold text-sm uppercase tracking-tight">{name}</p>
@@ -289,4 +291,52 @@ export default async function Home() {
       <Footer />
     </div>
   );
+}
+
+const TYPE_LABELS: Record<string, string> = {
+  závod: "Závod", tábor: "Tábor", kemp: "Kemp", workshop: "Workshop", jiné: "Jiné",
+}
+
+const TYPE_COLORS: Record<string, string> = {
+  závod: "text-brand-orange", tábor: "text-on-tertiary-container", kemp: "text-on-tertiary-container",
+  workshop: "text-brand-navy-deep", jiné: "text-outline",
+}
+
+function EventRow({ event }: { event: Event }) {
+  const label = event.type === "jiné" && event.customType ? event.customType : (TYPE_LABELS[event.type] ?? event.type)
+  const typeColor = TYPE_COLORS[event.type] ?? "text-outline"
+  const date = new Date(event.date).toLocaleDateString("cs-CZ", { day: "numeric", month: "long" })
+
+  return (
+    <Link
+      href={`/akce/${event.slug}`}
+      className="group flex items-center gap-4 md:gap-8 py-5 hover:bg-white/5 transition-colors"
+    >
+      <span className="font-label-bold text-[10px] uppercase tracking-widest text-white/35 shrink-0 w-24 hidden sm:block">
+        {date}
+      </span>
+      <div className="flex-1 min-w-0">
+        <span className={`font-label-bold text-[9px] uppercase tracking-widest block mb-1 ${typeColor}`}>
+          {label}
+        </span>
+        <h3
+          className="font-black text-white uppercase tracking-tight leading-tight group-hover:text-white/80 transition-colors truncate"
+          style={{ fontSize: "clamp(14px, 1.5vw, 18px)" }}
+        >
+          {event.title}
+        </h3>
+        <span className="font-label-bold text-[10px] uppercase tracking-widest text-white/35 sm:hidden block mt-1">
+          {date}
+        </span>
+      </div>
+      {event.registration?.isOpen && (
+        <span className="font-label-bold text-[9px] uppercase tracking-widest text-brand-orange shrink-0 hidden md:block">
+          ● Přihlášky
+        </span>
+      )}
+      <svg className="w-4 h-4 text-white/20 group-hover:text-white/60 group-hover:translate-x-1 transition-all shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+      </svg>
+    </Link>
+  )
 }

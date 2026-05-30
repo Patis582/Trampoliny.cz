@@ -118,7 +118,7 @@ export function EventsCalendar({ events }: Props) {
             >
               {isCurrentMonth && (
                 <span
-                  className={`font-label-bold text-xs w-6 h-6 flex items-center justify-center rounded-full ${
+                  className={`font-label-bold text-xs w-6 h-6 flex items-center justify-center ${
                     isToday ? 'bg-brand-orange text-white' : 'text-on-surface'
                   }`}
                 >

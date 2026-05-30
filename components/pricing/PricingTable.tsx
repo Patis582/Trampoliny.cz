@@ -4,18 +4,21 @@ export function PricingTable({ group }: { group: PricingGroup }) {
   const { title, subtitle, columnHeaders, rows, infoBlock } = group
 
   return (
-    <div className="mb-6 last:mb-0">
-      <div className="mb-3">
-        <h3 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight">
+    <div className="mb-8 last:mb-0">
+      <div className="mb-4">
+        <h3
+          className="font-black uppercase tracking-tight leading-none text-border-dark mb-1"
+          style={{ fontSize: "clamp(14px, 1.5vw, 18px)" }}
+        >
           {title}
         </h3>
         {subtitle && (
-          <p className="font-body-md text-body-md text-outline font-light mt-1">{subtitle}</p>
+          <p className="text-outline font-light text-sm mt-1">{subtitle}</p>
         )}
       </div>
 
       {infoBlock ? (
-        <div className="font-body-md text-body-md text-on-surface-variant font-light leading-relaxed whitespace-pre-line">
+        <div className="text-on-surface-variant font-light leading-relaxed whitespace-pre-line text-sm">
           {infoBlock}
         </div>
       ) : rows && rows.length > 0 ? (
@@ -42,12 +45,12 @@ export function PricingTable({ group }: { group: PricingGroup }) {
                   key={row._key}
                   className={`border-b border-surface-container-high last:border-0 ${row.highlight ? 'bg-brand-orange/5' : ''}`}
                 >
-                  <td className="py-2 pr-8">
-                    <span className="font-body-md text-body-md text-border-dark font-medium">
+                  <td className="py-2.5 pr-8">
+                    <span className="text-border-dark font-medium text-sm">
                       {row.label}
                     </span>
                     {row.note && (
-                      <span className="block font-body-md text-[13px] text-outline font-light">
+                      <span className="block text-outline font-light text-xs mt-0.5">
                         {row.note}
                       </span>
                     )}
@@ -55,7 +58,7 @@ export function PricingTable({ group }: { group: PricingGroup }) {
                   {row.values.map((v, i) => (
                     <td
                       key={i}
-                      className="py-2 px-4 text-right font-body-md text-body-md text-border-dark font-medium whitespace-nowrap"
+                      className="py-2.5 px-4 text-right text-border-dark font-medium text-sm whitespace-nowrap"
                     >
                       {v}
                     </td>

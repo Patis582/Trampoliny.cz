@@ -12,16 +12,31 @@ export default async function AkcePage() {
       <div className="fixed top-0 left-0 w-full z-50">
         <Nav />
       </div>
-      <main className="pt-24 md:pt-40 pb-section-padding-mobile md:pb-section-padding-desktop">
+
+      {/* ── HERO ── */}
+      <section className="bg-border-dark pt-24 pb-16 md:pt-40 md:pb-20">
         <div className="max-w-container-max mx-auto px-gutter">
-          <div className="pb-8 mb-8 md:pb-10 md:mb-10 border-b border-surface-container-high">
-            <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-3">
-              Program
-            </span>
-            <h1 className="font-headline-md-mobile text-headline-md-mobile md:font-headline-md md:text-headline-md text-border-dark uppercase tracking-tight">
-              Akce
-            </h1>
-          </div>
+          <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-4">
+            Program
+          </span>
+          <h1
+            className="font-black uppercase tracking-tight leading-none text-white mb-6"
+            style={{ fontSize: "clamp(40px, 6vw, 80px)", letterSpacing: "-0.03em" }}
+          >
+            Akce
+          </h1>
+          <p
+            className="text-white/55 font-light max-w-xl leading-relaxed"
+            style={{ fontSize: "clamp(14px, 1.1vw, 17px)" }}
+          >
+            Nadcházející závody, tábory, workshopy a další akce od Trampolín Liberec a Trampolín Patrman.
+          </p>
+        </div>
+      </section>
+
+      {/* ── CONTENT ── */}
+      <main className="py-section-padding-mobile md:py-section-padding-desktop">
+        <div className="max-w-container-max mx-auto px-gutter">
           {events === null ? (
             <SectionError message="Akce se momentálně nepodařilo načíst. Zkuste obnovit stránku." />
           ) : (
@@ -29,6 +44,7 @@ export default async function AkcePage() {
           )}
         </div>
       </main>
+
       <Footer />
     </div>
   )

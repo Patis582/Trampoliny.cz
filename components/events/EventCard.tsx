@@ -14,16 +14,16 @@ const TYPE_LABELS: Record<EventType, string> = {
 const TYPE_BORDER: Record<EventType, string> = {
   'závod': 'border-brand-orange',
   'tábor': 'border-brand-green',
-  'kemp': 'border-brand-navy-deep',
-  'workshop': 'border-border-dark',
+  'kemp': 'border-brand-green',
+  'workshop': 'border-brand-navy-deep',
   'jiné': 'border-surface-container-high',
 }
 
 const TYPE_TEXT: Record<EventType, string> = {
   'závod': 'text-brand-orange',
   'tábor': 'text-on-tertiary-container',
-  'kemp': 'text-brand-navy-deep',
-  'workshop': 'text-border-dark',
+  'kemp': 'text-on-tertiary-container',
+  'workshop': 'text-brand-navy-deep',
   'jiné': 'text-outline',
 }
 

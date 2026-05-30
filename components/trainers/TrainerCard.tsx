@@ -1,7 +1,6 @@
 import Image from 'next/image'
 import { Trainer } from '@/sanity/lib/queries'
 
-
 export function TrainerCard({ trainer }: { trainer: Trainer }) {
   const { name, photo, bio, email, phone } = trainer
   const objectPosition = photo?.hotspot
@@ -9,9 +8,9 @@ export function TrainerCard({ trainer }: { trainer: Trainer }) {
     : 'center top'
 
   return (
-    <div className="group cursor-default">
-      {/* Photo */}
-      <div className="relative w-full aspect-square overflow-hidden bg-surface-container mb-3">
+    <div className="group">
+      {/* Fotka — portrétní formát */}
+      <div className="relative w-full aspect-square overflow-hidden bg-surface-container mb-4">
         {photo?.url ? (
           <Image
             src={photo.url}
@@ -26,21 +25,21 @@ export function TrainerCard({ trainer }: { trainer: Trainer }) {
         )}
       </div>
 
-      {/* Name */}
-      <p className="font-bold text-[12px] uppercase tracking-tight text-border-dark leading-tight mb-1">
+      {/* Jméno */}
+      <p className="font-black text-[12px] uppercase tracking-tight text-border-dark leading-tight mb-1.5">
         {name}
       </p>
 
       {/* Bio */}
       {bio && (
-        <p className="text-[11px] text-on-surface-variant font-light leading-snug mb-2">
+        <p className="text-[11px] text-on-surface-variant font-light leading-snug mb-3">
           {bio}
         </p>
       )}
 
-      {/* Contact */}
+      {/* Kontakt */}
       {(email || phone) && (
-        <div className="flex flex-col gap-0.5">
+        <div className="flex flex-col gap-0.5 pt-2.5 border-t border-surface-container-high">
           {phone && (
             <a
               href={`tel:${phone.replace(/\s/g, '')}`}
@@ -52,7 +51,7 @@ export function TrainerCard({ trainer }: { trainer: Trainer }) {
           {email && (
             <a
               href={`mailto:${email}`}
-              className="text-[11px] text-on-surface-variant font-light hover:text-brand-orange transition-colors"
+              className="text-[11px] text-on-surface-variant font-light hover:text-brand-orange transition-colors truncate"
             >
               {email}
             </a>
