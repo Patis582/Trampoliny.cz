@@ -1,4 +1,3 @@
-// sanity/schemaTypes/siteConfig.ts
 import { defineField, defineType } from 'sanity'
 
 export const siteConfigType = defineType({
