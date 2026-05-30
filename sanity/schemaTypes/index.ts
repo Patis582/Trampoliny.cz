@@ -5,7 +5,8 @@ import { announcementType } from './announcement'
 import { trainerType } from './trainer'
 import { pricingSectionType } from './pricingSection'
 import { galleryAlbumType } from './galleryAlbum'
+import { siteConfigType } from './siteConfig'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [serviceType, eventType, announcementType, trainerType, pricingSectionType, galleryAlbumType],
+  types: [serviceType, eventType, announcementType, trainerType, pricingSectionType, galleryAlbumType, siteConfigType],
 }
