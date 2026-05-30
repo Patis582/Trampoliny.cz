@@ -310,7 +310,7 @@ function EventRow({ event }: { event: Event }) {
   return (
     <Link
       href={`/akce/${event.slug}`}
-      className="group flex items-center gap-4 md:gap-8 py-5 hover:bg-white/5 transition-colors"
+      className="group flex items-center gap-4 md:gap-8 py-5 px-4 -mx-4 hover:bg-white/[0.07] transition-colors"
     >
       <span className="font-label-bold text-[10px] uppercase tracking-widest text-white/35 shrink-0 w-24 hidden sm:block">
         {date}
