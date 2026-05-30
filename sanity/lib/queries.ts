@@ -376,3 +376,21 @@ export async function getAllGalleryAlbumSlugs(): Promise<string[]> {
     return []
   }
 }
+
+// ── SITE CONFIG ──────────────────────────────────────────────────────────────
+
+export type SiteConfig = {
+  eosLoginUrl?: string
+}
+
+export async function getSiteConfig(): Promise<SiteConfig> {
+  try {
+    return await client.fetch(
+      `*[_type == "siteConfig"][0] { eosLoginUrl }`,
+      {},
+      { next: { tags: ['siteConfig'] } }
+    ) ?? {}
+  } catch {
+    return {}
+  }
+}
