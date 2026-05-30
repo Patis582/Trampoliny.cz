@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const slides = [
   { src: "/hero-liberec-1.jpg", alt: "TC Orionka Liberec" },
   { src: "/hero-liberec-2.jpg", alt: "TC Orionka Liberec" },
-  { src: "/hero-liberec3.jpg", alt: "TC Orionka Liberec" },
+  { src: "/hero-liberec-4.jpg", alt: "TC Orionka Liberec" },
 ];
 
 const kenburnsClass = ["kenburns-1", "kenburns-2", "kenburns-3"];
