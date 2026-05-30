@@ -31,13 +31,13 @@ export default async function Home() {
       {/* ── Brands section ── */}
       <section id="oddil" className="bg-white py-section-padding-mobile md:py-section-padding-desktop">
         {/* Header — centered */}
-        <ScrollReveal className="max-w-container-max mx-auto px-gutter text-center mb-20 md:mb-28">
-          <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-6">
+        <ScrollReveal className="max-w-container-max mx-auto px-gutter text-center mb-8 md:mb-28">
+          <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-4 md:mb-6">
             Kdo jsme
           </span>
           <h2
             className="font-black uppercase tracking-tight leading-none text-border-dark"
-            style={{ fontSize: "clamp(40px, 6vw, 80px)" }}
+            style={{ fontSize: "clamp(32px, 6vw, 80px)" }}
           >
             Dvě značky,
             <br />
