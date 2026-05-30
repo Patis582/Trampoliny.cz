@@ -234,7 +234,7 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
                   <div className="p-6 space-y-1">
                     <p className="font-label-bold text-[10px] uppercase tracking-widest text-outline">Registrace</p>
                     <p className="font-body-md text-body-md text-on-surface-variant font-light mb-1">Systém EOS</p>
-                    <Link href="#" className="font-body-md text-body-md text-brand-orange font-medium hover:text-border-dark transition-colors">
+                    <Link href="/jak-na-to" className="font-body-md text-body-md text-brand-orange font-medium hover:text-border-dark transition-colors">
                       Jak na to →
                     </Link>
                   </div>
