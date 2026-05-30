@@ -32,7 +32,7 @@ const steps = [
 
 export default async function JakNaToPage() {
   const config = await getSiteConfig()
-  const eosUrl = config?.eosLoginUrl ?? 'https://eos.trampoliny.cz/'
+  const eosUrl = config.eosLoginUrl ?? 'https://eos.trampoliny.cz/'
 
   return (
     <div className="font-body-md antialiased bg-white min-h-screen">
@@ -41,7 +41,7 @@ export default async function JakNaToPage() {
       </div>
 
       {/* Hero */}
-      <section className="bg-border-dark pt-32 pb-16 md:pt-40 md:pb-20">
+      <section className="bg-border-dark pt-24 pb-16 md:pt-40 md:pb-20">
         <div className="max-w-container-max mx-auto px-gutter">
           <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-4">
             Registrace
@@ -55,79 +55,81 @@ export default async function JakNaToPage() {
         </div>
       </section>
 
-      {/* Steps */}
-      <section className="py-section-padding-mobile md:py-section-padding-desktop">
-        <div className="max-w-container-max mx-auto px-gutter space-y-20 md:space-y-32">
-          {steps.map((step, i) => {
-            const isEven = i % 2 === 1
-            return (
-              <div
-                key={step.number}
-                className={`grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center ${isEven ? 'md:[&>*:first-child]:order-2' : ''}`}
-              >
-                {/* Text */}
-                <div>
-                  <span className="font-bold text-[56px] md:text-[72px] text-brand-orange leading-none block mb-5 tracking-tighter">
-                    {step.number}
-                  </span>
-                  <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight mb-4">
-                    {step.title}
-                  </h2>
-                  <p className="font-body-md text-body-md text-on-surface-variant font-light leading-relaxed">
-                    {step.description}
-                  </p>
-                </div>
+      <main>
+        {/* Steps */}
+        <section className="py-section-padding-mobile md:py-section-padding-desktop">
+          <div className="max-w-container-max mx-auto px-gutter space-y-20 md:space-y-32">
+            {steps.map((step, i) => {
+              const isEven = i % 2 === 1
+              return (
+                <div
+                  key={step.number}
+                  className={`grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-20 items-center ${isEven ? 'md:[&>*:first-child]:order-2' : ''}`}
+                >
+                  {/* Text */}
+                  <div>
+                    <span className="font-bold text-[56px] md:text-[72px] text-brand-orange leading-none block mb-5 tracking-tighter">
+                      {step.number}
+                    </span>
+                    <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-border-dark uppercase tracking-tight mb-4">
+                      {step.title}
+                    </h2>
+                    <p className="font-body-md text-body-md text-on-surface-variant font-light leading-relaxed">
+                      {step.description}
+                    </p>
+                  </div>
 
-                {/* Screenshot */}
-                <div className="border border-surface-container-high shadow-sm overflow-hidden bg-surface-container-lowest">
-                  <div className="relative aspect-[16/10]">
-                    {step.image ? (
-                      <Image
-                        src={step.image}
-                        alt={step.title}
-                        fill
-                        className="object-cover object-top"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                      />
-                    ) : (
-                      <div className="w-full h-full bg-surface-container-high flex items-center justify-center">
-                        <span className="text-outline text-[10px] font-label-bold uppercase tracking-widest">
-                          Screenshot
-                        </span>
-                      </div>
-                    )}
+                  {/* Screenshot */}
+                  <div className="border border-surface-container-high shadow-sm overflow-hidden bg-surface-container-lowest">
+                    <div className="relative aspect-[16/10]">
+                      {step.image ? (
+                        <Image
+                          src={step.image}
+                          alt={step.title}
+                          fill
+                          className="object-cover object-top"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                      ) : (
+                        <div className="w-full h-full bg-surface-container-high flex items-center justify-center">
+                          <span className="text-outline text-[10px] font-label-bold uppercase tracking-widest">
+                            Screenshot
+                          </span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            )
-          })}
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="bg-border-dark py-20">
-        <div className="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          <div>
-            <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-4">
-              Připraven/a?
-            </span>
-            <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-white uppercase tracking-tight">
-              Otevřít EOS
-            </h2>
+              )
+            })}
           </div>
-          <a
-            href={eosUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="shrink-0 inline-flex items-center gap-3 bg-brand-orange text-white font-label-bold uppercase tracking-widest px-8 py-4 text-[11px] hover:bg-white hover:text-border-dark transition-colors"
-          >
-            Přihlásit se do EOS
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-              <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-            </svg>
-          </a>
-        </div>
-      </section>
+        </section>
+
+        {/* CTA */}
+        <section className="bg-border-dark py-section-padding-mobile md:py-section-padding-desktop">
+          <div className="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div>
+              <span className="inline-block text-brand-orange font-label-bold text-label-bold uppercase tracking-widest mb-4">
+                Připraven/a?
+              </span>
+              <h2 className="font-headline-sm-mobile text-headline-sm-mobile md:font-headline-sm md:text-headline-sm text-white uppercase tracking-tight">
+                Otevřít EOS
+              </h2>
+            </div>
+            <a
+              href={eosUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="shrink-0 inline-flex items-center gap-3 bg-brand-orange text-white font-label-bold uppercase tracking-widest px-8 py-4 text-[11px] hover:bg-white hover:text-border-dark transition-colors"
+            >
+              Přihlásit se do EOS
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </section>
+      </main>
 
       <Footer />
     </div>
