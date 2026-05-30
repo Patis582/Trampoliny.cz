@@ -1,19 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import { AnnouncementBar } from "@/components/announcements/AnnouncementBar";
 import { ServiceGrid } from "@/components/services/ServiceGrid";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { HomeCinematicHero } from "@/components/layout/HomeCinematicHero";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { getServices, getAnnouncements, getUpcomingEvents } from "@/sanity/lib/queries";
+import { getServices, getUpcomingEvents } from "@/sanity/lib/queries";
 import type { Event } from "@/sanity/lib/queries";
 import { SectionError } from "@/components/ui/SectionError";
 
 export default async function Home() {
-  const [services, announcements, upcomingEvents] = await Promise.all([
+  const [services, upcomingEvents] = await Promise.all([
     getServices(),
-    getAnnouncements(),
     getUpcomingEvents(3),
   ]);
 
@@ -21,7 +19,6 @@ export default async function Home() {
     <div className="font-body-md text-body-md antialiased selection:bg-primary-fixed selection:text-primary bg-background">
       {/* Fixed header */}
       <div className="fixed top-0 left-0 w-full z-50">
-        <AnnouncementBar announcements={announcements} />
         <Nav />
       </div>
 
