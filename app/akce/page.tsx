@@ -1,11 +1,14 @@
-import { getUpcomingEvents } from '@/sanity/lib/queries'
+import { getUpcomingEvents, getPastEvents } from '@/sanity/lib/queries'
 import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 import { AkceClient } from './AkceClient'
 import { SectionError } from '@/components/ui/SectionError'
 
 export default async function AkcePage() {
-  const events = await getUpcomingEvents()
+  const [upcomingEvents, pastEvents] = await Promise.all([
+    getUpcomingEvents(),
+    getPastEvents(),
+  ])
 
   return (
     <div className="font-body-md antialiased bg-white min-h-screen">
@@ -37,10 +40,13 @@ export default async function AkcePage() {
       {/* ── CONTENT ── */}
       <main className="py-section-padding-mobile md:py-section-padding-desktop">
         <div className="max-w-container-max mx-auto px-gutter">
-          {events === null ? (
+          {upcomingEvents === null && pastEvents === null ? (
             <SectionError message="Akce se momentálně nepodařilo načíst. Zkuste obnovit stránku." />
           ) : (
-            <AkceClient events={events} />
+            <AkceClient
+              events={upcomingEvents ?? []}
+              pastEvents={pastEvents ?? []}
+            />
           )}
         </div>
       </main>

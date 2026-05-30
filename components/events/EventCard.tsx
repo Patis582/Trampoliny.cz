@@ -39,9 +39,10 @@ function formatDate(dateStr: string, endDateStr?: string): string {
 interface Props {
   event: Event
   compact?: boolean
+  isPast?: boolean
 }
 
-export function EventCard({ event, compact = false }: Props) {
+export function EventCard({ event, compact = false, isPast = false }: Props) {
   const borderClass = TYPE_BORDER[event.type]
   const textClass = TYPE_TEXT[event.type]
   const typeLabel = event.type === 'jiné' && event.customType ? event.customType : TYPE_LABELS[event.type]
@@ -64,7 +65,11 @@ export function EventCard({ event, compact = false }: Props) {
         <p className="font-label-bold text-[10px] uppercase tracking-widest text-outline">
           {formatDate(event.date, event.endDate)}
         </p>
-        {event.registration?.isOpen && (
+        {isPast ? (
+          <span className="font-label-bold text-[9px] uppercase tracking-widest text-outline shrink-0">
+            Proběhlo
+          </span>
+        ) : event.registration?.isOpen && (
           <span className="font-label-bold text-[9px] uppercase tracking-widest text-brand-orange shrink-0">
             ● Přihlášky
           </span>
@@ -81,7 +86,7 @@ export function EventCard({ event, compact = false }: Props) {
         {typeLabel}
       </span>
 
-      {!compact && event.links && event.links.length > 0 && (
+      {!compact && !isPast && event.links && event.links.length > 0 && (
         <div className="relative z-10 mt-4 flex flex-wrap gap-3">
           {event.links.map((link) => (
             <a
@@ -97,7 +102,7 @@ export function EventCard({ event, compact = false }: Props) {
         </div>
       )}
 
-      {event.registration?.url && (
+      {!isPast && event.registration?.url && (
         <a
           href={event.registration.url}
           target="_blank"

@@ -171,6 +171,19 @@ export async function getUpcomingEvents(limit?: number): Promise<Event[] | null>
   }
 }
 
+export async function getPastEvents(): Promise<Event[] | null> {
+  try {
+    const today = new Date().toISOString()
+    return await client.fetch(
+      `*[_type == "event" && date < $today] | order(date desc) { ${eventFields} }`,
+      { today },
+      { next: { tags: ['event'] } }
+    )
+  } catch {
+    return null
+  }
+}
+
 export async function getAllEventSlugs(): Promise<string[]> {
   try {
     const results: { slug: string }[] = await client.fetch(
