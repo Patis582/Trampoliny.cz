@@ -5,6 +5,7 @@ import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 import { AlbumGallery } from '@/components/gallery/AlbumGallery'
 import { getGalleryAlbumBySlug, getAllGalleryAlbumSlugs } from '@/sanity/lib/queries'
+import { ScrollReset } from '@/components/ui/ScrollReset'
 
 export async function generateStaticParams() {
   const slugs = await getAllGalleryAlbumSlugs()
@@ -32,6 +33,7 @@ export default async function GalerieAlbumPage({
 
   return (
     <div className="font-body-md antialiased bg-white min-h-screen">
+      <ScrollReset />
       <div className="fixed top-0 left-0 w-full z-50">
         <Nav />
       </div>

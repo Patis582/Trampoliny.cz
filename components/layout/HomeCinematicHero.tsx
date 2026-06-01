@@ -8,7 +8,7 @@ import { HeroScrollHint } from "./HeroScrollHint";
 const slides = [
   { src: "/fotky-orionka/hero3.jpg",  alt: "TC Orionka — trampolínová hala Liberec" },
   { src: "/juj-mcr.jpg",             alt: "Závodnice na trampolíně během závodu" },
-  { src: "/hero-patrman-7.jpg",       alt: "Rodiče a děti v trampolínové hale" },
+  { src: "/fotky-patrman/hero-patrman-7.jpg", alt: "Rodiče a děti v trampolínové hale" },
 ];
 
 const kenburns = ["kenburns-1", "kenburns-2", "kenburns-3"];

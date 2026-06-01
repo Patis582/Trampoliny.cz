@@ -11,6 +11,8 @@ interface Props {
   photos: GalleryPhoto[]
 }
 
+const PRIORITY_COUNT = 6
+
 export function AlbumGallery({ photos }: Props) {
   const [index, setIndex] = useState(-1)
 
@@ -38,7 +40,10 @@ export function AlbumGallery({ photos }: Props) {
               height={photo.height}
               sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
               className="w-full object-cover group-hover:scale-105 transition-transform duration-500"
-              loading="lazy"
+              priority={i < PRIORITY_COUNT}
+              loading={i < PRIORITY_COUNT ? undefined : 'lazy'}
+              placeholder={photo.lqip ? 'blur' : undefined}
+              blurDataURL={photo.lqip ?? undefined}
             />
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
               <svg
