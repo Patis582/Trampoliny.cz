@@ -45,9 +45,27 @@ export function Footer() {
         </div>
         <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-white/40 text-xs font-light gap-4">
           <div>© {new Date().getFullYear()} Trampolíny Liberec & Patrman. Všechna práva vyhrazena.</div>
-          <div className="flex gap-8">
-            <Link href="#" className="hover:text-brand-orange transition-colors">Facebook</Link>
-            <Link href="#" className="hover:text-brand-green transition-colors">Instagram</Link>
+          <div className="flex flex-wrap gap-8 md:gap-10">
+            <div className="flex flex-col gap-2">
+              <span className="font-label-bold text-[9px] uppercase tracking-widest text-white/30">Trampolíny Liberec</span>
+              <div className="flex gap-4">
+                <a href="https://www.instagram.com/trampoliny_liberec/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-orange transition-colors">Instagram</a>
+                <a href="https://www.facebook.com/people/Trampolíny-Liberec/100064273773002/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-orange transition-colors">Facebook</a>
+              </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="font-label-bold text-[9px] uppercase tracking-widest text-white/30">Trampolíny Patrman</span>
+              <div className="flex gap-4">
+                <a href="https://www.instagram.com/trampolinypatrman/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green transition-colors">Instagram</a>
+                <a href="https://www.facebook.com/trampolinypatrman/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-green transition-colors">Facebook</a>
+              </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <span className="font-label-bold text-[9px] uppercase tracking-widest text-white/30">Sportovní areál Harcov</span>
+              <div className="flex gap-4">
+                <a href="https://www.instagram.com/sportovni_areal_harcov/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>

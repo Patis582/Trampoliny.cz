@@ -390,6 +390,51 @@ export async function getAllGalleryAlbumSlugs(): Promise<string[]> {
   }
 }
 
+// ── TESTIMONIALS ─────────────────────────────────────────────────────────────
+
+export type Testimonial = {
+  _id: string
+  authorName: string
+  rating: number
+  text: string
+}
+
+export async function getTestimonials(): Promise<Testimonial[] | null> {
+  try {
+    return await client.fetch(
+      `*[_type == "testimonial"] | order(_createdAt asc) { _id, authorName, rating, text }`,
+      {},
+      { next: { tags: ['testimonial'] } }
+    )
+  } catch {
+    return null
+  }
+}
+
+// ── NOTABLE VISITORS ─────────────────────────────────────────────────────────
+
+export type NotableVisitor = {
+  _id: string
+  name: string
+  description: string
+  photo: { url: string }
+}
+
+export async function getNotableVisitors(): Promise<NotableVisitor[] | null> {
+  try {
+    return await client.fetch(
+      `*[_type == "notableVisitor"] | order(_createdAt asc) {
+        _id, name, description,
+        "photo": photo { "url": asset->url }
+      }`,
+      {},
+      { next: { tags: ['notableVisitor'] } }
+    )
+  } catch {
+    return null
+  }
+}
+
 // ── SITE CONFIG ──────────────────────────────────────────────────────────────
 
 export type SiteConfig = {

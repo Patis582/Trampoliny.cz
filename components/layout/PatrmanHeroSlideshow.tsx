@@ -4,13 +4,14 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const slides = [
-  { src: "/hero-patrman-31.jpg", alt: "Trampolíny Patrman" },
-  { src: "/hero-patrman-7.jpg",  alt: "Trampolíny Patrman" },
-  { src: "/hero-patrman-18.jpg", alt: "Trampolíny Patrman" },
-  { src: "/hero-patrman-10.jpg", alt: "Trampolíny Patrman" },
+  { src: "/fotky-patrman/hero-patrman-26.jpg", alt: "Trampolíny Patrman" },
+  { src: "/fotky-patrman/hero-patrman-34.jpg", alt: "Trampolíny Patrman" },
+  { src: "/fotky-patrman/hero-patrman-7.jpg",  alt: "Trampolíny Patrman" },
+  { src: "/fotky-patrman/hero-patrman3.jpg",   alt: "Trampolíny Patrman" },
+  { src: "/fotky-patrman/rodiceadeti.JPG",     alt: "Rodiče a děti v trampolínové hale" },
 ];
 
-const kenburnsClass = ["kenburns-1", "kenburns-2", "kenburns-3", "kenburns-1"];
+const kenburnsClass = ["kenburns-1", "kenburns-2", "kenburns-3", "kenburns-1", "kenburns-2"];
 
 const randomNext = (current: number, total: number) => {
   if (total <= 1) return 0;

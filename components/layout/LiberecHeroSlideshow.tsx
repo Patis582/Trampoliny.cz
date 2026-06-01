@@ -4,9 +4,9 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const slides = [
-  { src: "/hero-liberec-1.jpg", alt: "TC Orionka Liberec" },
-  { src: "/hero-liberec-2.jpg", alt: "TC Orionka Liberec" },
-  { src: "/hero-liberec-4.jpg", alt: "TC Orionka Liberec" },
+  { src: "/fotky-liberec/hero-liberec-1.jpg", alt: "TC Orionka Liberec" },
+  { src: "/fotky-liberec/hero-patrman-27.jpg", alt: "TC Orionka Liberec" },
+  { src: "/fotky-liberec/radek-anet-syn.jpeg", alt: "Synchron zavody" },
 ];
 
 const kenburnsClass = ["kenburns-1", "kenburns-2", "kenburns-3"];

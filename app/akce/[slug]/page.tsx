@@ -21,12 +21,12 @@ const TYPE_LABELS: Record<EventType, string> = {
   'jiné': 'Jiné',
 }
 
-const TYPE_ACCENT: Record<EventType, { badge: string; bar: string; border: string; text: string }> = {
-  'závod':    { badge: 'bg-brand-orange text-white',      bar: 'bg-brand-orange',      border: 'border-brand-orange',      text: 'text-brand-orange' },
-  'tábor':    { badge: 'bg-brand-green text-border-dark', bar: 'bg-brand-green',        border: 'border-brand-green',        text: 'text-on-tertiary-container' },
-  'kemp':     { badge: 'bg-brand-green text-border-dark', bar: 'bg-brand-green',        border: 'border-brand-green',        text: 'text-on-tertiary-container' },
-  'workshop': { badge: 'bg-brand-navy-deep text-white',   bar: 'bg-brand-navy-deep',    border: 'border-brand-navy-deep',    text: 'text-brand-navy-deep' },
-  'jiné':     { badge: 'bg-surface-container-high text-outline', bar: 'bg-outline',     border: 'border-outline',            text: 'text-outline' },
+const TYPE_ACCENT: Record<EventType, { badge: string; bar: string; border: string; text: string; btnBg: string; btnText: string }> = {
+  'závod':    { badge: 'bg-brand-orange text-white',      bar: 'bg-brand-orange',   border: 'border-brand-orange',   text: 'text-brand-orange',           btnBg: 'bg-brand-orange',   btnText: 'text-white' },
+  'tábor':    { badge: 'bg-brand-green text-border-dark', bar: 'bg-brand-green',    border: 'border-brand-green',    text: 'text-on-tertiary-container',  btnBg: 'bg-brand-green',    btnText: 'text-border-dark' },
+  'kemp':     { badge: 'bg-brand-green text-border-dark', bar: 'bg-brand-green',    border: 'border-brand-green',    text: 'text-on-tertiary-container',  btnBg: 'bg-brand-green',    btnText: 'text-border-dark' },
+  'workshop': { badge: 'bg-brand-navy-deep text-white',   bar: 'bg-brand-navy-deep',border: 'border-brand-navy-deep',text: 'text-brand-navy-deep',        btnBg: 'bg-brand-navy-deep',btnText: 'text-white' },
+  'jiné':     { badge: 'bg-surface-container-high text-outline', bar: 'bg-outline', border: 'border-outline',        text: 'text-outline',                btnBg: 'bg-border-dark',    btnText: 'text-white' },
 }
 
 function formatDate(dateStr: string, endDateStr?: string): string {
@@ -107,90 +107,141 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
       </section>
 
       {/* ── MAIN CONTENT ── */}
-      <div className="max-w-2xl mx-auto px-gutter py-section-padding-mobile md:py-section-padding-desktop">
+      <div className="max-w-container-max mx-auto px-gutter py-section-padding-mobile md:py-section-padding-desktop">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 xl:gap-20">
 
-        {event.description && event.description.length > 0 && (
-          <ScrollReveal>
-            <div className="space-y-5 mb-12">
-              <PortableText
-                value={event.description}
-                components={{
-                  block: {
-                    normal: ({ children }) => (
-                      <p className="text-on-surface-variant font-light leading-relaxed" style={{ fontSize: "clamp(15px, 1.1vw, 17px)" }}>{children}</p>
-                    ),
-                    h2: ({ children }) => (
-                      <h2 className="font-black uppercase tracking-tight leading-none text-border-dark mt-10" style={{ fontSize: "clamp(18px, 2vw, 26px)" }}>{children}</h2>
-                    ),
-                    h3: ({ children }) => (
-                      <h3 className="font-bold uppercase tracking-tight text-border-dark text-base">{children}</h3>
-                    ),
-                    blockquote: ({ children }) => (
-                      <p className={`text-border-dark font-medium leading-relaxed border-l-4 ${accent.border} pl-6`}>{children}</p>
-                    ),
-                  },
-                  list: {
-                    bullet: ({ children }) => (
-                      <ul className="list-disc pl-6 space-y-1 text-on-surface-variant font-light leading-relaxed">{children}</ul>
-                    ),
-                    number: ({ children }) => (
-                      <ol className="list-decimal pl-6 space-y-1 text-on-surface-variant font-light leading-relaxed">{children}</ol>
-                    ),
-                  },
-                  listItem: {
-                    bullet: ({ children }) => <li>{children}</li>,
-                    number: ({ children }) => <li>{children}</li>,
-                  },
-                  marks: {
-                    strong: ({ children }: { children: React.ReactNode }) => <strong className="font-semibold text-border-dark">{children}</strong>,
-                    em: ({ children }: { children: React.ReactNode }) => <em>{children}</em>,
-                  },
-                }}
-              />
-            </div>
-          </ScrollReveal>
-        )}
+          {/* Left — obsah */}
+          <main className="lg:col-span-8 space-y-16">
+            {event.description && event.description.length > 0 && (
+              <ScrollReveal>
+                <div className="space-y-5">
+                  <PortableText
+                    value={event.description}
+                    components={{
+                      block: {
+                        normal: ({ children }) => (
+                          <p className="text-on-surface-variant font-light leading-relaxed" style={{ fontSize: "clamp(15px, 1.1vw, 17px)" }}>{children}</p>
+                        ),
+                        h2: ({ children }) => (
+                          <h2 className="font-black uppercase tracking-tight leading-none text-border-dark mt-10" style={{ fontSize: "clamp(18px, 2vw, 26px)" }}>{children}</h2>
+                        ),
+                        h3: ({ children }) => (
+                          <h3 className="font-bold uppercase tracking-tight text-border-dark text-base">{children}</h3>
+                        ),
+                        blockquote: ({ children }) => (
+                          <p className={`text-border-dark font-medium leading-relaxed border-l-4 ${accent.border} pl-6`}>{children}</p>
+                        ),
+                      },
+                      list: {
+                        bullet: ({ children }) => (
+                          <ul className="list-disc pl-6 space-y-1 text-on-surface-variant font-light leading-relaxed">{children}</ul>
+                        ),
+                        number: ({ children }) => (
+                          <ol className="list-decimal pl-6 space-y-1 text-on-surface-variant font-light leading-relaxed">{children}</ol>
+                        ),
+                      },
+                      listItem: {
+                        bullet: ({ children }) => <li>{children}</li>,
+                        number: ({ children }) => <li>{children}</li>,
+                      },
+                      marks: {
+                        strong: ({ children }: { children: React.ReactNode }) => <strong className="font-semibold text-border-dark">{children}</strong>,
+                        em: ({ children }: { children: React.ReactNode }) => <em>{children}</em>,
+                      },
+                    }}
+                  />
+                </div>
+              </ScrollReveal>
+            )}
 
-        {event.registration?.isOpen && event.registration.url && (
-          <ScrollReveal>
-            <div className="mb-12">
-              <a
-                href={event.registration.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`inline-flex items-center justify-center font-label-bold uppercase tracking-widest px-10 py-4 text-[11px] hover:bg-brand-navy-deep hover:text-white transition-colors ${accent.badge}`}
-              >
-                Přihlásit se →
-              </a>
-            </div>
-          </ScrollReveal>
-        )}
-
-        {event.links && event.links.length > 0 && (
-          <ScrollReveal>
-            <div className={`pt-8 border-t-2 ${accent.border}`}>
-              <h2
-                className="font-black uppercase tracking-tight leading-none text-border-dark mb-6"
-                style={{ fontSize: "clamp(18px, 2vw, 26px)" }}
-              >
-                Odkazy
-              </h2>
-              <div className="flex flex-wrap gap-3">
-                {event.links.map((link) => (
-                  <a
-                    key={`${link.url}-${link.label}`}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 font-label-bold text-[11px] uppercase tracking-widest px-6 py-3 border border-border-dark text-border-dark hover:bg-brand-navy-deep hover:text-white hover:border-brand-navy-deep transition-colors"
+            {event.links && event.links.length > 0 && (
+              <ScrollReveal>
+                <div className={`border-t-2 ${accent.border} pt-10`}>
+                  <h2
+                    className="font-black uppercase tracking-tight leading-none text-border-dark mb-6"
+                    style={{ fontSize: "clamp(18px, 2vw, 26px)" }}
                   >
-                    {link.label} →
-                  </a>
-                ))}
-              </div>
+                    Odkazy
+                  </h2>
+                  <div className="flex flex-wrap gap-3">
+                    {event.links.map((link) => (
+                      <a
+                        key={`${link.url}-${link.label}`}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 font-label-bold text-[11px] uppercase tracking-widest px-6 py-3 border border-border-dark text-border-dark hover:bg-brand-navy-deep hover:text-white hover:border-brand-navy-deep transition-colors"
+                      >
+                        {link.label} →
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </ScrollReveal>
+            )}
+          </main>
+
+          {/* Right — sidebar */}
+          <aside className="lg:col-span-4">
+            <div className="lg:sticky lg:top-32 space-y-4">
+              <ScrollReveal>
+                <div className={`bg-brand-navy-deep text-white p-6 md:p-8 space-y-6 border-t-2 ${accent.border}`}>
+                  <div>
+                    <span className="font-label-bold text-[10px] uppercase tracking-widest text-white/40 block mb-3">
+                      Máš zájem?
+                    </span>
+                    <h3
+                      className="font-black uppercase tracking-tight leading-tight text-white"
+                      style={{ fontSize: "clamp(18px, 2vw, 24px)" }}
+                    >
+                      {event.registration?.isOpen ? 'Přihlas se' : 'Potřebuješ poradit?'}
+                    </h3>
+                  </div>
+
+                  <p className="text-white/55 font-light text-sm leading-relaxed">
+                    {event.registration?.isOpen
+                      ? 'Přihlášky jsou otevřené. Neváhej a zajisti si místo.'
+                      : 'Rádi zodpovíme všechny otázky ohledně této akce.'}
+                  </p>
+
+                  {event.registration?.isOpen && event.registration.url ? (
+                    <a
+                      href={event.registration.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center justify-center gap-2 font-label-bold uppercase tracking-widest px-6 py-4 text-[11px] hover:bg-white hover:text-border-dark transition-colors w-full ${accent.btnBg} ${accent.btnText}`}
+                    >
+                      Přihlásit se
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </a>
+                  ) : (
+                    <Link
+                      href="/#kontakt"
+                      className="flex items-center justify-center gap-2 font-label-bold uppercase tracking-widest px-6 py-4 text-[11px] bg-white/10 text-white hover:bg-white hover:text-border-dark transition-colors w-full border border-white/15"
+                    >
+                      Kontaktuj nás
+                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </Link>
+                  )}
+
+                  {event.registration?.isOpen && (
+                    <Link
+                      href="/#kontakt"
+                      className={`block text-center font-label-bold text-[10px] uppercase tracking-widest transition-colors ${accent.text === 'text-brand-navy-deep' ? 'text-white/50 hover:text-white' : `${accent.text} opacity-80 hover:opacity-100`}`}
+                    >
+                      Nebo se zeptej →
+                    </Link>
+                  )}
+                </div>
+              </ScrollReveal>
             </div>
-          </ScrollReveal>
-        )}
+          </aside>
+
+        </div>
       </div>
 
       {/* ── BOTTOM CTA ── */}

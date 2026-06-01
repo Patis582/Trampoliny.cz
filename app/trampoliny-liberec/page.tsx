@@ -209,22 +209,28 @@ export default async function TrampolinyLiberecPage() {
                 Chceš trénovat<br />s námi?
               </h2>
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 shrink-0">
-              <Link
-                href="/jak-na-to"
-                className="inline-flex items-center gap-3 bg-brand-orange text-white font-label-bold text-[11px] uppercase tracking-wider px-7 py-4 hover:bg-white hover:text-brand-navy-deep transition-all duration-300"
-              >
-                Jak se přihlásit
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Link>
-              <Link
-                href="/treneri"
-                className="inline-flex items-center border border-white/30 text-white font-label-bold text-[11px] uppercase tracking-wider px-7 py-4 hover:border-white hover:bg-white/10 transition-all duration-300"
-              >
-                Naši trenéři
-              </Link>
+            <div className="flex flex-col gap-6 shrink-0 items-start">
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Link
+                  href="/jak-na-to"
+                  className="inline-flex items-center gap-3 bg-brand-orange text-white font-label-bold text-[11px] uppercase tracking-wider px-7 py-4 hover:bg-white hover:text-brand-navy-deep transition-all duration-300"
+                >
+                  Jak se přihlásit
+                  <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </Link>
+                <Link
+                  href="/treneri"
+                  className="inline-flex items-center border border-white/30 text-white font-label-bold text-[11px] uppercase tracking-wider px-7 py-4 hover:border-white hover:bg-white/10 transition-all duration-300"
+                >
+                  Naši trenéři
+                </Link>
+              </div>
+              <div className="flex gap-5">
+                <a href="https://www.instagram.com/trampoliny_liberec/" target="_blank" rel="noopener noreferrer" className="font-label-bold text-[10px] uppercase tracking-widest text-white/40 hover:text-brand-orange transition-colors">Instagram</a>
+                <a href="https://www.facebook.com/people/Trampolíny-Liberec/100064273773002/" target="_blank" rel="noopener noreferrer" className="font-label-bold text-[10px] uppercase tracking-widest text-white/40 hover:text-brand-orange transition-colors">Facebook</a>
+              </div>
             </div>
           </div>
         </ScrollReveal>

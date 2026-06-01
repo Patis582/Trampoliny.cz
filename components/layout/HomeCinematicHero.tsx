@@ -6,23 +6,16 @@ import { useEffect, useState, type CSSProperties } from "react";
 import { HeroScrollHint } from "./HeroScrollHint";
 
 const slides = [
-  { src: "/hero.jpg",           alt: "Trampolíny Liberec" },
-  { src: "/hero-liberec-1.jpg", alt: "Závodní trampolíny Liberec" },
-  { src: "/hero-patrman-1.jpg", alt: "Trampolíny Patrman" },
+  { src: "/fotky-orionka/hero3.jpg",  alt: "TC Orionka — trampolínová hala Liberec" },
+  { src: "/juj-mcr.jpg",             alt: "Závodnice na trampolíně během závodu" },
+  { src: "/hero-patrman-7.jpg",       alt: "Rodiče a děti v trampolínové hale" },
 ];
 
 const kenburns = ["kenburns-1", "kenburns-2", "kenburns-3"];
 
-const randomNext = (current: number, total: number) => {
-  if (total <= 1) return 0;
-  let next: number;
-  do { next = Math.floor(Math.random() * total); } while (next === current);
-  return next;
-};
-
 export function HomeCinematicHero() {
   const [mounted, setMounted] = useState(false);
-  const [current, setCurrent] = useState(() => Math.floor(Math.random() * slides.length));
+  const [current, setCurrent] = useState(0);
   const [keys, setKeys] = useState([0, 0, 0]);
 
   useEffect(() => {
@@ -33,7 +26,7 @@ export function HomeCinematicHero() {
   useEffect(() => {
     const id = setInterval(() => {
       setCurrent((prev) => {
-        const next = randomNext(prev, slides.length);
+        const next = (prev + 1) % slides.length;
         setKeys((k) => k.map((v, i) => (i === next ? v + 1 : v)));
         return next;
       });

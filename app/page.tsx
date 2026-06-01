@@ -4,6 +4,7 @@ import { ServiceGrid } from "@/components/services/ServiceGrid";
 import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { HomeCinematicHero } from "@/components/layout/HomeCinematicHero";
+import { HallsSection } from "@/components/layout/HallsSection";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { getServices, getUpcomingEvents } from "@/sanity/lib/queries";
 import type { Event } from "@/sanity/lib/queries";
@@ -114,6 +115,52 @@ export default async function Home() {
         </div>
       </section>
 
+      {/* ── Harcov Hall ── */}
+      <div className="bg-brand-navy-deep">
+        <ScrollReveal className="max-w-container-max mx-auto px-gutter py-10 md:py-14">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+            <div className="flex items-start gap-6">
+              <div className="w-px h-12 bg-white/20 shrink-0 hidden sm:block" />
+              <div>
+                <span className="font-label-bold text-[10px] uppercase tracking-widest text-brand-green mb-2 block">
+                  Ve výstavbě · Liberec-Harcov
+                </span>
+                <h3
+                  className="font-black uppercase tracking-tight leading-none text-white mb-3"
+                  style={{ fontSize: "clamp(20px, 2.5vw, 32px)" }}
+                >
+                  Sportovní areál Harcov
+                </h3>
+                <p className="text-white/50 font-light leading-relaxed max-w-md" style={{ fontSize: "clamp(13px, 1vw, 15px)" }}>
+                  Moderní centrum pro trampolínové sporty, gymnastiku a parkour pro všechny věkové kategorie v přírodě Harcova.
+                </p>
+              </div>
+            </div>
+            <div className="flex items-center gap-6">
+              <a
+                href="https://www.instagram.com/sportovni_areal_harcov/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-label-bold text-[10px] uppercase tracking-widest text-white/40 hover:text-white transition-colors"
+              >
+                Instagram
+              </a>
+              <a
+                href="https://www.trampolinyharcov.cz/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 bg-white text-brand-navy-deep font-label-bold text-[11px] uppercase tracking-wider px-6 py-3.5 hover:bg-brand-green hover:text-border-dark transition-all duration-300"
+              >
+                trampolinyharcov.cz
+                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </ScrollReveal>
+      </div>
+
       {/* ── Services ── */}
       <section
         className="py-section-padding-mobile md:py-section-padding-desktop bg-surface-container-lowest"
@@ -189,6 +236,9 @@ export default async function Home() {
         </section>
       )}
 
+      {/* ── Halls ── */}
+      <HallsSection />
+
       {/* ── Locations & Contact ── */}
       <section
         className="py-section-padding-mobile md:py-section-padding-desktop bg-white"
@@ -263,16 +313,15 @@ export default async function Home() {
               <h3 className="font-headline-sm text-headline-sm text-border-dark uppercase tracking-tight">Kontakt</h3>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {[
-                  { label: "Závodní oddíl", name: "Miroslav Patrman", bio: "Hlavní trenér závodního oddílu", phone: "+420 604 245 971", email: "mirapatrman@gmail.com", brand: "liberec" },
-                  { label: "Přípravky & kroužky", name: "Klára Patrmanová", bio: "Vedoucí přípravek a kroužků", phone: "+420 731 123 456", email: "pripravky@trampoliny-liberec.cz", brand: "liberec" },
-                  { label: "Oslavy & pronájem", name: "Kamila Brücklérová", bio: "Organizace oslav a pronájem haly", phone: "+420 720 987 654", email: "kamilabrucklerova@gmail.com", brand: "patrman" },
-                  { label: "Tábory & workshopy", name: "Michaela Křiklavová", bio: "Příměstské tábory a workshopy", phone: "+420 608 456 789", email: "tabory@trampoliny-patrman.cz", brand: "patrman" },
-                ].map(({ label, name, bio, phone, email, brand }) => (
+                  { name: "Miroslav Patrman", bio: "Hlavní trenér závodního oddílu", phone: "+420 604 245 971", email: "mirapatrman@gmail.com" },
+                  { name: "Klára Patrmanová", bio: "Manažerka", phone: "+420 731 123 456", email: "kpatrmanova@gmail.com" },
+                  { name: "Kamila Brücklérová", bio: "Odborná asistentka", phone: "+420 775 252 562", email: "kamilabrucklerova@gmail.com" },
+                  { name: "Michaela Křiklavová", bio: "Vedoucí recepce", phone: "+420 728 848 948", email: "kriklavova.michaela@seznam.cz" },
+                ].map(({ name, bio, phone, email }) => (
                   <div
-                    key={label}
+                    key={name}
                     className="flex flex-col gap-1 p-5 bg-surface-container-lowest"
                   >
-                    <span className="font-label-bold text-[10px] uppercase tracking-widest text-outline mb-2">{label}</span>
                     <p className="font-headline-sm text-border-dark font-bold text-sm uppercase tracking-tight">{name}</p>
                     <p className="font-body-md text-on-surface-variant font-light text-sm mb-2">{bio}</p>
                     <a href={`tel:${phone.replace(/\s/g, "")}`} className="font-body-md text-body-md text-border-dark font-medium hover:text-brand-orange transition-colors">{phone}</a>

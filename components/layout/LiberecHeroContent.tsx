@@ -56,7 +56,7 @@ export function LiberecHeroContent() {
         Výkonnostní trénink, závody a přípravky pro děti i dospělé v TC Orionka v Liberci.
       </p>
 
-      <div style={fadeUp(620)} className="flex flex-col sm:flex-row gap-4">
+      <div style={fadeUp(620)} className="flex flex-col sm:flex-row gap-4 mb-8">
         <a
           href="#aktivity"
           className="inline-flex justify-center items-center bg-brand-orange text-white font-label-bold text-[11px] uppercase tracking-wider px-7 py-4 hover:bg-white hover:text-brand-orange transition-all duration-300 cursor-pointer"
@@ -72,6 +72,11 @@ export function LiberecHeroContent() {
             <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
           </svg>
         </a>
+      </div>
+
+      <div style={fadeUp(720)} className="flex gap-5">
+        <a href="https://www.instagram.com/trampoliny_liberec/" target="_blank" rel="noopener noreferrer" className="font-label-bold text-[10px] uppercase tracking-widest text-white/40 hover:text-brand-orange transition-colors">Instagram</a>
+        <a href="https://www.facebook.com/people/Trampolíny-Liberec/100064273773002/" target="_blank" rel="noopener noreferrer" className="font-label-bold text-[10px] uppercase tracking-widest text-white/40 hover:text-brand-orange transition-colors">Facebook</a>
       </div>
     </div>
   );
