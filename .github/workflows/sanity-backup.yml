@@ -1,0 +1,44 @@
+name: Sanity Dataset Backup
+
+on:
+  schedule:
+    # Spustí se každou neděli o půlnoci (00:00 UTC)
+    - cron: '0 0 * * 0'
+  # Umožní spustit zálohu i ručně kliknutím v GitHub rozhraní
+  workflow_dispatch:
+
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Stžení kódu (volitelné, ale užitečné pro kontext)
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Instalace Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # 3. Instalace Sanity CLI globálně
+      - name: Install Sanity CLI
+        run: npm install -g @sanity/cli
+
+      # 4. Exportování datasetu ze Sanity
+      # Změň 'production' na název svého datasetu, pokud máš jiný
+      - name: Export Sanity Dataset
+        env:
+          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
+        run: |
+          sanity dataset export --project ${{ secrets.SANITY_PROJECT_ID }} production backup.tar.gz
+
+      # 5. Uložení zálohy jako GitHub Artifact
+      - name: Upload Backup Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: sanity-backup-${{ github.run_id }}
+          path: backup.tar.gz
+          # Jak dlouho má GitHub zálohu držet (ve dnech). Max je 90 pro free účty.
+          retention-days: 90
