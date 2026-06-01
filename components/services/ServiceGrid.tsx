@@ -57,21 +57,45 @@ const accentClasses: Record<AccentColor, { border: string; title: string; bar: s
 };
 
 function ServiceRow({ num, service }: { num: string; service: Service }) {
-  const { title, accent } = service;
+  const { title, accent, image } = service;
   const cls = accentClasses[accent];
 
   return (
     <Link
       href={`/aktivity/${service.slug}`}
-      className={`group flex items-center gap-4 border-t-2 ${cls.border} pt-4 pb-5 hover:opacity-80 transition-opacity`}
+      className={`group flex items-center gap-4 border-t-2 ${cls.border} pt-4 pb-5 hover:opacity-80 transition-opacity cursor-pointer`}
     >
-      <span className={`font-label-bold text-[10px] uppercase tracking-widest shrink-0 w-6 ${cls.label}`}>
-        {num}
-      </span>
-      <h3 className={`flex-1 font-black text-border-dark uppercase tracking-tight leading-tight transition-colors ${cls.title}`} style={{ fontSize: "clamp(14px, 3.5vw, 18px)" }}>
+      {/* Thumbnail — shown only when image available */}
+      {image?.url ? (
+        <div className="relative w-12 h-12 shrink-0 overflow-hidden bg-surface-container">
+          <Image
+            src={image.url}
+            alt={title}
+            fill
+            className="object-cover"
+            sizes="48px"
+          />
+        </div>
+      ) : (
+        <span className={`font-label-bold text-[10px] uppercase tracking-widest shrink-0 w-6 ${cls.label}`}>
+          {num}
+        </span>
+      )}
+
+      <h3
+        className={`flex-1 font-black text-border-dark uppercase tracking-tight leading-tight transition-colors ${cls.title}`}
+        style={{ fontSize: "clamp(14px, 3.5vw, 18px)" }}
+      >
         {title}
       </h3>
-      <svg className="w-4 h-4 text-outline group-hover:translate-x-0.5 transition-transform shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+
+      <svg
+        className="w-4 h-4 text-outline group-hover:translate-x-0.5 transition-transform shrink-0"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+        strokeWidth={2}
+      >
         <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
       </svg>
     </Link>
@@ -85,7 +109,7 @@ function ServiceCard({ num, service }: { num: string; service: Service }) {
   return (
     <Link
       href={`/aktivity/${service.slug}`}
-      className={`group flex flex-col bg-white overflow-hidden border-t-2 ${cls.border} hover:shadow-sm transition-all duration-300 cursor-pointer`}
+      className={`group flex flex-col bg-white overflow-hidden border-t-2 ${cls.border} hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer`}
     >
       <div className="aspect-video overflow-hidden relative bg-surface-container">
         {image?.url && (
@@ -119,7 +143,7 @@ function ServiceCard({ num, service }: { num: string; service: Service }) {
 
         <div className="relative z-10 flex items-center justify-between">
           <div className={`w-12 h-px group-hover:w-24 transition-all duration-500 ${cls.bar}`} />
-          <span className={`text-[11px] font-bold uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${cls.label}`}>
+          <span className={`text-[11px] font-bold uppercase tracking-widest transition-all duration-300 ${cls.label} opacity-40 group-hover:opacity-100`}>
             Více info →
           </span>
         </div>

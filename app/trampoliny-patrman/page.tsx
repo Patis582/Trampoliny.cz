@@ -144,23 +144,23 @@ export default async function TrampolinyPatrmanPage() {
 
       {/* ── KDO NÁS NAVŠTÍVIL ── */}
       {notableVisitors && notableVisitors.length > 0 && (
-        <section className="bg-surface-container-lowest py-section-padding-mobile md:py-section-padding-desktop">
-          <div className="max-w-container-max mx-auto px-gutter">
-            <ScrollReveal className="mb-12">
-              <span className="inline-block font-label-bold text-label-bold uppercase tracking-widest text-on-tertiary-container mb-4">
+        <section className="bg-brand-navy-deep pt-section-padding-mobile md:pt-section-padding-desktop">
+          <div className="max-w-container-max mx-auto px-gutter mb-12">
+            <ScrollReveal>
+              <span className="inline-block font-label-bold text-label-bold uppercase tracking-widest text-brand-green mb-4">
                 Slavní hosté
               </span>
               <h2
-                className="font-black uppercase tracking-tight leading-none text-border-dark"
+                className="font-black uppercase tracking-tight leading-none text-white"
                 style={{ fontSize: "clamp(28px, 4vw, 52px)" }}
               >
                 Kdo nás <span className="font-medium">navštívil</span>
               </h2>
             </ScrollReveal>
-            <ScrollReveal delay={100}>
-              <NotableVisitorsGrid visitors={notableVisitors} />
-            </ScrollReveal>
           </div>
+          <ScrollReveal delay={100}>
+            <NotableVisitorsGrid visitors={notableVisitors} />
+          </ScrollReveal>
         </section>
       )}
 

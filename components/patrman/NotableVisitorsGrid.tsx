@@ -1,32 +1,135 @@
+"use client";
+
 import Image from "next/image";
+import { useRef, useEffect } from "react";
 import type { NotableVisitor } from "@/sanity/lib/queries";
 
+const PX_PER_SEC = 80;
+
+function fill(items: NotableVisitor[]): NotableVisitor[] {
+  const result = [...items];
+  while (result.length < 6) result.push(...items);
+  return [...result, ...result];
+}
+
 export function NotableVisitorsGrid({ visitors }: { visitors: NotableVisitor[] }) {
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const state = useRef({ offset: 0, dragging: false, startX: 0, startOffset: 0, lastT: 0 });
+
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    const track = trackRef.current;
+    if (!wrap || !track) return;
+
+    let raf: number;
+
+    function half() {
+      return track!.scrollWidth / 2;
+    }
+
+    function applyOffset() {
+      const h = half();
+      const s = state.current;
+      s.offset = ((s.offset % h) + h) % h;
+      track!.style.transform = `translateX(-${s.offset}px)`;
+    }
+
+    function loop(t: number) {
+      const s = state.current;
+      if (!s.dragging) {
+        const dt = s.lastT > 0 ? (t - s.lastT) / 1000 : 0;
+        s.offset += PX_PER_SEC * dt;
+        applyOffset();
+      }
+      s.lastT = s.dragging ? s.lastT : t;
+      raf = requestAnimationFrame(loop);
+    }
+
+    function startDrag(clientX: number) {
+      const s = state.current;
+      s.dragging = true;
+      s.startX = clientX;
+      s.startOffset = s.offset;
+    }
+
+    function moveDrag(clientX: number) {
+      if (!state.current.dragging) return;
+      const s = state.current;
+      s.offset = s.startOffset + (s.startX - clientX);
+      applyOffset();
+    }
+
+    function endDrag() {
+      state.current.dragging = false;
+      state.current.lastT = 0; // reset so next frame has dt=0, no position jump
+    }
+
+    // Mouse
+    wrap.addEventListener("mousedown", (e) => startDrag(e.clientX));
+    wrap.addEventListener("mousemove", (e) => moveDrag(e.clientX));
+    wrap.addEventListener("mouseup", endDrag);
+    wrap.addEventListener("mouseleave", endDrag);
+
+    // Touch — passive:false so we can call preventDefault and block page scroll
+    wrap.addEventListener("touchstart", (e) => { e.preventDefault(); startDrag(e.touches[0].clientX); }, { passive: false });
+    wrap.addEventListener("touchmove",  (e) => { e.preventDefault(); moveDrag(e.touches[0].clientX); },  { passive: false });
+    wrap.addEventListener("touchend", endDrag);
+
+    raf = requestAnimationFrame(loop);
+
+    return () => {
+      cancelAnimationFrame(raf);
+      wrap.removeEventListener("mousedown",  (e) => startDrag(e.clientX));
+      wrap.removeEventListener("mousemove",  (e) => moveDrag(e.clientX));
+      wrap.removeEventListener("mouseup",    endDrag);
+      wrap.removeEventListener("mouseleave", endDrag);
+      wrap.removeEventListener("touchstart", (e) => startDrag(e.touches[0].clientX));
+      wrap.removeEventListener("touchmove",  (e) => moveDrag(e.touches[0].clientX));
+      wrap.removeEventListener("touchend",   endDrag);
+    };
+  }, []);
+
   if (visitors.length === 0) return null;
+  const row = fill(visitors);
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6">
-      {visitors.map((v) => (
-        <div key={v._id} className="flex flex-col">
-          <div className="relative h-32 md:h-36 overflow-hidden mb-3">
+    <div
+      ref={wrapRef}
+      className="overflow-hidden select-none cursor-grab active:cursor-grabbing"
+    >
+      <div ref={trackRef} className="flex gap-4 will-change-transform">
+        {row.map((v, i) => (
+          <div
+            key={i}
+            className="relative shrink-0 overflow-hidden"
+            style={{
+              width: "calc(50vw - 1rem)",
+              height: "clamp(300px, 42vw, 540px)",
+            }}
+          >
             <Image
               src={v.photo.url}
               alt={v.name}
               fill
-              className="object-cover"
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+              className="object-cover pointer-events-none"
+              sizes="50vw"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-5 md:p-7">
+              <p className="font-label-bold text-[9px] uppercase tracking-widest text-brand-green mb-2">
+                {v.description}
+              </p>
+              <p
+                className="font-black uppercase text-white leading-none"
+                style={{ fontSize: "clamp(15px, 2vw, 26px)" }}
+              >
+                {v.name}
+              </p>
+            </div>
           </div>
-          <div className="border-t-2 border-brand-green pt-3">
-            <p className="font-black uppercase tracking-tight text-border-dark leading-tight mb-1" style={{ fontSize: "clamp(13px, 1.2vw, 15px)" }}>
-              {v.name}
-            </p>
-            <p className="font-label-bold text-[9px] uppercase tracking-widest text-on-tertiary-container">
-              {v.description}
-            </p>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

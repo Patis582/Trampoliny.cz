@@ -1,6 +1,15 @@
 "use client";
 
+import { useRef, useEffect } from "react";
 import type { Testimonial } from "@/sanity/lib/queries";
+
+const PX_PER_SEC = 120;
+
+function fill(items: Testimonial[], min = 8): Testimonial[] {
+  const result = [...items];
+  while (result.length < min) result.push(...items);
+  return [...result, ...result];
+}
 
 function Stars({ rating }: { rating: number }) {
   return (
@@ -16,9 +25,9 @@ function Stars({ rating }: { rating: number }) {
 
 function TestimonialCard({ t }: { t: Testimonial }) {
   return (
-    <div className="shrink-0 w-80 bg-white/5 border-t-2 border-brand-green p-7 flex flex-col relative overflow-hidden">
+    <div className="shrink-0 w-80 bg-white/5 border-t-2 border-brand-green p-7 flex flex-col relative overflow-hidden pointer-events-none">
       <span
-        className="absolute -top-2 -left-1 text-brand-green/10 font-black leading-none select-none pointer-events-none"
+        className="absolute -top-2 -left-1 text-brand-green/10 font-black leading-none select-none"
         style={{ fontSize: "clamp(80px, 8vw, 120px)" }}
         aria-hidden="true"
       >
@@ -40,22 +49,81 @@ function TestimonialCard({ t }: { t: Testimonial }) {
   );
 }
 
-function fillRow(items: Testimonial[], minCount = 8): Testimonial[] {
-  if (items.length === 0) return [];
-  const result = [...items];
-  while (result.length < minCount) result.push(...items);
-  return [...result, ...result];
-}
-
 export function TestimonialsMarquee({ testimonials }: { testimonials: Testimonial[] }) {
-  if (testimonials.length === 0) return null;
+  const wrapRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const state = useRef({ offset: 0, dragging: false, startX: 0, startOffset: 0, lastT: 0 });
 
-  const row = fillRow(testimonials);
+  useEffect(() => {
+    const wrap = wrapRef.current;
+    const track = trackRef.current;
+    if (!wrap || !track) return;
+
+    let raf: number;
+
+    function half() {
+      return track!.scrollWidth / 2;
+    }
+
+    function applyOffset() {
+      const h = half();
+      const s = state.current;
+      s.offset = ((s.offset % h) + h) % h;
+      track!.style.transform = `translateX(-${s.offset}px)`;
+    }
+
+    function loop(t: number) {
+      const s = state.current;
+      if (!s.dragging) {
+        const dt = s.lastT > 0 ? (t - s.lastT) / 1000 : 0;
+        s.offset += PX_PER_SEC * dt;
+        applyOffset();
+        s.lastT = t;
+      }
+      raf = requestAnimationFrame(loop);
+    }
+
+    function startDrag(clientX: number) {
+      const s = state.current;
+      s.dragging = true;
+      s.startX = clientX;
+      s.startOffset = s.offset;
+    }
+
+    function moveDrag(clientX: number) {
+      if (!state.current.dragging) return;
+      const s = state.current;
+      s.offset = s.startOffset + (s.startX - clientX);
+      applyOffset();
+    }
+
+    function endDrag() {
+      state.current.dragging = false;
+      state.current.lastT = 0;
+    }
+
+    wrap.addEventListener("mousedown", (e) => startDrag(e.clientX));
+    wrap.addEventListener("mousemove", (e) => moveDrag(e.clientX));
+    wrap.addEventListener("mouseup", endDrag);
+    wrap.addEventListener("mouseleave", endDrag);
+    wrap.addEventListener("touchstart", (e) => { e.preventDefault(); startDrag(e.touches[0].clientX); }, { passive: false });
+    wrap.addEventListener("touchmove",  (e) => { e.preventDefault(); moveDrag(e.touches[0].clientX); },  { passive: false });
+    wrap.addEventListener("touchend", endDrag);
+
+    raf = requestAnimationFrame(loop);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  if (testimonials.length === 0) return null;
+  const row = fill(testimonials);
 
   return (
-    <div className="overflow-hidden select-none" aria-hidden="true">
-      <div className="flex gap-5 animate-marquee-left">
-        {row.map((t, i) => <TestimonialCard key={`r-${i}`} t={t} />)}
+    <div
+      ref={wrapRef}
+      className="overflow-hidden select-none cursor-grab active:cursor-grabbing"
+    >
+      <div ref={trackRef} className="flex gap-5 will-change-transform">
+        {row.map((t, i) => <TestimonialCard key={i} t={t} />)}
       </div>
     </div>
   );

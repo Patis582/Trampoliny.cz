@@ -217,6 +217,19 @@ body {
 .animate-marquee-right { animation: marquee-right 40s linear infinite; }
 .animate-marquee-left:hover,
 .animate-marquee-right:hover { animation-play-state: paused; }
+
+@keyframes marquee-visitors {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+.animate-marquee-visitors { animation: marquee-visitors 20s linear infinite; }
+
+@utility scrollbar-none {
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .animate-marquee-left, .animate-marquee-right { animation: none; }
 }
