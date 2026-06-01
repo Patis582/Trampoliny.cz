@@ -41,3 +41,7 @@ yarn-error.log*
 next-env.d.ts
 *.pdf
 build-output.log
+
+# Superpowers local files
+.superpowers/
+.claude/scheduled_tasks.lock
