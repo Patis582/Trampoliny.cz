@@ -7,6 +7,7 @@ import { Footer } from '@/components/layout/Footer'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { getEventBySlug, getAllEventSlugs, type EventType } from '@/sanity/lib/queries'
 import { urlFor } from '@/sanity/lib/image'
+import type { Metadata } from 'next'
 
 export async function generateStaticParams() {
   const slugs = await getAllEventSlugs()
@@ -19,6 +20,44 @@ const TYPE_LABELS: Record<EventType, string> = {
   'kemp': 'Kemp',
   'workshop': 'Workshop',
   'jiné': 'Jiné',
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const event = await getEventBySlug(slug);
+  if (!event) return {};
+
+  const typeLabel =
+    event.type === 'jiné' && event.customType
+      ? event.customType
+      : TYPE_LABELS[event.type];
+  const date = new Date(event.date).toLocaleDateString('cs-CZ', {
+    day: 'numeric',
+    month: 'long',
+    year: 'numeric',
+  });
+  const title = event.title;
+  const description = `${typeLabel} · ${date} — Trampolíny Liberec a Trampolíny Patrman.`;
+  const ogImage = event.image
+    ? urlFor(event.image).width(1200).height(630).url()
+    : undefined;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: `${title} | Trampolíny.cz`,
+      description,
+      url: `https://trampoliny.cz/akce/${slug}`,
+      type: 'article',
+      ...(ogImage ? { images: [{ url: ogImage, width: 1200, height: 630 }] } : {}),
+    },
+    alternates: { canonical: `https://trampoliny.cz/akce/${slug}` },
+  };
 }
 
 const TYPE_ACCENT: Record<EventType, { badge: string; bar: string; border: string; text: string; btnBg: string; btnText: string }> = {
@@ -47,8 +86,37 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
   const accent = TYPE_ACCENT[event.type]
   const heroImageUrl = event.image ? urlFor(event.image).width(1920).height(1080).url() : null
 
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Event',
+    name: event.title,
+    startDate: event.date,
+    ...(event.endDate ? { endDate: event.endDate } : {}),
+    url: `https://trampoliny.cz/akce/${event.slug}`,
+    organizer: {
+      '@type': 'Organization',
+      name: 'Trampolíny.cz',
+      url: 'https://trampoliny.cz',
+    },
+    ...(event.registration?.url
+      ? {
+          offers: {
+            '@type': 'Offer',
+            url: event.registration.url,
+            availability: event.registration.isOpen
+              ? 'https://schema.org/InStock'
+              : 'https://schema.org/SoldOut',
+          },
+        }
+      : {}),
+  };
+
   return (
     <div className="font-body-md antialiased bg-white min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="fixed top-0 left-0 w-full z-50">
         <Nav />
       </div>
