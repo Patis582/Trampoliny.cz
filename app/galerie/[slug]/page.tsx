@@ -6,10 +6,43 @@ import { Footer } from '@/components/layout/Footer'
 import { AlbumGallery } from '@/components/gallery/AlbumGallery'
 import { getGalleryAlbumBySlug, getAllGalleryAlbumSlugs } from '@/sanity/lib/queries'
 import { ScrollReset } from '@/components/ui/ScrollReset'
+import type { Metadata } from 'next'
 
 export async function generateStaticParams() {
   const slugs = await getAllGalleryAlbumSlugs()
   return slugs.map((slug) => ({ slug }))
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const album = await getGalleryAlbumBySlug(slug);
+  if (!album) return {};
+
+  const title = album.title;
+  const count = album.photos.length;
+  const date = new Date(album.date).toLocaleDateString('cs-CZ', {
+    month: 'long',
+    year: 'numeric',
+  });
+  const description = `Fotogalerie — ${album.title} · ${date} · ${count} fotek. Trampolíny Liberec a Trampolíny Patrman.`;
+  const ogImage = album.photos[0]?.url ?? undefined;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: `${title} | Trampolíny.cz`,
+      description,
+      url: `https://trampoliny.cz/galerie/${slug}`,
+      type: 'article',
+      ...(ogImage ? { images: [{ url: ogImage, width: 1200, height: 630 }] } : {}),
+    },
+    alternates: { canonical: `https://trampoliny.cz/galerie/${slug}` },
+  };
 }
 
 function formatDate(dateStr: string): string {
