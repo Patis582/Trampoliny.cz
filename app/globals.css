@@ -1,4 +1,9 @@
 @import "tailwindcss";
+@source not "../public/**";
+@source not "../galerie-download/**";
+@source not "../memory/**";
+@source not "../docs/**";
+@source not "../*.mjs";
 
 html {
   scroll-behavior: smooth;

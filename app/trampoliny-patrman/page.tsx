@@ -126,13 +126,13 @@ export default async function TrampolinyPatrmanPage() {
 
       {/* ── RECENZE ── */}
       {testimonials && testimonials.length > 0 && (
-        <section className="py-section-padding-mobile md:py-section-padding-desktop bg-surface-container-lowest overflow-hidden">
+        <section className="py-section-padding-mobile md:py-section-padding-desktop bg-brand-navy-deep overflow-hidden">
           <ScrollReveal className="max-w-container-max mx-auto px-gutter mb-12">
-            <span className="inline-block font-label-bold text-label-bold uppercase tracking-widest text-on-tertiary-container mb-4">
+            <span className="inline-block font-label-bold text-label-bold uppercase tracking-widest text-brand-green mb-4">
               Recenze
             </span>
             <h2
-              className="font-black uppercase tracking-tight leading-none text-border-dark"
+              className="font-black uppercase tracking-tight leading-none text-white"
               style={{ fontSize: "clamp(28px, 4vw, 52px)" }}
             >
               Co o nás <span className="font-medium">říkají</span>
@@ -144,14 +144,14 @@ export default async function TrampolinyPatrmanPage() {
 
       {/* ── KDO NÁS NAVŠTÍVIL ── */}
       {notableVisitors && notableVisitors.length > 0 && (
-        <section className="bg-brand-navy-deep py-section-padding-mobile md:py-section-padding-desktop">
+        <section className="bg-surface-container-lowest py-section-padding-mobile md:py-section-padding-desktop">
           <div className="max-w-container-max mx-auto px-gutter">
             <ScrollReveal className="mb-12">
-              <span className="inline-block font-label-bold text-label-bold uppercase tracking-widest text-brand-green mb-4">
-                Návštěvníci
+              <span className="inline-block font-label-bold text-label-bold uppercase tracking-widest text-on-tertiary-container mb-4">
+                Slavní hosté
               </span>
               <h2
-                className="font-black uppercase tracking-tight leading-none text-white"
+                className="font-black uppercase tracking-tight leading-none text-border-dark"
                 style={{ fontSize: "clamp(28px, 4vw, 52px)" }}
               >
                 Kdo nás <span className="font-medium">navštívil</span>
