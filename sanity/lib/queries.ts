@@ -48,7 +48,7 @@ export type Event = {
   type: EventType
   customType?: string
   description?: import('@portabletext/types').PortableTextBlock[]
-  image?: { asset: { _ref: string; _type: 'reference' }; hotspot?: { x: number; y: number } }
+  image?: { asset: { _ref: string; _type: 'reference' }; hotspot?: { x: number; y: number }; lqip?: string }
   links?: { label: string; url: string }[]
   registration?: {
     url?: string
@@ -90,7 +90,7 @@ const announcementFields = `
 
 const eventFields = `
   _id, "slug": slug.current, title, date, endDate, type, customType, description,
-  image { asset, hotspot },
+  "image": image { asset, hotspot, "lqip": asset->metadata.lqip },
   links[] { label, url },
   registration { url, isOpen }
 `
@@ -312,7 +312,7 @@ export type GalleryAlbumCard = {
   title: string
   slug: string
   date: string
-  coverImage: { asset: { _ref: string }; alt?: string }
+  coverImage: { asset: { _ref: string }; alt?: string; lqip?: string }
   photoCount: number
 }
 
@@ -322,6 +322,7 @@ export type GalleryPhoto = {
   width: number
   height: number
   alt?: string
+  lqip?: string
 }
 
 export type GalleryAlbumDetail = {
@@ -341,7 +342,7 @@ export async function getGalleryAlbums(): Promise<GalleryAlbumCard[] | null> {
         title,
         "slug": slug.current,
         date,
-        "coverImage": coverImage { asset, "alt": alt },
+        "coverImage": coverImage { asset, "alt": alt, "lqip": asset->metadata.lqip },
         "photoCount": count(photos)
       }`,
       {},
@@ -365,6 +366,7 @@ export async function getGalleryAlbumBySlug(slug: string): Promise<GalleryAlbumD
           "url": asset->url,
           "width": asset->metadata.dimensions.width,
           "height": asset->metadata.dimensions.height,
+          "lqip": asset->metadata.lqip,
           alt
         },
         "event": event->{ "slug": slug.current }
