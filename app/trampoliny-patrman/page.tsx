@@ -36,8 +36,27 @@ export default async function TrampolinyPatrmanPage() {
     getNotableVisitors(),
   ]);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    name: "Trampolíny Patrman",
+    url: "https://trampoliny.cz/trampoliny-patrman",
+    description: "Trampolínové centrum Miroslava Patrmana v Liberci od roku 2009.",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Liberec",
+      addressCountry: "CZ",
+    },
+    sport: "Trampolining",
+    foundingDate: "2009",
+  };
+
   return (
     <div className="font-body-md antialiased bg-white min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <div className="fixed top-0 left-0 w-full z-50">
         <Nav />

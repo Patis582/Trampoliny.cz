@@ -30,8 +30,26 @@ export default async function Home() {
     getUpcomingEvents(3),
   ]);
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "Trampolíny.cz",
+    url: "https://trampoliny.cz",
+    logo: "https://trampoliny.cz/og-default.jpg",
+    sameAs: [] as string[],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      availableLanguage: "Czech",
+    },
+  };
+
   return (
     <div className="font-body-md text-body-md antialiased selection:bg-primary-fixed selection:text-primary bg-background">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* Fixed header */}
       <div className="fixed top-0 left-0 w-full z-50">
         <Nav />

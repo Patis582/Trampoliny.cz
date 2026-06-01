@@ -27,8 +27,29 @@ export const metadata: Metadata = {
 export default async function TrampolinyLiberecPage() {
   const services = await getServicesByBrand("liberec");
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    name: "Trampolíny Liberec",
+    url: "https://trampoliny.cz/trampoliny-liberec",
+    description: "Závodní trampolínový oddíl s tradicí od roku 2009.",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "Harcovská 1209/3",
+      addressLocality: "Liberec",
+      addressRegion: "Liberecký kraj",
+      addressCountry: "CZ",
+    },
+    sport: "Trampolining",
+    foundingDate: "2009",
+  };
+
   return (
     <div className="font-body-md antialiased bg-white min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <div className="fixed top-0 left-0 w-full z-50">
         <Nav />
