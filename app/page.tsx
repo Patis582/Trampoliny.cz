@@ -9,6 +9,20 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { getServices, getUpcomingEvents } from "@/sanity/lib/queries";
 import type { Event } from "@/sanity/lib/queries";
 import { SectionError } from "@/components/ui/SectionError";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Dvě značky, jedna vášeň",
+  description:
+    "Dva trampolínové oddíly v Liberci pod jednou střechou. Trampolíny Liberec — závodní sport a příprava reprezentantů. Trampolíny Patrman — skákání a aktivity pro celou rodinu.",
+  openGraph: {
+    title: "Trampolíny.cz — Dvě značky, jedna vášeň",
+    description:
+      "Dva trampolínové oddíly v Liberci pod jednou střechou. Trampolíny Liberec — závodní sport a příprava reprezentantů. Trampolíny Patrman — skákání a aktivity pro celou rodinu.",
+    url: "https://trampoliny.cz",
+  },
+  alternates: { canonical: "https://trampoliny.cz" },
+};
 
 export default async function Home() {
   const [services, upcomingEvents] = await Promise.all([

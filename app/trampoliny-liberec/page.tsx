@@ -9,6 +9,20 @@ import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { getServicesByBrand } from "@/sanity/lib/queries";
 import { SectionError } from "@/components/ui/SectionError";
 import { EtickyKodex } from "@/components/liberec/EtickyKodex";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Trampolíny Liberec — Závodní sportovní oddíl",
+  description:
+    "Závodní trampolínový oddíl s tradicí od roku 2009. 100+ závodníků, 300+ medailí, 10+ reprezentantů ČR. Trénujeme v TC Orionka v Liberci–Harcově.",
+  openGraph: {
+    title: "Trampolíny Liberec — Závodní sportovní oddíl",
+    description:
+      "Závodní trampolínový oddíl s tradicí od roku 2009. 100+ závodníků, 300+ medailí, 10+ reprezentantů ČR. Trénujeme v TC Orionka v Liberci–Harcově.",
+    url: "https://trampoliny.cz/trampoliny-liberec",
+  },
+  alternates: { canonical: "https://trampoliny.cz/trampoliny-liberec" },
+};
 
 export default async function TrampolinyLiberecPage() {
   const services = await getServicesByBrand("liberec");

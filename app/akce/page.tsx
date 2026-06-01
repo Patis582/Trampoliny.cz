@@ -3,6 +3,20 @@ import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 import { AkceClient } from './AkceClient'
 import { SectionError } from '@/components/ui/SectionError'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Akce a závody",
+  description:
+    "Nadcházející závody, tábory, workshopy a akce od Trampolín Liberec a Trampolín Patrman.",
+  openGraph: {
+    title: "Akce a závody | Trampolíny.cz",
+    description:
+      "Nadcházející závody, tábory, workshopy a akce od Trampolín Liberec a Trampolín Patrman.",
+    url: "https://trampoliny.cz/akce",
+  },
+  alternates: { canonical: "https://trampoliny.cz/akce" },
+};
 
 export default async function AkcePage() {
   const [upcomingEvents, pastEvents] = await Promise.all([

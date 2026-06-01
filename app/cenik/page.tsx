@@ -3,6 +3,20 @@ import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 import { PricingSection } from '@/components/pricing/PricingSection'
 import { SectionError } from '@/components/ui/SectionError'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Ceník vstupného a tréninků",
+  description:
+    "Přehled cen vstupů, členství a kurzů pro Trampolíny Liberec a Trampolíny Patrman v Liberci.",
+  openGraph: {
+    title: "Ceník vstupného a tréninků | Trampolíny.cz",
+    description:
+      "Přehled cen vstupů, členství a kurzů pro Trampolíny Liberec a Trampolíny Patrman v Liberci.",
+    url: "https://trampoliny.cz/cenik",
+  },
+  alternates: { canonical: "https://trampoliny.cz/cenik" },
+};
 
 export default async function CenikPage() {
   const sections = await getPricingSections()

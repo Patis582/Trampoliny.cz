@@ -10,6 +10,20 @@ import { getServicesByBrand, getTestimonials, getNotableVisitors } from "@/sanit
 import { SectionError } from "@/components/ui/SectionError";
 import { TestimonialsMarquee } from "@/components/patrman/TestimonialsMarquee";
 import { NotableVisitorsGrid } from "@/components/patrman/NotableVisitorsGrid";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Trampolíny Patrman — Skákání pro celou rodinu",
+  description:
+    "Trampolínové centrum Miroslava Patrmana v Liberci od roku 2009. Otevřené skákání, kurzy rodič a dítě, oslavy narozenin, výlety pro školy a pronájem hal pro celou rodinu.",
+  openGraph: {
+    title: "Trampolíny Patrman — Skákání pro celou rodinu",
+    description:
+      "Trampolínové centrum Miroslava Patrmana v Liberci od roku 2009. Otevřené skákání, kurzy rodič a dítě, oslavy narozenin, výlety pro školy a pronájem hal pro celou rodinu.",
+    url: "https://trampoliny.cz/trampoliny-patrman",
+  },
+  alternates: { canonical: "https://trampoliny.cz/trampoliny-patrman" },
+};
 
 const contacts = [
   { name: "Klára Patrmanová", bio: "Manažerka", phone: "+420 731 123 456", email: "kpatrmanova@gmail.com" },

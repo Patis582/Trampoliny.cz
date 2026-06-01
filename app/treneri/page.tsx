@@ -4,6 +4,20 @@ import { Footer } from '@/components/layout/Footer'
 import { TrainerCard } from '@/components/trainers/TrainerCard'
 import { SectionError } from '@/components/ui/SectionError'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Naši trenéři",
+  description:
+    "Tým trenérů a instruktorů za každým skokem, tréninkem a závodem Trampolín Liberec a Trampolín Patrman.",
+  openGraph: {
+    title: "Naši trenéři | Trampolíny.cz",
+    description:
+      "Tým trenérů a instruktorů za každým skokem, tréninkem a závodem Trampolín Liberec a Trampolín Patrman.",
+    url: "https://trampoliny.cz/treneri",
+  },
+  alternates: { canonical: "https://trampoliny.cz/treneri" },
+};
 
 export default async function TreneriPage() {
   const trainers = await getTrainers()

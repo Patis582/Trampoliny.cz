@@ -4,6 +4,20 @@ import { AlbumCard } from '@/components/gallery/AlbumCard'
 import { SectionError } from '@/components/ui/SectionError'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { getGalleryAlbums, type GalleryAlbumCard } from '@/sanity/lib/queries'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Galerie",
+  description:
+    "Fotky z tréninků, závodů, táborů a akcí Trampolín Liberec a Trampolín Patrman.",
+  openGraph: {
+    title: "Galerie | Trampolíny.cz",
+    description:
+      "Fotky z tréninků, závodů, táborů a akcí Trampolín Liberec a Trampolín Patrman.",
+    url: "https://trampoliny.cz/galerie",
+  },
+  alternates: { canonical: "https://trampoliny.cz/galerie" },
+};
 
 export default async function GaleriePage() {
   const albums = await getGalleryAlbums()

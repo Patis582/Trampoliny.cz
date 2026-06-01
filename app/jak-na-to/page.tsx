@@ -2,6 +2,20 @@ import Image from 'next/image'
 import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 import { getSiteConfig } from '@/sanity/lib/queries'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: "Jak se přihlásit přes EOS",
+  description:
+    "Krok za krokem jak se přihlásit na aktivity přes online systém EOS — vytvořte účet, vyberte aktivitu a za pár minut máte dítě přihlášené.",
+  openGraph: {
+    title: "Jak se přihlásit přes EOS | Trampolíny.cz",
+    description:
+      "Krok za krokem jak se přihlásit na aktivity přes online systém EOS — vytvořte účet, vyberte aktivitu a za pár minut máte dítě přihlášené.",
+    url: "https://trampoliny.cz/jak-na-to",
+  },
+  alternates: { canonical: "https://trampoliny.cz/jak-na-to" },
+};
 
 const steps = [
   {
