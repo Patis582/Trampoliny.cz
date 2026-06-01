@@ -6,10 +6,37 @@ import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { getServiceBySlug, getAllServiceSlugs, type ServiceDetail } from "@/sanity/lib/queries";
+import type { Metadata } from "next";
 
 export async function generateStaticParams() {
   const slugs = await getAllServiceSlugs();
   return slugs.map((slug) => ({ slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const service = await getServiceBySlug(slug);
+  if (!service) return {};
+
+  const title = service.title;
+  const description = `Aktivita Trampolín Liberec a Trampolín Patrman — ${service.title}.`;
+  const ogImage = service.heroImage?.url ?? service.image?.url ?? undefined;
+
+  return {
+    title,
+    description,
+    openGraph: {
+      title: `${title} | Trampolíny.cz`,
+      description,
+      url: `https://trampoliny.cz/aktivity/${slug}`,
+      ...(ogImage ? { images: [{ url: ogImage, width: 1200, height: 630 }] } : {}),
+    },
+    alternates: { canonical: `https://trampoliny.cz/aktivity/${slug}` },
+  };
 }
 
 export default async function AktivitaPage({ params }: { params: Promise<{ slug: string }> }) {
