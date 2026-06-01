@@ -19,9 +19,26 @@ const workSans = Work_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Trampolíny Liberec & Patrman",
+  metadataBase: new URL("https://trampoliny.cz"),
+  title: {
+    default: "Trampolíny.cz",
+    template: "%s | Trampolíny.cz",
+  },
   description:
-    "Profesionální trampolíny, sportovní oddíl a zázemí pro všechny, kteří milují pohyb. Připoj se k nám v Liberci.",
+    "Dva trampolínové oddíly v Liberci pod jednou střechou. Trampolíny Liberec — závodní sport a příprava reprezentantů. Trampolíny Patrman — skákání a aktivity pro celou rodinu.",
+  openGraph: {
+    type: "website",
+    locale: "cs_CZ",
+    siteName: "Trampolíny.cz",
+    images: [{ url: "/og-default.jpg", width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default async function RootLayout({
