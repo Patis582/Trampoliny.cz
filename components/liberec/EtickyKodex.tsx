@@ -69,19 +69,42 @@ const CONTENT: Record<TabKey, string[]> = {
   ],
 };
 
+const TAB_KEYS = TABS.map((t) => t.key);
+
 export function EtickyKodex() {
   const [active, setActive] = useState<TabKey>("sportovec");
+
+  function handleKeyDown(e: React.KeyboardEvent, currentKey: TabKey) {
+    const idx = TAB_KEYS.indexOf(currentKey);
+    let next: number | null = null;
+    if (e.key === "ArrowRight") next = (idx + 1) % TAB_KEYS.length;
+    if (e.key === "ArrowLeft")  next = (idx - 1 + TAB_KEYS.length) % TAB_KEYS.length;
+    if (e.key === "Home")       next = 0;
+    if (e.key === "End")        next = TAB_KEYS.length - 1;
+    if (next !== null) {
+      e.preventDefault();
+      setActive(TAB_KEYS[next]);
+      (document.getElementById(`kodex-tab-${TAB_KEYS[next]}`) as HTMLButtonElement)?.focus();
+    }
+  }
 
   return (
     <div>
       {/* Tab přepínač */}
-      <div className="flex border-b border-outline mb-8">
+      <div role="tablist" aria-label="Skupiny etického kodexu" className="flex border-b border-outline mb-8">
         {TABS.map(({ key, label }) => (
           <button
             key={key}
+            type="button"
+            role="tab"
+            id={`kodex-tab-${key}`}
+            aria-selected={active === key}
+            aria-controls={`kodex-panel-${key}`}
+            tabIndex={active === key ? 0 : -1}
             onClick={() => setActive(key)}
+            onKeyDown={(e) => handleKeyDown(e, key)}
             className={[
-              "px-6 py-3 font-label-bold text-[11px] uppercase tracking-widest transition-colors cursor-pointer",
+              "px-6 py-3 font-label-bold text-[11px] uppercase tracking-widest transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange",
               active === key
                 ? "border-b-2 border-brand-orange text-border-dark -mb-px"
                 : "text-on-surface-variant hover:text-border-dark",
@@ -93,10 +116,16 @@ export function EtickyKodex() {
       </div>
 
       {/* Obsah aktivního tabu */}
-      <ul className="space-y-3 mb-10 max-w-2xl">
+      <ul
+        role="tabpanel"
+        id={`kodex-panel-${active}`}
+        aria-labelledby={`kodex-tab-${active}`}
+        tabIndex={0}
+        className="space-y-3 mb-10 max-w-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
+      >
         {CONTENT[active].map((item, i) => (
-          <li key={i} className="flex gap-3 items-baseline">
-            <span className="text-brand-orange font-black text-sm shrink-0 leading-relaxed">—</span>
+          <li key={`${active}-${i}`} className="flex gap-3 items-baseline">
+            <span aria-hidden="true" className="text-brand-orange font-black text-sm shrink-0 leading-relaxed">—</span>
             <span className="text-on-surface-variant font-light leading-relaxed" style={{ fontSize: "clamp(14px, 1vw, 16px)" }}>
               {item}
             </span>
@@ -108,10 +137,10 @@ export function EtickyKodex() {
       <a
         href="/eticky-kodex-tl.pdf"
         download="Etický kodex Trampolíny Liberec.pdf"
-        className="inline-flex items-center gap-3 border-t-2 border-brand-orange bg-transparent text-border-dark font-label-bold text-[11px] uppercase tracking-widest px-6 py-4 hover:bg-brand-orange hover:text-white transition-all duration-300 cursor-pointer"
+        className="inline-flex items-center gap-3 border-t-2 border-brand-orange bg-transparent text-border-dark font-label-bold text-[11px] uppercase tracking-widest px-6 py-4 hover:bg-brand-orange hover:text-white transition-all duration-300 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
       >
         Stáhnout kodex (PDF)
-        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
         </svg>
       </a>
