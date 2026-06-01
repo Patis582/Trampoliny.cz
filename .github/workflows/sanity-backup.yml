@@ -21,7 +21,7 @@ jobs:
         run: |
           curl -fsSL \
             -H "Authorization: Bearer ${{ secrets.SANITY_AUTH_TOKEN }}" \
-            "https://${{ secrets.SANITY_PROJECT_ID }}.api.sanity.io/v2021-06-07/data/export/production" \
+            "https://${{ secrets.ANITY_PROJECT_ID }}.api.sanity.io/v2021-06-07/data/export/production" \
             --output backup.tar.gz
 
       # 5. Uložení zálohy jako GitHub Artifact
