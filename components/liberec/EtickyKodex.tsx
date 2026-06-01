@@ -128,7 +128,7 @@ export function EtickyKodex() {
             key={`${active}-${i}`}
             className={[
               "flex items-start gap-4 py-3 border-b border-outline",
-              i % 2 === 0 ? "md:pr-8 md:border-r" : "md:pl-8",
+              i % 2 === 0 ? "md:pr-8" : "md:pl-8",
             ].join(" ")}
           >
             <span
