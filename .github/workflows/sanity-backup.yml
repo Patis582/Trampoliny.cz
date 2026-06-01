@@ -32,7 +32,7 @@ jobs:
         env:
           SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
         run: |
-          sanity dataset export --project ${{ secrets.SANITY_PROJECT_ID }} production backup.tar.gz
+          sanity dataset export -p ${{ secrets.SANITY_PROJECT_ID }} production backup.tar.gz
 
       # 5. Uložení zálohy jako GitHub Artifact
       - name: Upload Backup Artifact
