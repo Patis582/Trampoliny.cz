@@ -8,6 +8,7 @@ import { LiberecHeroContent } from "@/components/layout/LiberecHeroContent";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { getServicesByBrand } from "@/sanity/lib/queries";
 import { SectionError } from "@/components/ui/SectionError";
+import { EtickyKodex } from "@/components/liberec/EtickyKodex";
 
 export default async function TrampolinyLiberecPage() {
   const services = await getServicesByBrand("liberec");
@@ -156,7 +157,7 @@ export default async function TrampolinyLiberecPage() {
             <ScrollReveal delay={120} className="order-1 lg:order-2">
               <div className="relative aspect-[4/3] overflow-hidden">
                 <Image
-                  src="/hero-liberec-2.jpg"
+                  src="/fotky-liberec/hero-liberec-1.jpg"
                   alt="Závodní tým Trampolíny Liberec"
                   fill
                   className="object-cover"
@@ -191,6 +192,26 @@ export default async function TrampolinyLiberecPage() {
           ) : (
             <p className="text-on-surface-variant font-light">Aktivity brzy přibydou.</p>
           )}
+        </div>
+      </section>
+
+      {/* ── ETICKÝ KODEX ── */}
+      <section className="py-section-padding-mobile md:py-section-padding-desktop bg-surface-container-lowest" id="kodex">
+        <div className="max-w-container-max mx-auto px-gutter">
+          <ScrollReveal className="mb-12">
+            <span className="inline-block font-label-bold text-label-bold uppercase tracking-widest text-brand-orange mb-6">
+              Pravidla oddílu
+            </span>
+            <h2
+              className="font-black uppercase tracking-tight leading-none text-border-dark"
+              style={{ fontSize: "clamp(28px, 4vw, 52px)" }}
+            >
+              Etický <span className="font-medium">kodex</span>
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={100}>
+            <EtickyKodex />
+          </ScrollReveal>
         </div>
       </section>
 
