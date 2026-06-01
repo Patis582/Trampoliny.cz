@@ -16,23 +16,13 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 2. Instalace Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      # 3. Instalace Sanity CLI globálně
-      - name: Install Sanity CLI
-        run: npm install -g @sanity/cli
-
-      # 4. Exportování datasetu ze Sanity
-      # Změň 'production' na název svého datasetu, pokud máš jiný
+      # 3. Exportování datasetu ze Sanity přes HTTP API
       - name: Export Sanity Dataset
-        env:
-          SANITY_AUTH_TOKEN: ${{ secrets.SANITY_AUTH_TOKEN }}
         run: |
-          sanity dataset export -p ${{ secrets.SANITY_PROJECT_ID }} production backup.tar.gz
+          curl -fsSL \
+            -H "Authorization: Bearer ${{ secrets.SANITY_AUTH_TOKEN }}" \
+            "https://${{ secrets.SANITY_PROJECT_ID }}.api.sanity.io/v2021-06-07/data/export/production" \
+            --output backup.tar.gz
 
       # 5. Uložení zálohy jako GitHub Artifact
       - name: Upload Backup Artifact
