@@ -121,20 +121,26 @@ export function EtickyKodex() {
         id={`kodex-panel-${active}`}
         aria-labelledby={`kodex-tab-${active}`}
         tabIndex={0}
-        className="divide-y divide-outline mb-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
+        className="grid grid-cols-1 md:grid-cols-2 mb-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-orange"
       >
         {CONTENT[active].map((item, i) => (
-          <li key={`${active}-${i}`} className="flex items-start gap-6 py-4">
+          <li
+            key={`${active}-${i}`}
+            className={[
+              "flex items-start gap-4 py-3 border-b border-outline",
+              i % 2 === 0 ? "md:pr-8 md:border-r" : "md:pl-8",
+            ].join(" ")}
+          >
             <span
               aria-hidden="true"
               className="font-black text-brand-orange shrink-0 leading-none tabular-nums"
-              style={{ fontSize: "clamp(28px, 3vw, 42px)" }}
+              style={{ fontSize: "clamp(22px, 2vw, 30px)" }}
             >
               {String(i + 1).padStart(2, "0")}
             </span>
             <span
-              className="text-on-surface-variant font-light leading-relaxed pt-1"
-              style={{ fontSize: "clamp(14px, 1vw, 16px)" }}
+              className="text-on-surface-variant font-light leading-relaxed pt-0.5"
+              style={{ fontSize: "clamp(13px, 0.9vw, 15px)" }}
             >
               {item}
             </span>
