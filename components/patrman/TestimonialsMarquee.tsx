@@ -3,7 +3,7 @@
 import { useRef, useEffect } from "react";
 import type { Testimonial } from "@/sanity/lib/queries";
 
-const PX_PER_SEC = 120;
+const PX_PER_SEC = 70;
 
 function fill(items: Testimonial[], min = 8): Testimonial[] {
   const result = [...items];
@@ -69,7 +69,7 @@ export function TestimonialsMarquee({ testimonials }: { testimonials: Testimonia
       const h = half();
       const s = state.current;
       s.offset = ((s.offset % h) + h) % h;
-      track!.style.transform = `translateX(-${s.offset}px)`;
+      track!.style.transform = `translateX(${s.offset - h}px)`;
     }
 
     function loop(t: number) {
@@ -93,7 +93,7 @@ export function TestimonialsMarquee({ testimonials }: { testimonials: Testimonia
     function moveDrag(clientX: number) {
       if (!state.current.dragging) return;
       const s = state.current;
-      s.offset = s.startOffset + (s.startX - clientX);
+      s.offset = s.startOffset - (s.startX - clientX);
       applyOffset();
     }
 
