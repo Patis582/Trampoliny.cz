@@ -454,3 +454,39 @@ export async function getSiteConfig(): Promise<SiteConfig> {
     return {}
   }
 }
+
+// ── DOCUMENTS ────────────────────────────────────────────────────────────────
+
+export type DocumentFile = {
+  _id: string
+  title: string
+  fileUrl: string
+}
+
+export type DocumentCategory = {
+  _id: string
+  title: string
+  brand: 'liberec' | 'patrman' | 'treneri'
+  documents: DocumentFile[]
+}
+
+export async function getDocumentCategories(): Promise<DocumentCategory[]> {
+  try {
+    return await client.fetch(
+      `*[_type == "documentCategory"] | order(order asc) {
+        _id,
+        title,
+        brand,
+        "documents": *[_type == "downloadableDocument" && references(^._id)] | order(order asc) {
+          _id,
+          title,
+          "fileUrl": file.asset->url,
+        }
+      }`,
+      {},
+      { next: { tags: ['documents'] } }
+    )
+  } catch {
+    return []
+  }
+}
