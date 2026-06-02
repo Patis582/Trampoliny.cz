@@ -28,9 +28,14 @@ export function Footer() {
           <div className="md:col-span-3">
             <h4 className="font-label-bold text-[11px] text-white/40 uppercase tracking-widest mb-6">Právní informace</h4>
             <div className="flex flex-col gap-4">
-              {["Ochrana soukromí", "Všeobecné podmínky", "Mapa stránek"].map((item) => (
-                <Link key={item} href="#" className="text-white/70 hover:text-white transition-colors uppercase text-xs font-bold tracking-widest">
-                  {item}
+              {([
+                ["Dokumenty", "/dokumenty"],
+                ["Ochrana soukromí", "#"],
+                ["Všeobecné podmínky", "#"],
+                ["Mapa stránek", "#"],
+              ] as [string, string][]).map(([label, href]) => (
+                <Link key={label} href={href} className="text-white/70 hover:text-white transition-colors uppercase text-xs font-bold tracking-widest">
+                  {label}
                 </Link>
               ))}
             </div>
