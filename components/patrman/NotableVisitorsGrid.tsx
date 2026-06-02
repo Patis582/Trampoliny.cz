@@ -65,27 +65,32 @@ export function NotableVisitorsGrid({ visitors }: { visitors: NotableVisitor[] }
       state.current.lastT = 0; // reset so next frame has dt=0, no position jump
     }
 
+    const onMouseDown = (e: MouseEvent) => startDrag(e.clientX);
+    const onMouseMove = (e: MouseEvent) => moveDrag(e.clientX);
+    const onTouchStart = (e: TouchEvent) => { e.preventDefault(); startDrag(e.touches[0].clientX); };
+    const onTouchMove  = (e: TouchEvent) => { e.preventDefault(); moveDrag(e.touches[0].clientX); };
+
     // Mouse
-    wrap.addEventListener("mousedown", (e) => startDrag(e.clientX));
-    wrap.addEventListener("mousemove", (e) => moveDrag(e.clientX));
-    wrap.addEventListener("mouseup", endDrag);
+    wrap.addEventListener("mousedown",  onMouseDown);
+    wrap.addEventListener("mousemove",  onMouseMove);
+    wrap.addEventListener("mouseup",    endDrag);
     wrap.addEventListener("mouseleave", endDrag);
 
     // Touch — passive:false so we can call preventDefault and block page scroll
-    wrap.addEventListener("touchstart", (e) => { e.preventDefault(); startDrag(e.touches[0].clientX); }, { passive: false });
-    wrap.addEventListener("touchmove",  (e) => { e.preventDefault(); moveDrag(e.touches[0].clientX); },  { passive: false });
-    wrap.addEventListener("touchend", endDrag);
+    wrap.addEventListener("touchstart", onTouchStart, { passive: false });
+    wrap.addEventListener("touchmove",  onTouchMove,  { passive: false });
+    wrap.addEventListener("touchend",   endDrag);
 
     raf = requestAnimationFrame(loop);
 
     return () => {
       cancelAnimationFrame(raf);
-      wrap.removeEventListener("mousedown",  (e) => startDrag(e.clientX));
-      wrap.removeEventListener("mousemove",  (e) => moveDrag(e.clientX));
+      wrap.removeEventListener("mousedown",  onMouseDown);
+      wrap.removeEventListener("mousemove",  onMouseMove);
       wrap.removeEventListener("mouseup",    endDrag);
       wrap.removeEventListener("mouseleave", endDrag);
-      wrap.removeEventListener("touchstart", (e) => startDrag(e.touches[0].clientX));
-      wrap.removeEventListener("touchmove",  (e) => moveDrag(e.touches[0].clientX));
+      wrap.removeEventListener("touchstart", onTouchStart);
+      wrap.removeEventListener("touchmove",  onTouchMove);
       wrap.removeEventListener("touchend",   endDrag);
     };
   }, []);
