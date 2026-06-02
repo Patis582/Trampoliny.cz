@@ -26,7 +26,7 @@ export const metadata: Metadata = {
 };
 
 const contacts = [
-  { name: "Klára Patrmanová", bio: "Manažerka", phone: "+420 731 123 456", email: "kpatrmanova@gmail.com" },
+  { name: "Klára Patrmanová", bio: "Manažerka", phone: "+420 605 285 590", email: "kpatrmanova@gmail.com" },
 ];
 
 export default async function TrampolinyPatrmanPage() {
