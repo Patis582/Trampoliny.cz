@@ -16,9 +16,13 @@ export function Footer() {
             </p>
           </div>
           <div className="md:col-span-2">
-            <h4 className="font-label-bold text-[11px] text-white/40 uppercase tracking-widest mb-6">Menu</h4>
+            <h4 className="font-label-bold text-[11px] text-white/40 uppercase tracking-widest mb-6">Sekce</h4>
             <div className="flex flex-col gap-4">
-              {([["Oddíl", "/#oddil"], ["Služby", "/#sluzby"], ["Rozvrh", "/#rozvrh"], ["Ceník", "/#cenik"]] as [string, string][]).map(([label, href]) => (
+              {([
+                ["Trampolíny Liberec", "/trampoliny-liberec"],
+                ["Trampolíny Patrman", "/trampoliny-patrman"],
+                ["Trenéři", "/treneri"],
+              ] as [string, string][]).map(([label, href]) => (
                 <Link key={label} href={href} className="text-white/70 hover:text-white transition-colors uppercase text-xs font-bold tracking-widest">
                   {label}
                 </Link>
@@ -26,13 +30,14 @@ export function Footer() {
             </div>
           </div>
           <div className="md:col-span-3">
-            <h4 className="font-label-bold text-[11px] text-white/40 uppercase tracking-widest mb-6">Právní informace</h4>
+            <h4 className="font-label-bold text-[11px] text-white/40 uppercase tracking-widest mb-6">Stránky</h4>
             <div className="flex flex-col gap-4">
               {([
+                ["Ceník", "/cenik"],
+                ["Galerie", "/galerie"],
+                ["Akce & závody", "/akce"],
+                ["Jak na EOS", "/jak-na-to"],
                 ["Dokumenty", "/dokumenty"],
-                ["Ochrana soukromí", "#"],
-                ["Všeobecné podmínky", "#"],
-                ["Mapa stránek", "#"],
               ] as [string, string][]).map(([label, href]) => (
                 <Link key={label} href={href} className="text-white/70 hover:text-white transition-colors uppercase text-xs font-bold tracking-widest">
                   {label}
