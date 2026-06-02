@@ -9,7 +9,6 @@ import { siteConfigType } from './siteConfig'
 import { testimonialType } from './testimonial'
 import { notableVisitorType } from './notableVisitor'
 import { documentCategoryType } from './documentCategory'
-import { downloadableDocumentType } from './downloadableDocument'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -23,6 +22,5 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     testimonialType,
     notableVisitorType,
     documentCategoryType,
-    downloadableDocumentType,
   ],
 }

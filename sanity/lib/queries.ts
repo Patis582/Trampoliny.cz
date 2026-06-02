@@ -458,7 +458,7 @@ export async function getSiteConfig(): Promise<SiteConfig> {
 // ── DOCUMENTS ────────────────────────────────────────────────────────────────
 
 export type DocumentFile = {
-  _id: string
+  _key: string
   title: string
   fileUrl: string
 }
@@ -477,8 +477,8 @@ export async function getDocumentCategories(): Promise<DocumentCategory[]> {
         _id,
         title,
         brand,
-        "documents": *[_type == "downloadableDocument" && references(^._id)] | order(order asc) {
-          _id,
+        "documents": documents[] {
+          _key,
           title,
           "fileUrl": file.asset->url,
         }

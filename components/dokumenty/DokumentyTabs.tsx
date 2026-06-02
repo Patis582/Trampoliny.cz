@@ -104,7 +104,7 @@ export function DokumentyTabs({ categories }: { categories: DocumentCategory[] }
                 <div className="divide-y divide-white/5">
                   {cat.documents.map((doc) => (
                     <div
-                      key={doc._id}
+                      key={doc._key}
                       className="flex items-center justify-between gap-6 py-4 hover:bg-white/5 px-2 -mx-2 transition-colors"
                     >
                       <div className="flex items-center gap-3 min-w-0">

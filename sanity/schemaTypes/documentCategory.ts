@@ -1,4 +1,4 @@
-import { defineField, defineType } from 'sanity'
+import { defineField, defineType, defineArrayMember } from 'sanity'
 
 export const documentCategoryType = defineType({
   name: 'documentCategory',
@@ -30,6 +30,33 @@ export const documentCategoryType = defineType({
       title: 'Pořadí',
       type: 'number',
       validation: (r) => r.required().integer().positive(),
+    }),
+    defineField({
+      name: 'documents',
+      title: 'Dokumenty',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          name: 'documentFile',
+          title: 'Soubor',
+          fields: [
+            defineField({
+              name: 'title',
+              title: 'Název dokumentu',
+              type: 'string',
+              validation: (r) => r.required(),
+            }),
+            defineField({
+              name: 'file',
+              title: 'Soubor (PDF, DOCX…)',
+              type: 'file',
+              validation: (r) => r.required(),
+            }),
+          ],
+          preview: { select: { title: 'title' } },
+        }),
+      ],
     }),
   ],
   orderings: [
