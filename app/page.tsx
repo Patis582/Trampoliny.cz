@@ -308,6 +308,7 @@ export default async function Home() {
                     style={{ border: 0 }}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
+                    sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
                     title="TC Orionka mapa"
                   />
                 </div>
@@ -332,6 +333,7 @@ export default async function Home() {
                     style={{ border: 0 }}
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
+                    sandbox="allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"
                     title="Hala Nádraží mapa"
                   />
                 </div>
