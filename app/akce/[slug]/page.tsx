@@ -44,7 +44,7 @@ export async function generateMetadata({
   const description = `${typeLabel} · ${date} — Trampolíny Liberec a Trampolíny Patrman.`;
   const ogImage = event.image
     ? urlFor(event.image).width(1200).height(630).url()
-    : undefined;
+    : 'https://trampoliny.cz/og-default.jpg';
 
   return {
     title,
@@ -54,7 +54,7 @@ export async function generateMetadata({
       description,
       url: `https://trampoliny.cz/akce/${slug}`,
       type: 'article',
-      ...(ogImage ? { images: [{ url: ogImage, width: 1200, height: 630 }] } : {}),
+      images: [{ url: ogImage, width: 1200, height: 630 }],
     },
     alternates: { canonical: `https://trampoliny.cz/akce/${slug}` },
   };
@@ -148,7 +148,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
             href="/akce"
             className="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors font-label-bold text-[9px] uppercase tracking-widest mb-8 group"
           >
-            <svg className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+            <svg aria-hidden="true" className="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
             </svg>
             Všechny akce
@@ -280,7 +280,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
                       className={`flex items-center justify-center gap-2 font-label-bold uppercase tracking-widest px-6 py-4 text-[11px] hover:bg-white hover:text-border-dark transition-colors w-full ${accent.btnBg} ${accent.btnText}`}
                     >
                       Přihlásit se
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
                     </a>
@@ -290,7 +290,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
                       className="flex items-center justify-center gap-2 font-label-bold uppercase tracking-widest px-6 py-4 text-[11px] bg-white/10 text-white hover:bg-white hover:text-border-dark transition-colors w-full border border-white/15"
                     >
                       Kontaktuj nás
-                      <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                         <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                       </svg>
                     </Link>
@@ -331,7 +331,7 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
             className="shrink-0 inline-flex items-center gap-3 bg-brand-orange text-white font-label-bold uppercase tracking-widest px-8 py-4 text-[11px] hover:bg-white hover:text-brand-navy-deep transition-colors"
           >
             Všechny akce
-            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </Link>

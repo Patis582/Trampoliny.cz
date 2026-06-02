@@ -184,7 +184,7 @@ export default async function Home() {
                 className="inline-flex items-center gap-3 bg-white text-brand-navy-deep font-label-bold text-[11px] uppercase tracking-wider px-6 py-3.5 hover:bg-brand-green hover:text-border-dark transition-all duration-300"
               >
                 trampolinyharcov.cz
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <svg aria-hidden="true" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
               </a>
@@ -414,7 +414,7 @@ function EventRow({ event }: { event: Event }) {
           ● Přihlášky
         </span>
       )}
-      <svg className="w-4 h-4 text-white/20 group-hover:text-white/60 group-hover:translate-x-1 transition-all shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <svg aria-hidden="true" className="w-4 h-4 text-white/20 group-hover:text-white/60 group-hover:translate-x-1 transition-all shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
       </svg>
     </Link>

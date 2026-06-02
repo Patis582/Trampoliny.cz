@@ -147,6 +147,7 @@ export function HomeSplitHero() {
               >
                 Sportovní oddíl
                 <svg
+                  aria-hidden="true"
                   className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-200"
                   fill="none"
                   viewBox="0 0 24 24"
@@ -193,6 +194,7 @@ export function HomeSplitHero() {
               >
                 Naše služby
                 <svg
+                  aria-hidden="true"
                   className="w-4 h-4 group-hover/btn:translate-x-1 transition-transform duration-200"
                   fill="none"
                   viewBox="0 0 24 24"
