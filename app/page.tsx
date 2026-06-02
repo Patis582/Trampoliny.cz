@@ -12,11 +12,11 @@ import { SectionError } from "@/components/ui/SectionError";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Dvě značky, jedna vášeň",
+  title: "Trampoliny.cz",
   description:
     "Dva trampolínové oddíly v Liberci pod jednou střechou. Trampolíny Liberec — závodní sport a příprava reprezentantů. Trampolíny Patrman — skákání a aktivity pro celou rodinu.",
   openGraph: {
-    title: "Trampolíny.cz — Dvě značky, jedna vášeň",
+    title: "Trampolíny.cz",
     description:
       "Dva trampolínové oddíly v Liberci pod jednou střechou. Trampolíny Liberec — závodní sport a příprava reprezentantů. Trampolíny Patrman — skákání a aktivity pro celou rodinu.",
     url: "https://trampoliny.cz",
@@ -87,7 +87,7 @@ export default async function Home() {
               >
                 <div className="relative w-full max-w-xs h-52 mb-8 opacity-90 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-300">
                   <Image
-                    src="/logo-liberec.jpg"
+                    src="/logo-TL.JPG"
                     alt="Trampolíny Liberec Logo"
                     fill
                     sizes="(max-width: 768px) 80vw, 40vw"
@@ -119,7 +119,7 @@ export default async function Home() {
               >
                 <div className="relative w-full max-w-xs h-52 mb-8 opacity-90 group-hover:opacity-100 group-hover:scale-[1.03] transition-all duration-300">
                   <Image
-                    src="/logo-patrman.jpg"
+                    src="/logo-TP.JPG"
                     alt="Trampolíny Patrman Logo"
                     fill
                     sizes="(max-width: 768px) 80vw, 40vw"
