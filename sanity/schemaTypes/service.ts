@@ -126,6 +126,13 @@ export const serviceType = defineType({
       ],
     }),
     defineField({
+      name: 'showDocumentsLink',
+      title: 'Zobrazit odkaz na dokumenty ke stažení',
+      type: 'boolean',
+      description: 'Zobrazí odkaz na stránku /dokumenty v sekci „Ceník a dokumenty".',
+      initialValue: false,
+    }),
+    defineField({
       name: 'registration',
       title: 'Registrace / kontakt',
       type: 'object',

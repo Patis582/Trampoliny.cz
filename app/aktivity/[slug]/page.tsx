@@ -227,7 +227,7 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
             )}
 
             {/* Ceník / soubory */}
-            {(service.pricingNote || (service.files && service.files.length > 0)) && (
+            {(service.pricingNote || (service.files && service.files.length > 0) || service.showDocumentsLink) && (
               <ScrollReveal>
                 <div className={`h-0.5 ${accentBar} mb-16`} />
                 <div className="space-y-8">
@@ -242,12 +242,22 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
                       {service.pricingNote}
                     </p>
                   )}
-                  <Link
-                    href="/cenik"
-                    className={`inline-flex items-center gap-2 font-label-bold text-[11px] uppercase tracking-widest ${accentText} hover:opacity-70 transition-opacity`}
-                  >
-                    Celý ceník →
-                  </Link>
+                  <div className="flex flex-wrap gap-6">
+                    <Link
+                      href="/cenik"
+                      className={`inline-flex items-center gap-2 font-label-bold text-[11px] uppercase tracking-widest ${accentText} hover:opacity-70 transition-opacity`}
+                    >
+                      Celý ceník →
+                    </Link>
+                    {service.showDocumentsLink && (
+                      <Link
+                        href="/dokumenty"
+                        className={`inline-flex items-center gap-2 font-label-bold text-[11px] uppercase tracking-widest ${accentText} hover:opacity-70 transition-opacity`}
+                      >
+                        Dokumenty ke stažení →
+                      </Link>
+                    )}
+                  </div>
                   {service.files && service.files.length > 0 && (
                     <div className="flex flex-wrap gap-3">
                       {service.files.map((file, i) => (

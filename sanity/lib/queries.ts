@@ -20,6 +20,7 @@ export type ServiceDetail = Service & {
   howItWorks?: string[]
   pricingNote?: string
   files?: { label: string; fileUrl: string; style: 'primary' | 'outline' }[]
+  showDocumentsLink?: boolean
   registration?: {
     type: 'eos' | 'email' | 'form'
     email?: string
@@ -77,6 +78,7 @@ const serviceDetailFields = `
   howItWorks,
   pricingNote,
   "files": files[] { label, "fileUrl": file.asset->url, style },
+  showDocumentsLink,
   registration
 `
 
