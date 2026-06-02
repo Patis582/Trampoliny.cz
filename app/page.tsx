@@ -104,9 +104,8 @@ export default async function Home() {
                   Trampolíny Liberec
                 </h3>
                 <p className="text-on-surface-variant font-light leading-relaxed max-w-sm">
-                  Sportovní oddíl zaměřený na výkonnostní skákání a přípravu
-                  závodníků. Vychováváme talenty a posouváme limity na
-                  profesionálních závodních trampolínách.
+                  Od přípravky po reprezentaci. Pokud bereš skoky vážně —
+                  nebo si myslíš, že bys mohl/a — tohle je tvoje místo.
                 </p>
               </Link>
             </ScrollReveal>
@@ -136,9 +135,8 @@ export default async function Home() {
                   Trampolíny Patrman
                 </h3>
                 <p className="text-on-surface-variant font-light leading-relaxed max-w-sm">
-                  Komerční skákání, kurzy pro veřejnost a pronájem haly. Zábava a
-                  pohyb pro všechny věkové kategorie pod dohledem zkušených
-                  trenérů.
+                  Přijď si zaskákat. Kurzy, oslavy, tábory, volné skákání —
+                  od 1 roku výš, s trenérem vedle tebe.
                 </p>
               </Link>
             </ScrollReveal>
@@ -164,7 +162,7 @@ export default async function Home() {
                   Sportovní areál Harcov
                 </h3>
                 <p className="text-white/50 font-light leading-relaxed max-w-md" style={{ fontSize: "clamp(13px, 1vw, 15px)" }}>
-                  Moderní centrum pro trampolínové sporty, gymnastiku a parkour pro všechny věkové kategorie v přírodě Harcova.
+                  Stavíme nové místo — trampolíny, gymnastika a parkour přímo v přírodě Harcova. Sleduj, jak to roste.
                 </p>
               </div>
             </div>

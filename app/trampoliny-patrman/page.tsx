@@ -96,13 +96,13 @@ export default async function TrampolinyPatrmanPage() {
                 </h2>
                 <div className="space-y-4 text-on-surface-variant font-light leading-relaxed">
                   <p>
-                    Trampolíny Patrman provozuje Miroslav Patrman v Liberci od roku 2009.
-                    Začínali jsme s jednou halou a hrstkou nadšených dětí — dnes každý týden
-                    přivítáme stovky dětí od jednoho roku až po dospělé.
+                    Miroslav Patrman začínal v roce 2009 s jednou halou a hrstkou nadšených dětí.
+                    Dnes k nám každý týden přijde stovky dětí od jednoho roku výš — a většina
+                    z nich se vrátí příští týden.
                   </p>
                   <p>
-                    Naším cílem není vychovat závodníky, ale dát každému dítěti radost z pohybu,
-                    sebevědomí a bezpečné prostředí kde se mohou posouvat svým vlastním tempem.
+                    Nechceme závodníky — chceme děti, které se těší na trénink. Pohyb, sebevědomí
+                    a kamarádi. Ve svém tempu, s trenérem, který to má rád stejně jako ty.
                   </p>
                 </div>
               </div>
