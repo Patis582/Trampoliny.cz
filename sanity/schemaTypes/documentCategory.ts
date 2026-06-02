@@ -26,12 +26,6 @@ export const documentCategoryType = defineType({
       validation: (r) => r.required(),
     }),
     defineField({
-      name: 'order',
-      title: 'Pořadí',
-      type: 'number',
-      validation: (r) => r.required().integer().positive(),
-    }),
-    defineField({
       name: 'documents',
       title: 'Dokumenty',
       type: 'array',
@@ -58,13 +52,6 @@ export const documentCategoryType = defineType({
         }),
       ],
     }),
-  ],
-  orderings: [
-    {
-      title: 'Pořadí',
-      name: 'orderAsc',
-      by: [{ field: 'order', direction: 'asc' }],
-    },
   ],
   preview: {
     select: { title: 'title', subtitle: 'brand' },

@@ -473,7 +473,7 @@ export type DocumentCategory = {
 export async function getDocumentCategories(): Promise<DocumentCategory[]> {
   try {
     return await client.fetch(
-      `*[_type == "documentCategory"] | order(order asc) {
+      `*[_type == "documentCategory"] | order(_createdAt asc) {
         _id,
         title,
         brand,
