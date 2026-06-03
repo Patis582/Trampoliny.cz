@@ -89,6 +89,8 @@ const ORIONKA_SLIDES = [
   "/fotky-orionka/hero3.jpg",
   "/fotky-orionka/hero-liberec-2.jpg",
   "/fotky-orionka/hero-liberec3.jpg",
+  "/fotky-orionka/recepce-1.jpg",
+  "/fotky-orionka/recepce-2.jpg",
 ];
 
 const NADRAZI_SLIDES = [
