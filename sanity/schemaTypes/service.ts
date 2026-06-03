@@ -156,18 +156,12 @@ export const serviceType = defineType({
         defineField({ name: 'ctaDescription', title: 'Text pod "Ozvi se nám"', type: 'text', rows: 3 }),
       ],
     }),
-    defineField({
-      name: 'order',
-      title: 'Pořadí',
-      type: 'number',
-      validation: (r) => r.required().integer().positive(),
-    }),
   ],
   orderings: [
     {
-      title: 'Pořadí',
-      name: 'orderAsc',
-      by: [{ field: 'order', direction: 'asc' }],
+      title: 'Značka',
+      name: 'brandAsc',
+      by: [{ field: 'brand', direction: 'asc' }],
     },
   ],
   preview: {

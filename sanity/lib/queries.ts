@@ -100,7 +100,7 @@ const eventFields = `
 export async function getServices(): Promise<Service[] | null> {
   try {
     return await client.fetch(
-      `*[_type == "service"] | order(order asc) { ${serviceFields} }`,
+      `*[_type == "service"] | order(brand asc, title asc) { ${serviceFields} }`,
       {},
       { next: { tags: ['service'] } }
     )
@@ -137,7 +137,7 @@ export async function getAllServiceSlugs(): Promise<string[]> {
 export async function getServicesByBrand(brand: 'liberec' | 'patrman'): Promise<Service[] | null> {
   try {
     return await client.fetch(
-      `*[_type == "service" && brand == $brand] | order(order asc) { ${serviceFields} }`,
+      `*[_type == "service" && brand == $brand] | order(title asc) { ${serviceFields} }`,
       { brand },
       { next: { tags: ['service'] } }
     )
