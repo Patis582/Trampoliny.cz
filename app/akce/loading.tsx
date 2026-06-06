@@ -1,12 +1,6 @@
-import { Nav } from '@/components/layout/Nav'
-
 export default function AkceLoading() {
   return (
     <div className="font-body-md antialiased bg-white min-h-screen">
-      <div className="fixed top-0 left-0 w-full z-50">
-        <Nav />
-      </div>
-
       {/* Hero skeleton */}
       <section className="bg-border-dark pt-24 pb-16 md:pt-40 md:pb-20">
         <div className="max-w-container-max mx-auto px-gutter">

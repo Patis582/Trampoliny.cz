@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Montserrat, Work_Sans } from "next/font/google";
 import { AnnouncementBar } from "@/components/announcements/AnnouncementBar";
+import { Nav } from "@/components/layout/Nav";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -53,6 +54,7 @@ export default function RootLayout({
       <body>
         <div className="fixed top-0 left-0 w-full z-50">
           <AnnouncementBar />
+          <Nav />
         </div>
         {children}
       </body>

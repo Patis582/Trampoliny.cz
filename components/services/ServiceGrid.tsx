@@ -109,7 +109,7 @@ function ServiceCard({ num, service }: { num: string; service: Service }) {
   return (
     <Link
       href={`/aktivity/${service.slug}`}
-      className={`group flex flex-col bg-white overflow-hidden border-t-2 ${cls.border} hover:-translate-y-1 hover:shadow-lg transition-all duration-300 cursor-pointer`}
+      className={`group flex flex-col bg-white overflow-hidden border-t-2 ${cls.border} hover:shadow-lg transition-all duration-300 cursor-pointer`}
     >
       <div className="aspect-video overflow-hidden relative bg-surface-container">
         {image?.url && (

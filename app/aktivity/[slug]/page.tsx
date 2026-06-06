@@ -2,7 +2,6 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
 import { PortableText } from "@portabletext/react";
-import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
 import { getServiceBySlug, getAllServiceSlugs, type ServiceDetail } from "@/sanity/lib/queries";
@@ -61,10 +60,6 @@ export default async function AktivitaPage({ params }: { params: Promise<{ slug:
 
   return (
     <div className="font-body-md antialiased bg-white min-h-screen">
-      <div className="fixed top-0 left-0 w-full z-50">
-        <Nav />
-      </div>
-
       {/* ── HERO ── */}
       <section
         className="relative overflow-hidden flex flex-col justify-end"

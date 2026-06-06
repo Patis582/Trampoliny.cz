@@ -6,8 +6,8 @@ import { useEffect, useState, type CSSProperties } from "react";
 import { HeroScrollHint } from "./HeroScrollHint";
 
 const slides = [
-  { src: "/fotky-orionka/hero3.jpg",  alt: "TC Orionka — trampolínová hala Liberec" },
-  { src: "/juj-mcr.jpg",             alt: "Závodnice na trampolíně během závodu" },
+  { src: "/fotky-orionka/hero3.jpg", alt: "TC Orionka — trampolínová hala Liberec" },
+  { src: "/juj-mcr.jpg", alt: "Závodnice na trampolíně během závodu" },
   { src: "/fotky-patrman/hero-patrman-7.jpg", alt: "Rodiče a děti v trampolínové hale" },
 ];
 
@@ -78,7 +78,7 @@ export function HomeCinematicHero() {
       <div className="relative z-10 h-full flex flex-col justify-end px-gutter max-w-container-max mx-auto pb-16 md:pb-24">
         <div style={fadeUp(0)} className="flex items-center gap-3 mb-6">
           <div className="w-6 h-px bg-brand-orange" />
-          <span className="text-[10px] font-label-bold uppercase tracking-[0.4em] text-white/40">
+          <span className="text-[12px] font-label-bold uppercase tracking-[0.4em] text-white/40">
             TC Orionka · Nádraží · Liberec
           </span>
         </div>

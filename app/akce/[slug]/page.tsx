@@ -2,7 +2,6 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
 import { PortableText } from '@portabletext/react'
-import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 import { ScrollReveal } from '@/components/ui/ScrollReveal'
 import { getEventBySlug, getAllEventSlugs, type EventType } from '@/sanity/lib/queries'
@@ -117,10 +116,6 @@ export default async function EventDetailPage({ params }: { params: Promise<{ sl
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="fixed top-0 left-0 w-full z-50">
-        <Nav />
-      </div>
-
       {/* ── HERO ── */}
       <section
         className="relative overflow-hidden flex flex-col justify-end"

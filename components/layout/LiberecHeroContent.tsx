@@ -26,7 +26,7 @@ export function LiberecHeroContent() {
     <div className="relative z-10 h-full flex flex-col justify-end px-gutter max-w-container-max mx-auto pb-16 md:pb-24">
       <div style={fadeUp(0)} className="flex items-center gap-3 mb-6">
         <div className="w-6 h-px bg-brand-orange" />
-        <span className="text-[10px] font-label-bold uppercase tracking-[0.4em] text-white/40">
+        <span className="text-[12px] font-label-bold uppercase tracking-[0.4em] text-white/40">
           Závodní oddíl · TC Orionka · Liberec
         </span>
       </div>

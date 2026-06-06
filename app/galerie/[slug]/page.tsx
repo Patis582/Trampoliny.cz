@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 import { AlbumGallery } from '@/components/gallery/AlbumGallery'
 import { getGalleryAlbumBySlug, getAllGalleryAlbumSlugs } from '@/sanity/lib/queries'
@@ -67,9 +66,6 @@ export default async function GalerieAlbumPage({
   return (
     <div className="font-body-md antialiased bg-white min-h-screen">
       <ScrollReset />
-      <div className="fixed top-0 left-0 w-full z-50">
-        <Nav />
-      </div>
 
       {/* ── HERO ── */}
       <section

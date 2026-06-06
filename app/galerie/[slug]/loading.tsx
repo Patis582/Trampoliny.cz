@@ -1,12 +1,6 @@
-import { Nav } from '@/components/layout/Nav'
-
 export default function AlbumLoading() {
   return (
     <div className="font-body-md antialiased bg-white min-h-screen">
-      <div className="fixed top-0 left-0 w-full z-50">
-        <Nav />
-      </div>
-
       {/* Hero skeleton */}
       <div className="relative w-full bg-border-dark" style={{ height: '50vh', minHeight: 320 }}>
         <div className="absolute inset-0 bg-border-dark animate-pulse" />

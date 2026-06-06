@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { ServiceGrid } from "@/components/services/ServiceGrid";
 import { PatrmanHeroSlideshow } from "@/components/layout/PatrmanHeroSlideshow";
@@ -57,10 +56,6 @@ export default async function TrampolinyPatrmanPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-
-      <div className="fixed top-0 left-0 w-full z-50">
-        <Nav />
-      </div>
 
       {/* ── HERO ── */}
       <section className="relative overflow-hidden" style={{ height: "100svh", minHeight: 600 }}>

@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ServiceGrid } from "@/components/services/ServiceGrid";
-import { Nav } from "@/components/layout/Nav";
 import { Footer } from "@/components/layout/Footer";
 import { HomeCinematicHero } from "@/components/layout/HomeCinematicHero";
 import { HallsSection } from "@/components/layout/HallsSection";
@@ -50,11 +49,6 @@ export default async function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      {/* Fixed header */}
-      <div className="fixed top-0 left-0 w-full z-50">
-        <Nav />
-      </div>
-
       {/* ── Hero ── */}
       <HomeCinematicHero />
 
@@ -111,7 +105,7 @@ export default async function Home() {
             </ScrollReveal>
 
             {/* Patrman — offset down on desktop */}
-            <ScrollReveal delay={150} className="md:pt-16">
+            <ScrollReveal delay={150} >
               <Link
                 href="/trampoliny-patrman"
                 className="group flex flex-col items-center text-center cursor-pointer"

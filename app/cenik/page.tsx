@@ -1,5 +1,4 @@
 import { getPricingSections } from '@/sanity/lib/queries'
-import { Nav } from '@/components/layout/Nav'
 import { Footer } from '@/components/layout/Footer'
 import { SectionError } from '@/components/ui/SectionError'
 import { CenikClient } from './CenikClient'
@@ -23,10 +22,6 @@ export default async function CenikPage() {
 
   return (
     <div className="font-body-md antialiased bg-white min-h-screen">
-      <div className="fixed top-0 left-0 w-full z-50">
-        <Nav />
-      </div>
-
       {/* ── HERO ── */}
       <section className="bg-border-dark pt-24 pb-16 md:pt-40 md:pb-20">
         <div className="max-w-container-max mx-auto px-gutter">
