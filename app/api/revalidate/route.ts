@@ -8,16 +8,16 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ message: 'Invalid secret' }, { status: 401 })
   }
 
-  revalidateTag('service')
-  revalidateTag('event')
-  revalidateTag('announcement')
-  revalidateTag('gallery')
-  revalidateTag('pricing')
-  revalidateTag('trainer')
-  revalidateTag('testimonial')
-  revalidateTag('notableVisitor')
-  revalidateTag('siteConfig')
-  revalidateTag('documents')
+  revalidateTag('service', 'max')
+  revalidateTag('event', 'max')
+  revalidateTag('announcement', 'max')
+  revalidateTag('gallery', 'max')
+  revalidateTag('pricing', 'max')
+  revalidateTag('trainer', 'max')
+  revalidateTag('testimonial', 'max')
+  revalidateTag('notableVisitor', 'max')
+  revalidateTag('siteConfig', 'max')
+  revalidateTag('documents', 'max')
 
   return NextResponse.json({ revalidated: true, timestamp: Date.now() })
 }
