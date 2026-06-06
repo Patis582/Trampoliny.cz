@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat, Work_Sans } from "next/font/google";
 import { AnnouncementBar } from "@/components/announcements/AnnouncementBar";
-import { getAnnouncements } from "@/sanity/lib/queries";
 import "./globals.css";
 
 const montserrat = Montserrat({
@@ -41,13 +40,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const announcements = await getAnnouncements();
-
   return (
     <html
       lang="cs"
@@ -55,7 +52,7 @@ export default async function RootLayout({
     >
       <body>
         <div className="fixed top-0 left-0 w-full z-50">
-          <AnnouncementBar announcements={announcements} />
+          <AnnouncementBar />
         </div>
         {children}
       </body>

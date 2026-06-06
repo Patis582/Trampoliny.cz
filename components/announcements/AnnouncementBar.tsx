@@ -31,16 +31,18 @@ function filterVisible(list: Announcement[]): Announcement[] {
   return list.filter((a) => !map[a._id] || now - map[a._id] > THREE_HOURS);
 }
 
-export function AnnouncementBar({ announcements }: { announcements: Announcement[] }) {
-  const [visible, setVisible] = useState<Announcement[]>(announcements);
+export function AnnouncementBar() {
+  const [visible, setVisible] = useState<Announcement[]>([]);
   const [open, setOpen] = useState(false);
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
-  // Filtruj dismissed na klientu po mountu
   useEffect(() => {
-    setVisible(filterVisible(announcements));
-  }, [announcements]);
+    fetch('/api/announcements')
+      .then((r) => r.json())
+      .then((data: Announcement[]) => setVisible(filterVisible(data)))
+      .catch(() => {});
+  }, []);
 
   const total = visible.length;
   const item = visible[index] ?? null;
