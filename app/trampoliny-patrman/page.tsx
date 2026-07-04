@@ -91,13 +91,10 @@ export default async function TrampolinyPatrmanPage() {
                 </h2>
                 <div className="space-y-4 text-on-surface-variant font-light leading-relaxed">
                   <p>
-                    Miroslav Patrman začínal v roce 2009 s jednou halou a hrstkou nadšených dětí.
-                    Dnes k nám každý týden přijde stovky dětí od jednoho roku výš — a většina
-                    z nich se vrátí příští týden.
+                    V Trampolínách Patrman věříme, že pohyb má být především radostí. Již mnoho let vytváříme prostor, kde si mohou zasportovat děti, dospělí, školy, sportovní kluby i celé rodiny. Nabízíme moderní zázemí ve dvou specializovaných trampolínových halách v Liberci, zkušené trenéry a programy přizpůsobené všem věkovým kategoriím i úrovním zkušeností.
                   </p>
                   <p>
-                    Nechceme závodníky — chceme děti, které se těší na trénink. Pohyb, sebevědomí
-                    a kamarádi. Ve svém tempu, s trenérem, který to má rád stejně jako ty.
+                    Ať už hledáte pravidelný sport, jednorázovou akci nebo originální způsob, jak strávit aktivní čas s rodinou či přáteli, u nás si vyberete.
                   </p>
                 </div>
               </div>
@@ -134,11 +131,22 @@ export default async function TrampolinyPatrmanPage() {
               Aktivity
             </span>
             <h2
-              className="font-black uppercase tracking-tight leading-none text-border-dark"
+              className="font-black uppercase tracking-tight leading-none text-border-dark mb-8"
               style={{ fontSize: "clamp(28px, 4vw, 52px)" }}
             >
               Co u nás <span className="font-medium">najdeš</span>
             </h2>
+            <div className="max-w-2xl space-y-4 text-on-surface-variant font-light leading-relaxed border-t border-surface-container-high pt-8">
+              <p>
+                Naše lekce vedou kvalifikovaní trenéři s dlouholetými zkušenostmi. Důraz klademe na bezpečnost, správnou techniku, individuální přístup a pohodovou atmosféru. Díky tomu si u nás užívají pohyb jak úplní začátečníci, tak sportovci připravující se na vrcholové soutěže.
+              </p>
+              <p>
+                Skákání na trampolíně rozvíjí koordinaci, rovnováhu, sílu, obratnost i celkovou fyzickou kondici. Především ale přináší radost z pohybu, která motivuje děti i dospělé vracet se znovu.
+              </p>
+              <p className="font-medium text-border-dark">
+                Vyberte si službu, která vás zajímá, a přijďte si vyzkoušet, že pohyb může být zábava pro každého.
+              </p>
+            </div>
           </ScrollReveal>
           {services === null ? (
             <SectionError message="Aktivity se momentálně nepodařilo načíst. Zkuste obnovit stránku." />
