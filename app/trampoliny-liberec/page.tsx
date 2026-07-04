@@ -100,51 +100,57 @@ export default async function TrampolinyLiberecPage() {
         </ScrollReveal>
       </section>
 
-      {/* ── HISTORIE — foto vlevo, text vpravo ── */}
+      {/* ── HISTORIE — timeline ── */}
       <section className="bg-surface-container-lowest py-section-padding-mobile md:py-section-padding-desktop">
         <div className="max-w-container-max mx-auto px-gutter">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            <ScrollReveal>
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                  src="/hero-liberec-4.jpg"
-                  alt="Závodník na trampolíně"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 1024px) 100vw, 50vw"
-                />
-              </div>
-            </ScrollReveal>
-            <ScrollReveal delay={120}>
-              <div className="space-y-6">
-                <span className="inline-block font-label-bold text-label-bold uppercase tracking-widest text-brand-orange">
-                  Od roku 1967
-                </span>
-                <h2
-                  className="font-black uppercase tracking-tight leading-none text-border-dark"
-                  style={{ fontSize: "clamp(24px, 3vw, 40px)" }}
-                >
-                  Naše historie
-                </h2>
-                <div className="space-y-4 text-on-surface-variant font-light leading-relaxed">
-                  <p>
-                    Historie skoků na trampolíně v Liberci sahá až do roku 1967. U zrodu tohoto sportu stáli Petr Velechovský a Roman Chryštof, kteří položili základy libereckého oddílu. První tréninky probíhaly na pódiu tělocvičny TJ Lokomotiva Liberec v Jablonecké ulici. Během dalších desetiletí se oddíl několikrát stěhoval a využíval různá sportoviště po celém městě, včetně dnes již legendárních prostor bývalých Městských lázní.
-                  </p>
-                  <p>
-                    Za více než šedesát let své existence vychoval liberecký oddíl řadu mistrů České republiky i reprezentantů, kteří úspěšně reprezentovali Českou republiku na evropských i světových soutěžích. Liberec se tak stal jedním z tradičních center českých trampolín.
-                  </p>
-                  <p>
-                    Významným mezníkem se stal rok 2000, kdy se naplno trenérské práci začal věnovat Ing. Miroslav Patrman – bývalý mnohonásobný mistr České republiky ve skocích na trampolíně. Jeho cílem nikdy nebylo pouze vychovávat vrcholové sportovce — od začátku usiloval o to, aby trampolíny byly dostupné všem, bez ohledu na věk nebo výkonnost.
-                  </p>
-                  <p>
-                    Jedním z největších projektů Miroslava Patrmana bylo vybudování specializované trampolínové haly v prostorách železničního nádraží v Liberci. Z původně nevyužívaných prostor vzniklo moderní sportoviště, které již více než dvě desetiletí slouží dětem, sportovcům i široké veřejnosti.
-                  </p>
-                  <p>
-                    Dalším významným krokem bylo vybudování Trampolínového centra Orionka v libereckém Harcově. Z původních tenisových kurtů vzniklo moderní multifunkční sportovní centrum s závodními trampolínami, molitanovou jámou, double mini trampolínou, airtrack a gymnastickým zázemím. Dnes patří mezi nejlépe vybavená trampolínová centra v České republice.
+          {/* Heading */}
+          <ScrollReveal className="mb-10 md:mb-14">
+            <span className="inline-block font-label-bold text-label-bold uppercase tracking-widest text-brand-orange mb-4">
+              Od roku 1967
+            </span>
+            <h2
+              className="font-black uppercase tracking-tight leading-none text-border-dark"
+              style={{ fontSize: "clamp(28px, 4vw, 52px)" }}
+            >
+              Naše historie
+            </h2>
+          </ScrollReveal>
+
+          {/* Timeline */}
+          <div>
+            {[
+              {
+                label: "1967",
+                text: "Historie skoků na trampolíně v Liberci sahá až do roku 1967. U zrodu tohoto sportu stáli Petr Velechovský a Roman Chryštof, kteří položili základy libereckého oddílu. První tréninky probíhaly na pódiu tělocvičny TJ Lokomotiva Liberec v Jablonecké ulici. Během dalších desetiletí se oddíl několikrát stěhoval a využíval různá sportoviště po celém městě, včetně dnes již legendárních prostor bývalých Městských lázní.",
+              },
+              {
+                label: "60+ let",
+                text: "Za více než šedesát let své existence vychoval liberecký oddíl řadu mistrů České republiky i reprezentantů, kteří úspěšně reprezentovali Českou republiku na evropských i světových soutěžích. Liberec se tak stal jedním z tradičních center českých trampolín.",
+              },
+              {
+                label: "2000",
+                text: "Významným mezníkem se stal rok 2000, kdy se naplno trenérské práci začal věnovat Ing. Miroslav Patrman – bývalý mnohonásobný mistr České republiky ve skocích na trampolíně. Jeho cílem nikdy nebylo pouze vychovávat vrcholové sportovce — od začátku usiloval o to, aby trampolíny byly dostupné všem, bez ohledu na věk nebo výkonnost.",
+              },
+              {
+                label: "Hala Nádraží",
+                text: "Jedním z největších projektů Miroslava Patrmana bylo vybudování specializované trampolínové haly v prostorách železničního nádraží v Liberci. Z původně nevyužívaných prostor vzniklo moderní sportoviště, které již více než dvě desetiletí slouží dětem, sportovcům i široké veřejnosti.",
+              },
+              {
+                label: "TC Orionka",
+                text: "Dalším významným krokem bylo vybudování Trampolínového centra Orionka v libereckém Harcově. Z původních tenisových kurtů vzniklo moderní multifunkční sportovní centrum s závodními trampolínami, molitanovou jámou, double mini trampolínou, airtrack a gymnastickým zázemím. Dnes patří mezi nejlépe vybavená trampolínová centra v České republice.",
+              },
+            ].map(({ label, text }, i) => (
+              <ScrollReveal key={label} delay={i * 60}>
+                <div className="grid grid-cols-[80px_1fr] md:grid-cols-[160px_1fr] gap-6 md:gap-12 border-t border-surface-container-high py-7 md:py-8">
+                  <span className="font-label-bold text-[10px] uppercase tracking-widest text-brand-orange pt-1 leading-tight">
+                    {label}
+                  </span>
+                  <p className="text-on-surface-variant font-light leading-relaxed text-sm md:text-base">
+                    {text}
                   </p>
                 </div>
-              </div>
-            </ScrollReveal>
+              </ScrollReveal>
+            ))}
           </div>
         </div>
       </section>
