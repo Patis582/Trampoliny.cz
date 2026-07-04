@@ -53,7 +53,7 @@ export function PatrmanHeroContent() {
         className="text-white/55 font-light mb-10 max-w-md leading-relaxed"
         style={{ fontSize: "clamp(14px, 1.1vw, 16px)", ...fadeUp(500) }}
       >
-        Pohyb, radost a skvělá parta. Dvě haly v Liberci, zkušení trenéři a programy pro všechny věkové kategorie — od batolat po dospělé.
+        Kroužky, tábory, oslavy i volné skákání. Pro každého od 1 roku.
 
 
       </p>
