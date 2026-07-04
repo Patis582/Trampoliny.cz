@@ -61,9 +61,9 @@ export default async function TrampolinyLiberecPage() {
         <div className="max-w-container-max mx-auto px-gutter">
           <div className="grid grid-cols-3 divide-x divide-white/10">
             {[
-              { label: "Závodníků", value: "100+" },
-              { label: "Medailí", value: "300+" },
-              { label: "Trénujeme od roku", value: "2009" },
+              { label: "Členů", value: "200+" },
+              { label: "Trenérů", value: "20+" },
+              { label: "Trénujeme od roku", value: "1968" },
             ].map(({ label, value }) => (
               <div key={label} className="px-4 py-8 md:px-10 md:py-10 first:pl-0 last:pr-0">
                 <p className="font-label-bold text-[10px] uppercase tracking-widest text-white/35 mb-2 leading-tight">{label}</p>
@@ -95,7 +95,7 @@ export default async function TrampolinyLiberecPage() {
             className="text-on-surface-variant font-light leading-relaxed"
             style={{ fontSize: "clamp(15px, 1.1vw, 18px)" }}
           >
-            Trampolíny Liberec je závodní sportovní oddíl s dlouholetou tradicí. Vychováváme závodníky všech úrovní — od začátečníků v přípravkách až po reprezentanty na mezinárodních soutěžích. Trénujeme v Trampolínovém centru Orionka v Liberci – Harcově, kde máme k dispozici profesionální závodní vybavení.
+            Trampolíny Liberec je sportovní oddíl s dlouholetou tradicí. Vedeme děti k pohybu od 4 let věku. Od začátečníků v přípravkách až po reprezentanty na mezinárodních soutěžích. Trénujeme v Trampolínovém centru Orionka a v Trampolínové hale Nádraží, kde máme k dispozici profesionální závodní vybavení.
           </p>
         </ScrollReveal>
       </section>
@@ -118,7 +118,7 @@ export default async function TrampolinyLiberecPage() {
             <ScrollReveal delay={120}>
               <div className="space-y-6">
                 <span className="inline-block font-label-bold text-label-bold uppercase tracking-widest text-brand-orange">
-                  Od roku 2009
+                  Od roku 1967
                 </span>
                 <h2
                   className="font-black uppercase tracking-tight leading-none text-border-dark"
@@ -128,13 +128,19 @@ export default async function TrampolinyLiberecPage() {
                 </h2>
                 <div className="space-y-4 text-on-surface-variant font-light leading-relaxed">
                   <p>
-                    Oddíl byl založen v roce 2009 v Trampolínovém centru Orionka v Liberci – Harcově. Za více než patnáct let jsme vybudovali jedno z nejúspěšnějších trampolínových center v České republice.
+                    Historie skoků na trampolíně v Liberci sahá až do roku 1967. U zrodu tohoto sportu stáli Petr Velechovský a Roman Chryštof, kteří položili základy libereckého oddílu. První tréninky probíhaly na pódiu tělocvičny TJ Lokomotiva Liberec v Jablonecké ulici. Během dalších desetiletí se oddíl několikrát stěhoval a využíval různá sportoviště po celém městě, včetně dnes již legendárních prostor bývalých Městských lázní.
                   </p>
                   <p>
-                    Trénujeme na profesionálních závodních trampolínách, DMT dráze a vybavení pro akrobatiku. Naši závodníci se pravidelně účastní oblastních i národních závodů — Žákovský pohár, Český pohár a Mistrovství republiky.
+                    Za více než šedesát let své existence vychoval liberecký oddíl řadu mistrů České republiky i reprezentantů, kteří úspěšně reprezentovali Českou republiku na evropských i světových soutěžích. Liberec se tak stal jedním z tradičních center českých trampolín.
                   </p>
                   <p>
-                    Ti nejlepší jsou zařazeni do Sportovních středisek a reprezentují Českou republiku na mezinárodní úrovni včetně Mistrovství Evropy.
+                    Významným mezníkem se stal rok 2000, kdy se naplno trenérské práci začal věnovat Ing. Miroslav Patrman – bývalý mnohonásobný mistr České republiky ve skocích na trampolíně. Jeho cílem nikdy nebylo pouze vychovávat vrcholové sportovce — od začátku usiloval o to, aby trampolíny byly dostupné všem, bez ohledu na věk nebo výkonnost.
+                  </p>
+                  <p>
+                    Jedním z největších projektů Miroslava Patrmana bylo vybudování specializované trampolínové haly v prostorách železničního nádraží v Liberci. Z původně nevyužívaných prostor vzniklo moderní sportoviště, které již více než dvě desetiletí slouží dětem, sportovcům i široké veřejnosti.
+                  </p>
+                  <p>
+                    Dalším významným krokem bylo vybudování Trampolínového centra Orionka v libereckém Harcově. Z původních tenisových kurtů vzniklo moderní multifunkční sportovní centrum s závodními trampolínami, molitanovou jámou, double mini trampolínou, airtrack a gymnastickým zázemím. Dnes patří mezi nejlépe vybavená trampolínová centra v České republice.
                   </p>
                 </div>
               </div>
@@ -160,10 +166,16 @@ export default async function TrampolinyLiberecPage() {
                 </h2>
                 <div className="space-y-4 text-on-surface-variant font-light leading-relaxed">
                   <p>
-                    Za roky existence jsme získali více než 300 medailí na závodech všech úrovní. Naši závodníci pravidelně obsazují přední místa na Mistrovství České republiky juniorů i seniorů.
+                    Za roky existence jsme získali mnoho medailových umístění na závodech všech úrovní.
                   </p>
                   <p>
-                    Několik našich svěřenců reprezentovalo Českou republiku na Mistrovství Evropy a světových pohárech. Jsme hrdí na každého závodníka, který se posune o krok dál.
+                    Naši závodníci pravidelně obsazují přední místa na Mistrovství ČR juniorů i seniorů.
+                  </p>
+                  <p>
+                    Několik našich svěřenců reprezentovalo ČR na Mistrovství Evropy, Mistrovství světa i Světových pohárech.
+                  </p>
+                  <p>
+                    2012 — Zita Frydrychová reprezentovala na OH Londýn.
                   </p>
                 </div>
                 <div className="grid grid-cols-2 gap-4 pt-4">

@@ -53,7 +53,7 @@ export function LiberecHeroContent() {
         className="text-white/55 font-light mb-10 max-w-md leading-relaxed"
         style={{ fontSize: "clamp(14px, 1.1vw, 16px)", ...fadeUp(500) }}
       >
-        Výkonnostní trénink, závody a přípravky pro děti i dospělé v TC Orionka v Liberci.
+        Výkonnostní i rekreační sport, přípravky, parkour, všestrannost. Trampolínové centrum Orionka a Trampolínová hala Nádraží.
       </p>
 
       <div style={fadeUp(620)} className="flex flex-col sm:flex-row gap-4 mb-8">
