@@ -44,7 +44,7 @@ export function PatrmanHeroContent() {
         </span>
         <span className="block overflow-hidden">
           <span className="block text-brand-green" style={{ fontSize: "clamp(48px, 9vw, 128px)", letterSpacing: "-0.04em", lineHeight: 0.92, ...slideIn(360) }}>
-            &amp; Skákání
+            &amp; skákání
           </span>
         </span>
       </h1>
@@ -53,7 +53,9 @@ export function PatrmanHeroContent() {
         className="text-white/55 font-light mb-10 max-w-md leading-relaxed"
         style={{ fontSize: "clamp(14px, 1.1vw, 16px)", ...fadeUp(500) }}
       >
-        Kroužky, tábory, oslavy i volné skákání. Pro každého od 1 roku.
+        Pohyb, radost a skvělá parta. Dvě haly v Liberci, zkušení trenéři a programy pro všechny věkové kategorie — od batolat po dospělé.
+
+
       </p>
 
       <div style={fadeUp(620)} className="flex flex-col sm:flex-row gap-4 mb-8">
