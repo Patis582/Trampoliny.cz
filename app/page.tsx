@@ -340,7 +340,7 @@ export default async function Home() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {[
                   { name: "Miroslav Patrman", bio: "Hlavní trenér závodního oddílu", phone: "+420 604 245 971", email: "mirapatrman@gmail.com" },
-                  { name: "Klára Patrmanová", bio: "Manažerka", phone: "+420 731 123 456", email: "kpatrmanova@gmail.com" },
+                  { name: "Klára Patrmanová", bio: "Manažerka", phone: "+420 605 285 590", email: "kpatrmanova@gmail.com" },
                   { name: "Kamila Brücklérová", bio: "Odborná asistentka", phone: "+420 775 252 562", email: "kamilabrucklerova@gmail.com" },
                   { name: "Michaela Křiklavová", bio: "Vedoucí recepce", phone: "+420 728 848 948", email: "kriklavova.michaela@seznam.cz" },
                 ].map(({ name, bio, phone, email }) => (
