@@ -146,7 +146,7 @@ export function AnnouncementBar() {
       {/* ── MODAL ── */}
       <div className="fixed inset-0 z-[101] flex items-center justify-center p-6 pointer-events-none">
         <div
-          className={`w-full max-w-lg flex flex-col pointer-events-auto transform transition-all duration-300 ease-out ${open ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+          className={`w-full max-w-lg flex flex-col transform transition-all duration-300 ease-out ${open ? "opacity-100 translate-y-0 pointer-events-auto" : "opacity-0 translate-y-4 pointer-events-none"}`}
         >
           {/* Header — dark */}
           <div className="bg-border-dark px-8 pt-8 pb-8 relative shrink-0">
