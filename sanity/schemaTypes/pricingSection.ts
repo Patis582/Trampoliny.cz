@@ -32,14 +32,25 @@ export const pricingSectionType = defineType({
     }),
     defineField({
       name: 'pdf',
-      title: 'PDF ke stažení',
+      title: 'Ceník PDF',
       type: 'file',
     }),
     defineField({
       name: 'pdfLabel',
-      title: 'Popisek tlačítka PDF',
+      title: 'Popisek tlačítka — ceník PDF',
       type: 'string',
-      initialValue: 'Stáhnout ceník PDF',
+      initialValue: 'Ceník PDF',
+    }),
+    defineField({
+      name: 'rozvrh',
+      title: 'Rozvrh PDF',
+      type: 'file',
+    }),
+    defineField({
+      name: 'rozvrhLabel',
+      title: 'Popisek tlačítka — rozvrh PDF',
+      type: 'string',
+      initialValue: 'Rozvrh PDF',
     }),
     defineField({
       name: 'note',

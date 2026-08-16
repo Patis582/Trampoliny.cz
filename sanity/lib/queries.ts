@@ -267,6 +267,8 @@ export type PricingSection = {
   validFrom?: string
   pdfUrl?: string
   pdfLabel?: string
+  rozvrhUrl?: string
+  rozvrhLabel?: string
   note?: string
   groups: PricingGroup[]
   order: number
@@ -282,6 +284,8 @@ export async function getPricingSections(): Promise<PricingSection[] | null> {
         validFrom,
         "pdfUrl": pdf.asset->url,
         pdfLabel,
+        "rozvrhUrl": rozvrh.asset->url,
+        rozvrhLabel,
         note,
         groups[] {
           _key,
@@ -451,6 +455,23 @@ export async function getSiteConfig(): Promise<SiteConfig> {
       `*[_type == "siteConfig"][0] { eosLoginUrl }`,
       {},
       { next: { tags: ['siteConfig'] } }
+    ) ?? {}
+  } catch {
+    return {}
+  }
+}
+
+export type LiberecConfig = {
+  rozvrh?: string
+  rozvrhLabel?: string
+}
+
+export async function getLiberecConfig(): Promise<LiberecConfig> {
+  try {
+    return await client.fetch(
+      `*[_type == "liberecConfig"][0] { "rozvrh": rozvrh.asset->url, rozvrhLabel }`,
+      {},
+      { next: { tags: ['liberecConfig'] } }
     ) ?? {}
   } catch {
     return {}

@@ -5,7 +5,7 @@ import { ServiceGrid } from "@/components/services/ServiceGrid";
 import { LiberecHeroSlideshow } from "@/components/layout/LiberecHeroSlideshow";
 import { LiberecHeroContent } from "@/components/layout/LiberecHeroContent";
 import { ScrollReveal } from "@/components/ui/ScrollReveal";
-import { getServicesByBrand } from "@/sanity/lib/queries";
+import { getServicesByBrand, getLiberecConfig } from "@/sanity/lib/queries";
 import { SectionError } from "@/components/ui/SectionError";
 import { EtickyKodex } from "@/components/liberec/EtickyKodex";
 import type { Metadata } from "next";
@@ -24,7 +24,10 @@ export const metadata: Metadata = {
 };
 
 export default async function TrampolinyLiberecPage() {
-  const services = await getServicesByBrand("liberec");
+  const [services, liberecConfig] = await Promise.all([
+    getServicesByBrand("liberec"),
+    getLiberecConfig(),
+  ]);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -122,6 +125,21 @@ export default async function TrampolinyLiberecPage() {
             </ScrollReveal>
           ) : (
             <p className="text-on-surface-variant font-light">Aktivity brzy přibydou.</p>
+          )}
+          {liberecConfig.rozvrh && (
+            <ScrollReveal delay={120} className="mt-10">
+              <a
+                href={liberecConfig.rozvrh}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 border-2 border-brand-orange text-brand-orange font-label-bold text-[11px] uppercase tracking-wider px-7 py-4 hover:bg-brand-orange hover:text-white transition-all duration-300"
+              >
+                <svg className="w-4 h-4 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                {liberecConfig.rozvrhLabel ?? 'Rozvrh tréninků PDF'}
+              </a>
+            </ScrollReveal>
           )}
         </div>
       </section>

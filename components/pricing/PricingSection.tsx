@@ -24,18 +24,35 @@ export function PricingSection({ section, alt, first }: { section: PricingSectio
                 </span>
               )}
             </div>
-            {section.pdfUrl && (
-              <a
-                href={section.pdfUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 shrink-0 border border-border-dark text-border-dark font-label-bold text-[10px] uppercase tracking-widest px-4 py-2 hover:bg-border-dark hover:text-white transition-colors"
-              >
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                </svg>
-                {section.pdfLabel ?? 'Stáhnout PDF'}
-              </a>
+            {(section.pdfUrl || section.rozvrhUrl) && (
+              <div className="flex flex-wrap gap-2 shrink-0">
+                {section.pdfUrl && (
+                  <a
+                    href={section.pdfUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 border border-border-dark text-border-dark font-label-bold text-[10px] uppercase tracking-widest px-4 py-2 hover:bg-border-dark hover:text-white transition-colors"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    {section.pdfLabel ?? 'Ceník PDF'}
+                  </a>
+                )}
+                {section.rozvrhUrl && (
+                  <a
+                    href={section.rozvrhUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 border border-border-dark text-border-dark font-label-bold text-[10px] uppercase tracking-widest px-4 py-2 hover:bg-border-dark hover:text-white transition-colors"
+                  >
+                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                    </svg>
+                    {section.rozvrhLabel ?? 'Rozvrh PDF'}
+                  </a>
+                )}
+              </div>
             )}
           </div>
 

@@ -9,6 +9,7 @@ import { siteConfigType } from './siteConfig'
 import { testimonialType } from './testimonial'
 import { notableVisitorType } from './notableVisitor'
 import { documentCategoryType } from './documentCategory'
+import { liberecConfigType } from './liberecConfig'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -22,5 +23,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     testimonialType,
     notableVisitorType,
     documentCategoryType,
+    liberecConfigType,
   ],
 }

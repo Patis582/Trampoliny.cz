@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity'
 
 export const siteConfigType = defineType({
   name: 'siteConfig',
-  title: 'Nastavení webu',
+  title: 'EOS — přihlášení',
   type: 'document',
   fields: [
     defineField({
@@ -14,7 +14,7 @@ export const siteConfigType = defineType({
   ],
   preview: {
     prepare() {
-      return { title: 'Nastavení webu' }
+      return { title: 'EOS — přihlášení' }
     },
   },
 })
