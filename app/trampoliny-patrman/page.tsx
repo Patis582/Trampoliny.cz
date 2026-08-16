@@ -103,26 +103,6 @@ export default async function TrampolinyPatrmanPage() {
         </div>
       </section>
 
-      {/* ── FOTKY ── */}
-      <section className="bg-surface-container-lowest py-section-padding-mobile md:py-section-padding-desktop overflow-hidden">
-        <div className="max-w-container-max mx-auto px-gutter">
-          <ScrollReveal className="mb-12 md:mb-16">
-            <span className="inline-block font-label-bold text-label-bold uppercase tracking-widest text-on-tertiary-container mb-6">
-              Atmosféra
-            </span>
-            <h2
-              className="font-black uppercase tracking-tight leading-none text-border-dark"
-              style={{ fontSize: "clamp(28px, 4vw, 52px)" }}
-            >
-              Jak to u nás <span className="font-medium">vypadá</span>
-            </h2>
-          </ScrollReveal>
-          <ScrollReveal delay={100}>
-            <PatrmanGallery />
-          </ScrollReveal>
-        </div>
-      </section>
-
       {/* ── NAŠE SLUŽBY ── */}
       <section className="py-section-padding-mobile md:py-section-padding-desktop bg-white" id="sluzby">
         <div className="max-w-container-max mx-auto px-gutter">
@@ -157,6 +137,26 @@ export default async function TrampolinyPatrmanPage() {
           ) : (
             <p className="text-on-surface-variant font-light">Aktivity brzy přibydou.</p>
           )}
+        </div>
+      </section>
+
+      {/* ── FOTKY ── */}
+      <section className="bg-surface-container-lowest py-section-padding-mobile md:py-section-padding-desktop overflow-hidden">
+        <div className="max-w-container-max mx-auto px-gutter">
+          <ScrollReveal className="mb-12 md:mb-16">
+            <span className="inline-block font-label-bold text-label-bold uppercase tracking-widest text-on-tertiary-container mb-6">
+              Atmosféra
+            </span>
+            <h2
+              className="font-black uppercase tracking-tight leading-none text-border-dark"
+              style={{ fontSize: "clamp(28px, 4vw, 52px)" }}
+            >
+              Jak to u nás <span className="font-medium">vypadá</span>
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={100}>
+            <PatrmanGallery />
+          </ScrollReveal>
         </div>
       </section>
 
