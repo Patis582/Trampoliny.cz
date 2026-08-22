@@ -21,25 +21,25 @@ const steps = [
     number: '01',
     title: 'Otevři přihlašovací stránku',
     description: 'Klikni na tlačítko „Přihlásit se do EOS" níže na této stránce nebo přejdi přímo na eos.trampoliny.cz.',
-    image: null as string | null,
+    image: '/eos-login.png' as string | null,
   },
   {
     number: '02',
-    title: 'Vytvoř si účet nebo se přihlas',
-    description: 'Pokud ještě nemáš účet, klikni na „Registrace" a vyplň své údaje. Pokud účet máš, přihlas se emailem a heslem.',
-    image: null as string | null,
+    title: 'Jsi tu nový?',
+    description: 'Pokud ještě nemáš účet, klikni na „Registrace" a vyplň své údaje včetně výběru kroužku/týmu. Odešli a vyčkej, až tě správce zaregistruje a odsouhlasí. Poté obdržíš na email nebo do aplikace přístup.',
+    image: '/eos-vyber-tymu-novy.png' as string | null,
   },
   {
     number: '03',
-    title: 'Vyber aktivitu',
-    description: 'Po přihlášení najdi aktivitu, do které chceš přihlásit své dítě, a klikni na „Přihlásit".',
-    image: null as string | null,
+    title: 'Již jsi členem oddílu?',
+    description: 'Pokud jsi již členem oddílu, klikni na „Přihlásit se". Poté budeš vyzván ke kontrole údajů a na konci si vybereš kroužek/tým, do kterého chceš dítě přihlásit. Po schválení správcem obdržíš informaci o zařazení do kroužku/týmu.',
+    image: '/eos-vyber-tymu-clen.png' as string | null,
   },
   {
     number: '04',
-    title: 'Dokončení přihlášky',
-    description: 'Vyplň potřebné údaje o dítěti a odešli přihlášku. Potvrzení přijde na tvůj email.',
-    image: null as string | null,
+    title: 'Změna kroužku nebo zařazení do dalšího kroužku',
+    description: 'V případě, že chceš přejít do dalšího kroužku nebo změnit již vybraný kroužek, stiskni v systému pod kalendářem „Nový požadavek" a vyber jakou změnu chceš udělat. Odešli a správce v nejbližší době požadavek vyřídí.',
+    image: '/eos-novy-pozadavek.png' as string | null,
   },
 ]
 
@@ -88,24 +88,17 @@ export default async function JakNaToPage() {
                     </p>
                   </div>
 
-                  {/* Screenshot */}
-                  <div className="border border-surface-container-high shadow-sm overflow-hidden bg-surface-container-lowest">
-                    <div className="relative aspect-[16/10]">
-                      {step.image ? (
-                        <Image
-                          src={step.image}
-                          alt={step.title}
-                          fill
-                          className="object-cover object-top"
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-surface-container-high flex items-center justify-center">
-                          <span className="text-outline text-[10px] font-label-bold uppercase tracking-widest">
-                            Screenshot
-                          </span>
-                        </div>
-                      )}
+                  {/* Screenshot — mobilní portrait */}
+                  <div className={`flex justify-center ${isEven ? 'md:justify-start' : 'md:justify-end'}`}>
+                    <div className="relative w-56 md:w-64 aspect-[9/19] shadow-xl rounded-2xl overflow-hidden border border-surface-container-high">
+                      <Image
+                        src={step.image!}
+                        alt={step.title}
+                        fill
+                        quality={100}
+                        className="object-cover object-top"
+                        sizes="(max-width: 768px) 448px, 512px"
+                      />
                     </div>
                   </div>
                 </div>
