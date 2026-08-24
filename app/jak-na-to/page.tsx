@@ -95,7 +95,7 @@ export default async function JakNaToPage() {
                         src={step.image!}
                         alt={step.title}
                         fill
-                        quality={100}
+                        unoptimized
                         className="object-cover object-top"
                         sizes="(max-width: 768px) 448px, 512px"
                       />
